@@ -1,0 +1,43 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Sponsor Engine",
+  "description": "Front desk and sponsor desk for a community or a venue.",
+  "colors": {
+    "primary": "#1F5EFF",
+    "light": "#1F5EFF",
+    "dark": "#1F5EFF"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Quickstart",
+        "pages": ["quickstart", "pricing"]
+      },
+      {
+        "group": "Connect your agent",
+        "pages": ["connect"]
+      },
+      {
+        "group": "MCP tools reference",
+        "pages": ["tools"]
+      },
+      {
+        "group": "Channels",
+        "pages": ["channels"]
+      },
+      {
+        "group": "Bring your own tools",
+        "pages": ["bring-your-own", "data"]
+      },
+      {
+        "group": "Safety",
+        "pages": ["safety"]
+      },
+      {
+        "group": "Self-host",
+        "pages": ["self-host"]
+      }
+    ]
+  }
+}

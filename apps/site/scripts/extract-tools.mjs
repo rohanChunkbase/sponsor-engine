@@ -49,7 +49,51 @@ const body = {
   tools,
 };
 fs.writeFileSync(outPath, `${JSON.stringify(body, null, 2)}\n`);
-console.log(`Wrote ${tools.length} tools to generated/tools.json.`);
+writeToolsPage(body);
+console.log(`Wrote ${tools.length} tools to generated/tools.json and docs/tools.mdx.`);
+
+function writeToolsPage(body) {
+  const docsPath = path.resolve(siteRoot, "../../docs/tools.mdx");
+  const lines = [
+    "---",
+    'title: "MCP tools reference"',
+    'description: "The tools on the sponsor-engine MCP server, with one example for each tool."',
+    "---",
+    "",
+    "The server name is `sponsor-engine`.",
+    `The version is \`${body.version}\`.`,
+    "Each section comes from `packages/mcp/src/server.ts`.",
+    "The script `apps/site/scripts/extract-tools.mjs` writes this page.",
+    "The script stops when a tool has no example.",
+    "The script stops when an example field is not in the schema.",
+    "",
+    "Ids in the examples are samples.",
+    "A live call makes its own ids.",
+    "Room prices in the quote example use the SAMPLE history.",
+    "Do not use SAMPLE prices for a real venue.",
+    "The forecast example uses the benchmark path.",
+    "The benchmark path runs when fewer than three past bookings of that kind exist.",
+    "",
+    "Read [Safety](/safety) before you change `DRY_RUN`.",
+    "",
+  ];
+  for (const tool of body.tools) {
+    lines.push(`## ${tool.name}`, "");
+    lines.push(`${tool.title}.`, "", tool.description, "", "### Input", "");
+    lines.push("| Field | Type | Required | Purpose |", "| --- | --- | --- | --- |");
+    for (const field of tool.input) {
+      const purpose = (field.description || "The server stores this value.").replaceAll("|", "\\|");
+      lines.push(`| \`${field.name}\` | \`${field.type}\` | ${field.required ? "Yes" : "No"} | ${purpose} |`);
+    }
+    lines.push("", "### Example call", "", "```json");
+    lines.push(JSON.stringify({ name: tool.name, arguments: tool.exampleCall }, null, 2));
+    lines.push("```", "", "### Example result", "", "```json");
+    lines.push(JSON.stringify(tool.exampleResult, null, 2));
+    lines.push("```", "");
+  }
+  fs.mkdirSync(path.dirname(docsPath), { recursive: true });
+  fs.writeFileSync(docsPath, `${lines.join("\n")}\n`);
+}
 
 function extractServer(text) {
   const match = text.match(/new McpServer\(\{\s*name:\s*"([^"]+)",\s*version:\s*"([^"]+)"/);
