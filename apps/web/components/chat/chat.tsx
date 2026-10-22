@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { money } from "@/lib/labels";
-import { findByRequest, getConversation, saveConversation } from "@/lib/conversations";
+import { findByRequest, getConversation, loadConversations, saveConversation } from "@/lib/conversations";
 import { CardShell, DraftCard, QuoteCard, SponsorCard, SummaryCard, btn, type OutboxItem, type Qualified, type Quote, type Sponsor } from "./cards";
 
 type RunResult = {
@@ -15,6 +15,7 @@ type RunResult = {
   sponsors?: { matches: Sponsor[]; live_note?: string };
   draft?: { outbox?: OutboxItem; ask_gbp?: number; error?: string } | null;
   repeat?: { outbox?: OutboxItem } | null;
+  missing?: string[];
 };
 
 type StepState = "pending" | "running" | "done";
@@ -22,7 +23,7 @@ type Step = { label: string; detail?: string; state: StepState };
 
 type Message =
   | { id: string; role: "user"; text: string }
-  | { id: string; role: "assistant"; kind: "text"; text: string }
+  | { id: string; role: "assistant"; kind: "text"; text: string; action?: "demo" }
   | { id: string; role: "assistant"; kind: "run"; steps: Step[]; result?: RunResult; error?: string; retry?: () => void }
   | { id: string; role: "assistant"; kind: "drafts"; text: string; items: OutboxItem[] }
   | { id: string; role: "assistant"; kind: "sponsors"; text: string; sponsors: Sponsor[] }
@@ -139,7 +140,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
     }, 520);
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetchWithTimeout(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: endpoint === "/api/chat" ? JSON.stringify({ message: text }) : "{}",
@@ -169,21 +170,53 @@ export function Chat({ testMode }: { testMode: boolean }) {
     }
   }
 
-  async function showDrafts() {
+  async function showFoodSponsors() {
+    const known = lastSponsors.current;
+    if (known?.length) {
+      setMessages((list) => [...list, { id: nextId(), role: "assistant", kind: "sponsors", text: "These food sponsors fit this request. Each one links to the public page I used.", sponsors: known }]);
+      return;
+    }
     const id = nextId();
     setMessages((list) => [...list, { id, role: "assistant", kind: "loading" }]);
     try {
-      const response = await fetch("/api/requests", { cache: "no-store" });
-      const data = (await response.json()) as { outbox: OutboxItem[] };
-      const items = (data.outbox ?? []).filter((item) => item.status === "awaiting_approval" || item.status === "needs_contact" || item.status === "draft");
+      const response = await fetchWithTimeout("/api/sponsors", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ needs: ["food"], headcount: 100, focus: "hackathon" }) });
+      const data = (await response.json()) as { matches?: Sponsor[]; error?: string };
+      const matches = data.matches ?? [];
       patch(id, () =>
-        items.length
-          ? { id, role: "assistant", kind: "drafts", text: `${items.length} ${items.length === 1 ? "draft is" : "drafts are"} waiting for you. Nothing leaves without your approval.`, items: items.slice(0, 6) }
-          : { id, role: "assistant", kind: "text", text: "Nothing is waiting for you. Paste a booking message and I will draft the replies." },
+        matches.length
+          ? { id, role: "assistant", kind: "sponsors", text: "For a London hackathon of about 100 people, these sponsors have backed food at similar events. Each one links to the public page I used.", sponsors: matches }
+          : { id, role: "assistant", kind: "text", text: data.error || "I found no food sponsors in the London list yet." },
       );
     } catch {
-      patch(id, () => ({ id, role: "assistant", kind: "text", text: "I could not load your drafts. Check your connection and try again." }));
+      patch(id, () => ({ id, role: "assistant", kind: "text", text: "I could not load sponsors. Check your connection and try again." }));
     }
+  }
+
+  async function showDrafts() {
+    const id = nextId();
+    setMessages((list) => [...list, { id, role: "assistant", kind: "loading" }]);
+    const isWaiting = (item: OutboxItem) => item.status === "awaiting_approval" || item.status === "needs_contact" || item.status === "draft";
+    const local: OutboxItem[] = [];
+    for (const conversation of loadConversations()) {
+      for (const message of conversation.messages as Message[]) {
+        if (message.role === "assistant" && message.kind === "run" && message.result) {
+          local.push(...uniqueDrafts([message.result.triage.outbox, message.result.draft?.outbox, message.result.repeat?.outbox]));
+        }
+      }
+    }
+    let server: OutboxItem[] = [];
+    try {
+      const response = await fetchWithTimeout("/api/requests", { cache: "no-store" });
+      server = ((await response.json()) as { outbox?: OutboxItem[] }).outbox ?? [];
+    } catch {
+      server = [];
+    }
+    const items = uniqueDrafts([...local, ...server]).filter(isWaiting);
+    patch(id, () =>
+      items.length
+        ? { id, role: "assistant", kind: "drafts", text: `${items.length} ${items.length === 1 ? "draft is" : "drafts are"} waiting for you. Nothing leaves without your approval.`, items: items.slice(0, 6) }
+        : { id, role: "assistant", kind: "text", text: "No drafts are waiting for you. Run the demo and I will draft a reply and a sponsor email for you to approve.", action: "demo" },
+    );
   }
 
   async function send(raw: string) {
@@ -198,13 +231,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
       if (text === SUGGESTIONS[0]) await run(text, "/api/demo");
       else if (text === SUGGESTIONS[2]) await showDrafts();
       else if (text === SUGGESTIONS[1]) {
-        const sponsors = lastSponsors.current;
-        setMessages((list) => [
-          ...list,
-          sponsors
-            ? { id: nextId(), role: "assistant", kind: "sponsors", text: "These sponsors fit the last request. Each one links to the public page I used.", sponsors }
-            : { id: nextId(), role: "assistant", kind: "text", text: "I need a request first. Run the Unicorn Mafia demo or paste the hackathon's message, and I will match food sponsors with sources." },
-        ]);
+        await showFoodSponsors();
       } else if (looksLikeQuestion(text)) {
         setMessages((list) => [...list, { id: nextId(), role: "assistant", kind: "text", text: CAPABILITIES }]);
       } else await run(text, "/api/chat");
@@ -239,7 +266,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
         ) : (
           <div className="mx-auto flex max-w-[760px] flex-col gap-6 px-6 py-8">
             {messages.map((message) => (
-              <MessageView key={message.id} message={message} testMode={testMode} />
+              <MessageView key={message.id} message={message} testMode={testMode} onDemo={() => void send(SUGGESTIONS[0])} />
             ))}
             <div ref={bottom} />
           </div>
@@ -281,7 +308,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
   );
 }
 
-function MessageView({ message, testMode }: { message: Message; testMode: boolean }) {
+function MessageView({ message, testMode, onDemo }: { message: Message; testMode: boolean; onDemo: () => void }) {
   if (message.role === "user") {
     return (
       <div className="raft-rise flex justify-end">
@@ -292,14 +319,26 @@ function MessageView({ message, testMode }: { message: Message; testMode: boolea
   return (
     <div className="raft-rise flex gap-3">
       <img src="/raft/icon.png" alt="" width={32} height={32} className="mt-0.5 h-8 w-8 shrink-0 rounded-full bg-white ring-1 ring-raft-line" />
-      <div className="flex min-w-0 flex-1 flex-col gap-3">{assistantBody(message, testMode)}</div>
+      <div className="flex min-w-0 flex-1 flex-col gap-3">{assistantBody(message, testMode, onDemo)}</div>
     </div>
   );
 }
 
-function assistantBody(message: Exclude<Message, { role: "user" }>, testMode: boolean) {
+function assistantBody(message: Exclude<Message, { role: "user" }>, testMode: boolean, onDemo: () => void) {
   if (message.kind === "loading") return <Skeleton />;
-  if (message.kind === "text") return <p className="pt-1 text-[15px] leading-6 text-raft-ink">{message.text}</p>;
+  if (message.kind === "text")
+    return (
+      <>
+        <p className="pt-1 text-[15px] leading-6 text-raft-ink">{message.text}</p>
+        {message.action === "demo" ? (
+          <div>
+            <button type="button" onClick={onDemo} className={btn("primary")}>
+              Run the Unicorn Mafia demo
+            </button>
+          </div>
+        ) : null}
+      </>
+    );
   if (message.kind === "drafts")
     return (
       <>
@@ -327,7 +366,8 @@ function RunView({ message, testMode }: { message: Extract<Message, { kind: "run
   const result = message.result;
   const working = !result && !message.error;
   const failed = result && !result.triage.ok;
-  const drafts = result ? uniqueDrafts([result.triage.outbox, result.draft?.outbox, result.repeat?.outbox]) : [];
+  const followUp = Boolean(result?.missing?.length);
+  const drafts = result && !followUp ? uniqueDrafts([result.triage.outbox, result.draft?.outbox, result.repeat?.outbox]) : [];
   return (
     <>
       <Steps steps={message.steps} working={working} />
@@ -362,6 +402,17 @@ function RunView({ message, testMode }: { message: Extract<Message, { kind: "run
                 ))}
               </div>
             </div>
+          ) : null}
+          {followUp ? (
+            <CardShell className="border-raft-lavender/60 bg-[#f6f2fd]">
+              <p className="text-[15px] font-medium text-raft-ink">Before I draft any sponsor emails, two quick questions:</p>
+              <ul className="mt-2 list-disc pl-5 text-[14.5px] leading-6 text-raft-ink">
+                {followUpQuestions(result.missing ?? []).map((question) => (
+                  <li key={question}>{question}</li>
+                ))}
+              </ul>
+              <p className="mt-2 text-[13px] text-raft-muted">The quote above is an estimate until I know these.</p>
+            </CardShell>
           ) : null}
           {drafts.map((item) => (
             <DraftCard key={item.id} item={item} testMode={testMode} />
@@ -424,7 +475,7 @@ function describeSteps(result: RunResult): Step[] {
     ok ? "Looks like a real booking request." : "Stopped here.",
     result.quote && !result.quote.error ? `${money(result.quote.price)} for the room` : ok ? "No price yet" : undefined,
     matches.length ? matches.map((match) => match.company).join(", ") : ok ? "No close matches" : undefined,
-    drafts.length ? `${drafts.length} drafts${blocked ? `, ${blocked} blocked` : ""}, waiting for you` : ok ? "Nothing to draft" : undefined,
+    result.missing?.length ? `Waiting for ${result.missing.join(" and ")}` : drafts.length ? `${drafts.length} drafts${blocked ? `, ${blocked} blocked` : ""}, waiting for you` : ok ? "Nothing to draft" : undefined,
   ];
   return STEP_LABELS.map((label, index) => ({ label, detail: details[index], state: ok || index < 2 ? "done" : "pending" }));
 }
@@ -443,6 +494,20 @@ function uniqueDrafts(items: Array<OutboxItem | null | undefined>) {
     seen.add(item.id);
     return true;
   });
+}
+
+function followUpQuestions(missing: string[]) {
+  const questions: string[] = [];
+  if (missing.includes("date")) questions.push("What date is the hackathon, and roughly what hours?");
+  if (missing.includes("needs")) questions.push("Do you need food and drinks, a room, or both?");
+  if (missing.includes("headcount")) questions.push("About how many people are you expecting?");
+  return questions.slice(0, 2);
+}
+
+function fetchWithTimeout(url: string, init: RequestInit = {}, ms = 45_000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return fetch(url, { ...init, signal: controller.signal }).finally(() => clearTimeout(timer));
 }
 
 function looksLikeQuestion(text: string) {

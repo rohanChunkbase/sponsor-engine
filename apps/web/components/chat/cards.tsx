@@ -100,7 +100,11 @@ export function QuoteCard({ quote }: { quote: Quote }) {
         <span className="text-[34px] leading-none font-semibold tracking-[-0.03em] text-raft-ink">{money(quote.price)}</span>
         <span className="text-[14px] text-raft-muted">for the room</span>
       </div>
-      {quote.range ? <p className="mt-1 text-[13px] text-raft-muted">Fair range from past bookings: {money(quote.range.low)} to {money(quote.range.high)}</p> : null}
+      {quote.range && quote.range.high > 0 ? (
+        <p className="mt-1 text-[13px] text-raft-muted">
+          {quote.range.low > 0 ? `Fair range from past bookings: ${money(quote.range.low)} to ${money(quote.range.high)}` : `Past bookings like this go up to ${money(quote.range.high)}`}
+        </p>
+      ) : null}
       {lines ? (
         <ul className="mt-4 divide-y divide-raft-line/70 text-[14px]">
           <Line label={`Room${lines.hours ? `, ${lines.hours} hours` : ""}`} value={money(lines.room_gbp)} />
