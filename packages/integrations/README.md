@@ -27,7 +27,7 @@ The package has three interfaces.
 | --- | --- | --- | --- |
 | CrmProvider | Built-in CRM (`crm_export.json`) | Zero | Twenty, HubSpot, Notion, Google Sheets |
 | MemoryProvider | Built-in memory (keyword search) | Cognee | Mem0 |
-| DataSource | Bundled data in `seed/` | Luma, Devpost, Companies House | None |
+| DataSource | Bundled data in `seed/` | Luma, Meetup, Eventbrite, BuilderBase, MLH, Devpost, GitHub, Hacker News, Companies House | None |
 
 The registry selects the provider.
 If the key is set, the registry uses that provider.
@@ -37,10 +37,17 @@ Each row has the name, `connected` (yes or no), and `missing` (the env vars).
 
 Zero creates companies, contacts, deals, and notes.
 Cognee stores documents and answers a query.
-Luma reads public event JSON.
-Devpost reads the public hackathon API.
+Luma reads the London discover feed and one calendar feed.
+Meetup and Eventbrite add London tech events.
+BuilderBase and MLH list hackathon organisers.
+Devpost reads hackathons and project search.
+GitHub and Hacker News feed the builder check.
 Companies House reads the public search page.
 Set `COMPANIES_HOUSE_API_KEY` to use the official Companies House API.
+Set `GITHUB_TOKEN` to raise the GitHub rate limit.
+The public GitHub limit is 60 requests per hour.
+The spam check uses a local model.
+The model does not call the network.
 
 WARNING: Do not send email from these adapters. Create a record or a draft note only.
 
@@ -55,6 +62,7 @@ WARNING: Do not send email from these adapters. Create a record or a draft note 
 | `COGNEE_URL` | Cognee | Yes for Cognee | Server URL. `COGNEE_BASE_URL` is the same URL. |
 | `COGNEE_TENANT_ID` | Cognee | No | Sends the header `X-Tenant-Id` when set. |
 | `COMPANIES_HOUSE_API_KEY` | Companies House | No | Official API. The public page works with no key. |
+| `GITHUB_TOKEN` | GitHub | No | Bearer token. The public profile works with no key. |
 | `TWENTY_API_URL` | Twenty | Stub | Not called. |
 | `TWENTY_API_KEY` | Twenty | Stub | Not called. |
 | `HUBSPOT_ACCESS_TOKEN` | HubSpot | Stub | Not called. |
@@ -137,12 +145,30 @@ const memory = await integrations.memory.recall("C01", "which sponsors backed my
 const hosts = await integrations.data.lumaEventHosts("evt-Yz7RR89Zlv56tya");
 const hackathons = await integrations.data.devpostLondonHackathons();
 const company = await integrations.data.companySize("Cloudflare");
+const london = await integrations.data.londonEventsIndex();
+const sponsors = await integrations.data.findSponsors("L-encode-london-2026");
+const leads = await integrations.data.organiserLeads();
+const requester = await integrations.data.verifyRequester("octocat");
 ```
 
 The package exports the same functions by name.
 Import `pushSponsorLead`, `pushDeal`, `remember`, and `recall`.
 Import `lumaEventHosts`, `devpostLondonHackathons`, `companySize`, and `getStatus`.
+Import `londonEventsIndex`, `findSponsors`, and `find_sponsors`.
+Import `organiserLeads`, `devpostProjects`, `githubProfile`, and `hackerNewsStories`.
+Import `verifyRequester`, `isLikelySpam`, `triageInbound`, and `triage_inbound`.
+Import `sponsorMatchEval` and `sponsorMatchReport`.
 Those functions read the process env on each call.
+
+`londonEventsIndex()` returns events, venues, and calendars.
+Use `venues` on the map.
+Use `calendars` for who hosts what.
+`findSponsors(eventId)` ranks sponsors of similar events.
+The function leaves out the queried event.
+`isLikelySpam(text)` returns `{ spam, score, reasons }`.
+`triageInbound({ text, handle })` returns lane `spam` or lane `task`.
+Lane `spam` does not create a task.
+`sponsorMatchReport()` returns precision@3 and recall@5.
 
 7. Read the local CRM when Zero is not connected.
 
@@ -199,10 +225,15 @@ Run the smoke scripts.
 npm run smoke:crm --prefix packages/integrations
 npm run smoke:memory --prefix packages/integrations
 npm run smoke:live --prefix packages/integrations
+npm run smoke:datakit --prefix packages/integrations
+npm run eval:sponsors --prefix packages/integrations
 ```
 
 `smoke:crm` and `smoke:memory` use the built-in providers.
 `smoke:live` calls Luma, Devpost, and the Companies House page.
+`smoke:datakit` calls the London event sources, organiser leads, and the builder check.
+`eval:sponsors` prints precision@3 and recall@5.
+The same numbers are in `src/eval/sponsor-match-report.json`.
 Each live call has a short timeout.
 The result uses the bundled data when a call fails.
 Live GET calls wait between requests and cache the response for 12 hours.

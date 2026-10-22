@@ -22,6 +22,7 @@
     "smoke:crm": "node --experimental-strip-types scripts/smoke-crm.ts",
     "smoke:memory": "node --experimental-strip-types scripts/smoke-memory.ts",
     "smoke:live": "node --experimental-strip-types scripts/smoke-live.ts",
+    "smoke:datakit": "node --experimental-strip-types scripts/smoke-datakit.ts",
     "eval:sponsors": "node --experimental-strip-types scripts/eval-sponsors.ts"
   },
   "devDependencies": {
