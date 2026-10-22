@@ -77,7 +77,7 @@ Copy `.env.example` to `.env` only when you want to change a value.
 | --- | --- | --- |
 | `DRY_RUN` | `true` | Test mode. `true` does not send. |
 | `ALLOWLIST` | empty | Addresses that can be marked sent when `DRY_RUN` is `false`. |
-| `DATABASE_URL` | empty | Postgres URL. Leave empty to use SQLite. |
+| `DATABASE_URL` | empty | Postgres URL. Leave empty to use SQLite. On the hosted site, use the Supavisor transaction pooler URL on port 6543. |
 | `DEMO_MODE` | empty | `true` keeps a public site in test mode. |
 | `NEXT_PUBLIC_APP_URL` | empty | Public site address. The MCP page uses it. |
 | `MCP_TOKEN` | empty | Bearer token for `/api/mcp`. Leave empty on the public demo. |
@@ -91,15 +91,19 @@ Copy `.env.example` to `.env` only when you want to change a value.
 
 Supabase is optional. It is not required. Leave `DATABASE_URL` empty to use SQLite.
 
-Set `DATABASE_URL` to a Postgres URL to use Supabase. The driver reads `packages/db/src/schema.postgres.sql`.
+The hosted project is `sponsor-engine`. The ref is `rcoxklwwitbuugcndwto`. The region is `eu-west-2`.
 
-Run this command once after you set `DATABASE_URL`:
+Set `DATABASE_URL` to the Supavisor transaction pooler URL. The port is `6543`. The user is `postgres.rcoxklwwitbuugcndwto`. The database is `postgres`. Copy the host from the Connect dialog for transaction mode. The driver is postgres.js with prepared statements turned off, so this URL works in serverless.
+
+Apply `packages/db/src/schema.postgres.sql` in the Supabase SQL editor or through the Supabase MCP. The file is safe to run again. It turns on row level security for every table. `anon` and `authenticated` have no access. The server connection owns the tables, so the app can still read and write. The app also applies this file when it starts.
+
+Run this command after the schema is in place:
 
 ```bash
 npm run seed:postgres
 ```
 
-Use the direct database URL on port 5432 for that command.
+You can run that command again. It adds missing catalog rows. It does not delete messages, quotes, or the outbox.
 
 ## Hosted demo
 
@@ -109,7 +113,7 @@ Set the install command to `npm install --prefix ../..`.
 
 Set the build command to `npm run build --prefix ../.. -w @sponsor-engine/pricing && npm run build --prefix ../.. -w @sponsor-engine/integrations && next build`.
 
-Set `DATABASE_URL` to the Supabase Postgres URL.
+Set `DATABASE_URL` to the Supavisor transaction pooler URL for project `rcoxklwwitbuugcndwto` in `eu-west-2`. The port is `6543`.
 
 Set `DEMO_MODE` to `true`.
 
