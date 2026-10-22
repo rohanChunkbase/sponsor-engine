@@ -1,13 +1,41 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { NextConfig } from "next";
 
+const appDir = path.dirname(fileURLToPath(import.meta.url));
+const repoRoot = path.join(appDir, "../..");
+
+const traced = [
+  "../../package.json",
+  "../../packages/db/src/schema.sql",
+  "../../packages/db/src/schema.postgres.sql",
+  "../../packages/db/src/pg-worker.mjs",
+  "../../packages/pricing/dist/**/*",
+  "../../packages/pricing/data/**/*",
+  "../../packages/integrations/dist/**/*",
+  "../../packages/integrations/seed/**/*",
+  "../../data/real-data/**/*",
+  "../../data/synthetic-data/**/*",
+];
+
 const nextConfig: NextConfig = {
-  transpilePackages: ["@sponsor-engine/core", "@sponsor-engine/db"],
-  serverExternalPackages: ["better-sqlite3", "@sponsor-engine/pricing"],
-  webpack: (config) => {
+  outputFileTracingRoot: repoRoot,
+  outputFileTracingIncludes: {
+    "/**": traced,
+  },
+  transpilePackages: ["@sponsor-engine/core", "@sponsor-engine/db", "@sponsor-engine/mcp"],
+  serverExternalPackages: ["better-sqlite3", "pg", "@sponsor-engine/pricing", "@modelcontextprotocol/sdk"],
+  webpack: (config, { isServer }) => {
     config.resolve.extensionAlias = {
       ...config.resolve.extensionAlias,
       ".js": [".ts", ".tsx", ".js"],
     };
+    if (isServer) {
+      const external = "better-sqlite3";
+      const current = config.externals;
+      if (Array.isArray(current)) current.push(external);
+      else config.externals = [current, external].filter(Boolean);
+    }
     return config;
   },
 };

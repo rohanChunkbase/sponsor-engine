@@ -77,16 +77,49 @@ Copy `.env.example` to `.env` only when you want to change a value.
 | --- | --- | --- |
 | `DRY_RUN` | `true` | Test mode. `true` does not send. |
 | `ALLOWLIST` | empty | Addresses that can be marked sent when `DRY_RUN` is `false`. |
-| `DATABASE_URL` | empty | Leave empty. The app uses SQLite. |
+| `DATABASE_URL` | empty | Postgres URL. Leave empty to use SQLite. |
+| `DEMO_MODE` | empty | `true` keeps a public site in test mode. |
+| `NEXT_PUBLIC_APP_URL` | empty | Public site address. The MCP page uses it. |
+| `MCP_TOKEN` | empty | Bearer token for `/api/mcp`. Leave empty on the public demo. |
 | `SPONSOR_ENGINE_DB` | `data/sponsor-engine.db` | Path of the SQLite file. |
-| `PORT` | `8787` | Port for the MCP HTTP server. |
+| `PORT` | `8787` | Port for the local MCP HTTP server. |
 | `ZERO_API_KEY` | empty | Optional. Use Zero instead of the built-in list. |
 | `TWENTY_API_URL` | empty | Optional. Use Twenty instead of the built-in list. |
 | `TWENTY_API_KEY` | empty | Optional. Use with `TWENTY_API_URL`. |
 | `COGNEE_API_KEY` | empty | Optional. Use Cognee for memory. |
 | `COMPANIES_HOUSE_API_KEY` | empty | Optional. Look up a UK company size. |
 
-Supabase is optional. It is not required. The running app uses SQLite. The Postgres file is `packages/db/src/schema.postgres.sql`. Apply that file yourself if you move to Supabase later.
+Supabase is optional. It is not required. Leave `DATABASE_URL` empty to use SQLite.
+
+Set `DATABASE_URL` to a Postgres URL to use Supabase. The driver reads `packages/db/src/schema.postgres.sql`.
+
+Run this command once after you set `DATABASE_URL`:
+
+```bash
+npm run seed:postgres
+```
+
+Use the direct database URL on port 5432 for that command.
+
+## Hosted demo
+
+Set the Vercel root directory to `apps/web`.
+
+Set the install command to `npm install --prefix ../..`.
+
+Set the build command to `npm run build --prefix ../.. -w @sponsor-engine/pricing && npm run build --prefix ../.. -w @sponsor-engine/integrations && next build`.
+
+Set `DATABASE_URL` to the Supabase Postgres URL.
+
+Set `DEMO_MODE` to `true`.
+
+Set `NEXT_PUBLIC_APP_URL` to the public site address before the build.
+
+Leave `MCP_TOKEN` empty on the public demo.
+
+Open `/mcp` on the site. The page lists every tool. Each tool has a schema, an example, and a Run button. The page also has copy buttons for Grok Bot, Cursor, Claude, and ChatGPT.
+
+The remote MCP URL is `/api/mcp`. The route is stateless streamable HTTP. It exposes the same tools as the local server. A person approves on the dashboard.
 
 ## What you can do in the dashboard
 
@@ -158,9 +191,11 @@ Figure 4 shows the safety path.
 
 Test mode is the default. `DRY_RUN` is `true`.
 
-The outbox has five states: `draft`, `awaiting_approval`, `approved`, `sent`, and `blocked`.
+The outbox has these states: `draft`, `awaiting_approval`, `needs_contact`, `approved`, `sent`, and `blocked`.
 
 `send_with_approval` does not send. It writes a row with status `awaiting_approval`.
+
+A sponsor email with no public contact uses status `needs_contact`. The recipient stays empty. Find a contact before you approve it.
 
 A person must press **Approve**. That action moves the row to `approved`.
 
@@ -176,7 +211,9 @@ This repository has no email sender. This repository has no WhatsApp sender.
 
 A test checks that a row cannot reach `sent` before approval.
 
-The dashboard shows a **Test mode** badge on every page.
+The dashboard shows a **TEST MODE** badge on every page while test mode is on.
+
+`DEMO_MODE=true` forces test mode. The demo cannot mark a row as sent.
 
 ## Data
 

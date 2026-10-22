@@ -18,24 +18,33 @@ export type Db = {
 
 let singleton: Db | null = null;
 
-export function repoRoot(): string {
-  if (process.env.SPONSOR_ENGINE_ROOT) return process.env.SPONSOR_ENGINE_ROOT;
-  let dir = process.cwd();
-  for (let i = 0; i < 6; i++) {
-    const pkg = path.join(dir, "package.json");
-    if (fs.existsSync(pkg)) {
-      try {
-        const parsed = JSON.parse(fs.readFileSync(pkg, "utf8")) as { name?: string };
-        if (parsed.name === "sponsor-engine") return dir;
-      } catch {
-        /* keep walking */
-      }
-    }
+function isRepoRoot(dir: string): boolean {
+  const pkg = path.join(dir, "package.json");
+  if (!fs.existsSync(pkg)) return false;
+  try {
+    const parsed = JSON.parse(fs.readFileSync(pkg, "utf8")) as { name?: string };
+    return parsed.name === "sponsor-engine";
+  } catch {
+    return false;
+  }
+}
+
+function walkToRepo(start: string): string | null {
+  let dir = start;
+  for (let i = 0; i < 8; i += 1) {
+    if (isRepoRoot(dir)) return dir;
     const parent = path.dirname(dir);
-    if (parent === dir) break;
+    if (parent === dir) return null;
     dir = parent;
   }
-  return path.resolve(here, "../../..");
+  return null;
+}
+
+export function repoRoot(): string {
+  if (process.env.SPONSOR_ENGINE_ROOT) return process.env.SPONSOR_ENGINE_ROOT;
+  return walkToRepo(process.cwd())
+    ?? walkToRepo(path.dirname(fileURLToPath(import.meta.url)))
+    ?? path.resolve(process.cwd(), "../..");
 }
 
 export function defaultDbPath(): string {
@@ -48,8 +57,7 @@ export function openDb(file = defaultDbPath()): Db {
   const sqlite = new Database(file);
   sqlite.pragma("journal_mode = WAL");
   sqlite.pragma("foreign_keys = ON");
-  const schema = fs.readFileSync(path.join(here, "schema.sql"), "utf8");
-  sqlite.exec(schema);
+  sqlite.exec(readSchema());
   ensureWorkspaceColumns(sqlite);
   return wrap(sqlite);
 }
@@ -73,6 +81,12 @@ export function resetSingleton(): void {
 }
 
 const SCOPED_TABLES = ["requests", "tasks", "quotes", "outbox", "approvals", "agent_runs", "failures"];
+
+function readSchema(): string {
+  const beside = path.join(here, "schema.sql");
+  const file = fs.existsSync(beside) ? beside : path.join(repoRoot(), "packages/db/src/schema.sql");
+  return fs.readFileSync(file, "utf8");
+}
 
 function ensureWorkspaceColumns(sqlite: Database.Database): void {
   for (const table of SCOPED_TABLES) {
