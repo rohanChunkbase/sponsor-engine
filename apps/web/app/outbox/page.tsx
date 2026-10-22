@@ -5,6 +5,7 @@ import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { kindOfMessage, money, waitingLabel } from "@/lib/labels";
+import { raftAssets } from "@sponsor-engine/brand";
 import { getReadyDb, isDryRun, listOutbox } from "@sponsor-engine/core";
 
 export const dynamic = "force-dynamic";
@@ -18,6 +19,13 @@ export default function OutboxPage() {
       <PageIntro kicker="To send" title="Waiting for you">
         Every message that would go out waits here. Approve, edit, or skip it. Test mode does not send.
       </PageIntro>
+      <img
+        src={`/brand/${items.length === 0 ? raftAssets.wave : raftAssets.approve}`}
+        alt={items.length === 0 ? "Raft the otter waves." : "Raft holds a clipboard."}
+        width={404}
+        height={510}
+        className="w-32"
+      />
       <Alert>
         <span className="font-medium">{testMode ? "Test mode." : "Live mode."} </span>
         {testMode ? "Nothing is sent, even after you approve." : "A send still needs this address on the allow list."}

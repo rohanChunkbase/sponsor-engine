@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@sponsor-engine/core", "@sponsor-engine/db"],
+  transpilePackages: ["@sponsor-engine/core", "@sponsor-engine/db", "@sponsor-engine/brand"],
   serverExternalPackages: ["better-sqlite3", "@sponsor-engine/pricing"],
   webpack: (config) => {
     config.resolve.extensionAlias = {

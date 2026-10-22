@@ -6,8 +6,8 @@ import { RunDemo } from "@/components/run-demo";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { kindLabel, kindOfMessage, priorityLabel, waitingLabel } from "@/lib/labels";
-import { inbox } from "@sponsor-engine/core";
-import { getReadyDb } from "@sponsor-engine/core";
+import { raftAssets } from "@sponsor-engine/brand";
+import { getReadyDb, inbox } from "@sponsor-engine/core";
 
 export const dynamic = "force-dynamic";
 
@@ -22,8 +22,9 @@ export default function InboxPage() {
       </PageIntro>
 
       {empty ? (
-        <Card className="bg-surface">
+        <Card className="bg-raft-cream">
           <CardHeader>
+            <img src={`/brand/${raftAssets.wave}`} alt="Raft the otter waves." width={404} height={504} className="mb-3 w-28" />
             <CardTitle>No messages yet</CardTitle>
             <CardDescription>
               London events and sponsors are already loaded. {data.counts.sponsors} sponsors, {data.counts.events} events, and {data.counts.bookings} past bookings are on this computer. Nothing is sent.
