@@ -1,0 +1,623 @@
+{
+  "_notice": "SAMPLE / FICTIONAL data for a hackathon demo. Not real people, companies or events.",
+  "records": [
+    {
+      "sponsor_id": "S01",
+      "company": "Crustwise Pizza Collective (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 280,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "IoT & hardware",
+        "Product management",
+        "ML, women in tech",
+        "Data science"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://crustwise.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S02",
+      "company": "Dumpling Dynamo Kitchen (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 340,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Rust",
+        "ML, women in tech",
+        "IoT & hardware"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://dumpling.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S03",
+      "company": "Leaf & Ladle Catering (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 290,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Developer relations",
+        "Product management"
+      ],
+      "contact_role": "Marketing coordinator",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://leaf.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S04",
+      "company": "Bao Down Street Food (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 320,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "ML, women in tech",
+        "Data science"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://bao.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S05",
+      "company": "Falafel Foundry (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 310,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Indie hacking"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://falafel.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S06",
+      "company": "Tiny Taco Syndicate (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 350,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "LLMs & RAG",
+        "Rust",
+        "Fintech"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://tiny.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S07",
+      "company": "Pasta Parlour Labs (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 300,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Creative coding",
+        "ML, women in tech",
+        "Product management",
+        "Developer relations"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://pasta.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S08",
+      "company": "Curry Compiler Co. (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 280,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Open source",
+        "Founders"
+      ],
+      "contact_role": "Office manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://curry.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S09",
+      "company": "Snackstack Vending (fictional)",
+      "category": "food",
+      "typical_ask_gbp": 320,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Design engineering",
+        "Fintech",
+        "Creative coding",
+        "Data science"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://snackstack.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S10",
+      "company": "Fizzbyte Soda Works (fictional)",
+      "category": "drinks",
+      "typical_ask_gbp": 120,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "LLMs & RAG",
+        "Indie hacking",
+        "AI agents",
+        "Design engineering"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://fizzbyte.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S11",
+      "company": "Hopscotch Brew Collective (fictional)",
+      "category": "drinks",
+      "typical_ask_gbp": 180,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Indie hacking",
+        "ML, women in tech"
+      ],
+      "contact_role": "Marketing coordinator",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://hopscotch.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S12",
+      "company": "Kombucha Kernel (fictional)",
+      "category": "drinks",
+      "typical_ask_gbp": 180,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Creative coding"
+      ],
+      "contact_role": "Marketing coordinator",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://kombucha.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S13",
+      "company": "Cold Brew Cartel (fictional)",
+      "category": "drinks",
+      "typical_ask_gbp": 180,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Founders",
+        "IoT & hardware",
+        "Design engineering",
+        "AI agents"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://cold.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S14",
+      "company": "Stacklark (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 570,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Indie hacking",
+        "ML, women in tech",
+        "Data science"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://stacklark.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S15",
+      "company": "Querypine (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 450,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Developer relations",
+        "Product management",
+        "AI agents",
+        "Open source"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://querypine.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S16",
+      "company": "Deployhaven (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 560,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Founders",
+        "LLMs & RAG"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://deployhaven.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S17",
+      "company": "Logwhistle (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 560,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Developer relations",
+        "Data science"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://logwhistle.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S18",
+      "company": "Vectorcove (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 580,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Fintech"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://vectorcove.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S19",
+      "company": "Promptmill (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 550,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "LLMs & RAG"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://promptmill.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S20",
+      "company": "Testkettle (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 460,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "AI agents",
+        "Rust"
+      ],
+      "contact_role": "Office manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://testkettle.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S21",
+      "company": "Gitgarden (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 340,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Open source"
+      ],
+      "contact_role": "Marketing coordinator",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://gitgarden.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S22",
+      "company": "Schemawell (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 340,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Developer relations",
+        "ML, women in tech"
+      ],
+      "contact_role": "Marketing coordinator",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://schemawell.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S23",
+      "company": "Tracefern (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 580,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "IoT & hardware",
+        "Founders"
+      ],
+      "contact_role": "Office manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://tracefern.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S24",
+      "company": "Cachefinch (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 520,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Design engineering",
+        "Founders"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://cachefinch.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S25",
+      "company": "Agentloom (fictional)",
+      "category": "devtool",
+      "typical_ask_gbp": 460,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "ML, women in tech",
+        "Design engineering",
+        "Data science",
+        "Product management"
+      ],
+      "contact_role": "Office manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://agentloom.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S26",
+      "company": "Nimbusforge Cloud (fictional)",
+      "category": "cloud_credits",
+      "typical_ask_gbp": 960,
+      "in_kind": "credits for attendees",
+      "audiences_sponsored": [
+        "Rust"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://nimbusforge.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S27",
+      "company": "Cumulo Compute (fictional)",
+      "category": "cloud_credits",
+      "typical_ask_gbp": 560,
+      "in_kind": "credits for attendees",
+      "audiences_sponsored": [
+        "AI agents",
+        "Fintech",
+        "Founders"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://cumulo.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S28",
+      "company": "Driftwood GPU (fictional)",
+      "category": "cloud_credits",
+      "typical_ask_gbp": 1100,
+      "in_kind": "credits for attendees",
+      "audiences_sponsored": [
+        "AI agents",
+        "LLMs & RAG"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://driftwood.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S29",
+      "company": "The Loom Workspace (fictional)",
+      "category": "venue",
+      "typical_ask_gbp": 0,
+      "in_kind": "room for 40-120",
+      "audiences_sponsored": [
+        "LLMs & RAG",
+        "AI agents"
+      ],
+      "contact_role": "Partnerships manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://the.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S30",
+      "company": "Hollow Oak Studios (fictional)",
+      "category": "venue",
+      "typical_ask_gbp": 0,
+      "in_kind": "room for 40-120",
+      "audiences_sponsored": [
+        "Founders"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://hollow.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S31",
+      "company": "Canal Lock Coworking (fictional)",
+      "category": "venue",
+      "typical_ask_gbp": 0,
+      "in_kind": "room for 40-120",
+      "audiences_sponsored": [
+        "ML, women in tech",
+        "Product management",
+        "Rust"
+      ],
+      "contact_role": "Office manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://canal.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S32",
+      "company": "Brickline Hub (fictional)",
+      "category": "venue",
+      "typical_ask_gbp": 0,
+      "in_kind": "room for 40-120",
+      "audiences_sponsored": [
+        "Open source",
+        "Fintech"
+      ],
+      "contact_role": "Office manager",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://brickline.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S33",
+      "company": "Lantern House Offices (fictional)",
+      "category": "venue",
+      "typical_ask_gbp": 0,
+      "in_kind": "room for 40-120",
+      "audiences_sponsored": [
+        "Rust",
+        "Indie hacking",
+        "Product management",
+        "Creative coding"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://lantern.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S34",
+      "company": "Talentwharf (fictional)",
+      "category": "recruiter",
+      "typical_ask_gbp": 450,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "ML, women in tech"
+      ],
+      "contact_role": "Marketing coordinator",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://talentwharf.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S35",
+      "company": "Hirewillow Partners (fictional)",
+      "category": "recruiter",
+      "typical_ask_gbp": 580,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Creative coding",
+        "Product management",
+        "Open source",
+        "AI agents"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://hirewillow.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S36",
+      "company": "Benchmark & Bloom Recruiting (fictional)",
+      "category": "recruiter",
+      "typical_ask_gbp": 430,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Open source",
+        "Data science",
+        "Indie hacking",
+        "LLMs & RAG"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://benchmark.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S37",
+      "company": "Gatherwisp (fictional)",
+      "category": "community_platform",
+      "typical_ask_gbp": 250,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Founders",
+        "Product management"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://gatherwisp.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S38",
+      "company": "Meetmoss (fictional)",
+      "category": "community_platform",
+      "typical_ask_gbp": 310,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "IoT & hardware",
+        "Product management"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://meetmoss.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S39",
+      "company": "Circlewren (fictional)",
+      "category": "community_platform",
+      "typical_ask_gbp": 220,
+      "in_kind": "",
+      "audiences_sponsored": [
+        "Indie hacking",
+        "Security",
+        "Founders",
+        "LLMs & RAG"
+      ],
+      "contact_role": "Community & Events team",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://circlewren.example",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "sponsor_id": "S40",
+      "company": "The Byte Courier (fictional)",
+      "category": "media",
+      "typical_ask_gbp": 0,
+      "in_kind": "newsletter feature",
+      "audiences_sponsored": [
+        "LLMs & RAG"
+      ],
+      "contact_role": "Developer Relations lead",
+      "contact_channel": "company contact form / generic events inbox (fictional)",
+      "website": "https://the.example",
+      "is_sample": "SAMPLE"
+    }
+  ]
+}
