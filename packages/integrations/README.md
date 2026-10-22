@@ -1,8 +1,9 @@
 # Sponsor Engine integrations
 
 This package connects sponsor tools to Sponsor Engine.
-You can bring your own tool, or you can use the built-in tool.
-A missing key does not stop the program.
+Bring your own tool.
+Or use the built-in tool.
+The program continues when no key is set.
 
 ## Word list
 
@@ -70,7 +71,7 @@ An empty string is the same as a missing env var.
 Make a key in Zero at Settings, Connections, API keys.
 Copy the workspace id from the same page.
 Zero MCP at `https://api.zero.inc/mcp` uses OAuth.
-The REST adapter uses the bearer key above.
+The REST adapter uses `ZERO_API_KEY` as the bearer token.
 Cognee Cloud uses the header `X-Api-Key`.
 A self-hosted Cognee URL uses a bearer token.
 
@@ -138,7 +139,9 @@ const hackathons = await integrations.data.devpostLondonHackathons();
 const company = await integrations.data.companySize("Cloudflare");
 ```
 
-You can also import `pushSponsorLead`, `pushDeal`, `remember`, `recall`, `lumaEventHosts`, `devpostLondonHackathons`, `companySize`, and `getStatus`.
+The package exports the same functions by name.
+Import `pushSponsorLead`, `pushDeal`, `remember`, and `recall`.
+Import `lumaEventHosts`, `devpostLondonHackathons`, `companySize`, and `getStatus`.
 Those functions read the process env on each call.
 
 7. Read the local CRM when Zero is not connected.
@@ -155,8 +158,8 @@ The file is `crm_export.json` in the data folder.
 Open `packages/integrations/mcp-config.example.json`.
 Copy the Cursor `mcpServers` object into `~/.cursor/mcp.json`.
 Copy the Grok Bot `mcpServers` object into the Grok Bot MCP settings.
-The file shows Sponsor Engine, Zero, and Cognee side by side.
-You can run the three servers at the same time.
+The file lists Sponsor Engine, Zero, and Cognee in one `mcpServers` object.
+Run the three servers at the same time.
 The Sponsor Engine command is the core MCP server.
 That server imports this package.
 Zero MCP asks you to sign in on the first connection.
@@ -169,7 +172,8 @@ The interfaces are in `src/crm/types.ts`, `src/memory/types.ts`, and `src/data/t
 2. Create records or memory only.
 Do not send email.
 3. Register the provider in `src/crm/select.ts` or `src/memory/select.ts`.
-4. Add the env var to `missingEnv` and to the table above.
+4. Add the env var to `missingEnv`.
+Add the same env var to the env var table.
 5. Keep the built-in provider as the fallback.
 A failed call must return a built-in result.
 A failed call must not throw because a key is missing.
