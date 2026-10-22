@@ -4,3 +4,4 @@ export type { InboundReceipt } from "./accept.js";
 export { parseJsonInbound } from "./adapters/json.js";
 export { parseWhatsAppExport } from "./adapters/whatsapp.js";
 export { discordPingReply, parseDiscordPayload, startDiscordBot, verifyDiscordRequest } from "./adapters/discord.js";
+export { parseTelegramUpdate, telegramSecretOk } from "./adapters/telegram.js";
