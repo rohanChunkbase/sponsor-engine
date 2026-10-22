@@ -1,5 +1,7 @@
 # Raft — Sponsor Engine
 
+**The last software a community manager needs.**
+
 Raft is an open-source helper for people who run communities. Paste a booking request from WhatsApp, email or Slack, and Raft checks it is not spam, gives a fair price for the room and food, finds sponsors and food partners that fit, and writes the emails for you to approve. Nothing is sent without you. It works inside the AI you already use (Grok Bot, Cursor, Claude) through MCP, and runs with no API keys.
 
 ## Try it
