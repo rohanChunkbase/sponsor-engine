@@ -1,6 +1,14 @@
--- Postgres schema for Supabase and any other Postgres host.
--- The app applies this file when DATABASE_URL is set.
--- You can also run: psql "$DATABASE_URL" -f packages/db/src/schema.postgres.sql
+-- Postgres schema for Supabase project sponsor-engine.
+-- Project ref: rcoxklwwitbuugcndwto. Region: eu-west-2.
+-- Apply this file in the Supabase SQL editor or through the Supabase MCP.
+-- Every statement is safe to run again.
+-- The hosted app sets DATABASE_URL to the Supavisor transaction pooler on port 6543.
+-- The app also applies this file on startup.
+--
+-- Row level security is on for every table. There are no policies.
+-- anon and authenticated cannot read or write these tables.
+-- The server connects as the table owner through DATABASE_URL, so it still can.
+-- Do not FORCE row level security. That would block the server connection too.
 
 CREATE TABLE IF NOT EXISTS communities (
   id TEXT PRIMARY KEY,
@@ -215,3 +223,70 @@ CREATE INDEX IF NOT EXISTS idx_quotes_request ON quotes(request_id);
 CREATE INDEX IF NOT EXISTS idx_outbox_status ON outbox(status);
 CREATE INDEX IF NOT EXISTS idx_requests_workspace ON requests(workspace_id);
 CREATE INDEX IF NOT EXISTS idx_outbox_workspace ON outbox(workspace_id);
+
+ALTER TABLE communities ENABLE ROW LEVEL SECURITY;
+ALTER TABLE events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sponsors ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sponsor_claims ENABLE ROW LEVEL SECURITY;
+ALTER TABLE bookings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE requests ENABLE ROW LEVEL SECURITY;
+ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE quotes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE outbox ENABLE ROW LEVEL SECURITY;
+ALTER TABLE approvals ENABLE ROW LEVEL SECURITY;
+ALTER TABLE agent_runs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE failures ENABLE ROW LEVEL SECURITY;
+ALTER TABLE venue_files ENABLE ROW LEVEL SECURITY;
+
+REVOKE ALL ON TABLE communities FROM PUBLIC;
+REVOKE ALL ON TABLE events FROM PUBLIC;
+REVOKE ALL ON TABLE sponsors FROM PUBLIC;
+REVOKE ALL ON TABLE sponsor_claims FROM PUBLIC;
+REVOKE ALL ON TABLE bookings FROM PUBLIC;
+REVOKE ALL ON TABLE requests FROM PUBLIC;
+REVOKE ALL ON TABLE tasks FROM PUBLIC;
+REVOKE ALL ON TABLE quotes FROM PUBLIC;
+REVOKE ALL ON TABLE outbox FROM PUBLIC;
+REVOKE ALL ON TABLE approvals FROM PUBLIC;
+REVOKE ALL ON TABLE agent_runs FROM PUBLIC;
+REVOKE ALL ON TABLE failures FROM PUBLIC;
+REVOKE ALL ON TABLE venue_files FROM PUBLIC;
+
+-- anon and authenticated exist on Supabase. Skip the revoke where they do not.
+DO $sponsor_engine_rls$
+DECLARE
+  tbl text;
+BEGIN
+  FOREACH tbl IN ARRAY ARRAY[
+    'communities',
+    'events',
+    'sponsors',
+    'sponsor_claims',
+    'bookings',
+    'requests',
+    'tasks',
+    'quotes',
+    'outbox',
+    'approvals',
+    'agent_runs',
+    'failures',
+    'venue_files'
+  ]
+  LOOP
+    IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
+      EXECUTE format('REVOKE ALL ON TABLE %I FROM anon', tbl);
+    END IF;
+    IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'authenticated') THEN
+      EXECUTE format('REVOKE ALL ON TABLE %I FROM authenticated', tbl);
+    END IF;
+  END LOOP;
+  IF EXISTS (SELECT 1 FROM pg_class WHERE relkind = 'S' AND relname = 'sponsor_claims_id_seq') THEN
+    IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
+      REVOKE ALL ON SEQUENCE sponsor_claims_id_seq FROM anon;
+    END IF;
+    IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'authenticated') THEN
+      REVOKE ALL ON SEQUENCE sponsor_claims_id_seq FROM authenticated;
+    END IF;
+  END IF;
+END
+$sponsor_engine_rls$;
