@@ -24,7 +24,6 @@ export default function HomePage() {
         <section className="hero">
           <div className="wrap rise">
             <p className="eyebrow">London communities and venues</p>
-            <h1 className="hero-title">Your community&rsquo;s front desk and sponsor desk, inside the agent you already use</h1>
             <div className="hero-raft">
               <Mascot
                 directions="/mascots/otter-directions.webp"
@@ -39,6 +38,7 @@ export default function HomePage() {
                 <p className="raft-hint">Meet Raft. Move the pointer. Boop Raft.</p>
               </div>
             </div>
+            <h1 className="hero-title">Your community&rsquo;s front desk and sponsor desk, inside the agent you already use</h1>
             <p className="hero-support">
               A chat request is qualified, priced from past bookings, and matched to real London sponsors. The drafted ask waits for one tap.
             </p>

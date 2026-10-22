@@ -180,7 +180,7 @@ body {
 
 .hero-title {
   max-width: min(12em, 100%);
-  margin: 16px 0 0;
+  margin: 28px 0 0;
   font-family: var(--font-sans);
   font-size: clamp(40px, 5.6vw, 80px);
   line-height: 1.05;
@@ -881,7 +881,7 @@ main :not(pre) > code {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 20px;
-  margin-top: 28px;
+  margin-top: 8px;
 }
 
 .raft-line {
@@ -925,7 +925,7 @@ main :not(pre) > code {
 .ask-raft-bar h2 {
   flex: 1;
   margin: 0;
-  font-family: var(--font-mono);
+  font-family: var(--font-mono-family), "Geist Mono", ui-monospace, monospace;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -966,11 +966,12 @@ main :not(pre) > code {
 .ascii-otter {
   margin: 0;
   color: #d7efe4;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 15px;
+  font-family: var(--font-mono-family), "Geist Mono", ui-monospace, monospace;
+  font-size: 16px;
+  line-height: 18px;
   white-space: pre;
   user-select: none;
+  min-width: max-content;
 }
 
 .ask-raft-log {
@@ -980,7 +981,7 @@ main :not(pre) > code {
   min-height: 220px;
   max-height: 420px;
   overflow: auto;
-  font-family: var(--font-mono);
+  font-family: var(--font-mono-family), "Geist Mono", ui-monospace, monospace;
   font-size: 13px;
   line-height: 20px;
 }
@@ -1038,7 +1039,7 @@ main :not(pre) > code {
   border-radius: var(--radius-control);
   background: #0e1014;
   color: #f4f7fb;
-  font-family: var(--font-mono);
+  font-family: var(--font-mono-family), "Geist Mono", ui-monospace, monospace;
   font-size: 14px;
 }
 

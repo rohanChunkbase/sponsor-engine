@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${sans.variable} ${ui.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${ui.variable} ${mono.variable}`}>
+      <body>
         <a className="skip" href="#content">
           Skip to content
         </a>
