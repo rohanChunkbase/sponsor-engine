@@ -1,6 +1,7 @@
 import type { Db } from "@sponsor-engine/db";
 import * as chrono from "chrono-node";
 import { isOptOut, sponsorDomain } from "./ask-policy.js";
+import { spamCheck, verifyHandle } from "./integrations.js";
 import { doNotContact, sendWithApproval } from "./outbox.js";
 import { recordFailure, recordRun } from "./runs.js";
 import type { RequesterKind } from "./types.js";
@@ -24,7 +25,7 @@ export type TriageInput = {
   client_request_id?: string;
 };
 
-export function triageInbound(db: Db, input: TriageInput) {
+export async function triageInbound(db: Db, input: TriageInput) {
   const message = (input.message ?? "").trim();
   const channel = input.channel?.trim() || "web";
   const now = input.now ?? new Date();
@@ -46,6 +47,43 @@ export function triageInbound(db: Db, input: TriageInput) {
       request: null,
       task: null,
       suggested_reply: "This sponsor is on the do-not-contact list. Nothing will be sent.",
+    spam: null,
+    requester: null,
+    };
+  }
+  const spam = await spamCheck(message);
+  const handle = parseHandle(message);
+  const requester = handle ? await verifyHandle(handle) : null;
+  if (spam?.spam) {
+    const reason = spam.reasons.length
+      ? `This message looks like spam (${spam.reasons.slice(0, 3).join(", ")}).`
+      : "This message looks like spam.";
+    const reply = "This message was held. A person can read it in the failure list. Nothing was sent.";
+    db.run(
+      `INSERT INTO requests
+        (id, channel, raw_message, sender_name, organisation, requester_kind, event_date, headcount, needs_json, venue_hint, status, suggested_reply, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'failed', ?, ?)`,
+      [makeId("req"), channel, message, input.sender_name?.trim() || null, null, "unknown", null, null, "[]", null, reply, nowIso()],
+    );
+    const failureId = recordFailure(db, {
+      tool: "triage_inbound",
+      message: reason,
+      rawInput: message,
+    });
+    recordRun(db, {
+      tool: "triage_inbound",
+      inputSummary: clipInput(message),
+      outputSummary: reason,
+      status: "error",
+    });
+    return {
+      ok: false as const,
+      failure: { id: failureId, message: reason },
+      request: null,
+      task: null,
+      suggested_reply: reply,
+      spam,
+      requester,
     };
   }
   const sender = parseSender(message, input.sender_name);
@@ -99,13 +137,15 @@ export function triageInbound(db: Db, input: TriageInput) {
       request: loadRequest(db, requestId),
       task: loadTask(db, taskId),
       suggested_reply: reply,
+      spam,
+      requester,
     };
   }
 
   const owner = kind === "company" ? "Commercial lead" : "Venue lead";
   const priority = priorityFor(kind, headcount, eventDate);
   const title = taskTitle({ organisation, headcount, kind, venue });
-  const reply = replyFor({
+  const reply = requesterNote(replyFor({
     sender,
     organisation,
     kind,
@@ -115,7 +155,7 @@ export function triageInbound(db: Db, input: TriageInput) {
     headcountHigh: heads?.high ?? null,
     needs,
     badDate,
-  });
+  }), requester);
 
   db.run(
     `INSERT INTO requests
@@ -159,6 +199,8 @@ export function triageInbound(db: Db, input: TriageInput) {
       priority,
     },
     suggested_reply: reply,
+    spam,
+    requester,
   };
 }
 
@@ -364,6 +406,23 @@ function inferYear(month: number, day: number, now: Date): number {
   const todayUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
   if (candidate < todayUtc - 30 * 86_400_000) return year + 1;
   return year;
+}
+
+function parseHandle(text: string): string | null {
+  const at = text.match(/(?:^|\s)@([A-Za-z0-9-]{1,39})\b/);
+  if (at) return at[1];
+  const github = text.match(/github\.com\/([A-Za-z0-9-]{1,39})\b/i);
+  if (github) return github[1];
+  return null;
+}
+
+function requesterNote(reply: string, requester: Awaited<ReturnType<typeof verifyHandle>>): string {
+  if (!requester) return reply;
+  if (requester.reasons.length === 0) return reply;
+  const line = requester.real_builder
+    ? `Public pages support this handle: ${requester.reasons[0]}`
+    : `Public pages for this handle: ${requester.reasons[0]}`;
+  return `${reply} ${line}`;
 }
 
 function parseSender(text: string, given?: string): string | null {

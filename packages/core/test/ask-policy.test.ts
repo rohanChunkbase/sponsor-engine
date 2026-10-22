@@ -200,9 +200,9 @@ test("do not contact closes an open ask and a later ask stays blocked", async ()
   db.close();
 });
 
-test("an opt-out reply suppresses the sponsor and does not queue an ask", () => {
+test("an opt-out reply suppresses the sponsor and does not queue an ask", async () => {
   const db = desk();
-  const result = triageInbound(db, { message: "unsubscribe", sender_name: "Acme", channel: "email" });
+  const result = await triageInbound(db, { message: "unsubscribe", sender_name: "Acme", channel: "email" });
   assert.equal(result.ok, false);
   if (result.ok) return;
   assert.match(result.failure?.message ?? "", /Do not contact/);

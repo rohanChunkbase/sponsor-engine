@@ -121,6 +121,116 @@ function readRecall(value: unknown): MemoryRecall | null {
   };
 }
 
+export type SpamCheck = { spam: boolean; score: number; reasons: string[] };
+
+/** Local SMS model. A missing package does not block the desk. */
+export async function spamCheck(text: string): Promise<SpamCheck | null> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["isLikelySpam"]);
+  if (!fn) return null;
+  try {
+    const value = await fn(text);
+    if (!value || typeof value !== "object") return null;
+    const record = value as Record<string, unknown>;
+    return {
+      spam: record.spam === true,
+      score: typeof record.score === "number" ? record.score : 0,
+      reasons: Array.isArray(record.reasons) ? record.reasons.filter((item) => typeof item === "string") : [],
+    };
+  } catch {
+    return null;
+  }
+}
+
+export type RequesterCheck = {
+  handle: string;
+  real_builder: boolean;
+  reasons: string[];
+  warning: string | null;
+};
+
+/** Public GitHub, Devpost, and Hacker News signals. Offline keeps the booking and skips the lookup. */
+export async function verifyHandle(handle: string): Promise<RequesterCheck | null> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["verifyRequester"]);
+  if (!fn) return null;
+  try {
+    const value = await fn(handle);
+    if (!value || typeof value !== "object") return null;
+    const record = value as Record<string, unknown>;
+    const data = record.data && typeof record.data === "object" ? record.data as Record<string, unknown> : record;
+    const name = typeof data.handle === "string" ? data.handle : handle;
+    return {
+      handle: name,
+      real_builder: data.realBuilder === true,
+      reasons: Array.isArray(data.reasons) ? data.reasons.filter((item) => typeof item === "string") : [],
+      warning: typeof record.warning === "string" ? record.warning : null,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export type SponsorEvidence = {
+  company: string;
+  roles: string[];
+  similar_events: string[];
+  source_urls: string[];
+};
+
+/** Sponsors named on similar public events, with the claim URL. */
+export async function sponsorEvidence(query: string): Promise<SponsorEvidence[]> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["findSponsors", "find_sponsors"]);
+  if (!fn || !query.trim()) return [];
+  try {
+    return readSponsorEvidence(await fn(query));
+  } catch {
+    return [];
+  }
+}
+
+export type SponsorMatchAccuracy = {
+  events: number;
+  precision_at_3: number;
+  recall_at_5: number;
+};
+
+/** Saved sponsor-match check. precision@3 and recall@5 are fractions, not percents. */
+export async function sponsorMatchAccuracy(): Promise<SponsorMatchAccuracy | null> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["sponsorMatchReport"]);
+  if (!fn) return null;
+  try {
+    const value = await fn();
+    if (!value || typeof value !== "object") return null;
+    const record = value as Record<string, unknown>;
+    const events = typeof record.events === "number" ? record.events : 0;
+    const precision = typeof record.precisionAt3 === "number" ? record.precisionAt3 : null;
+    const recall = typeof record.recallAt5 === "number" ? record.recallAt5 : null;
+    if (precision === null || recall === null || events < 1) return null;
+    return { events, precision_at_3: precision, recall_at_5: recall };
+  } catch {
+    return null;
+  }
+}
+
+function readSponsorEvidence(value: unknown): SponsorEvidence[] {
+  if (!value || typeof value !== "object") return [];
+  const record = value as Record<string, unknown>;
+  const data = record.data && typeof record.data === "object" ? record.data as Record<string, unknown> : record;
+  const rows = Array.isArray(data.sponsors) ? data.sponsors : [];
+  return rows.flatMap((row) => {
+    if (!row || typeof row !== "object") return [];
+    const item = row as Record<string, unknown>;
+    const company = typeof item.company === "string" ? item.company.trim() : "";
+    if (!company) return [];
+    const strings = (value: unknown) => Array.isArray(value) ? value.filter((entry) => typeof entry === "string" && entry.trim()) as string[] : [];
+    return [{
+      company,
+      roles: strings(item.roles),
+      similar_events: strings(item.similarEvents),
+      source_urls: strings(item.sourceUrls),
+    }];
+  });
+}
+
 export async function integrationStatus(): Promise<unknown | null> {
   const fn = findFunction(await loadOptionalPackage("integrations"), ["getStatus", "status"]);
   if (!fn) return null;

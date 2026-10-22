@@ -8,7 +8,7 @@ import { triageInbound } from "./triage.js";
 export const DEMO_MESSAGE = "Hi! Unicorn Mafia here, we want to run our next hackathon at Expedite London for ~120 hackers, a Saturday in late November, need the room 10:00-22:00 plus food.";
 
 export async function runDemo(db: Db) {
-  const triage = triageInbound(db, { message: DEMO_MESSAGE, channel: "whatsapp" });
+  const triage = await triageInbound(db, { message: DEMO_MESSAGE, channel: "whatsapp" });
   if (!triage.ok) {
     throw new Error(triage.failure?.message || "The demo message could not be read.");
   }

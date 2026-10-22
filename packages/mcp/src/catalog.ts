@@ -51,7 +51,7 @@ const tools: ToolDef[] = [
       sender_name: z.string().optional(),
     },
     example: { message: DEMO_MESSAGE, channel: "whatsapp" },
-    run: async (args, workspaceId) => text(scoped(workspaceId, () => triageInbound(getReadyDb(), args as { message: string; channel?: string; sender_name?: string }))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => triageInbound(getReadyDb(), args as { message: string; channel?: string; sender_name?: string }))),
   },
   {
     name: "quote_booking",

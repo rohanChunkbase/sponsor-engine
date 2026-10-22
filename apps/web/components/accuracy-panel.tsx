@@ -1,10 +1,11 @@
 import { HistoryDrop } from "@/components/history-drop";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { evaluateActiveHistory } from "@sponsor-engine/core";
+import { evaluateActiveHistory, sponsorMatchAccuracy } from "@sponsor-engine/core";
 import { readyDb } from "@/lib/request";
 
 export async function AccuracyPanel() {
   const report = evaluateActiveHistory(await readyDb());
+  const sponsorMatch = await sponsorMatchAccuracy();
   const rows = [
     ...report.scores.map((score) => ({
       name: modelLabel(score.model),
@@ -50,6 +51,11 @@ export async function AccuracyPanel() {
           {modelLabel(report.winner)} has the lower error on the held-out rows. The median is only a baseline.
         </p>
         <p className="text-muted-foreground">{report.label} MAPE skips prices of £0.</p>
+        {sponsorMatch ? (
+          <p>
+            Sponsor match on {sponsorMatch.events} labelled London events: precision@3 {sponsorMatch.precision_at_3.toFixed(3)}, recall@5 {sponsorMatch.recall_at_5.toFixed(3)}. That is the share of the top 3 names that were labelled, and the share of labelled sponsors that appear in the top 5.
+          </p>
+        ) : null}
         <HistoryDrop />
       </CardContent>
     </Card>

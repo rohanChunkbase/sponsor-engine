@@ -12,6 +12,7 @@ export {
   saveVenueCsv,
 } from "./venue-history.js";
 export { findSponsors } from "./sponsors.js";
+export { sponsorMatchAccuracy } from "./integrations.js";
 export { draftSponsorAsk, inferRecipient, acceptContact } from "./draft.js";
 export {
   OPT_OUT_LINE,

@@ -40,6 +40,28 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
         {found.live_note} Each match has a reason and a link to the public page.
       </PageIntro>
       {!top ? <p className="text-[18px] leading-[29px]">No sponsor matched this booking.</p> : null}
+      {found.similar_evidence.length > 0 ? (
+        <Card className="bg-surface">
+          <CardHeader>
+            <CardTitle>Similar public events</CardTitle>
+            <CardDescription>These names come from public sponsor claims on events like this one. Each line has the source page.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col gap-3 text-[16px] leading-6">
+            {found.similar_evidence.map((item) => (
+              <p key={item.company}>
+                {item.company}
+                {item.similar_events.length ? ` — ${item.similar_events.slice(0, 2).join(", ")}` : ""}
+                {item.source_urls[0] ? (
+                  <>
+                    {" "}
+                    <a className="text-primary" href={item.source_urls[0]} target="_blank" rel="noreferrer">{item.source_urls[0]}</a>
+                  </>
+                ) : null}
+              </p>
+            ))}
+          </CardContent>
+        </Card>
+      ) : null}
       {top ? (
         <Card className="border-transparent bg-foreground text-background">
           <CardHeader>

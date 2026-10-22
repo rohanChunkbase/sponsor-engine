@@ -24,7 +24,7 @@ export async function acceptInbound(db: Db, inbound: InboundMessage, options?: A
   const text = inbound.text.trim();
   if (!text) return { inbound, ok: false, sent: false, outbox: null };
 
-  const result = triageInbound(db, {
+  const result = await triageInbound(db, {
     message: text,
     channel: inbound.channel,
     sender_name: inbound.from,

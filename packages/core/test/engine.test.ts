@@ -22,6 +22,7 @@ import {
   resetWriteLimits,
   saveVenueCsv,
   findSponsors,
+  sponsorMatchAccuracy,
   getConnections,
   listFailures,
   quoteBooking,
@@ -59,8 +60,8 @@ after(() => {
   db.close();
 });
 
-test("demo message becomes a community task with an owner", () => {
-  const result = triageInbound(db, { message: DEMO_MESSAGE, channel: "whatsapp" });
+test("demo message becomes a community task with an owner", async () => {
+  const result = await triageInbound(db, { message: DEMO_MESSAGE, channel: "whatsapp" });
   assert.equal(result.ok, true);
   if (!result.ok) return;
   assert.equal(result.qualified.sender_name, null);
@@ -89,7 +90,7 @@ test("demo message becomes a community task with an owner", () => {
 
 test("a 35-staff offsite and a ranged relative date both qualify", async () => {
   const now = new Date(2026, 9, 22, 12, 0, 0);
-  const offsite = triageInbound(db, {
+  const offsite = await triageInbound(db, {
     message: "Please book a company offsite for 35-staff on 12 Dec at Expedite.",
     channel: "web",
     now,
@@ -106,7 +107,7 @@ test("a 35-staff offsite and a ranged relative date both qualify", async () => {
   assert.equal(draft.outbox.status, "needs_contact");
   assert.equal(draft.outbox.recipient, "");
 
-  const ranged = triageInbound(db, {
+  const ranged = await triageInbound(db, {
     message: "Can we book a meetup next thurs for 40-50 ppl?",
     channel: "web",
     now,
@@ -126,10 +127,10 @@ test("a 35-staff offsite and a ranged relative date both qualify", async () => {
   assert.equal(parseHeadcount("about 80 people"), 80);
 });
 
-test("an impossible date is not stored and the reply asks which day", () => {
+test("an impossible date is not stored and the reply asks which day", async () => {
   const now = new Date(2026, 9, 22, 12, 0, 0);
   for (const when of ["2026-13-45", "31 Feb"]) {
-    const result = triageInbound(db, {
+    const result = await triageInbound(db, {
       message: `Can we book the room on ${when} for 40 people?`,
       channel: "web",
       now,
@@ -162,7 +163,7 @@ test("an unknown booker is not given a free community room", async () => {
     assert.match(quote.explanation, /not confirmed/i);
     assert.doesNotMatch(quote.explanation, /This is a free community slot/);
   }
-  const inbound = triageInbound(db, {
+  const inbound = await triageInbound(db, {
     message: "Please book a room on 12 December 2026 for 40 people at Expedite.",
     channel: "web",
     now,
@@ -175,11 +176,40 @@ test("an unknown booker is not given a free community room", async () => {
   assert.equal(fromRequest.requester_kind, "unknown");
 });
 
-test("a short message is kept and logged as a failure", () => {
-  const result = triageInbound(db, { message: "hey can someone look at this later??", channel: "whatsapp" });
+test("a short message is kept and logged as a failure", async () => {
+  const result = await triageInbound(db, { message: "hey can someone look at this later??", channel: "whatsapp" });
   assert.equal(result.ok, false);
   const failures = listFailures(db, 10) as Array<{ message: string }>;
   assert.ok(failures.some((row) => /date|headcount|short/i.test(row.message)));
+});
+
+test("spam is held and a public handle is checked inside triage", async () => {
+  const spam = await triageInbound(db, {
+    message: "URGENT! You have won a free prize. Call now to claim your reward.",
+    channel: "web",
+  });
+  assert.equal(spam.ok, false);
+  if (spam.ok) return;
+  assert.match(spam.failure?.message ?? "", /spam/i);
+
+  const checked = await triageInbound(db, {
+    message: "Please book a community room on 12 December 2026 for 40 people at Expedite. github.com/octocat",
+    channel: "web",
+    now: new Date(2026, 9, 22, 12, 0, 0),
+  });
+  assert.equal(checked.ok, true);
+  if (!checked.ok) return;
+  assert.equal(checked.spam?.spam, false);
+  assert.equal(checked.requester?.handle, "octocat");
+});
+
+test("sponsor cards keep public evidence from similar events", async () => {
+  const found = await findSponsors(db, { community: "Unicorn Mafia", headcount: 120, needs: ["food", "room"], limit: 3, log: false });
+  assert.ok(found.similar_evidence.some((item) => item.source_urls.some((url) => url.startsWith("https://"))));
+  const report = await sponsorMatchAccuracy();
+  assert.equal(report?.events, 30);
+  assert.equal(report?.precision_at_3, 0.289);
+  assert.equal(report?.recall_at_5, 0.395);
 });
 
 test("an 80-person community evening is a free room and food is the sponsor ask", async () => {

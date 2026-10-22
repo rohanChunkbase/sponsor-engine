@@ -1,5 +1,5 @@
 import type { Db } from "@sponsor-engine/db";
-import { companySizeIfAvailable, lumaHostsIfAvailable } from "./integrations.js";
+import { companySizeIfAvailable, lumaHostsIfAvailable, sponsorEvidence, type SponsorEvidence } from "./integrations.js";
 import { recordRun } from "./runs.js";
 import type { SponsorMatch } from "./types.js";
 import { clip, parseJson } from "./util.js";
@@ -111,6 +111,13 @@ export async function findSponsors(
     matches = matches.concat(fillers);
   }
 
+  const eventTitle = community
+    ? pastEvents.find((event) => (event.community_name || "").toLowerCase().includes(community.toLowerCase()))?.title
+    : null;
+  let evidence = community ? await sponsorEvidence(community) : [];
+  if (evidence.length === 0 && eventTitle) evidence = await sponsorEvidence(eventTitle);
+  const evidenceByCompany = new Map(evidence.map((item) => [item.company.toLowerCase(), item]));
+  matches = matches.map((match) => attachEvidence(match, evidenceByCompany.get(match.company.toLowerCase())));
   matches = await Promise.all(matches.map(async (match) => {
     const size = await companySizeIfAvailable(match.company);
     return size ? { ...match, company_size: size } : match;
@@ -128,6 +135,7 @@ export async function findSponsors(
 
   return {
     matches,
+    similar_evidence: evidence,
     live_hosts: liveHosts,
     live_note: liveHosts
       ? "A live lookup added host notes."
@@ -266,6 +274,28 @@ function titlesMatch(left: string | null, right: string | null): boolean {
   const a = left.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const b = right.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   return a === b || a.includes(b) || b.includes(a);
+}
+
+function attachEvidence(match: SponsorMatch, evidence: SponsorEvidence | undefined): SponsorMatch {
+  if (!evidence) return match;
+  const reasons = [...match.reasons];
+  const sources = [...match.sources];
+  const events = evidence.similar_events.slice(0, 2).join(", ");
+  if (events && !reasons.some((reason) => reason.includes(events))) {
+    reasons.push(`${evidence.company} is also named on similar public events: ${events}.`);
+  }
+  for (const url of evidence.source_urls) {
+    if (sources.some((source) => source.url === url)) continue;
+    sources.push({
+      url,
+      quote: events,
+      role: evidence.roles[0] || "sponsor",
+      confidence: "stated",
+      event_name: evidence.similar_events[0] || "Similar public event",
+      community: "",
+    });
+  }
+  return { ...match, reasons, sources };
 }
 
 function filler(sponsor: SponsorRow): SponsorMatch {
