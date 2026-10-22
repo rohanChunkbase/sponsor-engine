@@ -1,0 +1,38 @@
+{
+  "_notice": "SAMPLE / FICTIONAL. Shaped like Luma API responses (field names from public-api.luma.com/openapi.json). Not real Luma data; ids are fake; the _notice key is not part of real responses.",
+  "id": "cal-SAMPLEthames01",
+  "launch_status": "launched",
+  "tint_color": "#3355ff",
+  "name": "Thames Agent Builders (SAMPLE)",
+  "slug": "thames-agent-builders-sample",
+  "avatar_url": null,
+  "url": "https://luma.com/thames-agent-builders-sample",
+  "description": "SAMPLE calendar",
+  "social_image_url": null,
+  "cover_image_url": null,
+  "is_personal": false,
+  "location": {
+    "city": "London",
+    "region": "England",
+    "country": "United Kingdom",
+    "country_code": "GB",
+    "timezone": "Europe/London"
+  },
+  "coordinate": {
+    "longitude": -0.0795,
+    "latitude": 51.5245
+  },
+  "instagram_handle": null,
+  "twitter_handle": "tab_sample",
+  "youtube_handle": null,
+  "tiktok_handle": null,
+  "linkedin_handle": null,
+  "website": "https://thames-agent-builders.example",
+  "event_defaults": {
+    "visibility": "public",
+    "show_guest_list": true,
+    "feedback_email": {
+      "enabled": true
+    }
+  }
+}

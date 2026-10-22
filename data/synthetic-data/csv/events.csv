@@ -1,0 +1,64 @@
+event_id,community_id,title,date,weekday,venue_sponsor_id,venue_area,lat,lon,registrations,check_ins,show_up_rate,food_cost_gbp,food_per_head_gbp,food_sponsor_id,co_host_ids,ticket,is_sample
+E049,C12,Bermondsey Open Source Pub lightning talks #1 (SAMPLE),2025-10-27,Mon,S33,Old Street,51.5256,-0.0876,47,25,0.532,135,5.4,S16,C11,free,SAMPLE
+E058,C14,Old Street Security Social build day #3 (SAMPLE),2025-11-03,Mon,S29,Shoreditch,51.5245,-0.0795,43,28,0.651,155,5.54,S01,C04,free,SAMPLE
+E061,C15,Liverpool St Design Engineers workshop #2 (SAMPLE),2025-11-05,Wed,S29,Old Street,51.5256,-0.0876,46,26,0.565,145,5.58,S01,C14,free,SAMPLE
+E040,C09,Stratford Startup Breakfast lightning talks #3 (SAMPLE),2025-11-06,Thu,S33,Old Street,51.5256,-0.0876,85,54,0.635,290,5.37,S07,C11,free,SAMPLE
+E042,C10,Farringdon Fintech Tinkerers workshop #1 (SAMPLE),2025-11-11,Tue,S31,Old Street,51.5256,-0.0876,39,24,0.615,135,5.62,S21,C15,free,SAMPLE
+E010,C01,Thames Agent Builders build day #10 (SAMPLE),2025-12-08,Mon,S29,Shoreditch,51.5245,-0.0795,79,47,0.595,270,5.74,S17,C05,free,SAMPLE
+E045,C11,White City Women in ML hack night #1 (SAMPLE),2025-12-10,Wed,S29,Southwark,51.5035,-0.0919,83,60,0.723,350,5.83,S19,C08;C01,free,SAMPLE
+E026,C05,Hackney Hardware Club lightning talks #4 (SAMPLE),2025-12-23,Tue,S31,Canary Wharf,51.5054,-0.0235,55,28,0.509,155,5.54,S34,,free,SAMPLE
+E029,C06,Southbank Data Folk lightning talks #3 (SAMPLE),2025-12-28,Sun,S32,Shoreditch,51.5245,-0.0795,56,35,0.625,180,5.14,S08,C10,free,SAMPLE
+E009,C01,Thames Agent Builders build day #9 (SAMPLE),2026-01-06,Tue,S30,Shoreditch,51.5245,-0.0795,116,78,0.672,420,5.38,S24,,free,SAMPLE
+E021,C04,Kings Cross Rust Night demo night #3 (SAMPLE),2026-01-06,Tue,S30,Old Street,51.5256,-0.0876,64,45,0.703,265,5.89,S20,C08,free,SAMPLE
+E031,C07,Camden Creative Coders build day #1 (SAMPLE),2026-01-07,Wed,S32,Canary Wharf,51.5054,-0.0235,60,41,0.683,215,5.24,S07,C13,free,SAMPLE
+E041,C09,Stratford Startup Breakfast panel #4 (SAMPLE),2026-02-02,Mon,S30,King's Cross,51.5308,-0.1238,37,19,0.514,105,5.53,S38,,free,SAMPLE
+E044,C10,Farringdon Fintech Tinkerers demo night #3 (SAMPLE),2026-02-17,Tue,S33,Old Street,51.5256,-0.0876,50,36,0.72,215,5.97,S08,C04,free,SAMPLE
+E008,C01,Thames Agent Builders panel #8 (SAMPLE),2026-02-19,Thu,S33,King's Cross,51.5308,-0.1238,59,35,0.593,205,5.86,S05,,free,SAMPLE
+E047,C11,White City Women in ML talks + pizza #3 (SAMPLE),2026-02-23,Mon,S31,King's Cross,51.5308,-0.1238,62,42,0.677,250,5.95,S02,,free,SAMPLE
+E015,C03,Docklands DevRel Circle panel #1 (SAMPLE),2026-02-24,Tue,S30,King's Cross,51.5308,-0.1238,44,29,0.659,160,5.52,S38,,free,SAMPLE
+E018,C03,Docklands DevRel Circle build day #4 (SAMPLE),2026-02-24,Tue,S33,Southwark,51.5035,-0.0919,49,34,0.694,200,5.88,S18,C04,free,SAMPLE
+E017,C03,Docklands DevRel Circle hack night #3 (SAMPLE),2026-03-05,Thu,S32,Canary Wharf,51.5054,-0.0235,37,20,0.541,120,6.0,S21,,free,SAMPLE
+E036,C08,Soho Product Guild hack night #3 (SAMPLE),2026-03-05,Thu,S30,Soho,51.5136,-0.1365,51,32,0.627,180,5.62,S09,,free,SAMPLE
+E007,C01,Thames Agent Builders build day #7 (SAMPLE),2026-03-16,Mon,S29,King's Cross,51.5308,-0.1238,51,30,0.588,165,5.5,S09,,free,SAMPLE
+E037,C08,Soho Product Guild lightning talks #4 (SAMPLE),2026-03-16,Mon,S33,Old Street,51.5256,-0.0876,71,44,0.62,240,5.45,S03,,free,SAMPLE
+E062,C15,Liverpool St Design Engineers demo night #3 (SAMPLE),2026-03-27,Fri,S32,Southwark,51.5035,-0.0919,49,31,0.633,170,5.48,S24,,free,SAMPLE
+E023,C05,Hackney Hardware Club panel #1 (SAMPLE),2026-03-28,Sat,S29,Southwark,51.5035,-0.0919,38,26,0.684,150,5.77,S09,C01,free,SAMPLE
+E034,C08,Soho Product Guild demo night #1 (SAMPLE),2026-03-28,Sat,S32,Canary Wharf,51.5054,-0.0235,94,68,0.723,360,5.29,S23,C11,free,SAMPLE
+E013,C02,Lambeth LLM Lab lightning talks #3 (SAMPLE),2026-04-05,Sun,S33,Brixton,51.4613,-0.1156,59,31,0.525,175,5.65,S15,C12,free,SAMPLE
+E011,C02,Lambeth LLM Lab talks + pizza #1 (SAMPLE),2026-04-12,Sun,S33,Brixton,51.4613,-0.1156,73,46,0.63,260,5.65,S39,C01,free,SAMPLE
+E012,C02,Lambeth LLM Lab talks + pizza #2 (SAMPLE),2026-04-15,Wed,S29,Shoreditch,51.5245,-0.0795,78,54,0.692,295,5.46,S21,C11,free,SAMPLE
+E006,C01,Thames Agent Builders panel #6 (SAMPLE),2026-04-17,Fri,S29,King's Cross,51.5308,-0.1238,58,39,0.672,200,5.13,S04,C04;C06,free,SAMPLE
+E039,C09,Stratford Startup Breakfast demo night #2 (SAMPLE),2026-04-23,Thu,S33,Old Street,51.5256,-0.0876,56,38,0.679,200,5.26,S17,,free,SAMPLE
+E046,C11,White City Women in ML hack night #2 (SAMPLE),2026-04-23,Thu,S32,White City,51.512,-0.224,109,65,0.596,345,5.31,S35,C01;C10,free,SAMPLE
+E052,C12,Bermondsey Open Source Pub talks + pizza #4 (SAMPLE),2026-05-03,Sun,S30,King's Cross,51.5308,-0.1238,55,34,0.618,190,5.59,S36,,free,SAMPLE
+E051,C12,Bermondsey Open Source Pub talks + pizza #3 (SAMPLE),2026-05-15,Fri,S30,Canary Wharf,51.5054,-0.0235,54,38,0.704,215,5.66,S16,,free,SAMPLE
+E057,C14,Old Street Security Social talks + pizza #2 (SAMPLE),2026-05-18,Mon,S30,Southwark,51.5035,-0.0919,32,22,0.688,115,5.23,S19,C02,free,SAMPLE
+E028,C06,Southbank Data Folk build day #2 (SAMPLE),2026-05-19,Tue,S32,Old Street,51.5256,-0.0876,112,63,0.562,345,5.48,S24,C01,free,SAMPLE
+E059,C14,Old Street Security Social build day #4 (SAMPLE),2026-05-20,Wed,S30,Southwark,51.5035,-0.0919,39,29,0.744,160,5.52,S38,,free,SAMPLE
+E032,C07,Camden Creative Coders panel #2 (SAMPLE),2026-05-21,Thu,S30,Camden,51.539,-0.1426,31,23,0.742,130,5.65,S35,C02,free,SAMPLE
+E038,C09,Stratford Startup Breakfast panel #1 (SAMPLE),2026-05-24,Sun,S33,Shoreditch,51.5245,-0.0795,66,34,0.515,195,5.74,S20,C05,free,SAMPLE
+E005,C01,Thames Agent Builders talks + pizza #5 (SAMPLE),2026-05-27,Wed,S29,King's Cross,51.5308,-0.1238,113,68,0.602,360,5.29,S16,,free,SAMPLE
+E053,C13,Islington Indie Hackers build day #1 (SAMPLE),2026-05-30,Sat,S29,Shoreditch,51.5245,-0.0795,60,45,0.75,240,5.33,S15,C02,free,SAMPLE
+E030,C06,Southbank Data Folk panel #4 (SAMPLE),2026-06-06,Sat,S33,Southwark,51.5035,-0.0919,94,63,0.67,340,5.4,S22,C08,free,SAMPLE
+E019,C04,Kings Cross Rust Night demo night #1 (SAMPLE),2026-06-08,Mon,S31,Canary Wharf,51.5054,-0.0235,47,29,0.617,165,5.69,S08,C07,free,SAMPLE
+E050,C12,Bermondsey Open Source Pub workshop #2 (SAMPLE),2026-06-09,Tue,S31,Southwark,51.5035,-0.0919,42,27,0.643,150,5.56,S35,,free,SAMPLE
+E004,C01,Thames Agent Builders lightning talks #4 (SAMPLE),2026-06-23,Tue,S32,Southwark,51.5035,-0.0919,71,46,0.648,245,5.33,S09,,free,SAMPLE
+E016,C03,Docklands DevRel Circle workshop #2 (SAMPLE),2026-06-29,Mon,S33,Old Street,51.5256,-0.0876,34,17,0.5,90,5.29,S20,,free,SAMPLE
+E014,C02,Lambeth LLM Lab panel #4 (SAMPLE),2026-07-02,Thu,S30,Old Street,51.5256,-0.0876,58,39,0.672,210,5.38,S36,C11;C06,free,SAMPLE
+E060,C15,Liverpool St Design Engineers workshop #1 (SAMPLE),2026-07-11,Sat,S29,Old Street,51.5256,-0.0876,38,19,0.5,110,5.79,S21,,free,SAMPLE
+E048,C11,White City Women in ML hack night #4 (SAMPLE),2026-07-13,Mon,S30,Shoreditch,51.5245,-0.0795,63,33,0.524,195,5.91,S24,C10,free,SAMPLE
+E025,C05,Hackney Hardware Club hack night #3 (SAMPLE),2026-07-17,Fri,S33,Southwark,51.5035,-0.0919,60,35,0.583,195,5.57,S14,C08,free,SAMPLE
+E035,C08,Soho Product Guild talks + pizza #2 (SAMPLE),2026-07-20,Mon,S31,Shoreditch,51.5245,-0.0795,37,22,0.595,125,5.68,S20,,free,SAMPLE
+E027,C06,Southbank Data Folk workshop #1 (SAMPLE),2026-07-22,Wed,S31,Old Street,51.5256,-0.0876,110,60,0.545,330,5.5,S25,C14;C10,free,SAMPLE
+E003,C01,Thames Agent Builders demo night #3 (SAMPLE),2026-08-02,Sun,S29,Old Street,51.5256,-0.0876,110,65,0.591,335,5.15,S24,,free,SAMPLE
+E022,C04,Kings Cross Rust Night lightning talks #4 (SAMPLE),2026-08-04,Tue,S33,King's Cross,51.5308,-0.1238,69,44,0.638,260,5.91,S23,,free,SAMPLE
+E056,C14,Old Street Security Social lightning talks #1 (SAMPLE),2026-08-10,Mon,S32,Southwark,51.5035,-0.0919,36,20,0.556,110,5.5,S17,C11,free,SAMPLE
+E054,C13,Islington Indie Hackers lightning talks #2 (SAMPLE),2026-08-23,Sun,S32,Southwark,51.5035,-0.0919,80,48,0.6,255,5.31,S04,C11,free,SAMPLE
+E002,C01,Thames Agent Builders talks + pizza #2 (SAMPLE),2026-09-01,Tue,S33,Southwark,51.5035,-0.0919,69,42,0.609,250,5.95,S23,,free,SAMPLE
+E043,C10,Farringdon Fintech Tinkerers talks + pizza #2 (SAMPLE),2026-09-03,Thu,S33,Farringdon,51.5203,-0.1053,47,33,0.702,195,5.91,S15,C15,free,SAMPLE
+E033,C07,Camden Creative Coders build day #3 (SAMPLE),2026-09-05,Sat,S29,Shoreditch,51.5245,-0.0795,42,26,0.619,145,5.58,S34,,free,SAMPLE
+E020,C04,Kings Cross Rust Night workshop #2 (SAMPLE),2026-09-06,Sun,S29,Old Street,51.5256,-0.0876,56,34,0.607,190,5.59,S18,,free,SAMPLE
+E024,C05,Hackney Hardware Club workshop #2 (SAMPLE),2026-09-23,Wed,S30,Shoreditch,51.5245,-0.0795,60,34,0.567,200,5.88,S24,,free,SAMPLE
+E055,C13,Islington Indie Hackers build day #3 (SAMPLE),2026-09-26,Sat,S30,Southwark,51.5035,-0.0919,69,50,0.725,280,5.6,S24,,free,SAMPLE
+E001,C01,Thames Agent Builders demo night #1 (SAMPLE),2026-10-03,Sat,S29,Old Street,51.5256,-0.0876,97,61,0.629,320,5.25,S17,,free,SAMPLE
+E900,C01,Thames Agent Builders hack night #5 (SAMPLE),2026-11-19,Thu,S29,Shoreditch,51.5245,-0.0795,80,,,,,,C02,free,SAMPLE

@@ -1,0 +1,201 @@
+member_id,name,email,home_community_id,interests,joined,is_sample,events_registered,events_attended,attended_event_ids,personal_show_up_rate
+M001,Uma Pemberly (fictional),member001@example.com,C07,Rust;ML ops;security,2026-07-16,SAMPLE,3,1,E032,0.33
+M002,Farid Marlow (fictional),member002@example.com,C02,RAG;founders;creative coding,2025-09-06,SAMPLE,3,1,E012,0.33
+M003,Isla Morrow (fictional),member003@example.com,C13,design systems;open source,2025-02-24,SAMPLE,4,3,E050;E003;E055,0.75
+M004,Hiro Sallis (fictional),member004@example.com,C06,creative coding;ML ops;devrel,2025-07-16,SAMPLE,8,7,E010;E007;E028;E030;E048;E027;E020,0.88
+M005,Dev Vance (fictional),member005@example.com,C14,data viz;product;RAG;design systems,2025-04-21,SAMPLE,3,3,E059;E025;E056,1.0
+M006,Jonah Kestrel (fictional),member006@example.com,C04,creative coding;RAG,2025-09-29,SAMPLE,4,2,E021;E019,0.5
+M007,Arlo Calder (fictional),member007@example.com,C14,devrel;data viz,2025-02-12,SAMPLE,3,2,E057;E059,0.67
+M008,Omar Morrow (fictional),member008@example.com,C04,design systems;ML ops;creative coding;open source,2026-08-27,SAMPLE,3,3,E021;E019;E022,1.0
+M009,Rhea Fernwood (fictional),member009@example.com,C10,data viz;founders,2024-08-03,SAMPLE,4,2,E044;E008,0.5
+M010,Vik Calder (fictional),member010@example.com,C05,Rust;creative coding,2026-04-29,SAMPLE,4,0,,0.0
+M011,Zed Marlow (fictional),member011@example.com,C10,founders;ML ops,2026-08-22,SAMPLE,4,2,E039;E027,0.5
+M012,Elio Halloway (fictional),member012@example.com,C02,fintech;security;product,2026-04-14,SAMPLE,5,4,E023;E011;E014;E003,0.8
+M013,Tobi Rookwood (fictional),member013@example.com,C06,design systems;RAG;AI agents;Rust,2026-04-14,SAMPLE,5,4,E029;E039;E028;E027,0.8
+M014,Theo Ashgrove (fictional),member014@example.com,C13,RAG;data viz;security;ML ops,2025-07-15,SAMPLE,6,4,E053;E014;E002;E055,0.67
+M015,Priya Darrow (fictional),member015@example.com,C08,data viz;IoT;devrel,2025-04-16,SAMPLE,4,3,E037;E034;E035,0.75
+M016,Wren Sallis (fictional),member016@example.com,C02,data viz;ML ops,2024-10-28,SAMPLE,4,3,E049;E011;E012,0.75
+M017,Kai Linnell (fictional),member017@example.com,C10,data viz;AI agents;IoT;fintech,2025-01-17,SAMPLE,1,0,,0.0
+M018,Ada Halloway (fictional),member018@example.com,C01,IoT;devrel;Rust,2024-08-01,SAMPLE,8,6,E009;E007;E006;E005;E002;E001,0.75
+M019,Sol Rookwood (fictional),member019@example.com,C05,AI agents;security,2024-08-19,SAMPLE,2,0,,0.0
+M020,Luca Brackley (fictional),member020@example.com,C07,open source;founders;IoT,2025-04-28,SAMPLE,3,2,E031;E032,0.67
+M021,Wren Marlow (fictional),member021@example.com,C09,creative coding;founders;AI agents,2025-07-03,SAMPLE,4,4,E058;E041;E039;E054,1.0
+M022,Ravi Marlow (fictional),member022@example.com,C01,design systems;fintech;LLM evals,2025-08-04,SAMPLE,9,3,E008;E005;E002,0.33
+M023,Ines Vance (fictional),member023@example.com,C12,fintech;AI agents,2025-10-25,SAMPLE,6,1,E052,0.17
+M024,Theo Darrow (fictional),member024@example.com,C03,LLM evals;product;RAG;fintech,2024-05-11,SAMPLE,4,3,E015;E018;E001,0.75
+M025,Pax Sallis (fictional),member025@example.com,C02,fintech;open source;RAG;LLM evals,2025-11-09,SAMPLE,6,1,E013,0.17
+M026,Vik Ostrander (fictional),member026@example.com,C12,devrel;Rust;RAG,2025-04-18,SAMPLE,5,2,E052;E050,0.4
+M027,Hiro Linnell (fictional),member027@example.com,C11,IoT;devrel;product;creative coding,2024-09-08,SAMPLE,8,6,E047;E017;E046;E048;E022;E024,0.75
+M028,Jonah Ostrander (fictional),member028@example.com,C14,Rust;data viz,2026-03-04,SAMPLE,6,5,E058;E012;E057;E056;E020,0.83
+M029,Priya Brackley (fictional),member029@example.com,C03,RAG;Rust;devrel;ML ops,2025-05-05,SAMPLE,3,1,E051,0.33
+M030,Juno Nettle (fictional),member030@example.com,C08,ML ops;design systems;LLM evals,2024-12-11,SAMPLE,5,3,E026;E031;E034,0.6
+M031,Uma Rookwood (fictional),member031@example.com,C10,security;RAG,2025-05-30,SAMPLE,4,2,E042;E034,0.5
+M032,Tobi Pemberly (fictional),member032@example.com,C08,AI agents;product;open source;RAG,2025-11-09,SAMPLE,4,2,E039;E043,0.5
+M033,Leah Ashgrove (fictional),member033@example.com,C08,product;creative coding,2025-12-03,SAMPLE,2,2,E036;E037,1.0
+M034,Farid Arkwright (fictional),member034@example.com,C02,open source;fintech;security;design systems,2025-03-04,SAMPLE,4,4,E047;E007;E012;E014,1.0
+M035,Cleo Darrow (fictional),member035@example.com,C13,ML ops;IoT;product;design systems,2025-05-23,SAMPLE,4,3,E053;E033;E055,0.75
+M036,Jonah Ashgrove (fictional),member036@example.com,C09,RAG;devrel;product,2024-09-21,SAMPLE,7,4,E036;E006;E038;E003,0.57
+M037,Noor Tennant (fictional),member037@example.com,C02,IoT;founders,2025-07-01,SAMPLE,4,2,E051;E053,0.5
+M038,Elio Linnell (fictional),member038@example.com,C08,Rust;product;creative coding;data viz,2025-08-22,SAMPLE,5,4,E036;E037;E034;E035,0.8
+M039,Vik Arkwright (fictional),member039@example.com,C07,devrel;ML ops,2024-11-29,SAMPLE,5,4,E009;E031;E013;E032,0.8
+M040,Esme Rookwood (fictional),member040@example.com,C06,open source;ML ops,2025-08-23,SAMPLE,6,3,E012;E028;E030,0.5
+M041,Quinn Arkwright (fictional),member041@example.com,C05,product;RAG,2025-02-03,SAMPLE,4,2,E021;E022,0.5
+M042,Jonah Calder (fictional),member042@example.com,C11,ML ops;founders;LLM evals,2025-08-17,SAMPLE,2,1,E027,0.5
+M043,Priya Marlow (fictional),member043@example.com,C03,open source;fintech;ML ops,2024-07-04,SAMPLE,7,3,E062;E016;E025,0.43
+M044,Isla Linnell (fictional),member044@example.com,C06,ML ops;LLM evals,2025-07-16,SAMPLE,5,3,E039;E028;E027,0.6
+M045,Xan Fernwood (fictional),member045@example.com,C09,data viz;Rust;IoT,2025-10-08,SAMPLE,6,4,E021;E041;E039;E052,0.67
+M046,Kai Halloway (fictional),member046@example.com,C13,Rust;LLM evals,2026-07-05,SAMPLE,5,3,E034;E052;E053,0.6
+M047,Gwen Linnell (fictional),member047@example.com,C05,creative coding;founders;open source;AI agents,2024-11-14,SAMPLE,3,0,,0.0
+M048,Theo Brackley (fictional),member048@example.com,C06,fintech;Rust;creative coding;devrel,2024-05-24,SAMPLE,3,3,E042;E030;E027,1.0
+M049,Theo Tennant (fictional),member049@example.com,C12,security;AI agents;fintech;product,2024-10-30,SAMPLE,6,3,E052;E059;E050,0.5
+M050,Pax Darrow (fictional),member050@example.com,C12,data viz;devrel;founders;security,2026-01-26,SAMPLE,4,3,E052;E051;E050,0.75
+M051,Pax Vance (fictional),member051@example.com,C09,LLM evals;creative coding;IoT,2025-09-11,SAMPLE,3,2,E040;E045,0.67
+M052,Juno Darrow (fictional),member052@example.com,C11,devrel;data viz;LLM evals,2025-08-27,SAMPLE,4,3,E045;E047;E046,0.75
+M053,Elio Sallis (fictional),member053@example.com,C09,creative coding;IoT,2024-06-24,SAMPLE,2,2,E039;E059,1.0
+M054,Isla Pemberly (fictional),member054@example.com,C10,ML ops;security,2025-09-07,SAMPLE,2,2,E042;E043,1.0
+M055,Gwen Linnell (fictional),member055@example.com,C09,data viz;RAG,2024-08-02,SAMPLE,4,2,E061;E039,0.5
+M056,Rhea Darrow (fictional),member056@example.com,C03,Rust;creative coding;fintech;RAG,2026-02-07,SAMPLE,4,3,E015;E018;E017,0.75
+M057,Leah Calder (fictional),member057@example.com,C14,fintech;AI agents,2025-08-13,SAMPLE,2,1,E057,0.5
+M058,Xan Ostrander (fictional),member058@example.com,C09,RAG;product;IoT,2026-08-25,SAMPLE,5,1,E044,0.2
+M059,Gwen Rookwood (fictional),member059@example.com,C06,Rust;AI agents,2025-12-03,SAMPLE,5,4,E061;E029;E017;E028,0.8
+M060,Tess Brackley (fictional),member060@example.com,C15,security;LLM evals;design systems;AI agents,2026-07-03,SAMPLE,3,2,E061;E060,0.67
+M061,Quinn Halloway (fictional),member061@example.com,C01,open source;founders,2025-01-07,SAMPLE,11,9,E010;E009;E008;E006;E052;E003;E054;E002;E001,0.82
+M062,Omar Quillon (fictional),member062@example.com,C09,IoT;data viz;RAG,2026-08-05,SAMPLE,2,1,E038,0.5
+M063,Ines Arkwright (fictional),member063@example.com,C04,RAG;LLM evals;security,2025-01-19,SAMPLE,6,4,E021;E013;E022;E020,0.67
+M064,Bram Linnell (fictional),member064@example.com,C09,IoT;founders;Rust;data viz,2025-07-10,SAMPLE,3,0,,0.0
+M065,Theo Calder (fictional),member065@example.com,C01,design systems;fintech,2026-03-15,SAMPLE,11,9,E010;E008;E018;E007;E006;E005;E004;E035;E001,0.82
+M066,Farid Linnell (fictional),member066@example.com,C11,RAG;open source;creative coding,2025-04-21,SAMPLE,3,2,E047;E048,0.67
+M067,Noor Morrow (fictional),member067@example.com,C13,fintech;creative coding,2025-05-29,SAMPLE,4,4,E062;E053;E004;E055,1.0
+M068,Yara Calder (fictional),member068@example.com,C01,founders;AI agents;product,2024-07-07,SAMPLE,9,5,E009;E031;E007;E032;E005,0.56
+M069,Wren Ostrander (fictional),member069@example.com,C02,ML ops;LLM evals;RAG;design systems,2024-08-31,SAMPLE,5,4,E015;E013;E011;E014,0.8
+M070,Vik Brackley (fictional),member070@example.com,C13,product;open source,2025-10-11,SAMPLE,4,1,E054,0.25
+M071,Luca Darrow (fictional),member071@example.com,C14,security;ML ops;Rust;devrel,2026-07-20,SAMPLE,2,1,E004,0.5
+M072,Ravi Ashgrove (fictional),member072@example.com,C12,IoT;AI agents;devrel,2026-03-02,SAMPLE,5,2,E049;E052,0.4
+M073,Cleo Rookwood (fictional),member073@example.com,C15,open source;fintech;LLM evals,2025-05-26,SAMPLE,4,1,E062,0.25
+M074,Cleo Halloway (fictional),member074@example.com,C05,product;creative coding;devrel,2026-08-05,SAMPLE,5,2,E041;E020,0.4
+M075,Vik Pemberly (fictional),member075@example.com,C14,devrel;product,2025-07-02,SAMPLE,3,2,E010;E044,0.67
+M076,Zed Darrow (fictional),member076@example.com,C15,product;Rust;security,2024-10-14,SAMPLE,3,2,E062;E027,0.67
+M077,Xan Linnell (fictional),member077@example.com,C08,devrel;RAG;founders,2025-07-15,SAMPLE,6,5,E058;E008;E036;E004;E016,0.83
+M078,Omar Arkwright (fictional),member078@example.com,C02,open source;data viz,2025-10-29,SAMPLE,2,2,E012;E014,1.0
+M079,Farid Rookwood (fictional),member079@example.com,C02,data viz;LLM evals;security;design systems,2024-09-18,SAMPLE,5,3,E012;E050;E014,0.6
+M080,Kemi Darrow (fictional),member080@example.com,C07,security;AI agents;founders,2025-09-26,SAMPLE,3,3,E031;E032;E033,1.0
+M081,Omar Pemberly (fictional),member081@example.com,C10,devrel;AI agents;RAG;ML ops,2024-12-09,SAMPLE,2,0,,0.0
+M082,Xan Linnell (fictional),member082@example.com,C07,ML ops;Rust;AI agents;creative coding,2024-05-06,SAMPLE,3,2,E031;E033,0.67
+M083,Leah Ashgrove (fictional),member083@example.com,C10,RAG;IoT,2024-07-17,SAMPLE,5,4,E042;E047;E015;E043,0.8
+M084,Xan Calder (fictional),member084@example.com,C11,design systems;AI agents;LLM evals,2026-04-18,SAMPLE,4,1,E010,0.25
+M085,Leah Calder (fictional),member085@example.com,C11,security;devrel;RAG,2025-02-12,SAMPLE,8,6,E045;E039;E046;E059;E048;E002,0.75
+M086,Elio Calder (fictional),member086@example.com,C03,product;ML ops;data viz,2026-01-10,SAMPLE,4,4,E018;E017;E016;E060,1.0
+M087,Bram Tennant (fictional),member087@example.com,C02,open source;fintech;LLM evals,2026-05-25,SAMPLE,3,1,E012,0.33
+M088,Quinn Darrow (fictional),member088@example.com,C05,design systems;data viz,2024-10-12,SAMPLE,3,2,E026;E002,0.67
+M089,Kai Halloway (fictional),member089@example.com,C15,Rust;creative coding,2026-07-09,SAMPLE,1,1,E062,1.0
+M090,Luca Darrow (fictional),member090@example.com,C08,devrel;ML ops,2024-05-10,SAMPLE,7,5,E036;E037;E034;E035;E001,0.71
+M091,Wren Marlow (fictional),member091@example.com,C06,open source;data viz;creative coding;Rust,2024-09-24,SAMPLE,5,1,E027,0.2
+M092,Luca Calder (fictional),member092@example.com,C12,IoT;RAG;LLM evals;Rust,2026-01-23,SAMPLE,8,6,E049;E046;E052;E050;E016;E027,0.75
+M093,Kai Fernwood (fictional),member093@example.com,C13,open source;design systems;product,2025-06-01,SAMPLE,4,4,E018;E007;E053;E055,1.0
+M094,Arlo Brackley (fictional),member094@example.com,C13,LLM evals;RAG;creative coding;data viz,2025-08-11,SAMPLE,6,5,E026;E051;E054;E002;E055,0.83
+M095,Tess Linnell (fictional),member095@example.com,C12,devrel;fintech;design systems,2026-07-09,SAMPLE,4,4,E049;E052;E051;E050,1.0
+M096,Uma Marlow (fictional),member096@example.com,C03,security;ML ops;open source,2025-10-05,SAMPLE,11,5,E049;E018;E034;E011;E048,0.45
+M097,Arlo Nettle (fictional),member097@example.com,C03,devrel;Rust,2025-07-06,SAMPLE,6,4,E042;E026;E028;E055,0.67
+M098,Dev Quillon (fictional),member098@example.com,C09,Rust;data viz;LLM evals;devrel,2025-10-27,SAMPLE,2,2,E046;E038,1.0
+M099,Orla Calder (fictional),member099@example.com,C15,LLM evals;data viz;RAG;creative coding,2026-03-05,SAMPLE,6,5,E061;E040;E010;E062;E060,0.83
+M100,Arlo Pemberly (fictional),member100@example.com,C11,ML ops;data viz,2025-01-01,SAMPLE,9,6,E010;E045;E007;E046;E032;E038,0.67
+M101,Farid Linnell (fictional),member101@example.com,C09,Rust;design systems;creative coding;LLM evals,2026-03-31,SAMPLE,5,4,E026;E037;E057;E038,0.8
+M102,Theo Arkwright (fictional),member102@example.com,C11,creative coding;design systems;AI agents,2024-05-30,SAMPLE,3,1,E047,0.33
+M103,Bram Marlow (fictional),member103@example.com,C14,ML ops;devrel,2025-02-09,SAMPLE,2,1,E059,0.5
+M104,Nico Nettle (fictional),member104@example.com,C05,design systems;ML ops;AI agents,2025-05-01,SAMPLE,5,4,E023;E053;E025;E024,0.8
+M105,Saffi Vance (fictional),member105@example.com,C15,data viz;security;IoT;ML ops,2025-08-03,SAMPLE,3,3,E013;E059;E027,1.0
+M106,Ravi Marlow (fictional),member106@example.com,C05,AI agents;Rust;security;fintech,2025-05-15,SAMPLE,6,4,E010;E026;E025;E024,0.67
+M107,Nico Rookwood (fictional),member107@example.com,C08,Rust;product;founders;creative coding,2024-09-01,SAMPLE,3,2,E034;E022,0.67
+M108,Wren Whitlow (fictional),member108@example.com,C14,devrel;product,2025-04-13,SAMPLE,4,3,E057;E059;E038,0.75
+M109,Gwen Rookwood (fictional),member109@example.com,C09,security;RAG,2025-12-23,SAMPLE,4,2,E041;E039,0.5
+M110,Pax Brackley (fictional),member110@example.com,C08,AI agents;data viz,2025-08-25,SAMPLE,2,1,E034,0.5
+M111,Theo Sallis (fictional),member111@example.com,C14,creative coding;Rust,2024-06-11,SAMPLE,4,4,E058;E042;E059;E056,1.0
+M112,Juno Rookwood (fictional),member112@example.com,C06,devrel;Rust,2025-04-30,SAMPLE,2,1,E027,0.5
+M113,Ravi Kestrel (fictional),member113@example.com,C09,security;AI agents;RAG,2025-08-16,SAMPLE,2,2,E039;E038,1.0
+M114,Ravi Ostrander (fictional),member114@example.com,C09,design systems;product,2026-08-04,SAMPLE,4,2,E040;E054,0.5
+M115,Sol Kestrel (fictional),member115@example.com,C01,LLM evals;creative coding;ML ops;devrel,2025-05-29,SAMPLE,9,3,E010;E002;E001,0.33
+M116,Saffi Fernwood (fictional),member116@example.com,C05,fintech;Rust,2025-12-26,SAMPLE,4,2,E008;E043,0.5
+M117,Xan Whitlow (fictional),member117@example.com,C12,AI agents;fintech;LLM evals,2025-02-16,SAMPLE,5,2,E049;E051,0.4
+M118,Mira Calder (fictional),member118@example.com,C09,data viz;RAG;fintech;open source,2025-06-18,SAMPLE,6,3,E031;E011;E038,0.5
+M119,Arlo Pemberly (fictional),member119@example.com,C13,ML ops;design systems;RAG;Rust,2026-06-15,SAMPLE,4,2,E039;E055,0.5
+M120,Xan Rookwood (fictional),member120@example.com,C07,product;devrel;Rust;IoT,2025-01-14,SAMPLE,3,2,E031;E032,0.67
+M121,Zed Linnell (fictional),member121@example.com,C09,AI agents;LLM evals,2026-05-05,SAMPLE,4,1,E041,0.25
+M122,Vik Kestrel (fictional),member122@example.com,C12,security;Rust;design systems;open source,2026-05-02,SAMPLE,6,4,E061;E051;E019;E016,0.67
+M123,Theo Rookwood (fictional),member123@example.com,C06,fintech;design systems,2024-08-26,SAMPLE,4,3,E029;E046;E030,0.75
+M124,Tobi Nettle (fictional),member124@example.com,C14,open source;creative coding;LLM evals,2025-03-26,SAMPLE,4,3,E057;E059;E056,0.75
+M125,Juno Vance (fictional),member125@example.com,C08,creative coding;AI agents;product,2025-10-18,SAMPLE,3,2,E046;E060,0.67
+M126,Hiro Sallis (fictional),member126@example.com,C11,data viz;devrel;founders;creative coding,2024-12-17,SAMPLE,5,5,E031;E041;E047;E046;E019,1.0
+M127,Priya Kestrel (fictional),member127@example.com,C01,ML ops;devrel;creative coding,2025-02-07,SAMPLE,11,7,E015;E007;E006;E028;E004;E002;E001,0.64
+M128,Orla Ashgrove (fictional),member128@example.com,C10,security;Rust;open source;ML ops,2024-09-14,SAMPLE,2,1,E043,0.5
+M129,Yara Brackley (fictional),member129@example.com,C10,IoT;AI agents;design systems;founders,2026-06-02,SAMPLE,5,5,E042;E009;E044;E034;E043,1.0
+M130,Bram Darrow (fictional),member130@example.com,C04,fintech;Rust;LLM evals,2024-10-15,SAMPLE,5,2,E029;E019,0.4
+M131,Ines Linnell (fictional),member131@example.com,C04,LLM evals;security;founders;devrel,2026-07-21,SAMPLE,4,2,E021;E023,0.5
+M132,Isla Linnell (fictional),member132@example.com,C12,open source;product,2024-11-13,SAMPLE,5,4,E049;E052;E051;E050,0.8
+M133,Elio Whitlow (fictional),member133@example.com,C08,Rust;security;open source,2025-10-07,SAMPLE,7,4,E036;E062;E030;E035,0.57
+M134,Wren Pemberly (fictional),member134@example.com,C09,security;IoT;creative coding;data viz,2025-02-28,SAMPLE,4,2,E040;E038,0.5
+M135,Orla Vance (fictional),member135@example.com,C05,founders;IoT;LLM evals,2024-10-01,SAMPLE,3,2,E051;E025,0.67
+M136,Uma Kestrel (fictional),member136@example.com,C08,open source;devrel;founders,2025-12-16,SAMPLE,6,3,E031;E036;E007,0.5
+M137,Hiro Nettle (fictional),member137@example.com,C05,open source;fintech;creative coding;product,2024-07-23,SAMPLE,3,2,E029;E020,0.67
+M138,Jonah Vance (fictional),member138@example.com,C13,data viz;founders,2026-07-04,SAMPLE,5,4,E044;E053;E054;E055,0.8
+M139,Leah Pemberly (fictional),member139@example.com,C06,security;IoT;creative coding;open source,2025-12-19,SAMPLE,4,2,E029;E027,0.5
+M140,Arlo Pemberly (fictional),member140@example.com,C15,RAG;design systems,2024-08-25,SAMPLE,6,3,E029;E046;E060,0.5
+M141,Pax Ostrander (fictional),member141@example.com,C10,ML ops;open source,2026-02-03,SAMPLE,5,3,E042;E044;E006,0.6
+M142,Orla Ashgrove (fictional),member142@example.com,C11,fintech;product,2024-09-18,SAMPLE,7,3,E045;E047;E059,0.43
+M143,Gwen Brackley (fictional),member143@example.com,C08,open source;Rust,2025-08-02,SAMPLE,4,3,E041;E034;E005,0.75
+M144,Tess Kestrel (fictional),member144@example.com,C11,IoT;devrel;data viz;product,2025-12-04,SAMPLE,3,3,E047;E048;E024,1.0
+M145,Dev Marlow (fictional),member145@example.com,C11,design systems;IoT;open source;founders,2024-09-12,SAMPLE,2,2,E045;E026,1.0
+M146,Cleo Tennant (fictional),member146@example.com,C14,LLM evals;creative coding;Rust,2026-08-16,SAMPLE,3,2,E057;E022,0.67
+M147,Zed Kestrel (fictional),member147@example.com,C14,LLM evals;founders,2025-11-30,SAMPLE,3,3,E057;E056;E054,1.0
+M148,Cleo Fernwood (fictional),member148@example.com,C15,design systems;LLM evals;RAG,2025-10-14,SAMPLE,3,2,E052;E060,0.67
+M149,Ravi Morrow (fictional),member149@example.com,C05,security;Rust;open source;LLM evals,2025-12-17,SAMPLE,6,5,E026;E023;E011;E014;E025,0.83
+M150,Hiro Rookwood (fictional),member150@example.com,C04,founders;security,2024-11-28,SAMPLE,7,5,E042;E021;E012;E014;E022,0.71
+M151,Luca Fernwood (fictional),member151@example.com,C05,product;devrel;data viz;design systems,2024-11-01,SAMPLE,4,3,E009;E037;E043,0.75
+M152,Mira Tennant (fictional),member152@example.com,C13,creative coding;ML ops;fintech;devrel,2025-04-13,SAMPLE,3,1,E054,0.33
+M153,Farid Whitlow (fictional),member153@example.com,C06,RAG;Rust;creative coding;security,2025-10-26,SAMPLE,4,3,E045;E029;E019,0.75
+M154,Pax Fernwood (fictional),member154@example.com,C15,fintech;IoT;security,2024-08-12,SAMPLE,0,0,,
+M155,Vik Vance (fictional),member155@example.com,C05,founders;design systems;AI agents;data viz,2024-11-22,SAMPLE,4,1,E024,0.25
+M156,Pax Ashgrove (fictional),member156@example.com,C06,RAG;security;data viz;Rust,2025-08-03,SAMPLE,5,5,E029;E028;E053;E050;E027,1.0
+M157,Noor Vance (fictional),member157@example.com,C11,RAG;ML ops;data viz;product,2025-01-01,SAMPLE,3,1,E045,0.33
+M158,Orla Brackley (fictional),member158@example.com,C04,Rust;security;founders,2025-01-10,SAMPLE,7,4,E049;E045;E021;E020,0.57
+M159,Ines Morrow (fictional),member159@example.com,C06,devrel;open source;LLM evals,2024-11-11,SAMPLE,8,5,E049;E029;E028;E053;E030,0.62
+M160,Nico Ostrander (fictional),member160@example.com,C14,devrel;design systems;LLM evals;RAG,2025-04-02,SAMPLE,2,2,E058;E056,1.0
+M161,Elio Calder (fictional),member161@example.com,C08,LLM evals;design systems,2026-05-31,SAMPLE,1,1,E036,1.0
+M162,Arlo Linnell (fictional),member162@example.com,C01,design systems;open source,2026-04-22,SAMPLE,8,4,E009;E008;E007;E060,0.5
+M163,Uma Linnell (fictional),member163@example.com,C03,RAG;ML ops;IoT,2024-09-18,SAMPLE,7,2,E016;E043,0.29
+M164,Kai Marlow (fictional),member164@example.com,C10,security;devrel;AI agents;LLM evals,2026-05-10,SAMPLE,3,3,E049;E042;E043,1.0
+M165,Ines Darrow (fictional),member165@example.com,C09,AI agents;open source;security;ML ops,2024-06-18,SAMPLE,1,1,E032,1.0
+M166,Bram Whitlow (fictional),member166@example.com,C05,creative coding;AI agents;founders,2026-02-11,SAMPLE,3,2,E003;E024,0.67
+M167,Esme Ashgrove (fictional),member167@example.com,C10,product;founders;RAG,2025-03-17,SAMPLE,6,2,E042;E004,0.33
+M168,Esme Kestrel (fictional),member168@example.com,C01,data viz;fintech,2026-03-22,SAMPLE,8,5,E010;E008;E007;E005;E002,0.62
+M169,Isla Sallis (fictional),member169@example.com,C13,LLM evals;fintech;security,2025-09-01,SAMPLE,3,2,E053;E055,0.67
+M170,Farid Morrow (fictional),member170@example.com,C07,ML ops;creative coding,2025-10-01,SAMPLE,7,5,E042;E031;E056;E033;E001,0.71
+M171,Luca Morrow (fictional),member171@example.com,C02,open source;Rust;founders,2026-02-06,SAMPLE,4,1,E018,0.25
+M172,Ada Fernwood (fictional),member172@example.com,C14,security;ML ops;founders,2025-03-14,SAMPLE,4,4,E031;E057;E016;E056,1.0
+M173,Saffi Whitlow (fictional),member173@example.com,C07,IoT;security,2025-10-03,SAMPLE,5,4,E031;E043;E033;E024,0.8
+M174,Rhea Halloway (fictional),member174@example.com,C03,devrel;RAG;AI agents;ML ops,2025-07-20,SAMPLE,2,2,E009;E016,1.0
+M175,Bram Ostrander (fictional),member175@example.com,C10,RAG;LLM evals,2025-01-22,SAMPLE,5,5,E042;E044;E037;E053;E043,1.0
+M176,Leah Arkwright (fictional),member176@example.com,C01,founders;creative coding;AI agents;IoT,2024-08-25,SAMPLE,8,6,E009;E008;E038;E005;E002;E001,0.75
+M177,Zed Darrow (fictional),member177@example.com,C01,open source;IoT,2024-08-11,SAMPLE,6,2,E010;E009,0.33
+M178,Dev Brackley (fictional),member178@example.com,C14,data viz;IoT;founders;design systems,2025-10-31,SAMPLE,3,1,E029,0.33
+M179,Priya Rookwood (fictional),member179@example.com,C10,data viz;Rust,2024-11-15,SAMPLE,4,2,E042;E043,0.5
+M180,Orla Sallis (fictional),member180@example.com,C09,data viz;AI agents;open source,2025-01-25,SAMPLE,6,2,E039;E056,0.33
+M181,Luca Sallis (fictional),member181@example.com,C15,security;AI agents;product;ML ops,2024-11-04,SAMPLE,2,1,E027,0.5
+M182,Elio Rookwood (fictional),member182@example.com,C07,fintech;LLM evals;Rust;data viz,2025-09-02,SAMPLE,2,0,,0.0
+M183,Saffi Kestrel (fictional),member183@example.com,C03,creative coding;IoT,2025-11-19,SAMPLE,5,3,E047;E050;E004,0.6
+M184,Jonah Darrow (fictional),member184@example.com,C14,open source;fintech,2025-07-23,SAMPLE,3,3,E057;E059;E056,1.0
+M185,Elio Brackley (fictional),member185@example.com,C09,IoT;data viz;LLM evals,2025-10-19,SAMPLE,2,1,E062,0.5
+M186,Farid Darrow (fictional),member186@example.com,C11,RAG;open source;founders,2024-05-26,SAMPLE,3,1,E047,0.33
+M187,Dev Pemberly (fictional),member187@example.com,C04,ML ops;design systems;creative coding,2026-08-13,SAMPLE,4,2,E022;E056,0.5
+M188,Esme Halloway (fictional),member188@example.com,C14,founders;ML ops;open source;IoT,2025-05-20,SAMPLE,5,3,E057;E059;E048,0.6
+M189,Vik Vance (fictional),member189@example.com,C04,IoT;LLM evals,2024-08-24,SAMPLE,5,4,E021;E019;E022;E055,0.8
+M190,Tess Ostrander (fictional),member190@example.com,C02,design systems;founders;IoT;fintech,2026-01-20,SAMPLE,7,4,E040;E021;E023;E030,0.57
+M191,Uma Vance (fictional),member191@example.com,C09,security;open source;ML ops,2025-09-20,SAMPLE,0,0,,
+M192,Quinn Calder (fictional),member192@example.com,C05,LLM evals;security;creative coding;RAG,2024-06-22,SAMPLE,3,2,E023;E011,0.67
+M193,Tess Rookwood (fictional),member193@example.com,C12,product;LLM evals,2025-07-26,SAMPLE,6,3,E036;E050;E025,0.5
+M194,Juno Ostrander (fictional),member194@example.com,C01,Rust;AI agents;data viz;open source,2025-02-01,SAMPLE,12,8,E040;E007;E006;E005;E004;E003;E002;E001,0.67
+M195,Ines Vance (fictional),member195@example.com,C10,IoT;product,2026-01-30,SAMPLE,6,4,E042;E047;E013;E030,0.67
+M196,Juno Ostrander (fictional),member196@example.com,C07,open source;ML ops;creative coding,2025-10-12,SAMPLE,4,1,E032,0.25
+M197,Kai Kestrel (fictional),member197@example.com,C05,Rust;founders;devrel,2025-09-27,SAMPLE,1,1,E024,1.0
+M198,Isla Morrow (fictional),member198@example.com,C03,Rust;open source;ML ops,2026-07-24,SAMPLE,8,5,E015;E018;E017;E012;E043,0.62
+M199,Cleo Marlow (fictional),member199@example.com,C09,AI agents;devrel;LLM evals;fintech,2026-05-05,SAMPLE,3,1,E039,0.33
+M200,Orla Marlow (fictional),member200@example.com,C14,Rust;AI agents;IoT;open source,2025-06-13,SAMPLE,1,1,E059,1.0

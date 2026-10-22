@@ -1,0 +1,16 @@
+community_id,name,focus,members_estimate,area,lat,lon,organiser_name,organiser_handle,channels,free_events,is_sample
+C01,Thames Agent Builders (SAMPLE),AI agents,900,Shoreditch,51.5245,-0.0795,Rhea Ostrander (fictional),@tab_sample,WhatsApp;Luma;LinkedIn;Discord,True,SAMPLE
+C02,Lambeth LLM Lab (SAMPLE),LLMs & RAG,650,Brixton,51.4613,-0.1156,Gwen Morrow (fictional),@lll_sample,WhatsApp;Luma;X;LinkedIn,True,SAMPLE
+C03,Docklands DevRel Circle (SAMPLE),Developer relations,400,Canary Wharf,51.5054,-0.0235,Omar Ashgrove (fictional),@ddc_sample,WhatsApp;Luma;LinkedIn;Slack,True,SAMPLE
+C04,Kings Cross Rust Night (SAMPLE),Rust,520,King's Cross,51.5308,-0.1238,Nico Ostrander (fictional),@kcrn_sample,WhatsApp;Luma;LinkedIn;Discord,True,SAMPLE
+C05,Hackney Hardware Club (SAMPLE),IoT & hardware,380,Hackney,51.545,-0.0553,Mira Morrow (fictional),@hhc_sample,WhatsApp;Luma;LinkedIn;Slack,True,SAMPLE
+C06,Southbank Data Folk (SAMPLE),Data science,1100,Southwark,51.5035,-0.0919,Leah Nettle (fictional),@sdf_sample,WhatsApp;Luma;Discord;LinkedIn,True,SAMPLE
+C07,Camden Creative Coders (SAMPLE),Creative coding,300,Camden,51.539,-0.1426,Kemi Sallis (fictional),@ccc_sample,WhatsApp;Luma;Slack;LinkedIn,True,SAMPLE
+C08,Soho Product Guild (SAMPLE),Product management,750,Soho,51.5136,-0.1365,Jonah Halloway (fictional),@spg_sample,WhatsApp;Luma;Slack;X,True,SAMPLE
+C09,Stratford Startup Breakfast (SAMPLE),Founders,600,Stratford,51.5413,-0.0036,Farid Whitlow (fictional),@ssb_sample,WhatsApp;Luma;Slack;LinkedIn,True,SAMPLE
+C10,Farringdon Fintech Tinkerers (SAMPLE),Fintech,480,Farringdon,51.5203,-0.1053,Wren Arkwright (fictional),@fft_sample,WhatsApp;Luma;LinkedIn;X,True,SAMPLE
+C11,White City Women in ML (SAMPLE),"ML, women in tech",820,White City,51.512,-0.224,Ravi Morrow (fictional),@wcwim_sample,WhatsApp;Luma;Slack;LinkedIn,True,SAMPLE
+C12,Bermondsey Open Source Pub (SAMPLE),Open source,350,Bermondsey,51.498,-0.064,Farid Morrow (fictional),@bosp_sample,WhatsApp;Luma;LinkedIn;X,True,SAMPLE
+C13,Islington Indie Hackers (SAMPLE),Indie hacking,560,Islington,51.5362,-0.1033,Theo Calder (fictional),@iih_sample,WhatsApp;Luma;Slack;Discord,True,SAMPLE
+C14,Old Street Security Social (SAMPLE),Security,430,Old Street,51.5256,-0.0876,Esme Ashgrove (fictional),@osss_sample,WhatsApp;Luma;X;Slack,True,SAMPLE
+C15,Liverpool St Design Engineers (SAMPLE),Design engineering,290,Liverpool Street,51.5178,-0.0823,Farid Ostrander (fictional),@lsde_sample,WhatsApp;Luma;X;Discord,True,SAMPLE

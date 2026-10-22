@@ -1,0 +1,20 @@
+{
+  "_notice": "SAMPLE / FICTIONAL. Shaped like Luma API responses (field names from public-api.luma.com/openapi.json). Not real Luma data; ids are fake; the _notice key is not part of real responses.",
+  "entries": [
+    {
+      "name": "Free",
+      "require_approval": false,
+      "is_hidden": false,
+      "description": "SAMPLE free ticket",
+      "valid_start_at": null,
+      "valid_end_at": null,
+      "max_capacity": 80,
+      "type": "free",
+      "cents": 0,
+      "currency": null,
+      "is_flexible": false,
+      "min_cents": 0,
+      "id": "evtticktyp-SAMPLEfree01"
+    }
+  ]
+}

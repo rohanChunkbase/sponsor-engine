@@ -1,0 +1,202 @@
+event_id,event_name,event_date,community,company,role,confidence,evidence_quote,source_url
+L-encode-london-2026,Encode London Hackathon,2026-10-23,Encode Club,Encode Hub,venue,stated,Venue: The Encode Hub,https://luma.com/encode-london-2026
+L-encode-london-2026,Encode London Hackathon,2026-10-23,Encode Club,Saint,prize_partner,stated,"partner bounties from Saint, MongoDB and Google DeepMind",https://luma.com/encode-london-2026
+L-encode-london-2026,Encode London Hackathon,2026-10-23,Encode Club,MongoDB,prize_partner,stated,"partner bounties from Saint, MongoDB and Google DeepMind",https://luma.com/encode-london-2026
+L-encode-london-2026,Encode London Hackathon,2026-10-23,Encode Club,Google DeepMind,prize_partner,stated,"partner bounties from Saint, MongoDB and Google DeepMind",https://luma.com/encode-london-2026
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Anthropic,general,stated,Sponsors: Anthropic,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Google DeepMind,general,stated,Sponsors: Google DeepMind,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Hugging Face,general,stated,Sponsors: Hugging Face,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Cognition,general,stated,Sponsors: Cognition,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Modal,general,stated,Sponsors: Modal,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Serova,general,stated,Sponsors: Serova,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Polaron,general,stated,Sponsors: Polaron,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Cambridge Compute Co. (C3),general,stated,Sponsors: Cambridge Compute Co. (C3),https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,AIDDA Institute,general,stated,Sponsors: AIDDA Institute,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Originator,general,stated,Sponsors: Originator,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Voyager Ventures,general,stated,Sponsors: Voyager Ventures,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,IQ Capital,general,stated,Sponsors: IQ Capital,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,GXL,general,stated,Sponsors: GXL,https://luma.com/3iipivod
+L-3iipivod,London AI x Science Hackathon,2026-10-03,Iterate,Amass,general,stated,Sponsors: Amass,https://luma.com/3iipivod
+L-9accbeul,Builders at the Edge Hackathon,2026-03-07,Surface,Granola,general,stated,"Sponsored by: Granola, AWS, Imperial",https://luma.com/9accbeul
+L-9accbeul,Builders at the Edge Hackathon,2026-03-07,Surface,AWS,general,stated,"Sponsored by: Granola, AWS, Imperial",https://luma.com/9accbeul
+L-9accbeul,Builders at the Edge Hackathon,2026-03-07,Surface,Imperial College London,general,stated,"Sponsored by: Granola, AWS, Imperial",https://luma.com/9accbeul
+L-ja5x0m76,London AI Hackathon: AI Transformation of Services,2026-10-10,Dwelly,Dwelly,co_host,stated,Dwelly is hosting its first hackathon in London,https://luma.com/ja5x0m76
+L-ja5x0m76,London AI Hackathon: AI Transformation of Services,2026-10-10,Dwelly,Anthropic,general,stated,"with Anthropic, ElevenLabs, General Catalyst, and EQT joining as partners",https://luma.com/ja5x0m76
+L-ja5x0m76,London AI Hackathon: AI Transformation of Services,2026-10-10,Dwelly,ElevenLabs,general,stated,"with Anthropic, ElevenLabs, General Catalyst, and EQT joining as partners",https://luma.com/ja5x0m76
+L-ja5x0m76,London AI Hackathon: AI Transformation of Services,2026-10-10,Dwelly,General Catalyst,general,stated,"with Anthropic, ElevenLabs, General Catalyst, and EQT joining as partners",https://luma.com/ja5x0m76
+L-ja5x0m76,London AI Hackathon: AI Transformation of Services,2026-10-10,Dwelly,EQT,general,stated,"with Anthropic, ElevenLabs, General Catalyst, and EQT joining as partners",https://luma.com/ja5x0m76
+L-5gvgdu8q,OpenClaw Demo Night & Social: London 🦞,2026-03-19,Ramen Space,Create With,general,stated,Sponsored by Create With,https://luma.com/5gvgdu8q
+L-5gvgdu8q,OpenClaw Demo Night & Social: London 🦞,2026-03-19,Ramen Space,Ramen Space,venue,stated,Hosted at Ramen Space,https://luma.com/5gvgdu8q
+L-cw-london-nov25,Create With AI Meetups: London,2025-11-13,Create With,Make.com,general,stated,This event is proudly sponsored by Make.com,https://luma.com/cw-london-nov25
+L-cw-london-nov25,Create With AI Meetups: London,2025-11-13,Create With,Ramen Space,venue,stated,"Location: Ramen Space, Dalston Square",https://luma.com/cw-london-nov25
+L-cw-london-nov25,Create With AI Meetups: London,2025-11-13,Create With,Make.com,food,inferred,Free pizza and drinks + single event sponsor Make.com (food payer not named),https://luma.com/cw-london-nov25
+L-1t3v9g5j,LLM London Sessions #7,2025-10-08,LLM London,Weights & Biases,venue,stated,kindly hosted and sponsored by Weights & Biases,https://luma.com/1t3v9g5j
+L-1t3v9g5j,LLM London Sessions #7,2025-10-08,LLM London,Weights & Biases,general,stated,kindly hosted and sponsored by Weights & Biases,https://luma.com/1t3v9g5j
+L-0szx6bcb,Machines in the Wild Demo Night: AI x Hardware for Resilience,2026-06-25,Encode: AI for Science Fellowship (Pillar VC x ARIA),Pillar VC,co_host,stated,Organiser: Pillar VC's Encode Fellowship,https://luma.com/0szx6bcb
+L-0szx6bcb,Machines in the Wild Demo Night: AI x Hardware for Resilience,2026-06-25,Encode: AI for Science Fellowship (Pillar VC x ARIA),ARIA,co_host,stated,powered by the UK's Advanced Research + Invention Agency (ARIA),https://luma.com/0szx6bcb
+L-lon-nov10,AI Builders London - Nov 10,2026-11-10,AI Builders,Civo,venue,stated,The event will be held at Civo Tech Junction ... Thanks to our friends for hosting us,https://luma.com/lon-nov10
+L-4z45zkng,Claude Code Meetup London,2025-12-10,Claude Community Events,Anthropic,food,stated,"We will provide food and drink, thanks to Anthropic!",https://luma.com/4z45zkng
+L-4z45zkng,Claude Code Meetup London,2025-12-10,Claude Community Events,Anthropic,drinks,stated,"We will provide food and drink, thanks to Anthropic!",https://luma.com/4z45zkng
+L-4z45zkng,Claude Code Meetup London,2025-12-10,Claude Community Events,MMC Ventures,venue,stated,thanks to MMC Ventures for hosting this time,https://luma.com/4z45zkng
+L-openuklondonmeetupsep26,OpenUK London Meet-up: “Agentic AI in Financial Services”,2026-10-22,OpenUK,Infosys,general,stated,"Tickets are free, thanks to Infosys for sponsoring the event.",https://luma.com/openuklondonmeetupsep26
+L-openuklondonmeetupsep26,OpenUK London Meet-up: “Agentic AI in Financial Services”,2026-10-22,OpenUK,Infosys,venue,stated,"Venue: Infosys, 10 Upper Bank Street, Canary Wharf",https://luma.com/openuklondonmeetupsep26
+L-openuklondonmeetupsep26,OpenUK London Meet-up: “Agentic AI in Financial Services”,2026-10-22,OpenUK,Infosys,food,inferred,Pizza and drinks will be provided (sole sponsor Infosys),https://luma.com/openuklondonmeetupsep26
+L-eveur09a,Grok Bot Community Engineering London Hackathon,2026-10-22,SpaceXAI for London (Grok Bot / Cursor community),Expedite,venue,stated,Venue Partner: Expedite,https://luma.com/eveur09a
+L-eveur09a,Grok Bot Community Engineering London Hackathon,2026-10-22,SpaceXAI for London (Grok Bot / Cursor community),Supabase,tech_partner,stated,"Technology Partners: Supabase, Cognee, Zero, SpaceXAI (Grok Bot), Cursor",https://luma.com/eveur09a
+L-eveur09a,Grok Bot Community Engineering London Hackathon,2026-10-22,SpaceXAI for London (Grok Bot / Cursor community),Cognee,tech_partner,stated,"Technology Partners: Supabase, Cognee, Zero, SpaceXAI (Grok Bot), Cursor",https://luma.com/eveur09a
+L-eveur09a,Grok Bot Community Engineering London Hackathon,2026-10-22,SpaceXAI for London (Grok Bot / Cursor community),Zero,tech_partner,stated,"Technology Partners: Supabase, Cognee, Zero, SpaceXAI (Grok Bot), Cursor",https://luma.com/eveur09a
+L-eveur09a,Grok Bot Community Engineering London Hackathon,2026-10-22,SpaceXAI for London (Grok Bot / Cursor community),SpaceXAI,tech_partner,stated,"Technology Partners: Supabase, Cognee, Zero, SpaceXAI (Grok Bot), Cursor",https://luma.com/eveur09a
+L-eveur09a,Grok Bot Community Engineering London Hackathon,2026-10-22,SpaceXAI for London (Grok Bot / Cursor community),Cursor,tech_partner,stated,"Technology Partners: Supabase, Cognee, Zero, SpaceXAI (Grok Bot), Cursor",https://luma.com/eveur09a
+L-lon-sep10,AI Builders Monthly London,2026-09-10,AI Builders,The Bower (beyond),venue,stated,"The event will be held at beyond The Bower, 207 Old St ... Thanks to our friends for hosting us",https://luma.com/lon-sep10
+L-AI4MARCH,AI for the rest of us - Automating with AI Agents,2026-03-18,AI for the rest of us,Leapter,food,stated,Thanks to Leapter for sponsoring the food and drink,https://www.linkedin.com/posts/ai-for-the-rest-of-us-live_what-a-line-up-we-cant-wait-to-see-you-activity-7439322188387778560-Nq4G
+L-AI4MARCH,AI for the rest of us - Automating with AI Agents,2026-03-18,AI for the rest of us,Leapter,drinks,stated,Thanks to Leapter for sponsoring the food and drink,https://www.linkedin.com/posts/ai-for-the-rest-of-us-live_what-a-line-up-we-cant-wait-to-see-you-activity-7439322188387778560-Nq4G
+L-AI4MARCH,AI for the rest of us - Automating with AI Agents,2026-03-18,AI for the rest of us,XCHG,venue,stated,"XCHG, 7th Floor, 22 Bishopsgate",https://luma.com/AI4MARCH
+L-k9kvyn76,Datamellon × Ignite London CTO Hangout,2026-10-15,Ignite London,Datamellon,co_host,stated,Ignite London and Datamellon are excited to collaborate,https://luma.com/k9kvyn76
+L-k9kvyn76,Datamellon × Ignite London CTO Hangout,2026-10-15,Ignite London,Fora,venue,inferred,"Ignite London is ... at Fora, The Jellicoe in King's Cross. With thanks to Fora (exact venue shared with approved guests)",https://luma.com/k9kvyn76
+L-ai-demo-night-12,AI Demo Nights #12 ⚡️ AUG 2026,2026-08-26,Outpost (formerly AI Demo Nights),Dawn Capital,general,stated,Supported by Dawn Capital,https://luma.com/ai-demo-night-12
+L-ai-demo-night-12,AI Demo Nights #12 ⚡️ AUG 2026,2026-08-26,Outpost (formerly AI Demo Nights),Parallel Web Systems,general,stated,Supported by Parallel,https://luma.com/ai-demo-night-12
+L-ntl-l92c,"Exclusive AI, Cybersecurity, Cloud & Emerging Technologies at Vonage",2026-08-11,Networx London,Vonage,venue,stated,Hosted at Vonage London,https://luma.com/ntl-l92c
+L-ntl-l92c,"Exclusive AI, Cybersecurity, Cloud & Emerging Technologies at Vonage",2026-08-11,Networx London,Vonage,food,inferred,Complimentary food and drinks will be served (host Vonage; payer not named),https://luma.com/ntl-l92c
+L-ai-hackathon-community,AI Lovable Hackathon London: Community Tools Edition,2025-12-03,Led by Community,Lovable,general,stated,Powered by Lovable & Tessl,https://luma.com/ai-hackathon-community
+L-ai-hackathon-community,AI Lovable Hackathon London: Community Tools Edition,2025-12-03,Led by Community,Tessl,venue,stated,"Tessl is our Venue Partner, hosting the event at their HQ in London.",https://luma.com/ai-hackathon-community
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,Artificial Superintelligence Alliance (ASI),general,stated,Gold/Silver Sponsors: Artificial Superintelligence Alliance (ASI),https://luma.com/e2ie935t
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,Fetch.ai,general,stated,Gold/Silver Sponsors: Fetch.ai,https://luma.com/e2ie935t
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,CUDOS,general,stated,Gold/Silver Sponsors: CUDOS,https://luma.com/e2ie935t
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,SingularityNET,general,stated,Gold/Silver Sponsors: SingularityNET,https://luma.com/e2ie935t
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,Midnight,general,stated,Gold/Silver Sponsors: Midnight,https://luma.com/e2ie935t
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,Sierra AI,general,stated,Gold/Silver Sponsors: Sierra AI,https://luma.com/e2ie935t
+L-e2ie935t,UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe,2025-11-29,Imperial AI Society x Imperial Blockchain Society,Imperial College London,venue,stated,Venue: Imperial College London,https://luma.com/e2ie935t
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,Digital Energy Grid (DEG),general,stated,powered by Digital Energy Grid (DEG),https://luma.com/vq6mrlt4
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,Beckn Labs,co_host,stated,Co-hosted by Beckn Labs,https://luma.com/vq6mrlt4
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,Lovable,general,stated,"partners including Lovable, CUDOS, SIERRA, Networks for Humanity, Claude",https://luma.com/vq6mrlt4
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,CUDOS,general,stated,"partners including Lovable, CUDOS, SIERRA, Networks for Humanity, Claude",https://luma.com/vq6mrlt4
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,Sierra AI,general,stated,"partners including Lovable, CUDOS, SIERRA, Networks for Humanity, Claude",https://luma.com/vq6mrlt4
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,Anthropic,general,stated,"partners including Lovable, CUDOS, SIERRA, Networks for Humanity, Claude",https://luma.com/vq6mrlt4
+L-vq6mrlt4,AI Agent Hackathon x DEG,2025-11-22,Imperial AI Society x Imperial Blockchain Society,Imperial College London,venue,stated,Location: Blackett Laboratory,https://luma.com/vq6mrlt4
+L-eveLDN,eve eves | LDN,2026-09-15,Vercel Events,Vercel,co_host,stated,"build the agents of tomorrow with eve, Vercel, and our integration partner Supabase",https://luma.com/eveLDN
+L-eveLDN,eve eves | LDN,2026-09-15,Vercel Events,Supabase,tech_partner,stated,our integration partner Supabase,https://luma.com/eveLDN
+L-5ifrs74x,Agents & APIs London Developer Meetup,2026-09-15,Postman Developer Events,Postman,co_host,stated,brought to you by Postman in partnership with Supabase,https://luma.com/5ifrs74x
+L-5ifrs74x,Agents & APIs London Developer Meetup,2026-09-15,Postman Developer Events,Supabase,general,stated,brought to you by Postman in partnership with Supabase,https://luma.com/5ifrs74x
+L-5ifrs74x,Agents & APIs London Developer Meetup,2026-09-15,Postman Developer Events,Encode Hub,venue,stated,Location: Encode Hub,https://luma.com/5ifrs74x
+L-8h0pmpvl,AI Demo Days #12,2026-02-18,AI Demo Days,Cloudflare,general,stated,Thanks to Cloudflare and StackOne for sponsoring AI Demo Days.,https://luma.com/8h0pmpvl
+L-8h0pmpvl,AI Demo Days #12,2026-02-18,AI Demo Days,StackOne,general,stated,Thanks to Cloudflare and StackOne for sponsoring AI Demo Days.,https://luma.com/8h0pmpvl
+L-sup0n60r,AI Demo Days #11,2025-11-12,AI Demo Days,OpenAI,venue,stated,Thanks to OpenAI for hosting,https://luma.com/sup0n60r
+L-sup0n60r,AI Demo Days #11,2025-11-12,AI Demo Days,Jack & Jill,general,stated,Jack &Jill for sponsoring AI Demo Days,https://luma.com/sup0n60r
+L-sup0n60r,AI Demo Days #11,2025-11-12,AI Demo Days,StackOne,general,stated,supported by the teams at StackOne and Cloudflare,https://luma.com/sup0n60r
+L-sup0n60r,AI Demo Days #11,2025-11-12,AI Demo Days,Cloudflare,general,stated,supported by the teams at StackOne and Cloudflare,https://luma.com/sup0n60r
+L-hacksprint-london,"Daytona HackSprint - London, August 2026",2026-08-30,Outpost (formerly AI Demo Nights),Daytona,general,stated,"Hosted by Outpost, in partnership with Daytona.",https://luma.com/hacksprint-london
+L-hacksprint-london,"Daytona HackSprint - London, August 2026",2026-08-30,Outpost (formerly AI Demo Nights),OpenAI,general,stated,Event partner: Codex.,https://luma.com/hacksprint-london
+L-ou24kgyr,MAKE ME MONEY: AI Agent Hackathon,2026-11-02,SHIPYARD,Tezos Foundation,general,stated,Backed by the Tezos Foundation.,https://luma.com/ou24kgyr
+L-ou24kgyr,MAKE ME MONEY: AI Agent Hackathon,2026-11-02,SHIPYARD,ElevenLabs,tech_partner,stated,"Partners: ElevenLabs, Tavily, Daytona",https://luma.com/ou24kgyr
+L-ou24kgyr,MAKE ME MONEY: AI Agent Hackathon,2026-11-02,SHIPYARD,Tavily,tech_partner,stated,"Partners: ElevenLabs, Tavily, Daytona",https://luma.com/ou24kgyr
+L-ou24kgyr,MAKE ME MONEY: AI Agent Hackathon,2026-11-02,SHIPYARD,Daytona,tech_partner,stated,"Partners: ElevenLabs, Tavily, Daytona",https://luma.com/ou24kgyr
+L-ou24kgyr,MAKE ME MONEY: AI Agent Hackathon,2026-11-02,SHIPYARD,Encode Hub,venue,stated,"Top teams pitch ... at Encode Hub, London",https://luma.com/ou24kgyr
+L-dde-ldn-hack,DevDay Community Hackathon: London,2026-11-01,Outpost (formerly AI Demo Nights),OpenAI,general,inferred,"a day of building with Codex and OpenAI ... prizes: OpenAI API credits, ChatGPT Pro",https://luma.com/dde-ldn-hack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,Pydantic,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,Render,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,Expedite,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,The Residency,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,Cognition,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,Mubit,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,BuilderBase,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-umhack,To The Americas! - Hackathon by the Unicorn Mafia,2026-04-25,Unicorn Mafia,Encode Hub,general,stated,"Sponsors + Partners: Pydantic, Render, Expedite, The Residency, Cognition, Mubit, BuilderBase, EncodeHub",https://luma.com/umhack
+L-7srz7k7v,UK AI Agent lab: Gemini Edition,2026-08-22,UK AI Agents Lab,Google DeepMind,co_host,stated,brought to you in collaboration with Google DeepMind,https://luma.com/7srz7k7v
+L-7srz7k7v,UK AI Agent lab: Gemini Edition,2026-08-22,UK AI Agents Lab,Imperial College London,venue,stated,Location: Imperial College London,https://luma.com/7srz7k7v
+L-ukai-tg9s,Shaping the Future of AI with Microsoft,2026-10-16,UK AI Agents Lab,Microsoft,co_host,inferred,Shaping the Future of AI with Microsoft (Microsoft AI speaker and registration form),https://luma.com/ukai-tg9s
+L-ukai-tg9s,Shaping the Future of AI with Microsoft,2026-10-16,UK AI Agents Lab,Imperial College London,venue,stated,"Where: Blackett LT3, Blackett Laboratory, Imperial College London",https://luma.com/ukai-tg9s
+L-i8shxwff,London x Lovable Day: Startup Operators Edition,2026-03-08,Paid x Lawhive,Paid,venue,stated,Hosted at Paid's offices in London,https://luma.com/i8shxwff
+L-i8shxwff,London x Lovable Day: Startup Operators Edition,2026-03-08,Paid x Lawhive,Lawhive,co_host,stated,co-organised by ... Lawhive,https://luma.com/i8shxwff
+L-i8shxwff,London x Lovable Day: Startup Operators Edition,2026-03-08,Paid x Lawhive,Lovable,tech_partner,inferred,London x Lovable Day: hands-on Lovable build session,https://luma.com/i8shxwff
+L-vpjma1oe,Customer Onboarding Hackathon,2026-09-19,Product Hackathons,Lovable,general,stated,Lovable is the primary sponsor and core build platform for the hackathon.,https://luma.com/vpjma1oe
+L-vpjma1oe,Customer Onboarding Hackathon,2026-09-19,Product Hackathons,Ramen Space,venue,stated,Hosted at Ramen Space,https://luma.com/vpjma1oe
+L-3gl81s7c,Claude Hackathon at Imperial College London | Claude Builder Club @ Imperial,2026-03-24,Claude Builder Club @ Imperial,Anthropic,general,inferred,an official Claude Hackathon ... #ClaudePartner #Anthropic,https://luma.com/3gl81s7c
+L-3gl81s7c,Claude Hackathon at Imperial College London | Claude Builder Club @ Imperial,2026-03-24,Claude Builder Club @ Imperial,Imperial College London,venue,stated,"CAGB 500, Imperial College London",https://luma.com/3gl81s7c
+L-ldn-hack,{Tech: Europe} Agentic AI Hack,2026-09-19,{Tech: Europe},Conduct,co_host,stated,Co-Hosts: Conduct,https://luma.com/ldn-hack
+L-ldn-hack,{Tech: Europe} Agentic AI Hack,2026-09-19,{Tech: Europe},Google DeepMind,co_host,stated,Co-Hosts: Google DeepMind,https://luma.com/ldn-hack
+L-ldn-hack,{Tech: Europe} Agentic AI Hack,2026-09-19,{Tech: Europe},Modal,tech_partner,stated,Technology Partners: Modal,https://luma.com/ldn-hack
+L-ldn-hack,{Tech: Europe} Agentic AI Hack,2026-09-19,{Tech: Europe},Pydantic,tech_partner,stated,Technology Partners: Pydantic,https://luma.com/ldn-hack
+L-87m4mw6b,London AI×Bio Hack,2026-09-18,WilbeLABS,NVIDIA,co_host,stated,Co-hosted by NVIDIA x OpenAI x WilbeLABS.,https://luma.com/87m4mw6b
+L-87m4mw6b,London AI×Bio Hack,2026-09-18,WilbeLABS,OpenAI,co_host,stated,Co-hosted by NVIDIA x OpenAI x WilbeLABS.,https://luma.com/87m4mw6b
+L-87m4mw6b,London AI×Bio Hack,2026-09-18,WilbeLABS,WilbeLABS,venue,stated,"WilbeLABS, White City, London",https://luma.com/87m4mw6b
+L-cursor-td9f,Grok Bot Commerce London Hackathon,2026-09-26,SpaceXAI for London (Grok Bot / Cursor community),Fleek,venue,stated,Venue: Fleek HQ,https://luma.com/cursor-td9f
+L-cursor-td9f,Grok Bot Commerce London Hackathon,2026-09-26,SpaceXAI for London (Grok Bot / Cursor community),Wassist,tech_partner,stated,"Technology Partners: Wassist, Supabase",https://luma.com/cursor-td9f
+L-cursor-td9f,Grok Bot Commerce London Hackathon,2026-09-26,SpaceXAI for London (Grok Bot / Cursor community),Supabase,tech_partner,stated,"Technology Partners: Wassist, Supabase",https://luma.com/cursor-td9f
+L-cursor-td9f,Grok Bot Commerce London Hackathon,2026-09-26,SpaceXAI for London (Grok Bot / Cursor community),Huge,co_host,stated,Co-hosts: ... @ Huge,https://luma.com/cursor-td9f
+L-gttihhxt,AI London Hackathon & Conference,2026-03-20,Encode Club,Encode Hub,venue,stated,"our venue, Encode Hub, 41 Pitfield Street",https://luma.com/gttihhxt
+L-ictqc1wp,Claude Code London 03 - 'Build an MCP App' Hack Night,2026-02-20,Claude Community Events,Brainstation,venue,stated,Thank you Brainstation for hosting us!,https://luma.com/ictqc1wp
+L-ictqc1wp,Claude Code London 03 - 'Build an MCP App' Hack Night,2026-02-20,Claude Community Events,Alpic,prize_partner,stated,"1st place: 1,500 Alpic credits, £500 build fund",https://super-mcp-world.netlify.app/
+L-ictqc1wp,Claude Code London 03 - 'Build an MCP App' Hack Night,2026-02-20,Claude Community Events,Anthropic,general,stated,Anthropic Presents Super MCP World,https://super-mcp-world.netlify.app/
+L-p7pnjcu8,Zero to Agent: London,2026-05-02,oscarama events,Vercel,co_host,stated,your host: me (oscarama) + Vercel,https://luma.com/p7pnjcu8
+L-p7pnjcu8,Zero to Agent: London,2026-05-02,oscarama events,Mubit,general,stated,"along with Mubit, Bright Data and Code Rabbit as sponsors",https://luma.com/p7pnjcu8
+L-p7pnjcu8,Zero to Agent: London,2026-05-02,oscarama events,Bright Data,general,stated,"along with Mubit, Bright Data and Code Rabbit as sponsors",https://luma.com/p7pnjcu8
+L-p7pnjcu8,Zero to Agent: London,2026-05-02,oscarama events,CodeRabbit,general,stated,"along with Mubit, Bright Data and Code Rabbit as sponsors",https://luma.com/p7pnjcu8
+L-p7pnjcu8,Zero to Agent: London,2026-05-02,oscarama events,Halkin,venue,stated,Halkin for the venue,https://luma.com/p7pnjcu8
+L-p7pnjcu8,Zero to Agent: London,2026-05-02,oscarama events,Swift Food,food,stated,Swift Food for the catering,https://luma.com/p7pnjcu8
+L-ppyy0sqw,The Rise of Agentic AI: From OpenClaw to Cowork (London),2026-05-07,ODSC AI,Snowflake,venue,stated,thank you to our partner Snowflake ... providing the incredible venue,https://luma.com/ppyy0sqw
+L-ppyy0sqw,The Rise of Agentic AI: From OpenClaw to Cowork (London),2026-05-07,ODSC AI,Snowflake,general,stated,thank you to our partner Snowflake for supporting the London AI community,https://luma.com/ppyy0sqw
+L-94ma079o,AI Engineer London #10,2026-03-12,AI Engineer London,Tessl,venue,stated,"thanks to Tessl for hosting us, and providing food and drink",https://luma.com/94ma079o
+L-94ma079o,AI Engineer London #10,2026-03-12,AI Engineer London,Tessl,food,stated,"thanks to Tessl for hosting us, and providing food and drink",https://luma.com/94ma079o
+L-94ma079o,AI Engineer London #10,2026-03-12,AI Engineer London,Toyo (formerly Layercode),general,stated,supported by Toyo (previously Layercode),https://luma.com/94ma079o
+L-u8rvf61f,AI Engineer London #8,2025-12-03,AI Engineer London,Tessl,venue,stated,"thanks to Tessl for hosting us, and providing food and drink",https://luma.com/u8rvf61f
+L-u8rvf61f,AI Engineer London #8,2025-12-03,AI Engineer London,Tessl,food,stated,"thanks to Tessl for hosting us, and providing food and drink",https://luma.com/u8rvf61f
+L-u8rvf61f,AI Engineer London #8,2025-12-03,AI Engineer London,Toyo (formerly Layercode),general,stated,supported by Layercode,https://luma.com/u8rvf61f
+L-ubg0u3a2,AI Engineer London Meetup #7,2025-10-02,AI Engineer London,Tessl,venue,stated,"thanks to Tessl for hosting us, and providing food and drink",https://luma.com/ubg0u3a2
+L-ubg0u3a2,AI Engineer London Meetup #7,2025-10-02,AI Engineer London,Tessl,food,stated,"thanks to Tessl for hosting us, and providing food and drink",https://luma.com/ubg0u3a2
+L-ubg0u3a2,AI Engineer London Meetup #7,2025-10-02,AI Engineer London,Toyo (formerly Layercode),general,stated,supported by Layercode,https://luma.com/ubg0u3a2
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Encode Hub,venue,stated,Venue: The Encode Hub,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,DFINITY,general,inferred,sponsor/partner session on the official agenda: DFINITY,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Concordium,general,inferred,sponsor/partner session on the official agenda: Concordium,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,OpenAI,general,inferred,sponsor/partner session on the official agenda: OpenAI,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Arbitrum Foundation,general,inferred,sponsor/partner session on the official agenda: Arbitrum Foundation,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Livepeer,general,inferred,sponsor/partner session on the official agenda: Livepeer,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Envio,general,inferred,sponsor/partner session on the official agenda: Envio,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Story Protocol,general,inferred,sponsor/partner session on the official agenda: Story Protocol,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Square Mile Coffee Roasters,drinks,inferred,agenda: Square Miles & Minor Figures Coffee Workshop,https://luma.com/Encode-London-25
+L-Encode-London-25,Encode London Hackathon and Conference,2025-10-24,Encode Club,Minor Figures,drinks,inferred,agenda: Square Miles & Minor Figures Coffee Workshop,https://luma.com/Encode-London-25
+L-qyd193bj,Chat Hackers: Prototype Reveal / Hackday,2025-11-15,Newspeak House,Newspeak House,venue,stated,Location: Newspeak House,https://luma.com/qyd193bj
+L-qyd193bj,Chat Hackers: Prototype Reveal / Hackday,2025-11-15,Newspeak House,Campaign Lab,co_host,stated,"partnership between John Evans (spacetu.be), Campaign Lab and Newspeak House",https://luma.com/qyd193bj
+L-def-acc-hack,def/acc hackathon - london,2025-11-21,BlueDot Impact,Halcyon Futures,general,stated,Sponsored by Halcyon Futures.,https://luma.com/def-acc-hack
+L-def-acc-hack,def/acc hackathon - london,2025-11-21,BlueDot Impact,Apart Research,co_host,stated,hosted by bluedot impact ... and apart research,https://luma.com/def-acc-hack
+O-ait-2026-09-22,AI Tinkerers London - 22nd September 2026,2026-09-22,AI Tinkerers London,Fleek,venue,stated,this month hosted at Fleek!,https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+O-ait-2026-09-22,AI Tinkerers London - 22nd September 2026,2026-09-22,AI Tinkerers London,Conveo,general,stated,"Partners and Sponsors: Conveo, Dex, ACI.dev, Mozilla AI, Fleek",https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+O-ait-2026-09-22,AI Tinkerers London - 22nd September 2026,2026-09-22,AI Tinkerers London,Dex,general,stated,"Partners and Sponsors: Conveo, Dex, ACI.dev, Mozilla AI, Fleek",https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+O-ait-2026-09-22,AI Tinkerers London - 22nd September 2026,2026-09-22,AI Tinkerers London,ACI.dev,general,stated,"Partners and Sponsors: Conveo, Dex, ACI.dev, Mozilla AI, Fleek",https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+O-ait-2026-09-22,AI Tinkerers London - 22nd September 2026,2026-09-22,AI Tinkerers London,Mozilla AI,general,stated,"Partners and Sponsors: Conveo, Dex, ACI.dev, Mozilla AI, Fleek",https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+O-ait-agents-vs-wall-street,Agents vs Wall Street // $10k cash prize (AI Tinkerers London),2026-08-16,AI Tinkerers London,Primer,co_host,stated,Presented by Primer · OpenStocks · OpenAI · AI Tinkerers,https://london.aitinkerers.org/p/agents-vs-wall-street
+O-ait-agents-vs-wall-street,Agents vs Wall Street // $10k cash prize (AI Tinkerers London),2026-08-16,AI Tinkerers London,OpenStocks,co_host,stated,Presented by Primer · OpenStocks · OpenAI · AI Tinkerers,https://london.aitinkerers.org/p/agents-vs-wall-street
+O-ait-agents-vs-wall-street,Agents vs Wall Street // $10k cash prize (AI Tinkerers London),2026-08-16,AI Tinkerers London,OpenAI,co_host,stated,Presented by Primer · OpenStocks · OpenAI · AI Tinkerers,https://london.aitinkerers.org/p/agents-vs-wall-street
+O-pydata-110,PyData London - 110th Meetup,2026-10-06,PyData London,Man Group,food,stated,"free food and drinks, generously provided by our host, Man Group",https://www.meetup.com/pydata-london-meetup/events/316770322/
+O-pydata-110,PyData London - 110th Meetup,2026-10-06,PyData London,Man Group,drinks,stated,"free food and drinks, generously provided by our host, Man Group",https://www.meetup.com/pydata-london-meetup/events/316770322/
+O-pydata-110,PyData London - 110th Meetup,2026-10-06,PyData London,NumFOCUS,general,stated,Sponsors: NumFOCUS,https://www.meetup.com/pydata-london-meetup/events/316770322/
+O-pydata-110,PyData London - 110th Meetup,2026-10-06,PyData London,"Birkbeck, University of London",venue,stated,"Venue: Room MAL B33, Birkbeck",https://www.meetup.com/pydata-london-meetup/events/316770322/
+O-django-london-2026-07,Django London Meetup July,2026-07-28,Django London,Octopus Energy,venue,stated,We will be at the Octopus Energy Group office,https://www.meetup.com/djangolondon/events/315788543/
+O-django-london-2026-07,Django London Meetup July,2026-07-28,Django London,Octopus Energy,general,stated,"This meetup is sponsored by: Octopus Energy, JetBrains, Kraken Tech",https://www.meetup.com/djangolondon/events/315788543/
+O-django-london-2026-07,Django London Meetup July,2026-07-28,Django London,JetBrains,general,stated,This meetup is sponsored by: ... JetBrains,https://www.meetup.com/djangolondon/events/315788543/
+O-django-london-2026-07,Django London Meetup July,2026-07-28,Django London,Kraken Tech,general,stated,This meetup is sponsored by: ... Kraken Tech,https://www.meetup.com/djangolondon/events/315788543/
+O-django-london-2026-07,Django London Meetup July,2026-07-28,Django London,Octopus Energy,food,inferred,6:30pm Food and drinks offered by our sponsor (which of the three not named),https://www.meetup.com/djangolondon/events/315788543/
+O-jslondon-2026-07,JavaScript London in Collaboration with Healthtech-1,2026-07-28,JavaScript London,Healthtech-1,general,stated,"London's biggest JavaScript meetup is back, sponsored by Healthtech-1",https://www.meetup.com/javascript-london/events/315267535/
+O-jslondon-2026-07,JavaScript London in Collaboration with Healthtech-1,2026-07-28,JavaScript London,Wave Talent,venue,stated,hosted back at Wave Talent's offices,https://www.meetup.com/javascript-london/events/315267535/
+O-jslondon-2026-07,JavaScript London in Collaboration with Healthtech-1,2026-07-28,JavaScript London,Healthtech-1,food,inferred,"Grab a slice, grab a drink (sole sponsor Healthtech-1)",https://www.meetup.com/javascript-london/events/315267535/
+O-jslondon-2026-02,JavaScript London - first meetup of 2026,2026-02 (approx.),JavaScript London,Wave Talent,co_host,stated,JavaScript London hosted its first meetup of 2026 in collaboration with Wave Talent and Omnea,https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_
+O-jslondon-2026-02,JavaScript London - first meetup of 2026,2026-02 (approx.),JavaScript London,Omnea,co_host,stated,in collaboration with Wave Talent and Omnea,https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_
+O-londonjs-2026-07,London.js with incident.io - Thursday 30th July 2026,2026-07-30,London.js,incident.io,general,inferred,event title 'London.js with incident.io' (group page past events),https://www.meetup.com/london-js/
+O-londonjs-2026-04,London.js with Motorway & Omnea - Thursday 30th April 2026,2026-04-30,London.js,Motorway,general,inferred,event title 'London.js with Motorway & Omnea',https://www.meetup.com/london-js/
+O-londonjs-2026-04,London.js with Motorway & Omnea - Thursday 30th April 2026,2026-04-30,London.js,Omnea,general,inferred,event title 'London.js with Motorway & Omnea',https://www.meetup.com/london-js/
+O-londonjs-2026-10,London.js at VEED.IO on Wednesday 28th October 2026,2026-10-28,London.js,VEED,venue,stated,VEED who have kindly offered to host & sponsor our October event,https://www.meetup.com/london-js/
+O-londonjs-2026-10,London.js at VEED.IO on Wednesday 28th October 2026,2026-10-28,London.js,VEED,general,stated,VEED who have kindly offered to host & sponsor our October event,https://www.meetup.com/london-js/
+O-londonjs-2026-10,London.js at VEED.IO on Wednesday 28th October 2026,2026-10-28,London.js,VEED,food,inferred,A variety of food & drink will be served (host & sponsor VEED),https://www.meetup.com/london-js/
+O-londonjs-2026-01,London.js January 2026,2026-01 (approx.),London.js,Flagsmith,general,stated,We are proud to be co-sponsoring another exciting London.js event along with the lovely folks at Accurx!,https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn
+O-londonjs-2026-01,London.js January 2026,2026-01 (approx.),London.js,Accurx,general,stated,co-sponsoring ... along with the lovely folks at Accurx,https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn
+O-cnl-2026-10,"Cloud Native London, October 2026",2026-10-07,Cloud Native London,Just Eat,venue,stated,"Location: Just Eat London, Fleet Place House",https://www.meetup.com/cloud-native-london/
+O-cnl-2026-10,"Cloud Native London, October 2026",2026-10-07,Cloud Native London,TechShack,general,inferred,"Group page: 'Sponsors: TechShack' (series-level, not per event)",https://www.meetup.com/cloud-native-london/
+O-stripe-briefcase-2026,Stripe x Briefcase: AI FinTech London Hackathon,2026-10-15,Briefcase x Stripe,Briefcase,general,stated,"Sponsors: Briefcase, Stripe, Cognee",https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026
+O-stripe-briefcase-2026,Stripe x Briefcase: AI FinTech London Hackathon,2026-10-15,Briefcase x Stripe,Stripe,general,stated,"Sponsors: Briefcase, Stripe, Cognee",https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026
+O-stripe-briefcase-2026,Stripe x Briefcase: AI FinTech London Hackathon,2026-10-15,Briefcase x Stripe,Cognee,general,stated,"Sponsors: Briefcase, Stripe, Cognee",https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026
+O-scoop-london-bowl,Scoop AI Hackathon: London Bowl,2025-12-06,Encode Club,Neo,co_host,stated,Neo and SpoonOS have announced London ... co-hosted with Encode Club,https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+O-scoop-london-bowl,Scoop AI Hackathon: London Bowl,2025-12-06,Encode Club,SpoonOS,co_host,stated,Neo and SpoonOS,https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+O-scoop-london-bowl,Scoop AI Hackathon: London Bowl,2025-12-06,Encode Club,ElevenLabs,tech_partner,stated,collaboration with ElevenLabs ... access to its AI voice technologies,https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+O-scoop-london-bowl,Scoop AI Hackathon: London Bowl,2025-12-06,Encode Club,Encode Hub,venue,stated,at Encode Hub in Shoreditch,https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+O-wpldn-2026-10,#WPLDN - October 2026: Rethinking Maintenance & Return to the Darkside,2026-10-29,#WPLDN (London WordPress),Filter,general,stated,"Massive thanks to our sponsors who make these free events possible: Filter, Kinsta, Mollie, and show.fm",https://www.meetup.com/london-wordpress/
+O-wpldn-2026-10,#WPLDN - October 2026: Rethinking Maintenance & Return to the Darkside,2026-10-29,#WPLDN (London WordPress),Kinsta,general,stated,"Massive thanks to our sponsors who make these free events possible: Filter, Kinsta, Mollie, and show.fm",https://www.meetup.com/london-wordpress/
+O-wpldn-2026-10,#WPLDN - October 2026: Rethinking Maintenance & Return to the Darkside,2026-10-29,#WPLDN (London WordPress),Mollie,general,stated,"Massive thanks to our sponsors who make these free events possible: Filter, Kinsta, Mollie, and show.fm",https://www.meetup.com/london-wordpress/
+O-wpldn-2026-10,#WPLDN - October 2026: Rethinking Maintenance & Return to the Darkside,2026-10-29,#WPLDN (London WordPress),show.fm,general,stated,"Massive thanks to our sponsors who make these free events possible: Filter, Kinsta, Mollie, and show.fm",https://www.meetup.com/london-wordpress/

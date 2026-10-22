@@ -1,0 +1,4759 @@
+{
+  "_notice": "SAMPLE / FICTIONAL. Shaped like Luma API responses (field names from public-api.luma.com/openapi.json). Not real Luma data; ids are fake; the _notice key is not part of real responses.",
+  "entries": [
+    {
+      "id": "cnt-SAMPLEM001",
+      "user_id": "usr-SAMPLEM001",
+      "created_at": "2026-07-16T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Uma Pemberly",
+      "avatar_url": null,
+      "email": "member001@example.com",
+      "first_name": "Uma",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM002",
+      "user_id": "usr-SAMPLEM002",
+      "created_at": "2025-09-06T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Marlow",
+      "avatar_url": null,
+      "email": "member002@example.com",
+      "first_name": "Farid",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM003",
+      "user_id": "usr-SAMPLEM003",
+      "created_at": "2025-02-24T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Isla Morrow",
+      "avatar_url": null,
+      "email": "member003@example.com",
+      "first_name": "Isla",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM004",
+      "user_id": "usr-SAMPLEM004",
+      "created_at": "2025-07-16T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 7,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Hiro Sallis",
+      "avatar_url": null,
+      "email": "member004@example.com",
+      "first_name": "Hiro",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM005",
+      "user_id": "usr-SAMPLEM005",
+      "created_at": "2025-04-21T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Dev Vance",
+      "avatar_url": null,
+      "email": "member005@example.com",
+      "first_name": "Dev",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM006",
+      "user_id": "usr-SAMPLEM006",
+      "created_at": "2025-09-29T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Jonah Kestrel",
+      "avatar_url": null,
+      "email": "member006@example.com",
+      "first_name": "Jonah",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM007",
+      "user_id": "usr-SAMPLEM007",
+      "created_at": "2025-02-12T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Calder",
+      "avatar_url": null,
+      "email": "member007@example.com",
+      "first_name": "Arlo",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM008",
+      "user_id": "usr-SAMPLEM008",
+      "created_at": "2026-08-27T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Omar Morrow",
+      "avatar_url": null,
+      "email": "member008@example.com",
+      "first_name": "Omar",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM009",
+      "user_id": "usr-SAMPLEM009",
+      "created_at": "2024-08-03T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Rhea Fernwood",
+      "avatar_url": null,
+      "email": "member009@example.com",
+      "first_name": "Rhea",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM010",
+      "user_id": "usr-SAMPLEM010",
+      "created_at": "2026-04-29T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Calder",
+      "avatar_url": null,
+      "email": "member010@example.com",
+      "first_name": "Vik",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM011",
+      "user_id": "usr-SAMPLEM011",
+      "created_at": "2026-08-22T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Zed Marlow",
+      "avatar_url": null,
+      "email": "member011@example.com",
+      "first_name": "Zed",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM012",
+      "user_id": "usr-SAMPLEM012",
+      "created_at": "2026-04-14T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Halloway",
+      "avatar_url": null,
+      "email": "member012@example.com",
+      "first_name": "Elio",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM013",
+      "user_id": "usr-SAMPLEM013",
+      "created_at": "2026-04-14T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Tobi Rookwood",
+      "avatar_url": null,
+      "email": "member013@example.com",
+      "first_name": "Tobi",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM014",
+      "user_id": "usr-SAMPLEM014",
+      "created_at": "2025-07-15T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Ashgrove",
+      "avatar_url": null,
+      "email": "member014@example.com",
+      "first_name": "Theo",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM015",
+      "user_id": "usr-SAMPLEM015",
+      "created_at": "2025-04-16T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Priya Darrow",
+      "avatar_url": null,
+      "email": "member015@example.com",
+      "first_name": "Priya",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM016",
+      "user_id": "usr-SAMPLEM016",
+      "created_at": "2024-10-28T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Wren Sallis",
+      "avatar_url": null,
+      "email": "member016@example.com",
+      "first_name": "Wren",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM017",
+      "user_id": "usr-SAMPLEM017",
+      "created_at": "2025-01-17T12:00:00.000Z",
+      "event_approved_count": 1,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Kai Linnell",
+      "avatar_url": null,
+      "email": "member017@example.com",
+      "first_name": "Kai",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM018",
+      "user_id": "usr-SAMPLEM018",
+      "created_at": "2024-08-01T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 6,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Ada Halloway",
+      "avatar_url": null,
+      "email": "member018@example.com",
+      "first_name": "Ada",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM019",
+      "user_id": "usr-SAMPLEM019",
+      "created_at": "2024-08-19T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Sol Rookwood",
+      "avatar_url": null,
+      "email": "member019@example.com",
+      "first_name": "Sol",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM020",
+      "user_id": "usr-SAMPLEM020",
+      "created_at": "2025-04-28T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Brackley",
+      "avatar_url": null,
+      "email": "member020@example.com",
+      "first_name": "Luca",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM021",
+      "user_id": "usr-SAMPLEM021",
+      "created_at": "2025-07-03T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Wren Marlow",
+      "avatar_url": null,
+      "email": "member021@example.com",
+      "first_name": "Wren",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM022",
+      "user_id": "usr-SAMPLEM022",
+      "created_at": "2025-08-04T12:00:00.000Z",
+      "event_approved_count": 9,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Ravi Marlow",
+      "avatar_url": null,
+      "email": "member022@example.com",
+      "first_name": "Ravi",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM023",
+      "user_id": "usr-SAMPLEM023",
+      "created_at": "2025-10-25T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Ines Vance",
+      "avatar_url": null,
+      "email": "member023@example.com",
+      "first_name": "Ines",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM024",
+      "user_id": "usr-SAMPLEM024",
+      "created_at": "2024-05-11T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Darrow",
+      "avatar_url": null,
+      "email": "member024@example.com",
+      "first_name": "Theo",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM025",
+      "user_id": "usr-SAMPLEM025",
+      "created_at": "2025-11-09T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Pax Sallis",
+      "avatar_url": null,
+      "email": "member025@example.com",
+      "first_name": "Pax",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM026",
+      "user_id": "usr-SAMPLEM026",
+      "created_at": "2025-04-18T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Ostrander",
+      "avatar_url": null,
+      "email": "member026@example.com",
+      "first_name": "Vik",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM027",
+      "user_id": "usr-SAMPLEM027",
+      "created_at": "2024-09-08T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 6,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Hiro Linnell",
+      "avatar_url": null,
+      "email": "member027@example.com",
+      "first_name": "Hiro",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM028",
+      "user_id": "usr-SAMPLEM028",
+      "created_at": "2026-03-04T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Jonah Ostrander",
+      "avatar_url": null,
+      "email": "member028@example.com",
+      "first_name": "Jonah",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM029",
+      "user_id": "usr-SAMPLEM029",
+      "created_at": "2025-05-05T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Priya Brackley",
+      "avatar_url": null,
+      "email": "member029@example.com",
+      "first_name": "Priya",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM030",
+      "user_id": "usr-SAMPLEM030",
+      "created_at": "2024-12-11T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Juno Nettle",
+      "avatar_url": null,
+      "email": "member030@example.com",
+      "first_name": "Juno",
+      "last_name": "Nettle"
+    },
+    {
+      "id": "cnt-SAMPLEM031",
+      "user_id": "usr-SAMPLEM031",
+      "created_at": "2025-05-30T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Uma Rookwood",
+      "avatar_url": null,
+      "email": "member031@example.com",
+      "first_name": "Uma",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM032",
+      "user_id": "usr-SAMPLEM032",
+      "created_at": "2025-11-09T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Tobi Pemberly",
+      "avatar_url": null,
+      "email": "member032@example.com",
+      "first_name": "Tobi",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM033",
+      "user_id": "usr-SAMPLEM033",
+      "created_at": "2025-12-03T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Leah Ashgrove",
+      "avatar_url": null,
+      "email": "member033@example.com",
+      "first_name": "Leah",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM034",
+      "user_id": "usr-SAMPLEM034",
+      "created_at": "2025-03-04T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Arkwright",
+      "avatar_url": null,
+      "email": "member034@example.com",
+      "first_name": "Farid",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM035",
+      "user_id": "usr-SAMPLEM035",
+      "created_at": "2025-05-23T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Cleo Darrow",
+      "avatar_url": null,
+      "email": "member035@example.com",
+      "first_name": "Cleo",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM036",
+      "user_id": "usr-SAMPLEM036",
+      "created_at": "2024-09-21T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Jonah Ashgrove",
+      "avatar_url": null,
+      "email": "member036@example.com",
+      "first_name": "Jonah",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM037",
+      "user_id": "usr-SAMPLEM037",
+      "created_at": "2025-07-01T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Noor Tennant",
+      "avatar_url": null,
+      "email": "member037@example.com",
+      "first_name": "Noor",
+      "last_name": "Tennant"
+    },
+    {
+      "id": "cnt-SAMPLEM038",
+      "user_id": "usr-SAMPLEM038",
+      "created_at": "2025-08-22T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Linnell",
+      "avatar_url": null,
+      "email": "member038@example.com",
+      "first_name": "Elio",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM039",
+      "user_id": "usr-SAMPLEM039",
+      "created_at": "2024-11-29T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Arkwright",
+      "avatar_url": null,
+      "email": "member039@example.com",
+      "first_name": "Vik",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM040",
+      "user_id": "usr-SAMPLEM040",
+      "created_at": "2025-08-23T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Esme Rookwood",
+      "avatar_url": null,
+      "email": "member040@example.com",
+      "first_name": "Esme",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM041",
+      "user_id": "usr-SAMPLEM041",
+      "created_at": "2025-02-03T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Quinn Arkwright",
+      "avatar_url": null,
+      "email": "member041@example.com",
+      "first_name": "Quinn",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM042",
+      "user_id": "usr-SAMPLEM042",
+      "created_at": "2025-08-17T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Jonah Calder",
+      "avatar_url": null,
+      "email": "member042@example.com",
+      "first_name": "Jonah",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM043",
+      "user_id": "usr-SAMPLEM043",
+      "created_at": "2024-07-04T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Priya Marlow",
+      "avatar_url": null,
+      "email": "member043@example.com",
+      "first_name": "Priya",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM044",
+      "user_id": "usr-SAMPLEM044",
+      "created_at": "2025-07-16T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Isla Linnell",
+      "avatar_url": null,
+      "email": "member044@example.com",
+      "first_name": "Isla",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM045",
+      "user_id": "usr-SAMPLEM045",
+      "created_at": "2025-10-08T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Fernwood",
+      "avatar_url": null,
+      "email": "member045@example.com",
+      "first_name": "Xan",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM046",
+      "user_id": "usr-SAMPLEM046",
+      "created_at": "2026-07-05T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Kai Halloway",
+      "avatar_url": null,
+      "email": "member046@example.com",
+      "first_name": "Kai",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM047",
+      "user_id": "usr-SAMPLEM047",
+      "created_at": "2024-11-14T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Gwen Linnell",
+      "avatar_url": null,
+      "email": "member047@example.com",
+      "first_name": "Gwen",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM048",
+      "user_id": "usr-SAMPLEM048",
+      "created_at": "2024-05-24T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Brackley",
+      "avatar_url": null,
+      "email": "member048@example.com",
+      "first_name": "Theo",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM049",
+      "user_id": "usr-SAMPLEM049",
+      "created_at": "2024-10-30T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Tennant",
+      "avatar_url": null,
+      "email": "member049@example.com",
+      "first_name": "Theo",
+      "last_name": "Tennant"
+    },
+    {
+      "id": "cnt-SAMPLEM050",
+      "user_id": "usr-SAMPLEM050",
+      "created_at": "2026-01-26T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Pax Darrow",
+      "avatar_url": null,
+      "email": "member050@example.com",
+      "first_name": "Pax",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM051",
+      "user_id": "usr-SAMPLEM051",
+      "created_at": "2025-09-11T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Pax Vance",
+      "avatar_url": null,
+      "email": "member051@example.com",
+      "first_name": "Pax",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM052",
+      "user_id": "usr-SAMPLEM052",
+      "created_at": "2025-08-27T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Juno Darrow",
+      "avatar_url": null,
+      "email": "member052@example.com",
+      "first_name": "Juno",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM053",
+      "user_id": "usr-SAMPLEM053",
+      "created_at": "2024-06-24T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Sallis",
+      "avatar_url": null,
+      "email": "member053@example.com",
+      "first_name": "Elio",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM054",
+      "user_id": "usr-SAMPLEM054",
+      "created_at": "2025-09-07T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Isla Pemberly",
+      "avatar_url": null,
+      "email": "member054@example.com",
+      "first_name": "Isla",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM055",
+      "user_id": "usr-SAMPLEM055",
+      "created_at": "2024-08-02T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Gwen Linnell",
+      "avatar_url": null,
+      "email": "member055@example.com",
+      "first_name": "Gwen",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM056",
+      "user_id": "usr-SAMPLEM056",
+      "created_at": "2026-02-07T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Rhea Darrow",
+      "avatar_url": null,
+      "email": "member056@example.com",
+      "first_name": "Rhea",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM057",
+      "user_id": "usr-SAMPLEM057",
+      "created_at": "2025-08-13T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Leah Calder",
+      "avatar_url": null,
+      "email": "member057@example.com",
+      "first_name": "Leah",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM058",
+      "user_id": "usr-SAMPLEM058",
+      "created_at": "2026-08-25T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Ostrander",
+      "avatar_url": null,
+      "email": "member058@example.com",
+      "first_name": "Xan",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM059",
+      "user_id": "usr-SAMPLEM059",
+      "created_at": "2025-12-03T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Gwen Rookwood",
+      "avatar_url": null,
+      "email": "member059@example.com",
+      "first_name": "Gwen",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM060",
+      "user_id": "usr-SAMPLEM060",
+      "created_at": "2026-07-03T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Tess Brackley",
+      "avatar_url": null,
+      "email": "member060@example.com",
+      "first_name": "Tess",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM061",
+      "user_id": "usr-SAMPLEM061",
+      "created_at": "2025-01-07T12:00:00.000Z",
+      "event_approved_count": 11,
+      "event_checked_in_count": 9,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Quinn Halloway",
+      "avatar_url": null,
+      "email": "member061@example.com",
+      "first_name": "Quinn",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM062",
+      "user_id": "usr-SAMPLEM062",
+      "created_at": "2026-08-05T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Omar Quillon",
+      "avatar_url": null,
+      "email": "member062@example.com",
+      "first_name": "Omar",
+      "last_name": "Quillon"
+    },
+    {
+      "id": "cnt-SAMPLEM063",
+      "user_id": "usr-SAMPLEM063",
+      "created_at": "2025-01-19T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Ines Arkwright",
+      "avatar_url": null,
+      "email": "member063@example.com",
+      "first_name": "Ines",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM064",
+      "user_id": "usr-SAMPLEM064",
+      "created_at": "2025-07-10T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Bram Linnell",
+      "avatar_url": null,
+      "email": "member064@example.com",
+      "first_name": "Bram",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM065",
+      "user_id": "usr-SAMPLEM065",
+      "created_at": "2026-03-15T12:00:00.000Z",
+      "event_approved_count": 11,
+      "event_checked_in_count": 9,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Calder",
+      "avatar_url": null,
+      "email": "member065@example.com",
+      "first_name": "Theo",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM066",
+      "user_id": "usr-SAMPLEM066",
+      "created_at": "2025-04-21T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Linnell",
+      "avatar_url": null,
+      "email": "member066@example.com",
+      "first_name": "Farid",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM067",
+      "user_id": "usr-SAMPLEM067",
+      "created_at": "2025-05-29T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Noor Morrow",
+      "avatar_url": null,
+      "email": "member067@example.com",
+      "first_name": "Noor",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM068",
+      "user_id": "usr-SAMPLEM068",
+      "created_at": "2024-07-07T12:00:00.000Z",
+      "event_approved_count": 9,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Yara Calder",
+      "avatar_url": null,
+      "email": "member068@example.com",
+      "first_name": "Yara",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM069",
+      "user_id": "usr-SAMPLEM069",
+      "created_at": "2024-08-31T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Wren Ostrander",
+      "avatar_url": null,
+      "email": "member069@example.com",
+      "first_name": "Wren",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM070",
+      "user_id": "usr-SAMPLEM070",
+      "created_at": "2025-10-11T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Brackley",
+      "avatar_url": null,
+      "email": "member070@example.com",
+      "first_name": "Vik",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM071",
+      "user_id": "usr-SAMPLEM071",
+      "created_at": "2026-07-20T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Darrow",
+      "avatar_url": null,
+      "email": "member071@example.com",
+      "first_name": "Luca",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM072",
+      "user_id": "usr-SAMPLEM072",
+      "created_at": "2026-03-02T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Ravi Ashgrove",
+      "avatar_url": null,
+      "email": "member072@example.com",
+      "first_name": "Ravi",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM073",
+      "user_id": "usr-SAMPLEM073",
+      "created_at": "2025-05-26T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Cleo Rookwood",
+      "avatar_url": null,
+      "email": "member073@example.com",
+      "first_name": "Cleo",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM074",
+      "user_id": "usr-SAMPLEM074",
+      "created_at": "2026-08-05T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Cleo Halloway",
+      "avatar_url": null,
+      "email": "member074@example.com",
+      "first_name": "Cleo",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM075",
+      "user_id": "usr-SAMPLEM075",
+      "created_at": "2025-07-02T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Pemberly",
+      "avatar_url": null,
+      "email": "member075@example.com",
+      "first_name": "Vik",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM076",
+      "user_id": "usr-SAMPLEM076",
+      "created_at": "2024-10-14T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Zed Darrow",
+      "avatar_url": null,
+      "email": "member076@example.com",
+      "first_name": "Zed",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM077",
+      "user_id": "usr-SAMPLEM077",
+      "created_at": "2025-07-15T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Linnell",
+      "avatar_url": null,
+      "email": "member077@example.com",
+      "first_name": "Xan",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM078",
+      "user_id": "usr-SAMPLEM078",
+      "created_at": "2025-10-29T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Omar Arkwright",
+      "avatar_url": null,
+      "email": "member078@example.com",
+      "first_name": "Omar",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM079",
+      "user_id": "usr-SAMPLEM079",
+      "created_at": "2024-09-18T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Rookwood",
+      "avatar_url": null,
+      "email": "member079@example.com",
+      "first_name": "Farid",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM080",
+      "user_id": "usr-SAMPLEM080",
+      "created_at": "2025-09-26T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Kemi Darrow",
+      "avatar_url": null,
+      "email": "member080@example.com",
+      "first_name": "Kemi",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM081",
+      "user_id": "usr-SAMPLEM081",
+      "created_at": "2024-12-09T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Omar Pemberly",
+      "avatar_url": null,
+      "email": "member081@example.com",
+      "first_name": "Omar",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM082",
+      "user_id": "usr-SAMPLEM082",
+      "created_at": "2024-05-06T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Linnell",
+      "avatar_url": null,
+      "email": "member082@example.com",
+      "first_name": "Xan",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM083",
+      "user_id": "usr-SAMPLEM083",
+      "created_at": "2024-07-17T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Leah Ashgrove",
+      "avatar_url": null,
+      "email": "member083@example.com",
+      "first_name": "Leah",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM084",
+      "user_id": "usr-SAMPLEM084",
+      "created_at": "2026-04-18T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Calder",
+      "avatar_url": null,
+      "email": "member084@example.com",
+      "first_name": "Xan",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM085",
+      "user_id": "usr-SAMPLEM085",
+      "created_at": "2025-02-12T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 6,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Leah Calder",
+      "avatar_url": null,
+      "email": "member085@example.com",
+      "first_name": "Leah",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM086",
+      "user_id": "usr-SAMPLEM086",
+      "created_at": "2026-01-10T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Calder",
+      "avatar_url": null,
+      "email": "member086@example.com",
+      "first_name": "Elio",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM087",
+      "user_id": "usr-SAMPLEM087",
+      "created_at": "2026-05-25T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Bram Tennant",
+      "avatar_url": null,
+      "email": "member087@example.com",
+      "first_name": "Bram",
+      "last_name": "Tennant"
+    },
+    {
+      "id": "cnt-SAMPLEM088",
+      "user_id": "usr-SAMPLEM088",
+      "created_at": "2024-10-12T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Quinn Darrow",
+      "avatar_url": null,
+      "email": "member088@example.com",
+      "first_name": "Quinn",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM089",
+      "user_id": "usr-SAMPLEM089",
+      "created_at": "2026-07-09T12:00:00.000Z",
+      "event_approved_count": 1,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Kai Halloway",
+      "avatar_url": null,
+      "email": "member089@example.com",
+      "first_name": "Kai",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM090",
+      "user_id": "usr-SAMPLEM090",
+      "created_at": "2024-05-10T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Darrow",
+      "avatar_url": null,
+      "email": "member090@example.com",
+      "first_name": "Luca",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM091",
+      "user_id": "usr-SAMPLEM091",
+      "created_at": "2024-09-24T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Wren Marlow",
+      "avatar_url": null,
+      "email": "member091@example.com",
+      "first_name": "Wren",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM092",
+      "user_id": "usr-SAMPLEM092",
+      "created_at": "2026-01-23T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 6,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Calder",
+      "avatar_url": null,
+      "email": "member092@example.com",
+      "first_name": "Luca",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM093",
+      "user_id": "usr-SAMPLEM093",
+      "created_at": "2025-06-01T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Kai Fernwood",
+      "avatar_url": null,
+      "email": "member093@example.com",
+      "first_name": "Kai",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM094",
+      "user_id": "usr-SAMPLEM094",
+      "created_at": "2025-08-11T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Brackley",
+      "avatar_url": null,
+      "email": "member094@example.com",
+      "first_name": "Arlo",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM095",
+      "user_id": "usr-SAMPLEM095",
+      "created_at": "2026-07-09T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Tess Linnell",
+      "avatar_url": null,
+      "email": "member095@example.com",
+      "first_name": "Tess",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM096",
+      "user_id": "usr-SAMPLEM096",
+      "created_at": "2025-10-05T12:00:00.000Z",
+      "event_approved_count": 11,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Uma Marlow",
+      "avatar_url": null,
+      "email": "member096@example.com",
+      "first_name": "Uma",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM097",
+      "user_id": "usr-SAMPLEM097",
+      "created_at": "2025-07-06T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Nettle",
+      "avatar_url": null,
+      "email": "member097@example.com",
+      "first_name": "Arlo",
+      "last_name": "Nettle"
+    },
+    {
+      "id": "cnt-SAMPLEM098",
+      "user_id": "usr-SAMPLEM098",
+      "created_at": "2025-10-27T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Dev Quillon",
+      "avatar_url": null,
+      "email": "member098@example.com",
+      "first_name": "Dev",
+      "last_name": "Quillon"
+    },
+    {
+      "id": "cnt-SAMPLEM099",
+      "user_id": "usr-SAMPLEM099",
+      "created_at": "2026-03-05T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Calder",
+      "avatar_url": null,
+      "email": "member099@example.com",
+      "first_name": "Orla",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM100",
+      "user_id": "usr-SAMPLEM100",
+      "created_at": "2025-01-01T12:00:00.000Z",
+      "event_approved_count": 9,
+      "event_checked_in_count": 6,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Pemberly",
+      "avatar_url": null,
+      "email": "member100@example.com",
+      "first_name": "Arlo",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM101",
+      "user_id": "usr-SAMPLEM101",
+      "created_at": "2026-03-31T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Linnell",
+      "avatar_url": null,
+      "email": "member101@example.com",
+      "first_name": "Farid",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM102",
+      "user_id": "usr-SAMPLEM102",
+      "created_at": "2024-05-30T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Arkwright",
+      "avatar_url": null,
+      "email": "member102@example.com",
+      "first_name": "Theo",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM103",
+      "user_id": "usr-SAMPLEM103",
+      "created_at": "2025-02-09T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Bram Marlow",
+      "avatar_url": null,
+      "email": "member103@example.com",
+      "first_name": "Bram",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM104",
+      "user_id": "usr-SAMPLEM104",
+      "created_at": "2025-05-01T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Nico Nettle",
+      "avatar_url": null,
+      "email": "member104@example.com",
+      "first_name": "Nico",
+      "last_name": "Nettle"
+    },
+    {
+      "id": "cnt-SAMPLEM105",
+      "user_id": "usr-SAMPLEM105",
+      "created_at": "2025-08-03T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Saffi Vance",
+      "avatar_url": null,
+      "email": "member105@example.com",
+      "first_name": "Saffi",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM106",
+      "user_id": "usr-SAMPLEM106",
+      "created_at": "2025-05-15T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Ravi Marlow",
+      "avatar_url": null,
+      "email": "member106@example.com",
+      "first_name": "Ravi",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM107",
+      "user_id": "usr-SAMPLEM107",
+      "created_at": "2024-09-01T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Nico Rookwood",
+      "avatar_url": null,
+      "email": "member107@example.com",
+      "first_name": "Nico",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM108",
+      "user_id": "usr-SAMPLEM108",
+      "created_at": "2025-04-13T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Wren Whitlow",
+      "avatar_url": null,
+      "email": "member108@example.com",
+      "first_name": "Wren",
+      "last_name": "Whitlow"
+    },
+    {
+      "id": "cnt-SAMPLEM109",
+      "user_id": "usr-SAMPLEM109",
+      "created_at": "2025-12-23T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Gwen Rookwood",
+      "avatar_url": null,
+      "email": "member109@example.com",
+      "first_name": "Gwen",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM110",
+      "user_id": "usr-SAMPLEM110",
+      "created_at": "2025-08-25T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Pax Brackley",
+      "avatar_url": null,
+      "email": "member110@example.com",
+      "first_name": "Pax",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM111",
+      "user_id": "usr-SAMPLEM111",
+      "created_at": "2024-06-11T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Sallis",
+      "avatar_url": null,
+      "email": "member111@example.com",
+      "first_name": "Theo",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM112",
+      "user_id": "usr-SAMPLEM112",
+      "created_at": "2025-04-30T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Juno Rookwood",
+      "avatar_url": null,
+      "email": "member112@example.com",
+      "first_name": "Juno",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM113",
+      "user_id": "usr-SAMPLEM113",
+      "created_at": "2025-08-16T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Ravi Kestrel",
+      "avatar_url": null,
+      "email": "member113@example.com",
+      "first_name": "Ravi",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM114",
+      "user_id": "usr-SAMPLEM114",
+      "created_at": "2026-08-04T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Ravi Ostrander",
+      "avatar_url": null,
+      "email": "member114@example.com",
+      "first_name": "Ravi",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM115",
+      "user_id": "usr-SAMPLEM115",
+      "created_at": "2025-05-29T12:00:00.000Z",
+      "event_approved_count": 9,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Sol Kestrel",
+      "avatar_url": null,
+      "email": "member115@example.com",
+      "first_name": "Sol",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM116",
+      "user_id": "usr-SAMPLEM116",
+      "created_at": "2025-12-26T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Saffi Fernwood",
+      "avatar_url": null,
+      "email": "member116@example.com",
+      "first_name": "Saffi",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM117",
+      "user_id": "usr-SAMPLEM117",
+      "created_at": "2025-02-16T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Whitlow",
+      "avatar_url": null,
+      "email": "member117@example.com",
+      "first_name": "Xan",
+      "last_name": "Whitlow"
+    },
+    {
+      "id": "cnt-SAMPLEM118",
+      "user_id": "usr-SAMPLEM118",
+      "created_at": "2025-06-18T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Mira Calder",
+      "avatar_url": null,
+      "email": "member118@example.com",
+      "first_name": "Mira",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM119",
+      "user_id": "usr-SAMPLEM119",
+      "created_at": "2026-06-15T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Pemberly",
+      "avatar_url": null,
+      "email": "member119@example.com",
+      "first_name": "Arlo",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM120",
+      "user_id": "usr-SAMPLEM120",
+      "created_at": "2025-01-14T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Xan Rookwood",
+      "avatar_url": null,
+      "email": "member120@example.com",
+      "first_name": "Xan",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM121",
+      "user_id": "usr-SAMPLEM121",
+      "created_at": "2026-05-05T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Zed Linnell",
+      "avatar_url": null,
+      "email": "member121@example.com",
+      "first_name": "Zed",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM122",
+      "user_id": "usr-SAMPLEM122",
+      "created_at": "2026-05-02T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Kestrel",
+      "avatar_url": null,
+      "email": "member122@example.com",
+      "first_name": "Vik",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM123",
+      "user_id": "usr-SAMPLEM123",
+      "created_at": "2024-08-26T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Theo Rookwood",
+      "avatar_url": null,
+      "email": "member123@example.com",
+      "first_name": "Theo",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM124",
+      "user_id": "usr-SAMPLEM124",
+      "created_at": "2025-03-26T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Tobi Nettle",
+      "avatar_url": null,
+      "email": "member124@example.com",
+      "first_name": "Tobi",
+      "last_name": "Nettle"
+    },
+    {
+      "id": "cnt-SAMPLEM125",
+      "user_id": "usr-SAMPLEM125",
+      "created_at": "2025-10-18T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Juno Vance",
+      "avatar_url": null,
+      "email": "member125@example.com",
+      "first_name": "Juno",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM126",
+      "user_id": "usr-SAMPLEM126",
+      "created_at": "2024-12-17T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Hiro Sallis",
+      "avatar_url": null,
+      "email": "member126@example.com",
+      "first_name": "Hiro",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM127",
+      "user_id": "usr-SAMPLEM127",
+      "created_at": "2025-02-07T12:00:00.000Z",
+      "event_approved_count": 11,
+      "event_checked_in_count": 7,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Priya Kestrel",
+      "avatar_url": null,
+      "email": "member127@example.com",
+      "first_name": "Priya",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM128",
+      "user_id": "usr-SAMPLEM128",
+      "created_at": "2024-09-14T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Ashgrove",
+      "avatar_url": null,
+      "email": "member128@example.com",
+      "first_name": "Orla",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM129",
+      "user_id": "usr-SAMPLEM129",
+      "created_at": "2026-06-02T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Yara Brackley",
+      "avatar_url": null,
+      "email": "member129@example.com",
+      "first_name": "Yara",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM130",
+      "user_id": "usr-SAMPLEM130",
+      "created_at": "2024-10-15T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Bram Darrow",
+      "avatar_url": null,
+      "email": "member130@example.com",
+      "first_name": "Bram",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM131",
+      "user_id": "usr-SAMPLEM131",
+      "created_at": "2026-07-21T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Ines Linnell",
+      "avatar_url": null,
+      "email": "member131@example.com",
+      "first_name": "Ines",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM132",
+      "user_id": "usr-SAMPLEM132",
+      "created_at": "2024-11-13T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Isla Linnell",
+      "avatar_url": null,
+      "email": "member132@example.com",
+      "first_name": "Isla",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM133",
+      "user_id": "usr-SAMPLEM133",
+      "created_at": "2025-10-07T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Whitlow",
+      "avatar_url": null,
+      "email": "member133@example.com",
+      "first_name": "Elio",
+      "last_name": "Whitlow"
+    },
+    {
+      "id": "cnt-SAMPLEM134",
+      "user_id": "usr-SAMPLEM134",
+      "created_at": "2025-02-28T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Wren Pemberly",
+      "avatar_url": null,
+      "email": "member134@example.com",
+      "first_name": "Wren",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM135",
+      "user_id": "usr-SAMPLEM135",
+      "created_at": "2024-10-01T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Vance",
+      "avatar_url": null,
+      "email": "member135@example.com",
+      "first_name": "Orla",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM136",
+      "user_id": "usr-SAMPLEM136",
+      "created_at": "2025-12-16T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Uma Kestrel",
+      "avatar_url": null,
+      "email": "member136@example.com",
+      "first_name": "Uma",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM137",
+      "user_id": "usr-SAMPLEM137",
+      "created_at": "2024-07-23T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Hiro Nettle",
+      "avatar_url": null,
+      "email": "member137@example.com",
+      "first_name": "Hiro",
+      "last_name": "Nettle"
+    },
+    {
+      "id": "cnt-SAMPLEM138",
+      "user_id": "usr-SAMPLEM138",
+      "created_at": "2026-07-04T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Jonah Vance",
+      "avatar_url": null,
+      "email": "member138@example.com",
+      "first_name": "Jonah",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM139",
+      "user_id": "usr-SAMPLEM139",
+      "created_at": "2025-12-19T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Leah Pemberly",
+      "avatar_url": null,
+      "email": "member139@example.com",
+      "first_name": "Leah",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM140",
+      "user_id": "usr-SAMPLEM140",
+      "created_at": "2024-08-25T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Pemberly",
+      "avatar_url": null,
+      "email": "member140@example.com",
+      "first_name": "Arlo",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM141",
+      "user_id": "usr-SAMPLEM141",
+      "created_at": "2026-02-03T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Pax Ostrander",
+      "avatar_url": null,
+      "email": "member141@example.com",
+      "first_name": "Pax",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM142",
+      "user_id": "usr-SAMPLEM142",
+      "created_at": "2024-09-18T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Ashgrove",
+      "avatar_url": null,
+      "email": "member142@example.com",
+      "first_name": "Orla",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM143",
+      "user_id": "usr-SAMPLEM143",
+      "created_at": "2025-08-02T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Gwen Brackley",
+      "avatar_url": null,
+      "email": "member143@example.com",
+      "first_name": "Gwen",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM144",
+      "user_id": "usr-SAMPLEM144",
+      "created_at": "2025-12-04T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Tess Kestrel",
+      "avatar_url": null,
+      "email": "member144@example.com",
+      "first_name": "Tess",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM145",
+      "user_id": "usr-SAMPLEM145",
+      "created_at": "2024-09-12T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Dev Marlow",
+      "avatar_url": null,
+      "email": "member145@example.com",
+      "first_name": "Dev",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM146",
+      "user_id": "usr-SAMPLEM146",
+      "created_at": "2026-08-16T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Cleo Tennant",
+      "avatar_url": null,
+      "email": "member146@example.com",
+      "first_name": "Cleo",
+      "last_name": "Tennant"
+    },
+    {
+      "id": "cnt-SAMPLEM147",
+      "user_id": "usr-SAMPLEM147",
+      "created_at": "2025-11-30T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Zed Kestrel",
+      "avatar_url": null,
+      "email": "member147@example.com",
+      "first_name": "Zed",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM148",
+      "user_id": "usr-SAMPLEM148",
+      "created_at": "2025-10-14T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Cleo Fernwood",
+      "avatar_url": null,
+      "email": "member148@example.com",
+      "first_name": "Cleo",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM149",
+      "user_id": "usr-SAMPLEM149",
+      "created_at": "2025-12-17T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Ravi Morrow",
+      "avatar_url": null,
+      "email": "member149@example.com",
+      "first_name": "Ravi",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM150",
+      "user_id": "usr-SAMPLEM150",
+      "created_at": "2024-11-28T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Hiro Rookwood",
+      "avatar_url": null,
+      "email": "member150@example.com",
+      "first_name": "Hiro",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM151",
+      "user_id": "usr-SAMPLEM151",
+      "created_at": "2024-11-01T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Fernwood",
+      "avatar_url": null,
+      "email": "member151@example.com",
+      "first_name": "Luca",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM152",
+      "user_id": "usr-SAMPLEM152",
+      "created_at": "2025-04-13T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Mira Tennant",
+      "avatar_url": null,
+      "email": "member152@example.com",
+      "first_name": "Mira",
+      "last_name": "Tennant"
+    },
+    {
+      "id": "cnt-SAMPLEM153",
+      "user_id": "usr-SAMPLEM153",
+      "created_at": "2025-10-26T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Whitlow",
+      "avatar_url": null,
+      "email": "member153@example.com",
+      "first_name": "Farid",
+      "last_name": "Whitlow"
+    },
+    {
+      "id": "cnt-SAMPLEM155",
+      "user_id": "usr-SAMPLEM155",
+      "created_at": "2024-11-22T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Vance",
+      "avatar_url": null,
+      "email": "member155@example.com",
+      "first_name": "Vik",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM156",
+      "user_id": "usr-SAMPLEM156",
+      "created_at": "2025-08-03T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Pax Ashgrove",
+      "avatar_url": null,
+      "email": "member156@example.com",
+      "first_name": "Pax",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM157",
+      "user_id": "usr-SAMPLEM157",
+      "created_at": "2025-01-01T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Noor Vance",
+      "avatar_url": null,
+      "email": "member157@example.com",
+      "first_name": "Noor",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM158",
+      "user_id": "usr-SAMPLEM158",
+      "created_at": "2025-01-10T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Brackley",
+      "avatar_url": null,
+      "email": "member158@example.com",
+      "first_name": "Orla",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM159",
+      "user_id": "usr-SAMPLEM159",
+      "created_at": "2024-11-11T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Ines Morrow",
+      "avatar_url": null,
+      "email": "member159@example.com",
+      "first_name": "Ines",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM160",
+      "user_id": "usr-SAMPLEM160",
+      "created_at": "2025-04-02T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Nico Ostrander",
+      "avatar_url": null,
+      "email": "member160@example.com",
+      "first_name": "Nico",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM161",
+      "user_id": "usr-SAMPLEM161",
+      "created_at": "2026-05-31T12:00:00.000Z",
+      "event_approved_count": 1,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Calder",
+      "avatar_url": null,
+      "email": "member161@example.com",
+      "first_name": "Elio",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM162",
+      "user_id": "usr-SAMPLEM162",
+      "created_at": "2026-04-22T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Arlo Linnell",
+      "avatar_url": null,
+      "email": "member162@example.com",
+      "first_name": "Arlo",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM163",
+      "user_id": "usr-SAMPLEM163",
+      "created_at": "2024-09-18T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Uma Linnell",
+      "avatar_url": null,
+      "email": "member163@example.com",
+      "first_name": "Uma",
+      "last_name": "Linnell"
+    },
+    {
+      "id": "cnt-SAMPLEM164",
+      "user_id": "usr-SAMPLEM164",
+      "created_at": "2026-05-10T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Kai Marlow",
+      "avatar_url": null,
+      "email": "member164@example.com",
+      "first_name": "Kai",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM165",
+      "user_id": "usr-SAMPLEM165",
+      "created_at": "2024-06-18T12:00:00.000Z",
+      "event_approved_count": 1,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Ines Darrow",
+      "avatar_url": null,
+      "email": "member165@example.com",
+      "first_name": "Ines",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM166",
+      "user_id": "usr-SAMPLEM166",
+      "created_at": "2026-02-11T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Bram Whitlow",
+      "avatar_url": null,
+      "email": "member166@example.com",
+      "first_name": "Bram",
+      "last_name": "Whitlow"
+    },
+    {
+      "id": "cnt-SAMPLEM167",
+      "user_id": "usr-SAMPLEM167",
+      "created_at": "2025-03-17T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Esme Ashgrove",
+      "avatar_url": null,
+      "email": "member167@example.com",
+      "first_name": "Esme",
+      "last_name": "Ashgrove"
+    },
+    {
+      "id": "cnt-SAMPLEM168",
+      "user_id": "usr-SAMPLEM168",
+      "created_at": "2026-03-22T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Esme Kestrel",
+      "avatar_url": null,
+      "email": "member168@example.com",
+      "first_name": "Esme",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM169",
+      "user_id": "usr-SAMPLEM169",
+      "created_at": "2025-09-01T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Isla Sallis",
+      "avatar_url": null,
+      "email": "member169@example.com",
+      "first_name": "Isla",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM170",
+      "user_id": "usr-SAMPLEM170",
+      "created_at": "2025-10-01T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Morrow",
+      "avatar_url": null,
+      "email": "member170@example.com",
+      "first_name": "Farid",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM171",
+      "user_id": "usr-SAMPLEM171",
+      "created_at": "2026-02-06T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Morrow",
+      "avatar_url": null,
+      "email": "member171@example.com",
+      "first_name": "Luca",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM172",
+      "user_id": "usr-SAMPLEM172",
+      "created_at": "2025-03-14T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Ada Fernwood",
+      "avatar_url": null,
+      "email": "member172@example.com",
+      "first_name": "Ada",
+      "last_name": "Fernwood"
+    },
+    {
+      "id": "cnt-SAMPLEM173",
+      "user_id": "usr-SAMPLEM173",
+      "created_at": "2025-10-03T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Saffi Whitlow",
+      "avatar_url": null,
+      "email": "member173@example.com",
+      "first_name": "Saffi",
+      "last_name": "Whitlow"
+    },
+    {
+      "id": "cnt-SAMPLEM174",
+      "user_id": "usr-SAMPLEM174",
+      "created_at": "2025-07-20T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        },
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        }
+      ],
+      "membership": null,
+      "name": "Rhea Halloway",
+      "avatar_url": null,
+      "email": "member174@example.com",
+      "first_name": "Rhea",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM175",
+      "user_id": "usr-SAMPLEM175",
+      "created_at": "2025-01-22T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Bram Ostrander",
+      "avatar_url": null,
+      "email": "member175@example.com",
+      "first_name": "Bram",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM176",
+      "user_id": "usr-SAMPLEM176",
+      "created_at": "2024-08-25T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 6,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        }
+      ],
+      "membership": null,
+      "name": "Leah Arkwright",
+      "avatar_url": null,
+      "email": "member176@example.com",
+      "first_name": "Leah",
+      "last_name": "Arkwright"
+    },
+    {
+      "id": "cnt-SAMPLEM177",
+      "user_id": "usr-SAMPLEM177",
+      "created_at": "2024-08-11T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Zed Darrow",
+      "avatar_url": null,
+      "email": "member177@example.com",
+      "first_name": "Zed",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM178",
+      "user_id": "usr-SAMPLEM178",
+      "created_at": "2025-10-31T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Dev Brackley",
+      "avatar_url": null,
+      "email": "member178@example.com",
+      "first_name": "Dev",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM179",
+      "user_id": "usr-SAMPLEM179",
+      "created_at": "2024-11-15T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        }
+      ],
+      "membership": null,
+      "name": "Priya Rookwood",
+      "avatar_url": null,
+      "email": "member179@example.com",
+      "first_name": "Priya",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM180",
+      "user_id": "usr-SAMPLEM180",
+      "created_at": "2025-01-25T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Sallis",
+      "avatar_url": null,
+      "email": "member180@example.com",
+      "first_name": "Orla",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM181",
+      "user_id": "usr-SAMPLEM181",
+      "created_at": "2024-11-04T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Luca Sallis",
+      "avatar_url": null,
+      "email": "member181@example.com",
+      "first_name": "Luca",
+      "last_name": "Sallis"
+    },
+    {
+      "id": "cnt-SAMPLEM182",
+      "user_id": "usr-SAMPLEM182",
+      "created_at": "2025-09-02T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 0,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Rookwood",
+      "avatar_url": null,
+      "email": "member182@example.com",
+      "first_name": "Elio",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM183",
+      "user_id": "usr-SAMPLEM183",
+      "created_at": "2025-11-19T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-creative-coding",
+          "name": "creative coding"
+        },
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        }
+      ],
+      "membership": null,
+      "name": "Saffi Kestrel",
+      "avatar_url": null,
+      "email": "member183@example.com",
+      "first_name": "Saffi",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM184",
+      "user_id": "usr-SAMPLEM184",
+      "created_at": "2025-07-23T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-fintech",
+          "name": "fintech"
+        }
+      ],
+      "membership": null,
+      "name": "Jonah Darrow",
+      "avatar_url": null,
+      "email": "member184@example.com",
+      "first_name": "Jonah",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM185",
+      "user_id": "usr-SAMPLEM185",
+      "created_at": "2025-10-19T12:00:00.000Z",
+      "event_approved_count": 2,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-data-viz",
+          "name": "data viz"
+        }
+      ],
+      "membership": null,
+      "name": "Elio Brackley",
+      "avatar_url": null,
+      "email": "member185@example.com",
+      "first_name": "Elio",
+      "last_name": "Brackley"
+    },
+    {
+      "id": "cnt-SAMPLEM186",
+      "user_id": "usr-SAMPLEM186",
+      "created_at": "2024-05-26T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rag",
+          "name": "RAG"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Farid Darrow",
+      "avatar_url": null,
+      "email": "member186@example.com",
+      "first_name": "Farid",
+      "last_name": "Darrow"
+    },
+    {
+      "id": "cnt-SAMPLEM187",
+      "user_id": "usr-SAMPLEM187",
+      "created_at": "2026-08-13T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        },
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        }
+      ],
+      "membership": null,
+      "name": "Dev Pemberly",
+      "avatar_url": null,
+      "email": "member187@example.com",
+      "first_name": "Dev",
+      "last_name": "Pemberly"
+    },
+    {
+      "id": "cnt-SAMPLEM188",
+      "user_id": "usr-SAMPLEM188",
+      "created_at": "2025-05-20T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Esme Halloway",
+      "avatar_url": null,
+      "email": "member188@example.com",
+      "first_name": "Esme",
+      "last_name": "Halloway"
+    },
+    {
+      "id": "cnt-SAMPLEM189",
+      "user_id": "usr-SAMPLEM189",
+      "created_at": "2024-08-24T12:00:00.000Z",
+      "event_approved_count": 5,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Vik Vance",
+      "avatar_url": null,
+      "email": "member189@example.com",
+      "first_name": "Vik",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM190",
+      "user_id": "usr-SAMPLEM190",
+      "created_at": "2026-01-20T12:00:00.000Z",
+      "event_approved_count": 7,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-design-systems",
+          "name": "design systems"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Tess Ostrander",
+      "avatar_url": null,
+      "email": "member190@example.com",
+      "first_name": "Tess",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM192",
+      "user_id": "usr-SAMPLEM192",
+      "created_at": "2024-06-22T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 2,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        },
+        {
+          "id": "tag-SAMPLE-security",
+          "name": "security"
+        }
+      ],
+      "membership": null,
+      "name": "Quinn Calder",
+      "avatar_url": null,
+      "email": "member192@example.com",
+      "first_name": "Quinn",
+      "last_name": "Calder"
+    },
+    {
+      "id": "cnt-SAMPLEM193",
+      "user_id": "usr-SAMPLEM193",
+      "created_at": "2025-07-26T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 3,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        },
+        {
+          "id": "tag-SAMPLE-llm-evals",
+          "name": "LLM evals"
+        }
+      ],
+      "membership": null,
+      "name": "Tess Rookwood",
+      "avatar_url": null,
+      "email": "member193@example.com",
+      "first_name": "Tess",
+      "last_name": "Rookwood"
+    },
+    {
+      "id": "cnt-SAMPLEM194",
+      "user_id": "usr-SAMPLEM194",
+      "created_at": "2025-02-01T12:00:00.000Z",
+      "event_approved_count": 12,
+      "event_checked_in_count": 8,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Juno Ostrander",
+      "avatar_url": null,
+      "email": "member194@example.com",
+      "first_name": "Juno",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM195",
+      "user_id": "usr-SAMPLEM195",
+      "created_at": "2026-01-30T12:00:00.000Z",
+      "event_approved_count": 6,
+      "event_checked_in_count": 4,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-iot",
+          "name": "IoT"
+        },
+        {
+          "id": "tag-SAMPLE-product",
+          "name": "product"
+        }
+      ],
+      "membership": null,
+      "name": "Ines Vance",
+      "avatar_url": null,
+      "email": "member195@example.com",
+      "first_name": "Ines",
+      "last_name": "Vance"
+    },
+    {
+      "id": "cnt-SAMPLEM196",
+      "user_id": "usr-SAMPLEM196",
+      "created_at": "2025-10-12T12:00:00.000Z",
+      "event_approved_count": 4,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        },
+        {
+          "id": "tag-SAMPLE-ml-ops",
+          "name": "ML ops"
+        }
+      ],
+      "membership": null,
+      "name": "Juno Ostrander",
+      "avatar_url": null,
+      "email": "member196@example.com",
+      "first_name": "Juno",
+      "last_name": "Ostrander"
+    },
+    {
+      "id": "cnt-SAMPLEM197",
+      "user_id": "usr-SAMPLEM197",
+      "created_at": "2025-09-27T12:00:00.000Z",
+      "event_approved_count": 1,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-founders",
+          "name": "founders"
+        }
+      ],
+      "membership": null,
+      "name": "Kai Kestrel",
+      "avatar_url": null,
+      "email": "member197@example.com",
+      "first_name": "Kai",
+      "last_name": "Kestrel"
+    },
+    {
+      "id": "cnt-SAMPLEM198",
+      "user_id": "usr-SAMPLEM198",
+      "created_at": "2026-07-24T12:00:00.000Z",
+      "event_approved_count": 8,
+      "event_checked_in_count": 5,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-open-source",
+          "name": "open source"
+        }
+      ],
+      "membership": null,
+      "name": "Isla Morrow",
+      "avatar_url": null,
+      "email": "member198@example.com",
+      "first_name": "Isla",
+      "last_name": "Morrow"
+    },
+    {
+      "id": "cnt-SAMPLEM199",
+      "user_id": "usr-SAMPLEM199",
+      "created_at": "2026-05-05T12:00:00.000Z",
+      "event_approved_count": 3,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        },
+        {
+          "id": "tag-SAMPLE-devrel",
+          "name": "devrel"
+        }
+      ],
+      "membership": null,
+      "name": "Cleo Marlow",
+      "avatar_url": null,
+      "email": "member199@example.com",
+      "first_name": "Cleo",
+      "last_name": "Marlow"
+    },
+    {
+      "id": "cnt-SAMPLEM200",
+      "user_id": "usr-SAMPLEM200",
+      "created_at": "2025-06-13T12:00:00.000Z",
+      "event_approved_count": 1,
+      "event_checked_in_count": 1,
+      "revenue_usd_cents": 0,
+      "tags": [
+        {
+          "id": "tag-SAMPLE-rust",
+          "name": "Rust"
+        },
+        {
+          "id": "tag-SAMPLE-ai-agents",
+          "name": "AI agents"
+        }
+      ],
+      "membership": null,
+      "name": "Orla Marlow",
+      "avatar_url": null,
+      "email": "member200@example.com",
+      "first_name": "Orla",
+      "last_name": "Marlow"
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}

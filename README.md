@@ -1,1 +1,167 @@
-# sponsor-engine
+# Sponsor Engine
+
+Sponsor Engine is an open-source front desk and sponsor list for London communities and venues.
+
+You use the web dashboard. You can also call the same tools from Grok Bot or Cursor.
+
+The tools read a booking message, make a quote, match sponsors, and write an email. A person approves the email. The default mode does not send it.
+
+Bring your own tools, or just use ours. The built-in tools need no keys.
+
+## Quick start
+
+You need Node.js 22.
+
+Run this command from the project folder:
+
+```bash
+npm install && npm run dev
+```
+
+Open `http://localhost:3000`.
+
+The first start loads the bundled data. The inbox is empty until a message arrives. Press **Run demo** on the inbox.
+
+Two more commands are useful:
+
+```bash
+npm test
+npm run demo
+```
+
+## Use it from Grok Bot or Cursor in 2 minutes
+
+Open the MCP settings in Grok Bot or Cursor.
+
+Add this server. Set the working directory to this project folder.
+
+```json
+{
+  "mcpServers": {
+    "sponsor-engine": {
+      "command": "npm",
+      "args": ["run", "mcp"],
+      "env": { "DRY_RUN": "true" }
+    }
+  }
+}
+```
+
+MCP means Model Context Protocol. The server name is `sponsor-engine`.
+
+The tools are `triage_inbound`, `quote_booking`, `find_sponsors`, `forecast_turnout`, `draft_sponsor_ask`, `send_with_approval`, `approve`, `list_failures`, and `recall_history`.
+
+`send_with_approval` does not send a message. It writes a row that waits for a person.
+
+You can also run the HTTP server:
+
+```bash
+npm run mcp:http
+```
+
+The HTTP server listens on `http://127.0.0.1:8787/mcp`.
+
+## Environment variables
+
+Every variable is optional. You can start with no `.env` file.
+
+Copy `.env.example` to `.env` only when you want to change a value.
+
+| Name | Default | Purpose |
+| --- | --- | --- |
+| `DRY_RUN` | `true` | Test mode. `true` does not send. |
+| `ALLOWLIST` | empty | Addresses that can be marked sent when `DRY_RUN` is `false`. |
+| `DATABASE_URL` | empty | Leave empty. The app uses SQLite. |
+| `SPONSOR_ENGINE_DB` | `data/sponsor-engine.db` | Path of the SQLite file. |
+| `PORT` | `8787` | Port for the MCP HTTP server. |
+| `ZERO_API_KEY` | empty | Optional. Use Zero instead of the built-in list. |
+| `TWENTY_API_URL` | empty | Optional. Use Twenty instead of the built-in list. |
+| `TWENTY_API_KEY` | empty | Optional. Use with `TWENTY_API_URL`. |
+| `COGNEE_API_KEY` | empty | Optional. Use Cognee for memory. |
+| `COMPANIES_HOUSE_API_KEY` | empty | Optional. Look up a UK company size. |
+
+Supabase is optional. It is not required. The running app uses SQLite. The Postgres file is `packages/db/src/schema.postgres.sql`. Apply that file yourself if you move to Supabase later.
+
+## What you can do in the dashboard
+
+The inbox reads a message and makes a task. The task has an owner and a priority.
+
+The quote explains a community price and a company price.
+
+The sponsor page ranks London sponsors. Each card has a reason and a source link.
+
+**To send** holds every message that needs a person. Each one has **Approve**, **Edit**, and **Skip**.
+
+**Connections** shows the built-in tools. It also shows the one line that connects Zero, Twenty, Cognee, Luma, Devpost, Companies House, or email.
+
+HubSpot and Sheets are not available yet.
+
+The map shows events on free tiles. No key is required.
+
+## Architecture
+
+The app has four parts.
+
+The data layer stores messages, tasks, bookings, quotes, sponsors, and the outbox.
+
+The core reads a message, makes a quote, and matches sponsors.
+
+The MCP server exposes those tools to Grok Bot and Cursor.
+
+The dashboard shows the same records to a person.
+
+`packages/pricing` is optional. When it is present, quotes call `quotePrice(request, history)`. The function returns `{ price, currency, explanation, comparables }`. A built-in quote is used when that package is absent.
+
+`packages/integrations` is optional. When it is present, sponsor match can call `companySize` and `lumaEventHosts`. Approve can call `pushDeal`. Recall can call Cognee. The dashboard calls `getStatus()`. The app runs when that package is absent.
+
+Figure 1 shows the parts of a sponsor engine.
+
+![Anatomy of a sponsor engine](diagrams/01-anatomy-of-a-sponsor-engine.png)
+
+Figure 2 shows the desk without AI, with a generic assistant, and with this tool.
+
+![Without AI, generic AI, and Grok Bot](diagrams/02-without-ai-vs-generic-ai-vs-grok-bot.png)
+
+Figure 3 shows how past events feed the next quote.
+
+![It learns from your events](diagrams/03-it-learns-from-your-events.png)
+
+Figure 4 shows the safety path.
+
+![Safe by default](diagrams/04-safe-by-default.png)
+
+## Safety model
+
+Test mode is the default. `DRY_RUN` is `true`.
+
+The outbox has five states: `draft`, `awaiting_approval`, `approved`, `sent`, and `blocked`.
+
+`send_with_approval` does not send. It writes a row with status `awaiting_approval`.
+
+A person must press **Approve**. That action moves the row to `approved`.
+
+In test mode, **Approve** writes a log. The row does not move to `sent`.
+
+The row moves to `sent` only when all of these are true:
+
+- The status is `approved`.
+- `DRY_RUN` is `false`.
+- The recipient is in `ALLOWLIST`.
+
+This repository has no email sender. This repository has no WhatsApp sender.
+
+A test checks that a row cannot reach `sent` before approval.
+
+The dashboard shows a **Test mode** badge on every page.
+
+## Data
+
+`data/real-data/` holds public London events and sponsors. Each claim has a quote and a source URL.
+
+`data/synthetic-data/` is fictional. Those rows are marked `SAMPLE`. Do not present them as real companies.
+
+The visual rules are in `docs/DESIGN.md`.
+
+## Licence
+
+MIT. See `LICENSE`.

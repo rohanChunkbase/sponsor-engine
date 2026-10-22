@@ -1,0 +1,12 @@
+{
+ "claims": 127,
+ "food_drink_claims": 42,
+ "venue_claims": 37,
+ "food_venue_claims": 79,
+ "stated": 104,
+ "companies": 81,
+ "new_companies": 56,
+ "events": 49,
+ "new_events": 49,
+ "new_communities": 34
+}

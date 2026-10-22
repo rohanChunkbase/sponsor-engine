@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #121316;
+  --color-card: #ffffff;
+  --color-card-foreground: #121316;
+  --color-primary: #1f5eff;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f7f8fa;
+  --color-secondary-foreground: #121316;
+  --color-muted: #f7f8fa;
+  --color-muted-foreground: #5e6269;
+  --color-accent: #edf2ff;
+  --color-accent-foreground: #173c65;
+  --color-border: #dadde2;
+  --color-ring: #1f5eff;
+  --color-discovery: #123251;
+  --color-hero-copy: #edf3fc;
+  --color-surface: #f7f8fa;
+  --color-reviewed: #2b6b4f;
+  --color-reviewed-wash: #eaf4ef;
+  --color-open: #b86b16;
+  --color-open-text: #8c4e0b;
+  --color-open-wash: #fff2e3;
+  --color-bluewash: #edf2ff;
+  --color-unavailable: #e8e9ec;
+  --color-unavailable-foreground: #8b8e94;
+  --font-sans: var(--font-sans-family), "Inter Tight", sans-serif;
+  --font-ui: var(--font-ui-family), Geist, sans-serif;
+  --font-mono: var(--font-mono-family), "Geist Mono", ui-monospace, monospace;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #dce9f8;
+}

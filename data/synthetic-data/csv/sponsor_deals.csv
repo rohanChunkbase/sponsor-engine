@@ -1,0 +1,190 @@
+deal_id,event_id,sponsor_id,asked_on,ask_gbp,replied,outcome,amount_gbp,notes,is_sample
+D001,E001,S09,2026-09-05,320,True,no,0,,SAMPLE
+D002,E001,S39,2026-09-05,320,False,no_reply,0,,SAMPLE
+D003,E001,S17,2026-09-05,320,True,yes,320,sent pizzas on the night,SAMPLE
+D004,E002,S02,2026-07-31,250,True,no,0,,SAMPLE
+D005,E002,S23,2026-07-31,250,True,yes,250,logo + thank-you post,SAMPLE
+D006,E003,S08,2026-07-18,335,False,no_reply,0,,SAMPLE
+D007,E003,S23,2026-07-18,335,True,no,0,,SAMPLE
+D008,E003,S25,2026-07-18,335,False,no_reply,0,,SAMPLE
+D009,E003,S24,2026-07-18,335,True,yes,335,paid supplier invoice directly,SAMPLE
+D010,E004,S20,2026-06-07,245,True,no,0,,SAMPLE
+D011,E004,S16,2026-06-07,245,False,no_reply,0,,SAMPLE
+D012,E004,S09,2026-06-07,245,True,yes,245,logo on Luma page + 2-min slot,SAMPLE
+D013,E005,S20,2026-04-26,360,False,no_reply,0,,SAMPLE
+D014,E005,S16,2026-04-26,360,True,yes,360,logo on Luma page + 2-min slot,SAMPLE
+D015,E006,S36,2026-03-24,200,True,no,0,maybe next time,SAMPLE
+D016,E006,S04,2026-03-24,200,True,yes,200,sent pizzas on the night,SAMPLE
+D017,E007,S34,2026-02-22,165,True,no,0,,SAMPLE
+D018,E007,S09,2026-02-22,165,True,yes,165,sent pizzas on the night,SAMPLE
+D019,E008,S06,2026-01-27,205,True,no,0,budget spent this quarter,SAMPLE
+D020,E008,S19,2026-01-27,205,False,no_reply,0,,SAMPLE
+D021,E008,S02,2026-01-27,205,True,no,0,audience not a fit,SAMPLE
+D022,E008,S05,2026-01-27,205,True,yes,205,logo on Luma page + 2-min slot,SAMPLE
+D023,E009,S18,2025-12-23,420,True,no,0,maybe next time,SAMPLE
+D024,E009,S24,2025-12-23,420,True,yes,420,sent pizzas on the night,SAMPLE
+D025,E010,S16,2025-11-17,270,True,no,0,audience not a fit,SAMPLE
+D026,E010,S14,2025-11-17,270,True,no,0,maybe next time,SAMPLE
+D027,E010,S17,2025-11-17,270,True,yes,270,logo on Luma page + 2-min slot,SAMPLE
+D028,E011,S23,2026-03-21,260,True,no,0,,SAMPLE
+D029,E011,S39,2026-03-21,260,True,yes,260,sent pizzas on the night,SAMPLE
+D030,E012,S36,2026-03-19,295,True,no,0,,SAMPLE
+D031,E012,S21,2026-03-19,295,True,yes,295,logo + thank-you post,SAMPLE
+D032,E013,S22,2026-03-01,175,True,no,0,,SAMPLE
+D033,E013,S14,2026-03-01,175,False,no_reply,0,,SAMPLE
+D034,E013,S15,2026-03-01,175,True,yes,175,logo + thank-you post,SAMPLE
+D035,E014,S14,2026-06-09,210,True,no,0,,SAMPLE
+D036,E014,S36,2026-06-09,210,True,yes,210,paid supplier invoice directly,SAMPLE
+D037,E015,S25,2026-02-08,160,False,no_reply,0,,SAMPLE
+D038,E015,S24,2026-02-08,160,False,no_reply,0,,SAMPLE
+D039,E015,S15,2026-02-08,160,False,no_reply,0,,SAMPLE
+D040,E015,S38,2026-02-08,160,True,yes,160,logo + thank-you post,SAMPLE
+D041,E016,S24,2026-06-03,90,True,no,0,audience not a fit,SAMPLE
+D042,E016,S07,2026-06-03,90,True,no,0,budget spent this quarter,SAMPLE
+D043,E016,S36,2026-06-03,90,False,no_reply,0,,SAMPLE
+D044,E016,S20,2026-06-03,90,True,yes,90,logo on Luma page + 2-min slot,SAMPLE
+D045,E017,S19,2026-02-15,120,False,no_reply,0,,SAMPLE
+D046,E017,S21,2026-02-15,120,True,yes,120,paid supplier invoice directly,SAMPLE
+D047,E018,S20,2026-02-03,200,False,no_reply,0,,SAMPLE
+D048,E018,S09,2026-02-03,200,True,no,0,,SAMPLE
+D049,E018,S18,2026-02-03,200,True,yes,200,sent pizzas on the night,SAMPLE
+D050,E019,S05,2026-05-18,165,True,no,0,audience not a fit,SAMPLE
+D051,E019,S08,2026-05-18,165,True,yes,165,logo + thank-you post,SAMPLE
+D052,E020,S36,2026-08-05,190,True,no,0,budget spent this quarter,SAMPLE
+D053,E020,S01,2026-08-05,190,False,no_reply,0,,SAMPLE
+D054,E020,S38,2026-08-05,190,True,no,0,,SAMPLE
+D055,E020,S18,2026-08-05,190,True,yes,190,sent pizzas on the night,SAMPLE
+D056,E021,S15,2025-12-02,265,False,no_reply,0,,SAMPLE
+D057,E021,S35,2025-12-02,265,False,no_reply,0,,SAMPLE
+D058,E021,S20,2025-12-02,265,True,yes,265,sent pizzas on the night,SAMPLE
+D059,E022,S05,2026-07-16,260,True,no,0,,SAMPLE
+D060,E022,S19,2026-07-16,260,True,no,0,,SAMPLE
+D061,E022,S23,2026-07-16,260,True,yes,260,paid supplier invoice directly,SAMPLE
+D062,E023,S17,2026-03-07,150,False,no_reply,0,,SAMPLE
+D063,E023,S09,2026-03-07,150,True,yes,150,logo on Luma page + 2-min slot,SAMPLE
+D064,E024,S04,2026-08-26,200,False,no_reply,0,,SAMPLE
+D065,E024,S23,2026-08-26,200,False,no_reply,0,,SAMPLE
+D066,E024,S07,2026-08-26,200,True,no,0,,SAMPLE
+D067,E024,S24,2026-08-26,200,True,yes,200,logo on Luma page + 2-min slot,SAMPLE
+D068,E025,S24,2026-06-13,195,True,no,0,maybe next time,SAMPLE
+D069,E025,S14,2026-06-13,195,True,yes,195,logo on Luma page + 2-min slot,SAMPLE
+D070,E026,S01,2025-11-24,155,True,no,0,maybe next time,SAMPLE
+D071,E026,S18,2025-11-24,155,False,no_reply,0,,SAMPLE
+D072,E026,S34,2025-11-24,155,True,yes,155,sent pizzas on the night,SAMPLE
+D073,E027,S37,2026-06-30,330,True,no,0,audience not a fit,SAMPLE
+D074,E027,S23,2026-06-30,330,False,no_reply,0,,SAMPLE
+D075,E027,S25,2026-06-30,330,True,yes,330,logo on Luma page + 2-min slot,SAMPLE
+D076,E028,S06,2026-04-29,345,True,no,0,maybe next time,SAMPLE
+D077,E028,S20,2026-04-29,345,True,no,0,,SAMPLE
+D078,E028,S24,2026-04-29,345,True,yes,345,paid supplier invoice directly,SAMPLE
+D079,E029,S34,2025-11-29,180,True,no,0,budget spent this quarter,SAMPLE
+D080,E029,S36,2025-11-29,180,True,no,0,audience not a fit,SAMPLE
+D081,E029,S08,2025-11-29,180,True,yes,180,sent pizzas on the night,SAMPLE
+D082,E030,S16,2026-05-09,340,True,no,0,maybe next time,SAMPLE
+D083,E030,S36,2026-05-09,340,True,no,0,audience not a fit,SAMPLE
+D084,E030,S22,2026-05-09,340,True,yes,340,paid supplier invoice directly,SAMPLE
+D085,E031,S25,2025-12-18,215,True,no,0,maybe next time,SAMPLE
+D086,E031,S15,2025-12-18,215,True,no,0,budget spent this quarter,SAMPLE
+D087,E031,S04,2025-12-18,215,False,no_reply,0,,SAMPLE
+D088,E031,S07,2025-12-18,215,True,yes,215,logo + thank-you post,SAMPLE
+D089,E032,S20,2026-04-27,130,True,no,0,budget spent this quarter,SAMPLE
+D090,E032,S19,2026-04-27,130,True,no,0,,SAMPLE
+D091,E032,S35,2026-04-27,130,True,yes,130,logo on Luma page + 2-min slot,SAMPLE
+D092,E033,S14,2026-08-19,145,False,no_reply,0,,SAMPLE
+D093,E033,S03,2026-08-19,145,True,no,0,,SAMPLE
+D094,E033,S08,2026-08-19,145,False,no_reply,0,,SAMPLE
+D095,E033,S34,2026-08-19,145,True,yes,145,logo + thank-you post,SAMPLE
+D096,E034,S37,2026-03-08,360,False,no_reply,0,,SAMPLE
+D097,E034,S04,2026-03-08,360,True,no,0,budget spent this quarter,SAMPLE
+D098,E034,S38,2026-03-08,360,True,no,0,audience not a fit,SAMPLE
+D099,E034,S23,2026-03-08,360,True,yes,360,logo on Luma page + 2-min slot,SAMPLE
+D100,E035,S14,2026-07-04,125,False,no_reply,0,,SAMPLE
+D101,E035,S36,2026-07-04,125,False,no_reply,0,,SAMPLE
+D102,E035,S19,2026-07-04,125,False,no_reply,0,,SAMPLE
+D103,E035,S20,2026-07-04,125,True,yes,125,logo + thank-you post,SAMPLE
+D104,E036,S25,2026-02-01,180,False,no_reply,0,,SAMPLE
+D105,E036,S37,2026-02-01,180,True,no,0,,SAMPLE
+D106,E036,S09,2026-02-01,180,True,yes,180,paid supplier invoice directly,SAMPLE
+D107,E037,S25,2026-03-02,240,True,no,0,,SAMPLE
+D108,E037,S14,2026-03-02,240,False,no_reply,0,,SAMPLE
+D109,E037,S03,2026-03-02,240,True,yes,240,logo on Luma page + 2-min slot,SAMPLE
+D110,E038,S34,2026-05-08,195,True,no,0,,SAMPLE
+D111,E038,S21,2026-05-08,195,True,no,0,budget spent this quarter,SAMPLE
+D112,E038,S20,2026-05-08,195,True,yes,195,logo + thank-you post,SAMPLE
+D113,E039,S09,2026-04-06,200,False,no_reply,0,,SAMPLE
+D114,E039,S15,2026-04-06,200,True,no,0,,SAMPLE
+D115,E039,S17,2026-04-06,200,True,yes,200,logo on Luma page + 2-min slot,SAMPLE
+D116,E040,S38,2025-10-17,290,True,no,0,audience not a fit,SAMPLE
+D117,E040,S02,2025-10-17,290,False,no_reply,0,,SAMPLE
+D118,E040,S07,2025-10-17,290,True,yes,290,sent pizzas on the night,SAMPLE
+D119,E041,S22,2026-01-06,105,True,no,0,budget spent this quarter,SAMPLE
+D120,E041,S38,2026-01-06,105,True,yes,105,sent pizzas on the night,SAMPLE
+D121,E042,S19,2025-10-11,135,True,no,0,audience not a fit,SAMPLE
+D122,E042,S21,2025-10-11,135,True,yes,135,logo + thank-you post,SAMPLE
+D123,E043,S14,2026-08-05,195,False,no_reply,0,,SAMPLE
+D124,E043,S24,2026-08-05,195,True,no,0,,SAMPLE
+D125,E043,S35,2026-08-05,195,True,no,0,,SAMPLE
+D126,E043,S15,2026-08-05,195,True,yes,195,sent pizzas on the night,SAMPLE
+D127,E044,S37,2026-01-22,215,True,no,0,audience not a fit,SAMPLE
+D128,E044,S21,2026-01-22,215,True,no,0,budget spent this quarter,SAMPLE
+D129,E044,S08,2026-01-22,215,True,yes,215,logo + thank-you post,SAMPLE
+D130,E045,S34,2025-11-24,350,True,no,0,maybe next time,SAMPLE
+D131,E045,S05,2025-11-24,350,True,no,0,,SAMPLE
+D132,E045,S19,2025-11-24,350,True,yes,350,logo on Luma page + 2-min slot,SAMPLE
+D133,E046,S34,2026-04-07,345,True,no,0,budget spent this quarter,SAMPLE
+D134,E046,S14,2026-04-07,345,False,no_reply,0,,SAMPLE
+D135,E046,S08,2026-04-07,345,False,no_reply,0,,SAMPLE
+D136,E046,S35,2026-04-07,345,True,yes,345,logo on Luma page + 2-min slot,SAMPLE
+D137,E047,S19,2026-02-02,250,True,no,0,,SAMPLE
+D138,E047,S06,2026-02-02,250,False,no_reply,0,,SAMPLE
+D139,E047,S02,2026-02-02,250,True,yes,250,logo + thank-you post,SAMPLE
+D140,E048,S34,2026-06-15,195,True,no,0,budget spent this quarter,SAMPLE
+D141,E048,S09,2026-06-15,195,False,no_reply,0,,SAMPLE
+D142,E048,S24,2026-06-15,195,True,yes,195,sent pizzas on the night,SAMPLE
+D143,E049,S20,2025-10-07,135,False,no_reply,0,,SAMPLE
+D144,E049,S14,2025-10-07,135,False,no_reply,0,,SAMPLE
+D145,E049,S16,2025-10-07,135,True,yes,135,logo on Luma page + 2-min slot,SAMPLE
+D146,E050,S01,2026-05-05,150,False,no_reply,0,,SAMPLE
+D147,E050,S23,2026-05-05,150,False,no_reply,0,,SAMPLE
+D148,E050,S35,2026-05-05,150,True,yes,150,sent pizzas on the night,SAMPLE
+D149,E051,S38,2026-04-10,215,False,no_reply,0,,SAMPLE
+D150,E051,S37,2026-04-10,215,False,no_reply,0,,SAMPLE
+D151,E051,S35,2026-04-10,215,False,no_reply,0,,SAMPLE
+D152,E051,S16,2026-04-10,215,True,yes,215,logo on Luma page + 2-min slot,SAMPLE
+D153,E052,S18,2026-04-15,190,False,no_reply,0,,SAMPLE
+D154,E052,S06,2026-04-15,190,False,no_reply,0,,SAMPLE
+D155,E052,S07,2026-04-15,190,True,no,0,,SAMPLE
+D156,E052,S36,2026-04-15,190,True,yes,190,paid supplier invoice directly,SAMPLE
+D157,E053,S35,2026-04-25,240,False,no_reply,0,,SAMPLE
+D158,E053,S15,2026-04-25,240,True,yes,240,paid supplier invoice directly,SAMPLE
+D159,E054,S24,2026-07-20,255,False,no_reply,0,,SAMPLE
+D160,E054,S18,2026-07-20,255,True,no,0,audience not a fit,SAMPLE
+D161,E054,S04,2026-07-20,255,True,yes,255,sent pizzas on the night,SAMPLE
+D162,E055,S36,2026-08-23,280,True,no,0,audience not a fit,SAMPLE
+D163,E055,S14,2026-08-23,280,True,no,0,budget spent this quarter,SAMPLE
+D164,E055,S24,2026-08-23,280,True,yes,280,paid supplier invoice directly,SAMPLE
+D165,E056,S19,2026-07-23,110,False,no_reply,0,,SAMPLE
+D166,E056,S24,2026-07-23,110,False,no_reply,0,,SAMPLE
+D167,E056,S37,2026-07-23,110,False,no_reply,0,,SAMPLE
+D168,E056,S17,2026-07-23,110,True,yes,110,sent pizzas on the night,SAMPLE
+D169,E057,S34,2026-04-22,115,True,no,0,budget spent this quarter,SAMPLE
+D170,E057,S16,2026-04-22,115,False,no_reply,0,,SAMPLE
+D171,E057,S02,2026-04-22,115,False,no_reply,0,,SAMPLE
+D172,E057,S19,2026-04-22,115,True,yes,115,logo on Luma page + 2-min slot,SAMPLE
+D173,E058,S08,2025-10-03,155,True,no,0,audience not a fit,SAMPLE
+D174,E058,S04,2025-10-03,155,False,no_reply,0,,SAMPLE
+D175,E058,S38,2025-10-03,155,True,no,0,audience not a fit,SAMPLE
+D176,E058,S01,2025-10-03,155,True,yes,155,logo on Luma page + 2-min slot,SAMPLE
+D177,E059,S05,2026-05-06,160,True,no,0,audience not a fit,SAMPLE
+D178,E059,S38,2026-05-06,160,True,yes,160,paid supplier invoice directly,SAMPLE
+D179,E060,S22,2026-06-24,110,True,no,0,audience not a fit,SAMPLE
+D180,E060,S24,2026-06-24,110,False,no_reply,0,,SAMPLE
+D181,E060,S21,2026-06-24,110,True,yes,110,logo on Luma page + 2-min slot,SAMPLE
+D182,E061,S05,2025-10-08,145,True,no,0,budget spent this quarter,SAMPLE
+D183,E061,S21,2025-10-08,145,True,no,0,audience not a fit,SAMPLE
+D184,E061,S36,2025-10-08,145,True,no,0,maybe next time,SAMPLE
+D185,E061,S01,2025-10-08,145,True,yes,145,paid supplier invoice directly,SAMPLE
+D186,E062,S34,2026-03-07,170,True,no,0,audience not a fit,SAMPLE
+D187,E062,S38,2026-03-07,170,True,no,0,,SAMPLE
+D188,E062,S22,2026-03-07,170,True,no,0,budget spent this quarter,SAMPLE
+D189,E062,S24,2026-03-07,170,True,yes,170,paid supplier invoice directly,SAMPLE

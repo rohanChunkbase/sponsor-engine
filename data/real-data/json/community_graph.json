@@ -1,0 +1,582 @@
+{
+ "nodes": [
+  {
+   "id": "RC01",
+   "name": "Encode Club",
+   "val": 4
+  },
+  {
+   "id": "RC02",
+   "name": "London.js",
+   "val": 4
+  },
+  {
+   "id": "RC03",
+   "name": "AI Engineer London",
+   "val": 3
+  },
+  {
+   "id": "RC04",
+   "name": "Outpost (formerly AI Demo Nights)",
+   "val": 3
+  },
+  {
+   "id": "RC05",
+   "name": "UK AI Agents Lab",
+   "val": 3
+  },
+  {
+   "id": "RC06",
+   "name": "AI Builders",
+   "val": 2
+  },
+  {
+   "id": "RC07",
+   "name": "AI Demo Days",
+   "val": 2
+  },
+  {
+   "id": "RC08",
+   "name": "AI Tinkerers London",
+   "val": 2
+  },
+  {
+   "id": "RC09",
+   "name": "Claude Community Events",
+   "val": 2
+  },
+  {
+   "id": "RC10",
+   "name": "Imperial AI Society x Imperial Blockchain Society",
+   "val": 2
+  },
+  {
+   "id": "RC11",
+   "name": "JavaScript London",
+   "val": 2
+  },
+  {
+   "id": "RC12",
+   "name": "SpaceXAI for London (Grok Bot / Cursor community)",
+   "val": 2
+  },
+  {
+   "id": "RC13",
+   "name": "#WPLDN (London WordPress)",
+   "val": 1
+  },
+  {
+   "id": "RC14",
+   "name": "AI for the rest of us",
+   "val": 1
+  },
+  {
+   "id": "RC15",
+   "name": "BlueDot Impact",
+   "val": 1
+  },
+  {
+   "id": "RC16",
+   "name": "Briefcase x Stripe",
+   "val": 1
+  },
+  {
+   "id": "RC17",
+   "name": "Claude Builder Club @ Imperial",
+   "val": 1
+  },
+  {
+   "id": "RC18",
+   "name": "Cloud Native London",
+   "val": 1
+  },
+  {
+   "id": "RC19",
+   "name": "Create With",
+   "val": 1
+  },
+  {
+   "id": "RC20",
+   "name": "Django London",
+   "val": 1
+  },
+  {
+   "id": "RC21",
+   "name": "Dwelly",
+   "val": 1
+  },
+  {
+   "id": "RC22",
+   "name": "Encode: AI for Science Fellowship (Pillar VC x ARIA)",
+   "val": 1
+  },
+  {
+   "id": "RC23",
+   "name": "Ignite London",
+   "val": 1
+  },
+  {
+   "id": "RC24",
+   "name": "Iterate",
+   "val": 1
+  },
+  {
+   "id": "RC25",
+   "name": "LLM London",
+   "val": 1
+  },
+  {
+   "id": "RC26",
+   "name": "Led by Community",
+   "val": 1
+  },
+  {
+   "id": "RC27",
+   "name": "Networx London",
+   "val": 1
+  },
+  {
+   "id": "RC28",
+   "name": "Newspeak House",
+   "val": 1
+  },
+  {
+   "id": "RC29",
+   "name": "ODSC AI",
+   "val": 1
+  },
+  {
+   "id": "RC30",
+   "name": "OpenUK",
+   "val": 1
+  },
+  {
+   "id": "RC31",
+   "name": "Paid x Lawhive",
+   "val": 1
+  },
+  {
+   "id": "RC32",
+   "name": "Postman Developer Events",
+   "val": 1
+  },
+  {
+   "id": "RC33",
+   "name": "Product Hackathons",
+   "val": 1
+  },
+  {
+   "id": "RC34",
+   "name": "PyData London",
+   "val": 1
+  },
+  {
+   "id": "RC35",
+   "name": "Ramen Space",
+   "val": 1
+  },
+  {
+   "id": "RC36",
+   "name": "SHIPYARD",
+   "val": 1
+  },
+  {
+   "id": "RC37",
+   "name": "Surface",
+   "val": 1
+  },
+  {
+   "id": "RC38",
+   "name": "Unicorn Mafia",
+   "val": 1
+  },
+  {
+   "id": "RC39",
+   "name": "Vercel Events",
+   "val": 1
+  },
+  {
+   "id": "RC40",
+   "name": "WilbeLABS",
+   "val": 1
+  },
+  {
+   "id": "RC41",
+   "name": "oscarama events",
+   "val": 1
+  },
+  {
+   "id": "RC42",
+   "name": "{Tech: Europe}",
+   "val": 1
+  }
+ ],
+ "links": [
+  {
+   "source": "RC19",
+   "target": "RC35",
+   "value": 12,
+   "shared": "Ramen Space"
+  },
+  {
+   "source": "RC01",
+   "target": "RC36",
+   "value": 9,
+   "shared": "ElevenLabs;Encode Hub"
+  },
+  {
+   "source": "RC01",
+   "target": "RC32",
+   "value": 7,
+   "shared": "Encode Hub"
+  },
+  {
+   "source": "RC01",
+   "target": "RC38",
+   "value": 7,
+   "shared": "Encode Hub"
+  },
+  {
+   "source": "RC33",
+   "target": "RC35",
+   "value": 7,
+   "shared": "Ramen Space"
+  },
+  {
+   "source": "RC17",
+   "target": "RC10",
+   "value": 4,
+   "shared": "Anthropic;Imperial College London"
+  },
+  {
+   "source": "RC24",
+   "target": "RC42",
+   "value": 4,
+   "shared": "Google DeepMind;Modal"
+  },
+  {
+   "source": "RC07",
+   "target": "RC08",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC07",
+   "target": "RC01",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC07",
+   "target": "RC04",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC07",
+   "target": "RC40",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC03",
+   "target": "RC26",
+   "value": 2,
+   "shared": "Tessl"
+  },
+  {
+   "source": "RC08",
+   "target": "RC01",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC08",
+   "target": "RC04",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC08",
+   "target": "RC12",
+   "value": 2,
+   "shared": "Fleek"
+  },
+  {
+   "source": "RC08",
+   "target": "RC40",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC16",
+   "target": "RC12",
+   "value": 2,
+   "shared": "Cognee"
+  },
+  {
+   "source": "RC17",
+   "target": "RC09",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC17",
+   "target": "RC21",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC17",
+   "target": "RC24",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC17",
+   "target": "RC37",
+   "value": 2,
+   "shared": "Imperial College London"
+  },
+  {
+   "source": "RC17",
+   "target": "RC05",
+   "value": 2,
+   "shared": "Imperial College London"
+  },
+  {
+   "source": "RC09",
+   "target": "RC21",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC09",
+   "target": "RC10",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC09",
+   "target": "RC24",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC19",
+   "target": "RC33",
+   "value": 2,
+   "shared": "Ramen Space"
+  },
+  {
+   "source": "RC21",
+   "target": "RC01",
+   "value": 2,
+   "shared": "ElevenLabs"
+  },
+  {
+   "source": "RC21",
+   "target": "RC10",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC21",
+   "target": "RC24",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC21",
+   "target": "RC36",
+   "value": 2,
+   "shared": "ElevenLabs"
+  },
+  {
+   "source": "RC01",
+   "target": "RC24",
+   "value": 2,
+   "shared": "Google DeepMind"
+  },
+  {
+   "source": "RC01",
+   "target": "RC04",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC01",
+   "target": "RC05",
+   "value": 2,
+   "shared": "Google DeepMind"
+  },
+  {
+   "source": "RC01",
+   "target": "RC40",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC01",
+   "target": "RC42",
+   "value": 2,
+   "shared": "Google DeepMind"
+  },
+  {
+   "source": "RC10",
+   "target": "RC24",
+   "value": 2,
+   "shared": "Anthropic"
+  },
+  {
+   "source": "RC10",
+   "target": "RC26",
+   "value": 2,
+   "shared": "Lovable"
+  },
+  {
+   "source": "RC10",
+   "target": "RC31",
+   "value": 2,
+   "shared": "Lovable"
+  },
+  {
+   "source": "RC10",
+   "target": "RC33",
+   "value": 2,
+   "shared": "Lovable"
+  },
+  {
+   "source": "RC10",
+   "target": "RC37",
+   "value": 2,
+   "shared": "Imperial College London"
+  },
+  {
+   "source": "RC10",
+   "target": "RC05",
+   "value": 2,
+   "shared": "Imperial College London"
+  },
+  {
+   "source": "RC24",
+   "target": "RC05",
+   "value": 2,
+   "shared": "Google DeepMind"
+  },
+  {
+   "source": "RC24",
+   "target": "RC38",
+   "value": 2,
+   "shared": "Cognition"
+  },
+  {
+   "source": "RC11",
+   "target": "RC02",
+   "value": 2,
+   "shared": "Omnea"
+  },
+  {
+   "source": "RC26",
+   "target": "RC31",
+   "value": 2,
+   "shared": "Lovable"
+  },
+  {
+   "source": "RC26",
+   "target": "RC33",
+   "value": 2,
+   "shared": "Lovable"
+  },
+  {
+   "source": "RC04",
+   "target": "RC36",
+   "value": 2,
+   "shared": "Daytona"
+  },
+  {
+   "source": "RC04",
+   "target": "RC40",
+   "value": 2,
+   "shared": "OpenAI"
+  },
+  {
+   "source": "RC31",
+   "target": "RC33",
+   "value": 2,
+   "shared": "Lovable"
+  },
+  {
+   "source": "RC32",
+   "target": "RC36",
+   "value": 2,
+   "shared": "Encode Hub"
+  },
+  {
+   "source": "RC32",
+   "target": "RC12",
+   "value": 2,
+   "shared": "Supabase"
+  },
+  {
+   "source": "RC32",
+   "target": "RC38",
+   "value": 2,
+   "shared": "Encode Hub"
+  },
+  {
+   "source": "RC32",
+   "target": "RC39",
+   "value": 2,
+   "shared": "Supabase"
+  },
+  {
+   "source": "RC36",
+   "target": "RC38",
+   "value": 2,
+   "shared": "Encode Hub"
+  },
+  {
+   "source": "RC12",
+   "target": "RC38",
+   "value": 2,
+   "shared": "Expedite"
+  },
+  {
+   "source": "RC12",
+   "target": "RC39",
+   "value": 2,
+   "shared": "Supabase"
+  },
+  {
+   "source": "RC37",
+   "target": "RC05",
+   "value": 2,
+   "shared": "Imperial College London"
+  },
+  {
+   "source": "RC05",
+   "target": "RC42",
+   "value": 2,
+   "shared": "Google DeepMind"
+  },
+  {
+   "source": "RC38",
+   "target": "RC41",
+   "value": 2,
+   "shared": "Mubit"
+  },
+  {
+   "source": "RC38",
+   "target": "RC42",
+   "value": 2,
+   "shared": "Pydantic"
+  },
+  {
+   "source": "RC39",
+   "target": "RC41",
+   "value": 2,
+   "shared": "Vercel"
+  }
+ ]
+}

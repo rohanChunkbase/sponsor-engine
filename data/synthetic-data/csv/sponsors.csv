@@ -1,0 +1,41 @@
+sponsor_id,company,category,typical_ask_gbp,in_kind,audiences_sponsored,contact_role,contact_channel,website,is_sample
+S01,Crustwise Pizza Collective (fictional),food,280,,"IoT & hardware;Product management;ML, women in tech;Data science",Developer Relations lead,company contact form / generic events inbox (fictional),https://crustwise.example,SAMPLE
+S02,Dumpling Dynamo Kitchen (fictional),food,340,,"Rust;ML, women in tech;IoT & hardware",Community & Events team,company contact form / generic events inbox (fictional),https://dumpling.example,SAMPLE
+S03,Leaf & Ladle Catering (fictional),food,290,,Developer relations;Product management,Marketing coordinator,company contact form / generic events inbox (fictional),https://leaf.example,SAMPLE
+S04,Bao Down Street Food (fictional),food,320,,"ML, women in tech;Data science",Community & Events team,company contact form / generic events inbox (fictional),https://bao.example,SAMPLE
+S05,Falafel Foundry (fictional),food,310,,Indie hacking,Partnerships manager,company contact form / generic events inbox (fictional),https://falafel.example,SAMPLE
+S06,Tiny Taco Syndicate (fictional),food,350,,LLMs & RAG;Rust;Fintech,Partnerships manager,company contact form / generic events inbox (fictional),https://tiny.example,SAMPLE
+S07,Pasta Parlour Labs (fictional),food,300,,"Creative coding;ML, women in tech;Product management;Developer relations",Partnerships manager,company contact form / generic events inbox (fictional),https://pasta.example,SAMPLE
+S08,Curry Compiler Co. (fictional),food,280,,Open source;Founders,Office manager,company contact form / generic events inbox (fictional),https://curry.example,SAMPLE
+S09,Snackstack Vending (fictional),food,320,,Design engineering;Fintech;Creative coding;Data science,Developer Relations lead,company contact form / generic events inbox (fictional),https://snackstack.example,SAMPLE
+S10,Fizzbyte Soda Works (fictional),drinks,120,,LLMs & RAG;Indie hacking;AI agents;Design engineering,Developer Relations lead,company contact form / generic events inbox (fictional),https://fizzbyte.example,SAMPLE
+S11,Hopscotch Brew Collective (fictional),drinks,180,,"Indie hacking;ML, women in tech",Marketing coordinator,company contact form / generic events inbox (fictional),https://hopscotch.example,SAMPLE
+S12,Kombucha Kernel (fictional),drinks,180,,Creative coding,Marketing coordinator,company contact form / generic events inbox (fictional),https://kombucha.example,SAMPLE
+S13,Cold Brew Cartel (fictional),drinks,180,,Founders;IoT & hardware;Design engineering;AI agents,Community & Events team,company contact form / generic events inbox (fictional),https://cold.example,SAMPLE
+S14,Stacklark (fictional),devtool,570,,"Indie hacking;ML, women in tech;Data science",Community & Events team,company contact form / generic events inbox (fictional),https://stacklark.example,SAMPLE
+S15,Querypine (fictional),devtool,450,,Developer relations;Product management;AI agents;Open source,Partnerships manager,company contact form / generic events inbox (fictional),https://querypine.example,SAMPLE
+S16,Deployhaven (fictional),devtool,560,,Founders;LLMs & RAG,Partnerships manager,company contact form / generic events inbox (fictional),https://deployhaven.example,SAMPLE
+S17,Logwhistle (fictional),devtool,560,,Developer relations;Data science,Developer Relations lead,company contact form / generic events inbox (fictional),https://logwhistle.example,SAMPLE
+S18,Vectorcove (fictional),devtool,580,,Fintech,Partnerships manager,company contact form / generic events inbox (fictional),https://vectorcove.example,SAMPLE
+S19,Promptmill (fictional),devtool,550,,LLMs & RAG,Partnerships manager,company contact form / generic events inbox (fictional),https://promptmill.example,SAMPLE
+S20,Testkettle (fictional),devtool,460,,AI agents;Rust,Office manager,company contact form / generic events inbox (fictional),https://testkettle.example,SAMPLE
+S21,Gitgarden (fictional),devtool,340,,Open source,Marketing coordinator,company contact form / generic events inbox (fictional),https://gitgarden.example,SAMPLE
+S22,Schemawell (fictional),devtool,340,,"Developer relations;ML, women in tech",Marketing coordinator,company contact form / generic events inbox (fictional),https://schemawell.example,SAMPLE
+S23,Tracefern (fictional),devtool,580,,IoT & hardware;Founders,Office manager,company contact form / generic events inbox (fictional),https://tracefern.example,SAMPLE
+S24,Cachefinch (fictional),devtool,520,,Design engineering;Founders,Developer Relations lead,company contact form / generic events inbox (fictional),https://cachefinch.example,SAMPLE
+S25,Agentloom (fictional),devtool,460,,"ML, women in tech;Design engineering;Data science;Product management",Office manager,company contact form / generic events inbox (fictional),https://agentloom.example,SAMPLE
+S26,Nimbusforge Cloud (fictional),cloud_credits,960,credits for attendees,Rust,Developer Relations lead,company contact form / generic events inbox (fictional),https://nimbusforge.example,SAMPLE
+S27,Cumulo Compute (fictional),cloud_credits,560,credits for attendees,AI agents;Fintech;Founders,Developer Relations lead,company contact form / generic events inbox (fictional),https://cumulo.example,SAMPLE
+S28,Driftwood GPU (fictional),cloud_credits,1100,credits for attendees,AI agents;LLMs & RAG,Community & Events team,company contact form / generic events inbox (fictional),https://driftwood.example,SAMPLE
+S29,The Loom Workspace (fictional),venue,0,room for 40-120,LLMs & RAG;AI agents,Partnerships manager,company contact form / generic events inbox (fictional),https://the.example,SAMPLE
+S30,Hollow Oak Studios (fictional),venue,0,room for 40-120,Founders,Developer Relations lead,company contact form / generic events inbox (fictional),https://hollow.example,SAMPLE
+S31,Canal Lock Coworking (fictional),venue,0,room for 40-120,"ML, women in tech;Product management;Rust",Office manager,company contact form / generic events inbox (fictional),https://canal.example,SAMPLE
+S32,Brickline Hub (fictional),venue,0,room for 40-120,Open source;Fintech,Office manager,company contact form / generic events inbox (fictional),https://brickline.example,SAMPLE
+S33,Lantern House Offices (fictional),venue,0,room for 40-120,Rust;Indie hacking;Product management;Creative coding,Developer Relations lead,company contact form / generic events inbox (fictional),https://lantern.example,SAMPLE
+S34,Talentwharf (fictional),recruiter,450,,"ML, women in tech",Marketing coordinator,company contact form / generic events inbox (fictional),https://talentwharf.example,SAMPLE
+S35,Hirewillow Partners (fictional),recruiter,580,,Creative coding;Product management;Open source;AI agents,Community & Events team,company contact form / generic events inbox (fictional),https://hirewillow.example,SAMPLE
+S36,Benchmark & Bloom Recruiting (fictional),recruiter,430,,Open source;Data science;Indie hacking;LLMs & RAG,Developer Relations lead,company contact form / generic events inbox (fictional),https://benchmark.example,SAMPLE
+S37,Gatherwisp (fictional),community_platform,250,,Founders;Product management,Developer Relations lead,company contact form / generic events inbox (fictional),https://gatherwisp.example,SAMPLE
+S38,Meetmoss (fictional),community_platform,310,,IoT & hardware;Product management,Developer Relations lead,company contact form / generic events inbox (fictional),https://meetmoss.example,SAMPLE
+S39,Circlewren (fictional),community_platform,220,,Indie hacking;Security;Founders;LLMs & RAG,Community & Events team,company contact form / generic events inbox (fictional),https://circlewren.example,SAMPLE
+S40,The Byte Courier (fictional),media,0,newsletter feature,LLMs & RAG,Developer Relations lead,company contact form / generic events inbox (fictional),https://the.example,SAMPLE

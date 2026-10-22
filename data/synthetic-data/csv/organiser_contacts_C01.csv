@@ -1,0 +1,61 @@
+contact_id,owner_community_id,name,role,company,sponsor_id,relationship,warmth_1to5,last_contact,linkedin_connection,met_at_event_id,email,source,is_sample
+K01,C01,Cleo Vance (fictional),Office manager,Independent,,ex-colleague,4,2026-05-06,True,,contact01@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K02,C01,Saffi Morrow (fictional),Head of Community,Another Meetup (SAMPLE),,co-hosted with us,4,2026-09-14,True,,contact02@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K03,C01,Omar Quillon (fictional),DevRel,Another Meetup (SAMPLE),,co-hosted with us,4,2025-10-23,False,,contact03@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K04,C01,Esme Brackley (fictional),Head of Community,Fictional Startup Ltd,,ex-colleague,4,2025-10-15,True,,contact04@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K05,C01,Quinn Morrow (fictional),Head of Community,Bao Down Street Food (fictional),S04,sponsored us before,5,2025-12-27,False,,contact05@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K06,C01,Yara Darrow (fictional),Office manager,Fictional Startup Ltd,,ex-colleague,4,2026-03-10,True,,contact06@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K07,C01,Ada Arkwright (fictional),Head of Community,Curry Compiler Co. (fictional),S08,speaker at our event,3,2025-09-25,False,E010,contact07@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K08,C01,Wren Linnell (fictional),Head of Community,Fictional Startup Ltd,,met at their event,3,2025-10-31,True,E009,contact08@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K09,C01,Zed Fernwood (fictional),Partnerships,The Loom Workspace (fictional),S29,ex-colleague,4,2026-07-29,True,,contact09@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K10,C01,Sol Brackley (fictional),Founder,Nimbusforge Cloud (fictional),S26,speaker at our event,3,2025-11-05,False,E005,contact10@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K11,C01,Arlo Morrow (fictional),DevRel,Independent,,met at their event,3,2026-09-26,True,E001,contact11@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K12,C01,Tobi Halloway (fictional),Office manager,Benchmark & Bloom Recruiting (fictional),S36,met at their event,3,2025-10-03,False,E005,contact12@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K13,C01,Kemi Tennant (fictional),DevRel,Lantern House Offices (fictional),S33,co-hosted with us,4,2025-12-06,False,,contact13@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K14,C01,Juno Ashgrove (fictional),Recruiter,Kombucha Kernel (fictional),S12,LinkedIn connection only,1,2025-09-28,False,,contact14@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K15,C01,Arlo Marlow (fictional),Founder,Another Meetup (SAMPLE),,ex-colleague,4,2026-09-13,True,,contact15@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K16,C01,Vik Calder (fictional),DevRel,Meetmoss (fictional),S38,ex-colleague,4,2025-11-08,True,,contact16@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K17,C01,Mira Rookwood (fictional),Partnerships,The Byte Courier (fictional),S40,met at their event,3,2026-03-01,True,E006,contact17@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K18,C01,Juno Nettle (fictional),Founder,Fictional Startup Ltd,,co-hosted with us,4,2026-03-12,True,,contact18@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K19,C01,Omar Pemberly (fictional),Recruiter,Querypine (fictional),S15,LinkedIn connection only,1,2026-04-16,True,,contact19@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K20,C01,Ravi Darrow (fictional),Founder,Fictional Startup Ltd,,ex-colleague,4,2026-02-10,True,,contact20@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K21,C01,Rhea Brackley (fictional),Engineer,Circlewren (fictional),S39,met at their event,3,2026-07-09,True,E009,contact21@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K22,C01,Noor Fernwood (fictional),Recruiter,Another Meetup (SAMPLE),,met at their event,3,2025-12-25,True,E001,contact22@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K23,C01,Quinn Morrow (fictional),Engineer,Leaf & Ladle Catering (fictional),S03,speaker at our event,3,2026-02-18,True,E008,contact23@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K24,C01,Sol Brackley (fictional),Partnerships,Querypine (fictional),S15,speaker at our event,3,2026-02-03,True,E004,contact24@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K25,C01,Pax Arkwright (fictional),Office manager,Crustwise Pizza Collective (fictional),S01,LinkedIn connection only,1,2026-07-25,False,,contact25@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K26,C01,Juno Nettle (fictional),Office manager,Hopscotch Brew Collective (fictional),S11,co-hosted with us,4,2026-08-04,False,,contact26@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K27,C01,Orla Kestrel (fictional),DevRel,Tracefern (fictional),S23,sponsored us before,5,2026-09-15,True,,contact27@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K28,C01,Xan Whitlow (fictional),Partnerships,Stacklark (fictional),S14,speaker at our event,3,2026-02-27,False,E010,contact28@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K29,C01,Gwen Linnell (fictional),Office manager,Fictional Startup Ltd,,sponsored us before,5,2025-10-03,True,,contact29@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K30,C01,Yara Whitlow (fictional),Founder,Another Meetup (SAMPLE),,co-hosted with us,4,2025-11-17,False,,contact30@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K31,C01,Orla Linnell (fictional),Partnerships,Logwhistle (fictional),S17,sponsored us before,5,2026-04-20,False,,contact31@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K32,C01,Ada Linnell (fictional),DevRel,Canal Lock Coworking (fictional),S31,speaker at our event,3,2026-03-06,True,E009,contact32@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K33,C01,Nico Brackley (fictional),DevRel,Independent,,sponsored us before,5,2026-04-15,True,,contact33@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K34,C01,Orla Sallis (fictional),Recruiter,Fictional Startup Ltd,,LinkedIn connection only,1,2025-10-14,True,,contact34@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K35,C01,Nico Nettle (fictional),DevRel,Another Meetup (SAMPLE),,ex-colleague,4,2026-03-21,True,,contact35@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K36,C01,Kemi Brackley (fictional),Office manager,Gatherwisp (fictional),S37,speaker at our event,3,2026-01-28,True,E001,contact36@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K37,C01,Luca Linnell (fictional),Partnerships,Hopscotch Brew Collective (fictional),S11,sponsored us before,5,2025-12-15,False,,contact37@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K38,C01,Sol Marlow (fictional),DevRel,Fictional Startup Ltd,,LinkedIn connection only,1,2025-12-11,False,,contact38@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K39,C01,Orla Sallis (fictional),Engineer,Independent,,co-hosted with us,4,2025-12-23,False,,contact39@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K40,C01,Kemi Rookwood (fictional),Partnerships,Lantern House Offices (fictional),S33,sponsored us before,5,2025-12-16,True,,contact40@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K41,C01,Gwen Fernwood (fictional),DevRel,Agentloom (fictional),S25,co-hosted with us,4,2026-01-23,False,,contact41@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K42,C01,Jonah Arkwright (fictional),Head of Community,Independent,,ex-colleague,4,2026-02-16,False,,contact42@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K43,C01,Noor Quillon (fictional),Head of Community,Fictional Startup Ltd,,speaker at our event,3,2025-11-14,True,E001,contact43@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K44,C01,Omar Linnell (fictional),Partnerships,Fictional Startup Ltd,,met at their event,3,2026-09-25,True,E004,contact44@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K45,C01,Wren Nettle (fictional),Recruiter,Canal Lock Coworking (fictional),S31,ex-colleague,4,2025-10-03,False,,contact45@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K46,C01,Gwen Sallis (fictional),DevRel,Fictional Startup Ltd,,speaker at our event,3,2026-02-15,False,E009,contact46@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K47,C01,Quinn Halloway (fictional),Head of Community,Hirewillow Partners (fictional),S35,ex-colleague,4,2025-10-19,False,,contact47@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K48,C01,Elio Fernwood (fictional),Partnerships,Talentwharf (fictional),S34,met at their event,3,2025-11-16,True,E005,contact48@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K49,C01,Omar Nettle (fictional),Founder,Pasta Parlour Labs (fictional),S07,co-hosted with us,4,2026-06-06,False,,contact49@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K50,C01,Rhea Whitlow (fictional),Recruiter,Cachefinch (fictional),S24,sponsored us before,5,2026-07-05,True,,contact50@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K51,C01,Luca Calder (fictional),Engineer,Another Meetup (SAMPLE),,ex-colleague,4,2026-02-12,True,,contact51@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K52,C01,Zed Brackley (fictional),Recruiter,Tracefern (fictional),S23,sponsored us before,5,2025-11-14,True,,contact52@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K53,C01,Nico Linnell (fictional),Partnerships,Hopscotch Brew Collective (fictional),S11,met at their event,3,2026-04-27,False,E001,contact53@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K54,C01,Dev Tennant (fictional),Partnerships,Another Meetup (SAMPLE),,LinkedIn connection only,1,2026-10-15,False,,contact54@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K55,C01,Priya Sallis (fictional),Head of Community,Independent,,ex-colleague,4,2026-06-05,True,,contact55@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K56,C01,Yara Whitlow (fictional),Engineer,Leaf & Ladle Catering (fictional),S03,LinkedIn connection only,1,2025-11-16,True,,contact56@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K57,C01,Dev Tennant (fictional),Office manager,Fictional Startup Ltd,,speaker at our event,3,2026-03-07,True,E002,contact57@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K58,C01,Noor Linnell (fictional),Office manager,Leaf & Ladle Catering (fictional),S03,speaker at our event,3,2026-06-21,True,E010,contact58@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K59,C01,Farid Pemberly (fictional),Recruiter,Crustwise Pizza Collective (fictional),S01,co-hosted with us,4,2026-03-27,True,,contact59@example.org,organiser's own contacts export (SAMPLE),SAMPLE
+K60,C01,Elio Fernwood (fictional),Office manager,Meetmoss (fictional),S38,co-hosted with us,4,2025-10-22,True,,contact60@example.org,organiser's own contacts export (SAMPLE),SAMPLE

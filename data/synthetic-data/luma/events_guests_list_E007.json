@@ -1,0 +1,3067 @@
+{
+  "_notice": "SAMPLE / FICTIONAL. Shaped like Luma API responses (field names from public-api.luma.com/openapi.json). Not real Luma data; ids are fake; the _notice key is not part of real responses.",
+  "entries": [
+    {
+      "id": "gst-SAMPLEE007000",
+      "user_id": "usr-SAMPLEM004",
+      "user_email": "member004@example.com",
+      "user_name": "Hiro Sallis",
+      "user_first_name": "Hiro",
+      "user_last_name": "Sallis",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-000",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-12T20:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007000",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:48:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007001",
+      "user_id": "usr-SAMPLEM018",
+      "user_email": "member018@example.com",
+      "user_name": "Ada Halloway",
+      "user_first_name": "Ada",
+      "user_last_name": "Halloway",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-001",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-08T23:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007001",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:38:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007002",
+      "user_id": "usr-SAMPLEM022",
+      "user_email": "member022@example.com",
+      "user_name": "Ravi Marlow",
+      "user_first_name": "Ravi",
+      "user_last_name": "Marlow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-002",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-25T19:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007002",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007003",
+      "user_id": "usr-SAMPLEM034",
+      "user_email": "member034@example.com",
+      "user_name": "Farid Arkwright",
+      "user_first_name": "Farid",
+      "user_last_name": "Arkwright",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-003",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-05T08:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "nothing yet, curious",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007003",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:54:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007004",
+      "user_id": "usr-SAMPLEM061",
+      "user_email": "member061@example.com",
+      "user_name": "Quinn Halloway",
+      "user_first_name": "Quinn",
+      "user_last_name": "Halloway",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-004",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-04T22:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007004",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007005",
+      "user_id": "usr-SAMPLEM065",
+      "user_email": "member065@example.com",
+      "user_name": "Theo Calder",
+      "user_first_name": "Theo",
+      "user_last_name": "Calder",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-005",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-13T20:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007005",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:33:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007006",
+      "user_id": "usr-SAMPLEM068",
+      "user_email": "member068@example.com",
+      "user_name": "Yara Calder",
+      "user_first_name": "Yara",
+      "user_last_name": "Calder",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-006",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-03T13:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007006",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:32:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007007",
+      "user_id": "usr-SAMPLEM082",
+      "user_email": "member082@example.com",
+      "user_name": "Xan Linnell",
+      "user_first_name": "Xan",
+      "user_last_name": "Linnell",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-007",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-13T01:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007007",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007008",
+      "user_id": "usr-SAMPLEM093",
+      "user_email": "member093@example.com",
+      "user_name": "Kai Fernwood",
+      "user_first_name": "Kai",
+      "user_last_name": "Fernwood",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-008",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-26T01:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007008",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:20:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007009",
+      "user_id": "usr-SAMPLEM100",
+      "user_email": "member100@example.com",
+      "user_name": "Arlo Pemberly",
+      "user_first_name": "Arlo",
+      "user_last_name": "Pemberly",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-009",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-05T08:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Halal",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "x",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007009",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:36:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007010",
+      "user_id": "usr-SAMPLEM115",
+      "user_email": "member115@example.com",
+      "user_name": "Sol Kestrel",
+      "user_first_name": "Sol",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-010",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-21T00:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "x",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007010",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007011",
+      "user_id": "usr-SAMPLEM127",
+      "user_email": "member127@example.com",
+      "user_name": "Priya Kestrel",
+      "user_first_name": "Priya",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-011",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-10T04:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007011",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:00:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007012",
+      "user_id": "usr-SAMPLEM136",
+      "user_email": "member136@example.com",
+      "user_name": "Uma Kestrel",
+      "user_first_name": "Uma",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-012",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-06T02:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007012",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:05:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007013",
+      "user_id": "usr-SAMPLEM162",
+      "user_email": "member162@example.com",
+      "user_name": "Arlo Linnell",
+      "user_first_name": "Arlo",
+      "user_last_name": "Linnell",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-013",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-25T23:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Halal",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007013",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:38:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007014",
+      "user_id": "usr-SAMPLEM168",
+      "user_email": "member168@example.com",
+      "user_name": "Esme Kestrel",
+      "user_first_name": "Esme",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-014",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-10T14:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Halal",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007014",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:01:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007015",
+      "user_id": "usr-SAMPLEM177",
+      "user_email": "member177@example.com",
+      "user_name": "Zed Darrow",
+      "user_first_name": "Zed",
+      "user_last_name": "Darrow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-015",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-09T05:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007015",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007016",
+      "user_id": "usr-SAMPLEM194",
+      "user_email": "member194@example.com",
+      "user_name": "Juno Ostrander",
+      "user_first_name": "Juno",
+      "user_last_name": "Ostrander",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-016",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-14T12:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007016",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:00:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007017",
+      "user_id": "usr-SAMPLEXE007000",
+      "user_email": "guest.e007.000@example.com",
+      "user_name": "Arlo Whitlow",
+      "user_first_name": "Arlo",
+      "user_last_name": "Whitlow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-017",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-02T05:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007017",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:26:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007018",
+      "user_id": "usr-SAMPLEXE007001",
+      "user_email": "guest.e007.001@example.com",
+      "user_name": "Ada Whitlow",
+      "user_first_name": "Ada",
+      "user_last_name": "Whitlow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-018",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-04T12:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007018",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:56:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007019",
+      "user_id": "usr-SAMPLEXE007002",
+      "user_email": "guest.e007.002@example.com",
+      "user_name": "Leah Rookwood",
+      "user_first_name": "Leah",
+      "user_last_name": "Rookwood",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-019",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-26T01:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007019",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:30:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007020",
+      "user_id": "usr-SAMPLEXE007003",
+      "user_email": "guest.e007.003@example.com",
+      "user_name": "Vik Sallis",
+      "user_first_name": "Vik",
+      "user_last_name": "Sallis",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-020",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-11T03:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007020",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:15:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007021",
+      "user_id": "usr-SAMPLEXE007004",
+      "user_email": "guest.e007.004@example.com",
+      "user_name": "Priya Morrow",
+      "user_first_name": "Priya",
+      "user_last_name": "Morrow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-021",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-01T11:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "nothing yet, curious",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007021",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:53:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007022",
+      "user_id": "usr-SAMPLEXE007005",
+      "user_email": "guest.e007.005@example.com",
+      "user_name": "Isla Fernwood",
+      "user_first_name": "Isla",
+      "user_last_name": "Fernwood",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-022",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-26T07:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007022",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:43:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007023",
+      "user_id": "usr-SAMPLEXE007006",
+      "user_email": "guest.e007.006@example.com",
+      "user_name": "Hiro Tennant",
+      "user_first_name": "Hiro",
+      "user_last_name": "Tennant",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-023",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-04T18:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007023",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:22:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007024",
+      "user_id": "usr-SAMPLEXE007007",
+      "user_email": "guest.e007.007@example.com",
+      "user_name": "Leah Kestrel",
+      "user_first_name": "Leah",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-024",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-09T17:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007024",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:06:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007025",
+      "user_id": "usr-SAMPLEXE007008",
+      "user_email": "guest.e007.008@example.com",
+      "user_name": "Farid Sallis",
+      "user_first_name": "Farid",
+      "user_last_name": "Sallis",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-025",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-27T17:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007025",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:32:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007026",
+      "user_id": "usr-SAMPLEXE007009",
+      "user_email": "guest.e007.009@example.com",
+      "user_name": "Arlo Arkwright",
+      "user_first_name": "Arlo",
+      "user_last_name": "Arkwright",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-026",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-05T15:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007026",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:51:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007027",
+      "user_id": "usr-SAMPLEXE007010",
+      "user_email": "guest.e007.010@example.com",
+      "user_name": "Zed Arkwright",
+      "user_first_name": "Zed",
+      "user_last_name": "Arkwright",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-027",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-25T02:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007027",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:17:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007028",
+      "user_id": "usr-SAMPLEXE007011",
+      "user_email": "guest.e007.011@example.com",
+      "user_name": "Juno Quillon",
+      "user_first_name": "Juno",
+      "user_last_name": "Quillon",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-028",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-14T19:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007028",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:45:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007029",
+      "user_id": "usr-SAMPLEXE007012",
+      "user_email": "guest.e007.012@example.com",
+      "user_name": "Nico Halloway",
+      "user_first_name": "Nico",
+      "user_last_name": "Halloway",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-029",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-04T01:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007029",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:46:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007030",
+      "user_id": "usr-SAMPLEXE007013",
+      "user_email": "guest.e007.013@example.com",
+      "user_name": "Nico Arkwright",
+      "user_first_name": "Nico",
+      "user_last_name": "Arkwright",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-030",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-06T05:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007030",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:23:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007031",
+      "user_id": "usr-SAMPLEXE007014",
+      "user_email": "guest.e007.014@example.com",
+      "user_name": "Ines Brackley",
+      "user_first_name": "Ines",
+      "user_last_name": "Brackley",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-031",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-14T04:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007031",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:01:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007032",
+      "user_id": "usr-SAMPLEXE007015",
+      "user_email": "guest.e007.015@example.com",
+      "user_name": "Milo Darrow",
+      "user_first_name": "Milo",
+      "user_last_name": "Darrow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-032",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-11T18:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007032",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T19:20:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007033",
+      "user_id": "usr-SAMPLEXE007016",
+      "user_email": "guest.e007.016@example.com",
+      "user_name": "Yara Sallis",
+      "user_first_name": "Yara",
+      "user_last_name": "Sallis",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-033",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-04T11:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007033",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:36:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007034",
+      "user_id": "usr-SAMPLEXE007017",
+      "user_email": "guest.e007.017@example.com",
+      "user_name": "Pax Kestrel",
+      "user_first_name": "Pax",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-034",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-28T07:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007034",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": "2026-03-16T18:30:00.000Z",
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007035",
+      "user_id": "usr-SAMPLEXE007018",
+      "user_email": "guest.e007.018@example.com",
+      "user_name": "Noor Arkwright",
+      "user_first_name": "Noor",
+      "user_last_name": "Arkwright",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-035",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-27T03:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007035",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007036",
+      "user_id": "usr-SAMPLEXE007019",
+      "user_email": "guest.e007.019@example.com",
+      "user_name": "Arlo Ashgrove",
+      "user_first_name": "Arlo",
+      "user_last_name": "Ashgrove",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-036",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-07T18:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007036",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007037",
+      "user_id": "usr-SAMPLEXE007020",
+      "user_email": "guest.e007.020@example.com",
+      "user_name": "Ravi Brackley",
+      "user_first_name": "Ravi",
+      "user_last_name": "Brackley",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-037",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-11T14:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007037",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007038",
+      "user_id": "usr-SAMPLEXE007021",
+      "user_email": "guest.e007.021@example.com",
+      "user_name": "Quinn Quillon",
+      "user_first_name": "Quinn",
+      "user_last_name": "Quillon",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-038",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-02T01:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007038",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007039",
+      "user_id": "usr-SAMPLEXE007022",
+      "user_email": "guest.e007.022@example.com",
+      "user_name": "Omar Vance",
+      "user_first_name": "Omar",
+      "user_last_name": "Vance",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-039",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-04T04:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegetarian",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007039",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007040",
+      "user_id": "usr-SAMPLEXE007023",
+      "user_email": "guest.e007.023@example.com",
+      "user_name": "Kemi Rookwood",
+      "user_first_name": "Kemi",
+      "user_last_name": "Rookwood",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-040",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-22T10:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Halal",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007040",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007041",
+      "user_id": "usr-SAMPLEXE007024",
+      "user_email": "guest.e007.024@example.com",
+      "user_name": "Mira Brackley",
+      "user_first_name": "Mira",
+      "user_last_name": "Brackley",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-041",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-13T02:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "RAG over docs",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007041",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007042",
+      "user_id": "usr-SAMPLEXE007025",
+      "user_email": "guest.e007.025@example.com",
+      "user_name": "Kemi Darrow",
+      "user_first_name": "Kemi",
+      "user_last_name": "Darrow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-042",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-24T19:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "agent for ops",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Vegan",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007042",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007043",
+      "user_id": "usr-SAMPLEXE007026",
+      "user_email": "guest.e007.026@example.com",
+      "user_name": "Arlo Kestrel",
+      "user_first_name": "Arlo",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-043",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-02-23T21:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "nothing yet, curious",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Another Co (SAMPLE)",
+            "job_title": "Founder"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007043",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007044",
+      "user_id": "usr-SAMPLEXE007027",
+      "user_email": "guest.e007.027@example.com",
+      "user_name": "Wren Marlow",
+      "user_first_name": "Wren",
+      "user_last_name": "Marlow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-044",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-06T17:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "x",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007044",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007045",
+      "user_id": "usr-SAMPLEXE007028",
+      "user_email": "guest.e007.028@example.com",
+      "user_name": "Milo Halloway",
+      "user_first_name": "Milo",
+      "user_last_name": "Halloway",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-045",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-15T05:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Halal",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Student"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007045",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007046",
+      "user_id": "usr-SAMPLEXE007029",
+      "user_email": "guest.e007.029@example.com",
+      "user_name": "Pax Kestrel",
+      "user_first_name": "Pax",
+      "user_last_name": "Kestrel",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-046",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-11T09:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007046",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007047",
+      "user_id": "usr-SAMPLEXE007030",
+      "user_email": "guest.e007.030@example.com",
+      "user_name": "Xan Nettle",
+      "user_first_name": "Xan",
+      "user_last_name": "Nettle",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-047",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-10T21:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "voice bot",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007047",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007048",
+      "user_id": "usr-SAMPLEXE007031",
+      "user_email": "guest.e007.031@example.com",
+      "user_name": "Tess Darrow",
+      "user_first_name": "Tess",
+      "user_last_name": "Darrow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-048",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-03T22:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Gluten-free",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "PM"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": null,
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007048",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007049",
+      "user_id": "usr-SAMPLEXE007032",
+      "user_email": "guest.e007.032@example.com",
+      "user_name": "Theo Darrow",
+      "user_first_name": "Theo",
+      "user_last_name": "Darrow",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-049",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-01T13:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "None",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Fictional Startup Ltd",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "linkedin",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007049",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    },
+    {
+      "id": "gst-SAMPLEE007050",
+      "user_id": "usr-SAMPLEXE007033",
+      "user_email": "guest.e007.033@example.com",
+      "user_name": "Uma Ashgrove",
+      "user_first_name": "Uma",
+      "user_last_name": "Ashgrove",
+      "approval_status": "approved",
+      "check_in_qr_code": "SAMPLE-QR-E007-050",
+      "eth_address": null,
+      "invited_at": null,
+      "joined_at": null,
+      "phone_number": null,
+      "registered_at": "2026-03-12T09:00:00.000Z",
+      "registration_answers": [
+        {
+          "label": "What are you building?",
+          "question_id": "q-SAMPLE-build",
+          "value": "evals harness",
+          "question_type": "text"
+        },
+        {
+          "label": "Dietary requirements",
+          "question_id": "q-SAMPLE-diet",
+          "value": "Halal",
+          "question_type": "dropdown"
+        },
+        {
+          "label": "Company",
+          "question_id": "q-SAMPLE-company",
+          "value": {
+            "company": "Independent",
+            "job_title": "Engineer"
+          },
+          "question_type": "company"
+        },
+        {
+          "label": "I agree to the code of conduct",
+          "question_id": "q-SAMPLE-terms",
+          "value": true,
+          "question_type": "agree-check"
+        }
+      ],
+      "solana_address": null,
+      "utm_source": "whatsapp",
+      "attribution_params": {},
+      "event_tickets": [
+        {
+          "id": "evttick-SAMPLEE007050",
+          "amount": 0,
+          "amount_discount": 0,
+          "amount_tax": 0,
+          "currency": null,
+          "checked_in_at": null,
+          "event_ticket_type_id": "evtticktyp-SAMPLEfree01",
+          "is_captured": true,
+          "name": "Free"
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}

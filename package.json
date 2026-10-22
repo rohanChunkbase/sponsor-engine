@@ -1,0 +1,27 @@
+{
+  "name": "sponsor-engine",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Open-source front desk and sponsor CRM for London communities and venues.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "seed": "tsx scripts/seed.ts",
+    "demo": "tsx scripts/demo.ts",
+    "dev": "tsx scripts/dev.ts",
+    "mcp": "tsx packages/mcp/src/stdio.ts",
+    "mcp:http": "tsx packages/mcp/src/http.ts",
+    "test": "node --import tsx --test packages/core/test/*.test.ts",
+    "typecheck": "tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.19.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

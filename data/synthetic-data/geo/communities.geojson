@@ -1,0 +1,261 @@
+{
+ "type": "FeatureCollection",
+ "name": "communities (SAMPLE)",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "community_id": "C01",
+    "name": "Thames Agent Builders (SAMPLE)",
+    "focus": "AI agents",
+    "members_estimate": 900,
+    "area": "Shoreditch"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1156,
+     51.4613
+    ]
+   },
+   "properties": {
+    "community_id": "C02",
+    "name": "Lambeth LLM Lab (SAMPLE)",
+    "focus": "LLMs & RAG",
+    "members_estimate": 650,
+    "area": "Brixton"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "community_id": "C03",
+    "name": "Docklands DevRel Circle (SAMPLE)",
+    "focus": "Developer relations",
+    "members_estimate": 400,
+    "area": "Canary Wharf"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "community_id": "C04",
+    "name": "Kings Cross Rust Night (SAMPLE)",
+    "focus": "Rust",
+    "members_estimate": 520,
+    "area": "King's Cross"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0553,
+     51.545
+    ]
+   },
+   "properties": {
+    "community_id": "C05",
+    "name": "Hackney Hardware Club (SAMPLE)",
+    "focus": "IoT & hardware",
+    "members_estimate": 380,
+    "area": "Hackney"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "community_id": "C06",
+    "name": "Southbank Data Folk (SAMPLE)",
+    "focus": "Data science",
+    "members_estimate": 1100,
+    "area": "Southwark"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1426,
+     51.539
+    ]
+   },
+   "properties": {
+    "community_id": "C07",
+    "name": "Camden Creative Coders (SAMPLE)",
+    "focus": "Creative coding",
+    "members_estimate": 300,
+    "area": "Camden"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1365,
+     51.5136
+    ]
+   },
+   "properties": {
+    "community_id": "C08",
+    "name": "Soho Product Guild (SAMPLE)",
+    "focus": "Product management",
+    "members_estimate": 750,
+    "area": "Soho"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0036,
+     51.5413
+    ]
+   },
+   "properties": {
+    "community_id": "C09",
+    "name": "Stratford Startup Breakfast (SAMPLE)",
+    "focus": "Founders",
+    "members_estimate": 600,
+    "area": "Stratford"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1053,
+     51.5203
+    ]
+   },
+   "properties": {
+    "community_id": "C10",
+    "name": "Farringdon Fintech Tinkerers (SAMPLE)",
+    "focus": "Fintech",
+    "members_estimate": 480,
+    "area": "Farringdon"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.224,
+     51.512
+    ]
+   },
+   "properties": {
+    "community_id": "C11",
+    "name": "White City Women in ML (SAMPLE)",
+    "focus": "ML, women in tech",
+    "members_estimate": 820,
+    "area": "White City"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.064,
+     51.498
+    ]
+   },
+   "properties": {
+    "community_id": "C12",
+    "name": "Bermondsey Open Source Pub (SAMPLE)",
+    "focus": "Open source",
+    "members_estimate": 350,
+    "area": "Bermondsey"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1033,
+     51.5362
+    ]
+   },
+   "properties": {
+    "community_id": "C13",
+    "name": "Islington Indie Hackers (SAMPLE)",
+    "focus": "Indie hacking",
+    "members_estimate": 560,
+    "area": "Islington"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "community_id": "C14",
+    "name": "Old Street Security Social (SAMPLE)",
+    "focus": "Security",
+    "members_estimate": 430,
+    "area": "Old Street"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0823,
+     51.5178
+    ]
+   },
+   "properties": {
+    "community_id": "C15",
+    "name": "Liverpool St Design Engineers (SAMPLE)",
+    "focus": "Design engineering",
+    "members_estimate": 290,
+    "area": "Liverpool Street"
+   }
+  }
+ ]
+}
