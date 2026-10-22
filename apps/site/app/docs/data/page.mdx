@@ -1,0 +1,101 @@
+import { Warning } from "@/components/warning";
+
+export const metadata = {
+  title: "Data",
+};
+
+# Data
+
+Sponsor Engine ships two data packs.
+One pack is public London events.
+One pack is fictional.
+Read the label on a row before you repeat a name.
+
+## Real London tables
+
+`data/real-data/` holds public London events and sponsors.
+The tables were collected on 22 October 2026 from public pages.
+Each claim has a short quote and a source URL.
+
+The pack includes these files.
+
+- 61 London tech events, from 2 October 2025 to 10 November 2026
+- 201 sponsor claims, one per event, company, and role
+- 130 companies
+- 42 communities
+- 61 community-to-community links
+
+A claim confidence of `stated` means the page says it.
+A claim confidence of `inferred` means the table records a reading of the page.
+The source URL is on the row.
+
+The tables hold no personal email address.
+The tables hold no phone number.
+The tables hold no attendee list.
+Raw HTML was removed because it contained guest names.
+`raw/luma_events.json` keeps public event fields.
+Host names and guest names were removed from that file.
+
+Luma pages were fetched at one request every two seconds.
+The Luma robots file allows event pages.
+Meetup, AI Tinkerers, and other public pages were read with a fetch.
+The quote on each claim is a short line from that page.
+
+Food payers are rarely named.
+Most food rows are a tech company that paid for food.
+One caterer in the pack is Swift Food.
+
+<Warning>WARNING: Do not treat a short quote as a right to copy the whole page. Open the source URL. Follow the licence on that site.</Warning>
+
+## Fictional tables
+
+`data/synthetic-data/` is fictional.
+Communities are marked SAMPLE.
+Companies and people are marked fictional.
+Emails use `example.com` or `example.org`.
+
+<Warning>WARNING: Do not present the fictional pack as real companies, real people, or real events.</Warning>
+
+The fictional pack includes communities, events, sponsors, deals, members, and a sample organiser history.
+The sample organiser show-up across 10 events is 62.1 percent.
+That number belongs to the fictional persona.
+It is not a London census figure.
+
+## Venue prices
+
+`packages/pricing/data/sample-bookings.csv` is a SAMPLE price file.
+The venue name is Riverworks Hall.
+Riverworks Hall is not a real venue.
+Every price in that file is generated.
+The seed is `20261022`.
+The file has 300 rows.
+
+<Warning>WARNING: Do not use the SAMPLE prices for a real venue.</Warning>
+
+A dropped venue CSV replaces that file for quotes.
+Store a redacted export.
+Redacted means the venue removed private names before the export.
+One file is for one venue.
+
+## Licences
+
+The code licence is MIT.
+Read the file `LICENSE`.
+The MIT grant covers the software.
+It does not make a third-party page yours.
+
+The bundled London tables are facts and short quotes from public pages.
+Each claim keeps its source URL.
+You may use the tables inside Sponsor Engine.
+You still follow the licence of each source page when you republish its words.
+
+The fictional pack is original sample data for this project.
+It is marked SAMPLE so a reader can tell it from the public tables.
+
+Companies House data is not bundled.
+A live size lookup runs only when you set `COMPANIES_HOUSE_API_KEY`.
+Follow the Companies House licence for that live response.
+
+Map tiles on the dashboard are free tiles.
+No key is required for those tiles.
+Follow the tile provider licence when you keep the map.

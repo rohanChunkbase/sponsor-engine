@@ -1,0 +1,91 @@
+import { CopyBlock } from "@/components/copy-block";
+import { codexConfig, httpCommand, mcpConfig } from "@/lib/snippets";
+
+export const metadata = {
+  title: "Connect",
+};
+
+# Connect
+
+Use Sponsor Engine from the agent you already pay for.
+The server name is `sponsor-engine`.
+Set the working directory to the project folder.
+Keep `DRY_RUN` set to `true`.
+
+The same JSON works for Grok Bot, Cursor, and Claude.
+
+<CopyBlock label="MCP config" code={mcpConfig} />
+
+`DRY_RUN` means test mode.
+`true` means the server does not send a message.
+
+## Grok Bot
+
+1. Open the MCP settings in Grok Bot.
+2. Add a server.
+3. Paste the JSON above.
+4. Set the working directory to the project folder.
+5. Save the settings.
+6. Ask for a sponsor in the chat.
+
+A sample ask is: "Get dinner sponsored for my 80-person hack."
+The bot calls the Sponsor Engine tools.
+You tap Approve on the outbox card.
+
+## Cursor
+
+1. Open the project in Cursor.
+2. Create the file `.cursor/mcp.json` when it is missing.
+3. Paste the JSON above.
+4. Set the working directory to the project folder.
+5. Reload the MCP servers.
+6. Ask the agent to quote the booking and draft the ask.
+
+## Claude
+
+Claude Desktop stores servers in `claude_desktop_config.json`.
+Claude Code stores servers in `.mcp.json` in the project folder.
+
+1. Open the config file for your Claude app.
+2. Paste the JSON above.
+3. Set the working directory to the project folder.
+4. Restart Claude.
+5. Ask Claude to call `triage_inbound`.
+
+## ChatGPT
+
+ChatGPT connects to a remote MCP server by URL.
+ChatGPT does not run the local `npm` command.
+
+1. Run the HTTP server in the project folder.
+
+<CopyBlock label="HTTP" code={httpCommand} />
+
+2. Read the local address http://127.0.0.1:8787/mcp.
+3. Give ChatGPT a public HTTPS address that forwards to that port.
+4. Open Settings in ChatGPT.
+5. Open Connectors.
+6. Add the HTTPS address.
+7. Keep `DRY_RUN` set to `true` on the server.
+
+Use a tunnel or a host you control for the public address.
+Do not put the server on the public internet with `DRY_RUN` set to `false`.
+
+## Codex
+
+Codex reads `~/.codex/config.toml`.
+
+1. Open the Codex config file.
+2. Paste the block below.
+3. Start Codex from the project folder.
+4. Keep `DRY_RUN` set to `true`.
+
+<CopyBlock label="Codex" code={codexConfig} />
+
+## Check the connection
+
+1. Call `forecast_turnout` with a headcount.
+2. Read the summary in the result.
+3. Call `list_failures` when a message does not qualify.
+
+The [tool reference](/docs/tools) shows each call.

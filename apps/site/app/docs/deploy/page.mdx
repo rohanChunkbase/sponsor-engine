@@ -1,0 +1,117 @@
+import { CopyBlock } from "@/components/copy-block";
+import { Warning } from "@/components/warning";
+
+export const metadata = {
+  title: "Deploy",
+};
+
+# Deploy
+
+This page covers two apps.
+The public site is `apps/site`.
+The desk is the rest of the repository.
+You can deploy the site on Vercel.
+You run the desk on a computer, or on a Node host you control.
+Supabase is optional.
+
+## This website on Vercel
+
+The site is a Next.js App Router app.
+It does not need a database.
+
+1. Import the GitHub repository in Vercel.
+2. Set the root directory to `apps/site`.
+3. Set the framework to Next.js.
+4. Set the install command to `npm install`.
+5. Set the build command to `npm run build`.
+6. Set the Node.js version to 22.
+
+`npm run build` runs `prebuild` first.
+`prebuild` reads `packages/mcp/src/server.ts` when that file is visible.
+Turn on **Include source files outside of the Root Directory** when you want the tool page to regenerate during the build.
+When that switch is off, the build keeps the committed file `apps/site/generated/tools.json`.
+
+The site has no workspace dependency on the other packages.
+A standalone install inside `apps/site` can build the pages.
+
+Routes on this site:
+
+| Route | Page |
+| --- | --- |
+| `/` | Landing page |
+| `/docs` | Quick start |
+| `/docs/connect` | Connect an agent |
+| `/docs/tools` | MCP tool reference |
+| `/docs/integrations` | Providers and environment variables |
+| `/docs/safety` | Safety model |
+| `/docs/pricing` | Pricing method and accuracy |
+| `/docs/data` | Data sources and licences |
+| `/docs/deploy` | This page |
+
+## Self-host this website
+
+1. Install Node.js 22.
+2. Open a terminal in the repository root.
+3. Run `npm install`.
+4. Run `npm run site:build`.
+5. Run `npm run start -w @sponsor-engine/site`.
+
+The site listens on port 3001.
+The desk listens on port 3000.
+The two apps are separate.
+
+## Self-host the desk
+
+1. Install Node.js 22.
+2. Open a terminal in the repository root.
+3. Run the command below.
+
+<CopyBlock label="Start" code={"npm install && npm run dev"} />
+
+4. Open `http://localhost:3000`.
+5. Press **Run demo** on the inbox.
+
+The default database is SQLite.
+The file is `data/sponsor-engine.db`.
+Set `SPONSOR_ENGINE_DB` when you want a different path.
+Leave `DATABASE_URL` empty to keep SQLite.
+
+Start the MCP server on the same machine.
+Read [Connect](/docs/connect) for the config.
+Set the working directory to the project folder.
+
+<Warning>WARNING: Keep DRY_RUN set to true on a shared host. Do not expose the HTTP server to the public internet with DRY_RUN set to false.</Warning>
+
+## Supabase
+
+Supabase is optional.
+The desk runs with SQLite and no Supabase project.
+
+1. Create a Supabase project.
+2. Copy the Postgres connection string.
+3. Set `DATABASE_URL` to that string.
+4. The string must start with `postgres://` or `postgresql://`.
+5. Start the desk.
+
+On connect, the app applies `packages/db/src/schema.postgres.sql`.
+You can also apply that file yourself.
+
+```bash
+psql "$DATABASE_URL" -f packages/db/src/schema.postgres.sql
+```
+
+The first start loads the bundled data when the sponsors table is empty.
+Do not put the service-role key in the public site.
+The public site does not read the database.
+
+The fictional SQL files under `data/synthetic-data/sql/` are a separate sample.
+They are not the live schema.
+Use `packages/db/src/schema.postgres.sql` for the desk.
+
+## What stays off Vercel
+
+The stdio MCP server is a local process.
+A Vercel function does not replace `npm run mcp`.
+Run `npm run mcp:http` on the Node host when a remote agent needs a URL.
+Put HTTPS in front of port 8787.
+Keep test mode on.

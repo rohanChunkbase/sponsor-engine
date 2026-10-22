@@ -1,0 +1,24 @@
+import { ToolReference } from "@/components/tool-reference";
+
+export const metadata = {
+  title: "MCP tools",
+};
+
+# MCP tools
+
+The server name is `sponsor-engine`.
+The version is `0.1.0`.
+Each section below comes from `packages/mcp/src/server.ts`.
+The script `apps/site/scripts/extract-tools.mjs` reads the tool name, the purpose, and the input schema.
+Example calls live in `apps/site/scripts/examples.json`.
+The script stops when a tool has no example.
+The script stops when an example field is not in the schema.
+
+Ids in the examples are samples.
+A live call makes its own ids.
+Room prices in the quote example use the SAMPLE history.
+Do not use SAMPLE prices for a real venue.
+The forecast example uses the benchmark path.
+The benchmark path runs when fewer than three past bookings of that kind exist.
+
+<ToolReference />
