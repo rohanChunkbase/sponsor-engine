@@ -143,6 +143,18 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
         : "No key. The London tech search page supplies the group and the RSVP count.",
     },
     {
+      id: "eventbrite",
+      name: "Eventbrite",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. The London listing needs no key."
+        : "No key. The London tech listing supplies events from the page JSON-LD.",
+    },
+    {
       id: "devpost",
       name: "Devpost",
       slot: "data",
