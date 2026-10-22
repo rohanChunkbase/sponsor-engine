@@ -1,5 +1,6 @@
 import type { LondonIndexData } from "./london-index.ts";
 import type { DevpostProject } from "./devpost-projects.ts";
+import type { GithubProfile } from "./github.ts";
 import type { OrganiserLeadsData } from "./organisers.ts";
 import type { FindSponsorsData } from "./sponsors.ts";
 import type {
@@ -32,4 +33,6 @@ export interface DataSource {
   organiserLeads(): Promise<ProviderResult<OrganiserLeadsData>>;
   /** Public Devpost software search. */
   devpostProjects(query: string): Promise<ProviderResult<DevpostProject[]>>;
+  /** Public GitHub profile: account age, repos, and followers. */
+  githubProfile(handle: string): Promise<ProviderResult<GithubProfile>>;
 }

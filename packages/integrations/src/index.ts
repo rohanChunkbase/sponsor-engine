@@ -18,6 +18,7 @@ export type { DataSource } from "./data/types.ts";
 export type { FindSponsorsData, SimilarEvent, SponsorMatch } from "./data/sponsors.ts";
 export type { OrganiserLead, OrganiserLeadsData } from "./data/organisers.ts";
 export type { DevpostProject } from "./data/devpost-projects.ts";
+export type { GithubProfile } from "./data/github.ts";
 export type { ProviderRegistry } from "./registry.ts";
 export type { RegistryOptions, ResolvedOptions } from "./options.ts";
 export type {
@@ -100,4 +101,8 @@ export async function organiserLeads(options?: RegistryOptions) {
 
 export async function devpostProjects(query: string, options?: RegistryOptions) {
   return createRegistry(options).data.devpostProjects(query);
+}
+
+export async function githubProfile(handle: string, options?: RegistryOptions) {
+  return createRegistry(options).data.githubProfile(handle);
 }

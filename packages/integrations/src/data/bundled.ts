@@ -10,6 +10,7 @@ import {
 } from "../seed/load.ts";
 import type { CompanySize, DevpostHackathon, LumaEventHosts, LumaHost, LumaSponsor } from "../types.ts";
 import { bundledLondonEvents, indexFromEvents } from "./london.ts";
+import { emptyGithubProfile } from "./github.ts";
 import { bundledOrganiserLeads } from "./organisers.ts";
 import { findSponsorsInSeed } from "./sponsors.ts";
 import { companySizeNote, emptyCompany } from "./parse.ts";
@@ -208,6 +209,9 @@ export function createBundledData(options: ResolvedOptions): DataSource {
     },
     async devpostProjects() {
       return builtinResult("bundled-data", [], "The bundle has no Devpost project search.");
+    },
+    async githubProfile(handle) {
+      return builtinResult("bundled-data", emptyGithubProfile(handle), "The bundle has no GitHub profile.");
     },
   };
 }

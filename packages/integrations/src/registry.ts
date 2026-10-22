@@ -2,6 +2,7 @@ import { selectCrm } from "./crm/select.ts";
 import { readCrmFile } from "./crm/store.ts";
 import type { CrmProvider } from "./crm/types.ts";
 import { createBundledData } from "./data/bundled.ts";
+import { githubTokenSet } from "./data/github.ts";
 import { companiesHouseUsesApi, createLiveData } from "./data/live.ts";
 import type { DataSource } from "./data/types.ts";
 import { selectMemory } from "./memory/select.ts";
@@ -72,6 +73,7 @@ function memoryDetail(
 function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
   const offline = options.offline;
   const api = companiesHouseUsesApi(options.env);
+  const githubToken = githubTokenSet(options.env);
   const lumaDetail = offline
     ? "Ready. Live calls are off. Public event JSON needs no key."
     : "No key. Public event JSON is used. A timeout uses the bundled data.";
@@ -187,6 +189,20 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
       active: !offline,
       implemented: true,
       detail: devpostDetail,
+    },
+    {
+      id: "github",
+      name: "GitHub",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. A profile read needs no key. The public limit is 60 requests per hour."
+        : githubToken
+          ? "GITHUB_TOKEN is set. The profile read uses that token."
+          : "No key. The public limit is 60 requests per hour. Set GITHUB_TOKEN to raise the limit.",
     },
     {
       id: "devpost-projects",
