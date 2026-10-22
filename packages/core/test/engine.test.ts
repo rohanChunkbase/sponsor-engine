@@ -120,6 +120,33 @@ test("an impossible date is not stored and the reply asks which day", () => {
   assert.equal(parseDate("Thursday 26 November 2026", now), "2026-11-26");
 });
 
+test("an unknown booker is not given a free community room", async () => {
+  const now = new Date(2026, 9, 22, 12, 0, 0);
+  for (const kind of ["unknown", "alien"]) {
+    const quote = await quoteBooking(db, {
+      requester_kind: kind,
+      headcount: 80,
+      date: "2026-11-26",
+      needs: ["food", "room", "evening", "projector"],
+    });
+    assert.ok(quote.price > 0);
+    assert.equal(quote.requester_kind, "unknown");
+    assert.match(quote.explanation, /not confirmed/i);
+    assert.doesNotMatch(quote.explanation, /This is a free community slot/);
+  }
+  const inbound = triageInbound(db, {
+    message: "Please book a room on 12 December 2026 for 40 people at Expedite.",
+    channel: "web",
+    now,
+  });
+  assert.equal(inbound.ok, true);
+  if (!inbound.ok) return;
+  assert.equal(inbound.qualified.requester_kind, "unknown");
+  const fromRequest = await quoteBooking(db, { request_id: String(inbound.request?.id) });
+  assert.ok(fromRequest.price > 0);
+  assert.equal(fromRequest.requester_kind, "unknown");
+});
+
 test("a short message is kept and logged as a failure", () => {
   const result = triageInbound(db, { message: "hey can someone look at this later??", channel: "whatsapp" });
   assert.equal(result.ok, false);

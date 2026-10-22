@@ -44,7 +44,7 @@ export async function quoteBooking(
   db: Db,
   input: {
     request_id?: string | null;
-    requester_kind?: RequesterKind | null;
+    requester_kind?: string | null;
     headcount?: number | null;
     date?: string | null;
     community_name?: string | null;
@@ -61,12 +61,13 @@ export async function quoteBooking(
         needs_json: string | null;
       }>("SELECT * FROM requests WHERE id = ?", [input.request_id])
     : undefined;
-  const kind = (input.requester_kind ?? request?.requester_kind ?? "community") as RequesterKind;
+  const rawKind = String(input.requester_kind ?? request?.requester_kind ?? "unknown");
+  const confirmed = rawKind === "community" || rawKind === "company";
+  const bookerType = rawKind === "community" ? "community" : "company";
   const headcount = input.headcount ?? request?.headcount ?? null;
   if (!headcount || headcount < 1) throw new Error("A quote needs a headcount.");
   const needs = input.needs ?? parseJson<string[]>(request?.needs_json, []);
   const communityName = input.community_name ?? request?.organisation ?? null;
-  const bookerType = kind === "company" ? "company" : "community";
   const history = loadActiveHistory();
   const shaped = toQuoteRequest(db, {
     date: input.date ?? request?.event_date ?? null,
@@ -102,7 +103,7 @@ export async function quoteBooking(
     company_range: company.range,
   };
   const comparables = room.comparables.map(toComparable);
-  const explanation = `${room.explanation}\n\n${deskParagraph(bookerType, lines, forecast.summary)}`;
+  const explanation = `${room.explanation}\n\n${deskParagraph(bookerType, lines, forecast.summary, !confirmed)}`;
   const id = makeId("quo");
   db.run(
     `INSERT INTO quotes
@@ -115,7 +116,7 @@ export async function quoteBooking(
       room.currency,
       explanation,
       JSON.stringify(comparables),
-      bookerType,
+      confirmed ? bookerType : "unknown",
       JSON.stringify(lines),
       "pricing-module",
       nowIso(),
@@ -123,7 +124,7 @@ export async function quoteBooking(
   );
   recordRun(db, {
     tool: "quote_booking",
-    inputSummary: `${bookerType} · ${headcount} people`,
+    inputSummary: `${confirmed ? bookerType : "unknown"} · ${headcount} people`,
     outputSummary: `${gbp(lines.room_gbp)} room · ${gbp(food)} food`,
     requestId: input.request_id,
   });
@@ -136,7 +137,7 @@ export async function quoteBooking(
     comparables,
     lines,
     source: "pricing-module" as const,
-    requester_kind: bookerType,
+    requester_kind: confirmed ? bookerType : "unknown",
   };
 }
 
@@ -217,7 +218,7 @@ function toComparable(row: {
   };
 }
 
-function deskParagraph(kind: "community" | "company", lines: QuoteLines, forecastSummary: string): string {
+function deskParagraph(kind: "community" | "company", lines: QuoteLines, forecastSummary: string, unconfirmed: boolean): string {
   const room = kind === "community" && lines.room_gbp === 0
     ? `The room is ${gbp(0)}. This is a free community slot. Similar community evenings were free, and communities bring leads.`
     : `The room is ${gbp(lines.room_gbp)}. The room range is ${gbp(lines.range.low)} to ${gbp(lines.range.high)}.`;
@@ -225,5 +226,8 @@ function deskParagraph(kind: "community" | "company", lines: QuoteLines, forecas
   const contrast = kind === "community"
     ? `A company pays ${gbp(lines.company_room_gbp)} for the same room. The company range is ${gbp(lines.company_range.low)} to ${gbp(lines.company_range.high)}.`
     : `A community that brings leads pays ${gbp(lines.community_room_gbp)} for the same room. The community range is ${gbp(lines.community_range.low)} to ${gbp(lines.community_range.high)}.`;
-  return `${room} ${food} ${contrast}`;
+  const note = unconfirmed
+    ? " The booker type is not confirmed. This quote uses the company rate. A free community slot was not applied."
+    : "";
+  return `${room} ${food} ${contrast}${note}`;
 }

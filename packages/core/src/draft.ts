@@ -32,7 +32,7 @@ export async function draftSponsorAsk(
   const headcount = input.headcount ?? request?.headcount;
   if (!headcount) throw new Error("A sponsor ask needs a headcount.");
   const community = input.community ?? request?.organisation ?? "the community";
-  const kind = request?.requester_kind === "company" ? "company" : "community";
+  const kind = request?.requester_kind === "community" ? "community" : "company";
   const forecast = forecastTurnout(db, {
     headcount,
     requester_kind: kind,
