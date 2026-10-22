@@ -2,6 +2,8 @@
 
 Open-source front desk and sponsor engine for communities. Chat request in; qualified, priced, sponsor-matched, draft out. A human approves every send.
 
+![A chat request is qualified, the room is priced, sponsors are matched, and a draft is written. A person approves before anything is sent.](docs/images/anatomy.png)
+
 The mascot is Raft the otter.
 
 ![Raft the otter at the front desk](docs/images/raft-hero.png)
@@ -30,6 +32,8 @@ Test mode is on. Nothing is sent.
 ## Connect your agent
 
 You keep your agent. Sponsor Engine does not replace it.
+
+![WhatsApp, Discord, Telegram, Slack, and email, plus Grok, Cursor, Claude, ChatGPT, and Codex, all call one service. You bring your own CRM, memory, and model, or you use the built-in tools.](docs/images/any-channel-any-agent.png)
 
 The same tools run in the dashboard and over MCP. MCP means Model Context Protocol.
 
@@ -225,6 +229,8 @@ No file imports `@vercel/og`.
 
 ## Safe by default
 
+![Three gates stand in front of every send: DRY_RUN stays on, the address must be on the allowlist, and a person must approve. The draft stays unsent until every gate passes.](docs/images/safe-by-default.png)
+
 `DRY_RUN` defaults to `true`. Test mode does not send.
 
 `DEMO_MODE=true` forces test mode on a public site.
@@ -244,6 +250,16 @@ A spam message goes to the spam lane. The lane does not create a task. The check
 The app does not store a guest list. A request stores the message the sender typed. Do not commit personal data.
 
 This repository has no mailer. Read [SECURITY.md](SECURITY.md).
+
+## How it learns
+
+A quote reads past bookings. A sponsor match reads past events. `recall_history` reads the organiser notes.
+
+![Past events feed the next room quote and the next sponsor match. A person approves the draft. The outcome goes back into the history.](docs/images/learning-loop.png)
+
+A person still approves the draft. The send stays off until the safety gates pass.
+
+The measured scores are in the next section.
 
 ## Accuracy
 
