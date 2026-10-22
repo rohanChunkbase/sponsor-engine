@@ -72,11 +72,44 @@ export interface PriceRange {
   high: number;
 }
 
+/** One published London room used to place a quote. */
+export interface MarketVenueMatch {
+  name: string;
+  price: number;
+  url: string;
+  capacity: number;
+}
+
+/**
+ * Where a quote sits among published London rooms of a similar capacity.
+ * The prices are about 4 evening hours of hire.
+ */
+export interface MarketCheckResult {
+  /** The quote that was compared, in GBP. */
+  quote: number;
+  /** The headcount used to choose similar rooms. */
+  capacity: number;
+  /** Similar rooms in the published ~4h evening set. */
+  comparedCount: number;
+  /**
+   * Share of those rooms whose published price is at or below the quote.
+   * 0 means the quote is below every room. 100 means it is at or above every room.
+   */
+  percentile: number;
+  /** Lowest published price among the nearest rooms. */
+  low: number;
+  /** Highest published price among the nearest rooms. */
+  high: number;
+  nearest: MarketVenueMatch[];
+}
+
 export interface Quote {
   price: number;
   currency: 'GBP';
   range: PriceRange;
   explanation: string;
+  /** This quote placed against published London rooms of a similar capacity. */
+  market: MarketCheckResult;
   comparables: Comparable[];
 }
 

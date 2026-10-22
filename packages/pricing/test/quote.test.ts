@@ -34,11 +34,11 @@ test('the winning method beats a constant median on the held-out rows', () => {
   const knn = report.scores.find((score) => score.model === 'knn-rules');
   const gbdt = report.scores.find((score) => score.model === 'gbdt');
   assert.ok(winner && knn && gbdt);
-  assert.equal(report.winner, 'knn-rules');
-  assert.ok(Math.abs(knn.maeGbp - 76.91666666666667) < 1e-9);
-  assert.ok(Math.abs(knn.mapePercent - 15.923282804567842) < 1e-9);
-  assert.ok(Math.abs(gbdt.maeGbp - 96.75) < 1e-9);
-  assert.ok(Math.abs(gbdt.mapePercent - 12.992102355387905) < 1e-9);
+  assert.equal(report.winner, 'gbdt');
+  assert.ok(Math.abs(knn.maeGbp - 67.75) < 1e-9);
+  assert.ok(Math.abs(knn.mapePercent - 16.15400747136136) < 1e-9);
+  assert.ok(Math.abs(gbdt.maeGbp - 63.416666666666664) < 1e-9);
+  assert.ok(Math.abs(gbdt.mapePercent - 12.044935111468986) < 1e-9);
   assert.equal(knn.freeSlotsCorrect, 22);
   assert.equal(knn.freeSlotRows, 23);
   assert.equal(knn.paidPredictedFree, 0);
@@ -68,14 +68,34 @@ test('the three example quotes are ordered and explained', () => {
   assert.equal(startup.currency, 'GBP');
   assert.equal(company.currency, 'GBP');
   assert.equal(community.price, 0);
+  assert.equal(startup.price, 1645);
+  assert.equal(company.price, 1705);
   assert.ok(startup.price > community.price);
   assert.ok(company.price > startup.price);
-  assert.ok(startup.price >= 600 && startup.price <= 2800);
-  assert.ok(company.price >= 2500 && company.price <= 7000);
+  assert.equal(startup.range.low, 1430);
+  assert.equal(startup.range.high, 1800);
+  assert.equal(company.range.low, 1690);
+  assert.equal(company.range.high, 1920);
+  assert.ok(company.price >= 400 && company.price <= 3200);
 
-  for (const quote of [community, startup, company]) {
+  const quoted = [
+    [community, communityExample.request],
+    [startup, startupExample.request],
+    [company, companyExample.request],
+  ] as const;
+  for (const [quote, request] of quoted) {
     assert.ok(quote.range.low <= quote.price && quote.price <= quote.range.high);
     assert.ok(quote.comparables.length >= 3 && quote.comparables.length <= 8);
+    assert.equal(quote.market.quote, quote.price);
+    assert.equal(quote.market.capacity, request.headcount);
+    assert.equal(quote.market.nearest.length, 3);
+    assert.ok(quote.market.percentile >= 0 && quote.market.percentile <= 100);
+    assert.ok(quote.market.low <= quote.market.high);
+    for (const room of quote.market.nearest) {
+      assert.ok(room.url.startsWith('https://'));
+      assert.ok(room.price > 0);
+    }
+    assert.match(quote.explanation, /similar London rooms publish/);
     assert.match(quote.explanation, /community/i);
     assert.match(quote.explanation, /company/i);
     assert.match(quote.explanation, /discount|free slot/i);
@@ -87,7 +107,16 @@ test('the three example quotes are ordered and explained', () => {
       assert.ok(comparable.distance >= 0);
     }
   }
+  assert.equal(community.market.percentile, 0);
+  assert.equal(community.market.capacity, 80);
+  assert.equal(startup.market.capacity, 100);
+  assert.equal(company.market.capacity, 45);
+  assert.ok(company.market.percentile > community.market.percentile);
+  assert.match(community.explanation, /A community evening for 80 here is £0/);
   assert.match(community.explanation, /free slot/i);
+  assert.match(startup.explanation, /A startup evening for 100 here is/);
+  assert.match(company.explanation, /A company day for 45 here is/);
+  assert.match(company.explanation, /for about 4 evening hours/);
   assert.match(company.explanation, /full price/i);
   assert.ok(community.comparables.every((row) => row.bookerType === 'community'));
   assert.ok(company.comparables.every((row) => row.bookerType === 'company'));
@@ -137,4 +166,6 @@ test('a short history still returns a GBP quote', () => {
   assert.equal(quote.currency, 'GBP');
   assert.ok(quote.price >= 0);
   assert.ok(quote.comparables.length >= 1);
+  assert.equal(quote.market.capacity, 40);
+  assert.equal(quote.market.nearest.length, 3);
 });

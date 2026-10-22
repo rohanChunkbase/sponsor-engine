@@ -15,6 +15,8 @@ export interface ExplanationInput {
   knnPrice: number;
   gbdtPrice: number;
   freeRule: boolean;
+  /** One sentence that places the quote against published London rooms. */
+  marketLine: string;
 }
 
 function gbp(amount: number | null): string {
@@ -169,6 +171,7 @@ export function buildExplanation(input: ExplanationInput): string {
     historyParagraph(input.history),
     requestParagraph(input.request),
     priceLine,
+    input.marketLine,
     discountParagraph(input.request, input.price, input.freeRule),
     comparableSentence(input.comparables),
     methodParagraph(input),

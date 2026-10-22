@@ -20,6 +20,7 @@ The function returns these fields:
 - `currency`: the text `GBP`
 - `range`: `low` and `high`, in GBP
 - `explanation`: plain text for a person
+- `market`: this quote next to published London rooms of a similar size
 - `comparables`: the past bookings that support the quote
 
 The explanation is plain language.
@@ -30,6 +31,7 @@ The explanation tells you these facts:
 - The reason for this price
 - The past bookings that support the price
 - The community discount, or the fact that there is no community discount
+- One sentence that places the quote next to published London rooms
 
 The request has these fields:
 
@@ -218,8 +220,8 @@ The generator multiplies the room hire, the people fee, and the AV fee by a book
 | --- | --- |
 | community | 0.18 |
 | startup | 0.50 |
-| agency | 1.05 |
-| company | 1.75 |
+| agency | 0.90 |
+| company | 1 |
 
 Each past booking removes 2.5 percent of that hire.
 The maximum repeat discount is 15 percent.
@@ -240,8 +242,8 @@ The discounts do not change the catering fee.
 | --- | --- |
 | community | 0 |
 | startup | 9 |
-| agency | 18 |
-| company | 32 |
+| agency | 10 |
+| company | 10 |
 
 A community catering fee is £0.
 A sponsor pays the food vendor.
@@ -269,8 +271,64 @@ The median is the middle price after you sort the prices.
 The median community price is £0.
 The median price for a community that paid is £170.
 The median startup price is £1,260.
-The median agency price is £1,625.
-The median company price is £3,580.
+The median agency price is £1,330.
+The median company price is £1,745.
+
+A company pays the rack hour price.
+The company factor is 1.
+An older factor of 1.75 put a company day above the published London band.
+Company catering is £10 per person.
+An agency pays 0.90 of the rack hour price.
+Agency catering is £10 per person.
+A company pays more than an agency for the same booking.
+
+A company weekday evening of 4 hours for 80 people, with AV and with no catering, is £1,370.
+That price is inside the published band of £400 to £3,200.
+The median of that band is £1,350.
+Every company row in the SAMPLE file is inside £400 to £3,200.
+The SAMPLE price can include more than 4 hours.
+The SAMPLE price can include catering.
+The market column is the room hire for about 4 evening hours.
+
+## London market check
+
+The file `data/london_venue_market.csv` lists public London venue hire prices.
+Each row has a source URL.
+The column `gbp_per_4h_evening_norm` is the price of one evening of about 4 hours.
+VAT is not adjusted.
+A pub row that gives only a minimum spend has no price in that column.
+`marketCheck` does not use those rows.
+`marketCheck` does not use Somerset House River Terrace or Tobacco Dock Little Gallery.
+Those two rooms are much larger and much more expensive than the other rooms.
+The other 20 evening prices run from £400 to £3,200.
+Sort those 20 prices.
+The two middle prices are £1,300 and £1,400.
+The median is £1,350.
+
+Call `marketCheck(quote, capacity)`.
+`quote` is a price in GBP.
+`capacity` is the number of people.
+The function keeps rooms with a capacity near that number.
+The result has these fields:
+
+- `percentile`: the share of those rooms with a published price at or below the quote
+- `comparedCount`: the number of rooms in that comparison
+- `low` and `high`: the lowest and highest prices among the three nearest rooms
+- `nearest`: three rooms, each with `name`, `price`, `url`, and `capacity`
+
+A percentile of 0 means the quote is below every similar room.
+A percentile of 100 means the quote is at or above every similar room.
+
+`quotePrice` puts this result in `market`.
+The explanation contains one sentence of this shape:
+
+`A company evening for 80 here is £1,545; similar London rooms publish £960 to £1,100 (Runway East Aldgate, Second Home Spitalfields).`
+
+The names and the prices in that example are an illustration.
+The real sentence uses the three nearest rooms for the request.
+When the request is not an evening of 3 to 5 hours, the sentence adds `for about 4 evening hours`.
+The market column is a 4-hour evening hire.
+A longer booking is a different product.
 
 ## How the quote is calculated
 
@@ -303,7 +361,10 @@ A logarithm makes a large price smaller on the scale that the trees see.
 The quote converts the tree result back to GBP.
 The quote rounds that price to the nearest £5.
 The package chooses the tree count on the last 15 percent of the fit rows, in date order.
-On the SAMPLE fit, the model uses 52 trees.
+The score fits the trees on the first 240 rows.
+That fit uses 45 trees.
+The quote fits the trees on all 300 rows.
+That fit uses 42 trees.
 Each new tree uses a step size of 0.08.
 
 MAE means mean absolute error.
@@ -337,13 +398,13 @@ The values below are the printed values.
 
 | Method | MAE | MAPE on 37 paid rows | Free slots at £0 | Paid rows at £0 |
 | --- | --- | --- | --- | --- |
-| Nearest bookings (winner) | £76.92 | 15.9 percent | 22 of 23 | 0 |
-| Gradient boosted trees | £96.75 | 13.0 percent | 22 of 23 | 0 |
-| Median baseline | £721.83 | 70.6 percent | 0 of 23 | 0 |
+| Nearest bookings | £67.75 | 16.2 percent | 22 of 23 | 0 |
+| Gradient boosted trees (winner) | £63.42 | 12.0 percent | 22 of 23 | 0 |
+| Median baseline | £539.08 | 69.2 percent | 0 of 23 | 0 |
 
-The nearest-booking method wins on MAE.
-The gradient boosted model has the lower MAPE.
-The quote uses the nearest-booking method.
+The gradient boosted model wins on MAE.
+The gradient boosted model also has the lower MAPE.
+The quote uses the gradient boosted model.
 
 The three example requests are not in the history.
 The dates are after 2026-09-30.
@@ -352,8 +413,8 @@ The fit for these quotes uses all 300 SAMPLE rows.
 | Request | Price | Range |
 | --- | --- | --- |
 | Community 80-person evening hack | £0 | £0 to £0 |
-| Startup launch | £1,545 | £1,430 to £1,800 |
-| Corporate offsite | £3,745 | £3,545 to £3,935 |
+| Startup launch | £1,645 | £1,430 to £1,800 |
+| Corporate offsite | £1,705 | £1,690 to £1,920 |
 
 The community request is an evening on 2026-11-12 for 80 people and 4 hours.
 The booker has 6 past bookings and brings leads.
@@ -364,6 +425,13 @@ There is no community discount.
 The company request is a day booking on 2026-11-18 for 45 people and 8 hours.
 The company needs AV and catering.
 The company pays the full price.
+The company price is inside the published London band.
+
+The market sentences for these three quotes are:
+
+- A community evening for 80 here is £0; similar London rooms publish £960 to £1,600 (Runway East Aldgate East (AE Event Space), Sustainable Ventures (County Hall) (The View)).
+- A startup evening for 100 here is £1,645; similar London rooms publish £1,300 to £2,000 (Huckletree Liverpool Street (The Common), Second Home Spitalfields (The Rooftop)).
+- A company day for 45 here is £1,705; similar London rooms publish £600 to £2,000 for about 4 evening hours (Plexal (Bleachers Space), Fora 241 Southwark Bridge Road (The Point)).
 
 ## Limits
 

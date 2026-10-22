@@ -2,6 +2,7 @@ import { parseIsoDate } from './dates.js';
 import { evaluatePricing, MIN_HISTORY, type EvaluationReport } from './evaluate.js';
 import { BookingDataError } from './errors.js';
 import { buildExplanation } from './explain.js';
+import { marketCheck, marketSentence } from './market.js';
 import { fitGbdt, predictGbdtGbp, type GbdtModel } from './gbdt.js';
 import { fitKnn, predictKnn, priceRange, type KnnModel } from './knn.js';
 import { BOOKER_TYPES, type Booking, type ModelName, type Quote, type QuoteRequest } from './types.js';
@@ -105,6 +106,7 @@ export function quotePrice(
   const gbdtPrice = predictGbdtGbp(fitted.gbdt, request);
   const price = modelName === 'gbdt' ? gbdtPrice : knn.price;
   const range = priceRange(price, knn.comparables);
+  const market = marketCheck(price, request.headcount);
   const explanation = buildExplanation({
     request,
     history,
@@ -116,12 +118,14 @@ export function quotePrice(
     knnPrice: knn.price,
     gbdtPrice,
     freeRule: knn.freeRule && modelName === 'knn-rules',
+    marketLine: marketSentence(request, market),
   });
   return {
     price,
     currency: 'GBP',
     range,
     explanation,
+    market,
     comparables: knn.comparables,
   };
 }

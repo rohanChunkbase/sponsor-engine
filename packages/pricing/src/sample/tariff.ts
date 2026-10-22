@@ -7,6 +7,10 @@ import type { BookerType } from '../types.js';
  * The generator uses this file to build fictional prices.
  *
  * The steps match the README. If you change a number here, change the README.
+ *
+ * Company hire uses the rack hour price (factor 1). Catering is £10 a person.
+ * That keeps every SAMPLE company price inside the published London ~4h
+ * evening band, £400 to £3,200. An agency pays 0.90 of the rack price.
  */
 
 export const HOURLY_GBP = {
@@ -28,15 +32,15 @@ export const AV_FEE_GBP = 240;
 export const CATERING_PER_HEAD_GBP: Record<BookerType, number> = {
   community: 0,
   startup: 9,
-  agency: 18,
-  company: 32,
+  agency: 10,
+  company: 10,
 };
 
 export const HIRE_FACTOR: Record<BookerType, number> = {
   community: 0.18,
   startup: 0.5,
-  agency: 1.05,
-  company: 1.75,
+  agency: 0.9,
+  company: 1,
 };
 
 export const REPEAT_DISCOUNT_PER_BOOKING = 0.025;
