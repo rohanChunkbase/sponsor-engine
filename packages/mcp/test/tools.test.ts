@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { listTools } from "../src/catalog.ts";
 import { buildServer } from "../src/server.ts";
 
 test("the MCP server does not let an agent approve its own draft", () => {
@@ -17,5 +18,12 @@ test("the MCP server does not let an agent approve its own draft", () => {
     "recall_history",
   ]) {
     assert.equal(names.includes(name), true, name);
+  }
+  const cards = listTools();
+  assert.deepEqual(cards.map((card) => card.name).sort(), names.sort());
+  for (const card of cards) {
+    assert.ok(card.description.length > 20, card.name);
+    assert.equal(typeof card.inputSchema, "object");
+    assert.ok(card.example);
   }
 });

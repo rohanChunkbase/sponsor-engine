@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { chooseWorkspaceId } from "@/lib/workspace-id";
 
 export function middleware(request: NextRequest) {
   const existing = request.cookies.get("se_workspace")?.value;
-  const id = existing && /^[A-Za-z0-9_-]{8,80}$/.test(existing) ? existing : crypto.randomUUID();
+  const id = chooseWorkspaceId(existing, request.headers.get("x-workspace-id") ?? undefined);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-workspace-id", id);
   const response = NextResponse.next({ request: { headers: requestHeaders } });

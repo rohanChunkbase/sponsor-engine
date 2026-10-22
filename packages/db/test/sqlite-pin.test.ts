@@ -11,8 +11,14 @@ test("better-sqlite3 stays on a build that Node 20 and Node 22 can install", () 
   };
   assert.equal(pkg.dependencies["better-sqlite3"], "12.9.0");
   assert.match(pkg.engines.node, />=20/);
+  const web = JSON.parse(readFileSync(path.join(repoRoot(), "apps/web/package.json"), "utf8")) as {
+    dependencies: Record<string, string>;
+  };
+  assert.equal(web.dependencies["better-sqlite3"], "12.9.0");
   const lock = JSON.parse(readFileSync(path.join(repoRoot(), "package-lock.json"), "utf8")) as {
     packages: Record<string, { version?: string }>;
   };
-  assert.equal(lock.packages["packages/db/node_modules/better-sqlite3"]?.version, "12.9.0");
+  const installed = Object.entries(lock.packages).filter(([key]) => key.endsWith("node_modules/better-sqlite3"));
+  assert.ok(installed.length > 0);
+  for (const [, entry] of installed) assert.equal(entry.version, "12.9.0");
 });
