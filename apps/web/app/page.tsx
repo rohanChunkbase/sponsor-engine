@@ -27,7 +27,7 @@ export default async function InboxPage() {
           <CardHeader>
             <CardTitle>No messages yet</CardTitle>
             <CardDescription>
-              London events and sponsors are already loaded. {data.counts.sponsors} sponsors, {data.counts.events} events, and {data.counts.bookings} past bookings are on this computer. Nothing is sent.
+              London events and sponsors are already loaded. {data.counts.sponsors} sponsors, {data.counts.events} events, and {data.counts.bookings} past bookings are on this computer. Run demo reads a WhatsApp note from Unicorn Mafia. Nothing is sent.
             </CardDescription>
           </CardHeader>
           <CardContent>

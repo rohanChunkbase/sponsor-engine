@@ -5,6 +5,7 @@ import { FOOD_PER_HEAD_GBP, foodPassThrough, type QuoteLines } from "./quote.js"
 import { recordRun } from "./runs.js";
 import { findSponsors } from "./sponsors.js";
 import type { SponsorMatch } from "./types.js";
+import { placeholderAtTestInbox } from "./safety.js";
 import { gbp, gbpExact, parseJson, percent } from "./util.js";
 
 export async function draftSponsorAsk(
@@ -15,6 +16,7 @@ export async function draftSponsorAsk(
     sponsor_name?: string | null;
     headcount?: number | null;
     community?: string | null;
+    useTestInbox?: boolean;
   },
 ) {
   const request = input.request_id
@@ -54,7 +56,10 @@ export async function draftSponsorAsk(
   const sponsor = pickSponsor(found.matches, input.sponsor_id, input.sponsor_name) ?? found.matches[0];
   if (!sponsor) throw new Error("No sponsor match to write to.");
   const source = sponsor.sources[0];
-  const recipient = inferRecipient(sponsor.website, sponsor.sources, found.live_hosts);
+  const testInbox = input.useTestInbox || /unicorn mafia/i.test(community);
+  const recipient = testInbox
+    ? placeholderAtTestInbox(sponsor.company)
+    : inferRecipient(sponsor.website, sponsor.sources, found.live_hosts);
   const when = request?.event_date ? formatDate(request.event_date) : "the date they asked for";
   const venue = request?.venue_hint?.includes("Expedite") ? "Expedite" : "the venue";
   const subject = `Food for ${community} on ${when} — ${gbp(ask)}`;
@@ -73,9 +78,11 @@ export async function draftSponsorAsk(
         : `The room price is ${gbp(room)}. This ask does not include the room.`,
     `We are asking for ${gbp(ask)} for food and drinks. That is ${gbpExact(FOOD_PER_HEAD_GBP)} for each of the ${stored?.expected_heads ?? forecast.expected_heads} people we expect. The ask matches the food cost. It does not add a room fee.`,
     "",
-    recipient
-      ? `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. The contact ${recipient} is copied from a public page. It is not a checked inbox.`
-      : `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. There is no public contact on the pages we have. Find a contact before this can be sent.`,
+    testInbox
+      ? `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. ${recipient} is a placeholder at the test inbox. It is not a personal contact and not a sponsor inbox. Test mode stays on.`
+      : recipient
+        ? `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. The contact ${recipient} is copied from a public page. It is not a checked inbox.`
+        : `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. There is no public contact on the pages we have. Find a contact before this can be sent.`,
     "",
     "Thank you,",
     "Venue lead",

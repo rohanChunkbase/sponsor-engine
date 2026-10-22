@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { AccuracyPanel } from "@/components/accuracy-panel";
 import { PriceButton } from "@/components/price-button";
 import { kindLabel, money } from "@/lib/labels";
-import { latestQuote } from "@sponsor-engine/core";
+import { historySource, latestQuote } from "@sponsor-engine/core";
 import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
@@ -61,6 +61,7 @@ function QuoteView({ requestId, quote }: { requestId: string; quote: QuoteRow })
   const lines = parseLines(quote.lines_json);
   const comparables = parseComparables(quote.comparables_json);
   const range = lines?.range;
+  const history = historySource();
   return (
     <>
       <Card>
@@ -68,6 +69,7 @@ function QuoteView({ requestId, quote }: { requestId: string; quote: QuoteRow })
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone="info">{kindLabel(quote.requester_kind)}</Badge>
             <Badge tone="neutral">Room</Badge>
+            {history.source === "sample" ? <Badge tone="open">SAMPLE</Badge> : null}
             {lines && lines.room_gbp === 0 ? <Badge tone="review">Community slot</Badge> : null}
           </div>
           <p className="font-sans text-[58px] leading-[64px] font-medium tracking-[-0.025em]">{money(quote.price)}</p>

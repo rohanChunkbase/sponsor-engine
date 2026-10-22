@@ -235,6 +235,7 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
     const company = row.company.trim();
     const eventDate = cleanDate(row.event_date);
     const sponsorId = sponsorIdByCompany.get(company.toLowerCase()) ?? null;
+    const evidence = publicSizeNote(row.event_id, row.evidence_quote);
     if (claimExists(db, {
       event_id: row.event_id,
       event_name: row.event_name,
@@ -243,14 +244,14 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
       company,
       role: row.role,
       confidence: row.confidence,
-      evidence_quote: row.evidence_quote,
+      evidence_quote: evidence,
       source_url: row.source_url,
       source,
     })) return;
     insertClaim.run(
       row.event_id, row.event_name, eventDate, row.community, company,
       sponsorId,
-      row.role, row.confidence, row.evidence_quote, row.source_url, sample, source,
+      row.role, row.confidence, evidence, row.source_url, sample, source,
     );
   };
   for (const row of readCsv(path.join(real, "csv", "sponsor_claims.csv"))) addClaim(row, "real");
@@ -274,6 +275,15 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
       source_url: "",
     }, "synthetic", "SAMPLE");
   }
+
+  // Public fact: To The Americas, April 2026, 100-120 participants.
+  db.run("UPDATE events SET approx_size = 120 WHERE id = ?", ["L-umhack"]);
+  db.run(
+    `UPDATE sponsor_claims
+     SET evidence_quote = TRIM(evidence_quote) || ' Participants: 100-120.'
+     WHERE event_id = ? AND evidence_quote NOT LIKE '%100-120%'`,
+    ["L-umhack"],
+  );
 
   for (const booking of COMPANY_BOOKINGS) {
     const checkIns = Math.round(booking.headcount * booking.show);
@@ -325,6 +335,12 @@ function mergeRoles(left: string, right: string): string {
   return [...map.entries()].map(([role, value]) => `${role}:${value}`).join(";");
 }
 
+function publicSizeNote(eventId: string, quote: string): string {
+  if (eventId !== "L-umhack") return quote;
+  const base = quote.replace(/\s*Participants: 100-120\.$/, "").trim();
+  return `${base} Participants: 100-120.`;
+}
+
 function claimExists(db: Db, row: {
   event_id: string;
   event_name: string;
@@ -346,13 +362,18 @@ function claimExists(db: Db, row: {
        AND COALESCE(company, '') = COALESCE(?, '')
        AND COALESCE(role, '') = COALESCE(?, '')
        AND COALESCE(confidence, '') = COALESCE(?, '')
-       AND COALESCE(evidence_quote, '') = COALESCE(?, '')
+       AND (
+         COALESCE(evidence_quote, '') = COALESCE(?, '')
+         OR COALESCE(evidence_quote, '') = COALESCE(?, '')
+       )
        AND COALESCE(source_url, '') = COALESCE(?, '')
        AND COALESCE(source, '') = COALESCE(?, '')
      LIMIT 1`,
     [
       row.event_id, row.event_name, row.event_date, row.community, row.company,
-      row.role, row.confidence, row.evidence_quote, row.source_url, row.source,
+      row.role, row.confidence, row.evidence_quote,
+      row.evidence_quote.replace(/\s*Participants: 100-120\.$/, "").trim(),
+      row.source_url, row.source,
     ],
   );
   return found != null;

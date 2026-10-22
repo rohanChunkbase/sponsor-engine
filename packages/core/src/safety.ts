@@ -11,16 +11,31 @@ export function isDryRun(): boolean {
   return value !== "false" && value !== "0" && value !== "no";
 }
 
+/** Placeholder inbox for sponsor drafts. It is not a person's address and not a sponsor inbox. */
+export const TEST_INBOX = "sponsors@example.com";
+
 export function allowlist(): string[] {
-  return (process.env.ALLOWLIST ?? "")
+  const listed = (process.env.ALLOWLIST ?? "")
     .split(",")
     .map((item) => item.trim().toLowerCase())
     .filter(Boolean);
+  if (!listed.includes(TEST_INBOX)) listed.push(TEST_INBOX);
+  return listed;
 }
 
 export function isAllowlisted(recipient: string): boolean {
   const email = recipient.trim().toLowerCase();
-  return allowlist().includes(email);
+  if (allowlist().includes(email)) return true;
+  const [local, domain] = email.split("@");
+  if (!local || !domain) return false;
+  const base = local.split("+")[0];
+  return allowlist().includes(`${base}@${domain}`);
+}
+
+/** A placeholder at the test inbox. The company name is only the tag. */
+export function placeholderAtTestInbox(company: string): string {
+  const tag = company.toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 24) || "sponsor";
+  return `sponsors+${tag}@example.com`;
 }
 
 /** Reject a browser approval that did not start on this site. */

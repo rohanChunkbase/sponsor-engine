@@ -62,15 +62,28 @@ test("demo message becomes a community task with an owner", () => {
   const result = triageInbound(db, { message: DEMO_MESSAGE, channel: "whatsapp" });
   assert.equal(result.ok, true);
   if (!result.ok) return;
-  assert.equal(result.qualified.sender_name, "Ada Fernwood");
-  assert.match(result.qualified.organisation || "", /Thames Agent Builders/);
+  assert.equal(result.qualified.sender_name, null);
+  assert.equal(result.qualified.organisation, "Unicorn Mafia");
   assert.equal(result.qualified.requester_kind, "community");
-  assert.equal(result.qualified.headcount, 80);
-  assert.equal(result.qualified.event_date, "2026-11-26");
+  assert.equal(result.qualified.headcount, 120);
+  assert.equal(result.qualified.event_date, parseDate(DEMO_MESSAGE));
+  assert.match(result.qualified.event_date || "", /-11-/);
+  const [year, month, day] = String(result.qualified.event_date).split("-").map(Number);
+  assert.equal(new Date(Date.UTC(year, month - 1, day)).getUTCDay(), 6);
+  assert.equal(result.qualified.venue_hint, "Expedite");
   assert.ok(result.qualified.needs.includes("food"));
+  assert.ok(result.qualified.needs.includes("room"));
   assert.equal(result.task?.owner, "Venue lead");
-  assert.equal(result.task?.priority, "p1");
+  assert.equal(result.task?.priority, "p0");
   assert.equal(result.outbox?.status, "awaiting_approval");
+  assert.doesNotMatch(String(result.outbox?.body), /Charlie|Cheesman|@/);
+
+  const thames = db.get<{ name: string; is_sample: string }>(
+    "SELECT name, is_sample FROM communities WHERE name LIKE ?",
+    ["%Thames Agent Builders%"],
+  );
+  assert.match(thames?.name || "", /Thames Agent Builders/);
+  assert.equal(thames?.is_sample, "SAMPLE");
 });
 
 test("a 35-staff offsite and a ranged relative date both qualify", async () => {
@@ -348,20 +361,30 @@ test("integrations report status and missing keys stay optional", async () => {
   assert.match(memory?.plain ?? "", /Keyword search/);
 });
 
-test("demo flow quotes, matches three sponsors, and waits for approval", async () => {
+test("demo flow quotes from sample history, matches past sponsors, and waits", async () => {
+  process.env.DRY_RUN = "true";
+  const backed = new Set(["Pydantic", "Render", "Expedite", "The Residency", "Cognition", "Mubit", "BuilderBase", "Encode Hub"]);
   const result = await runDemo(db);
-  assert.equal(result.quote.price, 0);
-  assert.equal(result.quote.lines.room_gbp, 0);
+  assert.match(result.quote.explanation, /SAMPLE venue history/);
   assert.ok(result.quote.lines.company_room_gbp > 0);
   assert.equal(result.draft.ask_gbp, result.quote.lines.food_gbp);
-  assert.match(result.draft.outbox.body, /free community slot/i);
-  assert.equal(result.sponsors.matches.length, 3);
-  assert.equal(result.draft.outbox.status, "needs_contact");
-  assert.equal(result.draft.outbox.recipient, "");
-  assert.equal(result.draft.sent, false);
   assert.ok(result.draft.ask_gbp > 0);
+  assert.equal(result.sponsors.matches.length, 3);
+  for (const match of result.sponsors.matches) {
+    assert.ok(backed.has(match.company), match.company);
+    assert.match(match.reasons[0] || "", /Sponsors who backed events like theirs/);
+    assert.match(match.reasons.join(" "), /100-120/);
+    assert.ok(match.sources.some((source) => source.url === "https://luma.com/umhack"));
+  }
+  assert.equal(result.draft.outbox.status, "awaiting_approval");
+  assert.match(result.draft.outbox.recipient, /^sponsors\+[a-z0-9]+@example\.com$/);
+  assert.match(result.draft.outbox.body, /placeholder at the test inbox/);
+  assert.doesNotMatch(result.draft.outbox.body, /Charlie|Cheesman|linkedin\.com\/in|@gmail|partnerships@/i);
+  assert.equal(result.draft.sent, false);
+  assert.equal(isDryRun(), true);
   const again = await draftSponsorAsk(db, { request_id: result.request_id, sponsor_id: result.sponsors.matches[1].sponsor_id });
-  assert.equal(again.outbox.status, "needs_contact");
+  assert.match(again.outbox.recipient, /^sponsors\+[a-z0-9]+@example\.com$/);
+  assert.equal(again.sent, false);
 });
 
 test("a sponsor draft never invents an email address", async () => {

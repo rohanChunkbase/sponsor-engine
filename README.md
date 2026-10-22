@@ -20,7 +20,7 @@ npm install && npm run dev
 
 Open `http://localhost:3000`.
 
-The first start loads the bundled data. The inbox is empty until a message arrives. Press **Run demo** on the inbox.
+The first start loads the bundled data. The inbox is empty until a message arrives. Press **Run demo** on the inbox. That reads one WhatsApp note from Unicorn Mafia about a hackathon at Expedite London. Sponsor drafts use placeholders at `sponsors@example.com`. `DRY_RUN` stays on, so nothing is sent. Thames Agent Builders stays in the sample seed. The room price uses SAMPLE venue history.
 
 Two more commands are useful:
 
@@ -80,7 +80,7 @@ Copy `.env.example` to `.env` only when you want to change a value.
 | Name | Default | Purpose |
 | --- | --- | --- |
 | `DRY_RUN` | `true` | Test mode. `true` does not send. |
-| `ALLOWLIST` | empty | Addresses that can be marked sent when `DRY_RUN` is `false`. |
+| `ALLOWLIST` | `sponsors@example.com` | Placeholder test inbox. Sponsor drafts can use `sponsors+name@example.com`. `DRY_RUN` stays true, so nothing is sent. |
 | `DATABASE_URL` | empty | Postgres URL. Leave empty to use SQLite. On the hosted site, use the Supavisor transaction pooler URL on port 6543. |
 | `DEMO_MODE` | empty | `true` keeps a public site in test mode. |
 | `NEXT_PUBLIC_APP_URL` | empty | Public site address. The MCP page uses it. |

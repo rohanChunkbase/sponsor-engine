@@ -4,7 +4,7 @@ import { forecastTurnout, resolveCommunity } from "./forecast.js";
 import { recordRun } from "./runs.js";
 import type { RequesterKind } from "./types.js";
 import { gbp, gbpExact, makeId, nowIso, parseJson } from "./util.js";
-import { loadActiveHistory } from "./venue-history.js";
+import { historySource, loadActiveHistory } from "./venue-history.js";
 
 export const FOOD_PER_HEAD_GBP = 5.5;
 
@@ -59,6 +59,7 @@ export async function quoteBooking(
         event_date: string | null;
         organisation: string | null;
         needs_json: string | null;
+        raw_message: string | null;
       }>("SELECT * FROM requests WHERE id = ?", [input.request_id])
     : undefined;
   const rawKind = String(input.requester_kind ?? request?.requester_kind ?? "unknown");
@@ -75,6 +76,7 @@ export async function quoteBooking(
     bookerType,
     communityName,
     needs,
+    rawMessage: request?.raw_message ?? null,
   });
   const room = quotePrice(shaped, history);
   const communityRequest = bookerType === "community" ? shaped : communityTwin(shaped);
@@ -103,7 +105,10 @@ export async function quoteBooking(
     company_range: company.range,
   };
   const comparables = room.comparables.map(toComparable);
-  const explanation = `${room.explanation}\n\n${deskParagraph(bookerType, lines, forecast.summary, !confirmed)}`;
+  const sampleNote = historySource().source === "sample"
+    ? "The room price uses SAMPLE venue history. Those bookings are fictional. They are not this venue's prices."
+    : "";
+  const explanation = [room.explanation, deskParagraph(bookerType, lines, forecast.summary, !confirmed), sampleNote].filter(Boolean).join("\n\n");
   const id = makeId("quo");
   db.run(
     `INSERT INTO quotes
@@ -149,6 +154,7 @@ function toQuoteRequest(
     bookerType: "community" | "company";
     communityName: string | null;
     needs: string[];
+    rawMessage?: string | null;
   },
 ): QuoteRequest {
   const date = quoteDate(input.date);
@@ -157,7 +163,7 @@ function toQuoteRequest(
     date,
     isEvening: evening,
     isWeekend: isWeekendDate(date),
-    hours: evening ? 4 : 8,
+    hours: hoursFromMessage(input.rawMessage ?? null, evening),
     headcount: Math.round(input.headcount),
     bookerType: input.bookerType,
     repeatBookerCount: repeatCount(db, input.communityName, input.bookerType),
@@ -181,6 +187,20 @@ function repeatCount(db: Db, name: string | null, kind: "community" | "company")
   if (!community) return 0;
   const row = db.get<{ n: number }>("SELECT COUNT(*) AS n FROM bookings WHERE community_id = ?", [community.id]);
   return Number(row?.n ?? 0);
+}
+
+function hoursFromMessage(text: string | null, evening: boolean): number {
+  const fallback = evening ? 4 : 8;
+  if (!text) return fallback;
+  const match = text.match(/\b(\d{1,2}):(\d{2})\s*(?:-|–|—|to)+\s*(\d{1,2}):(\d{2})\b/i);
+  if (!match) return fallback;
+  const start = Number(match[1]) * 60 + Number(match[2]);
+  const end = Number(match[3]) * 60 + Number(match[4]);
+  if (start > 24 * 60 || end > 24 * 60) return fallback;
+  const minutes = end >= start ? end - start : end + 24 * 60 - start;
+  const hours = minutes / 60;
+  if (hours <= 0 || hours > 18) return fallback;
+  return Math.round(hours * 2) / 2;
 }
 
 function quoteDate(value: string | null): string {

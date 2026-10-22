@@ -50,7 +50,7 @@ const tools: ToolDef[] = [
       channel: z.string().optional().describe("whatsapp, email, or web"),
       sender_name: z.string().optional(),
     },
-    example: { message: DEMO_MESSAGE, channel: "whatsapp", sender_name: "Ada Fernwood" },
+    example: { message: DEMO_MESSAGE, channel: "whatsapp" },
     run: async (args, workspaceId) => text(scoped(workspaceId, () => triageInbound(getReadyDb(), args as { message: string; channel?: string; sender_name?: string }))),
   },
   {
@@ -65,7 +65,7 @@ const tools: ToolDef[] = [
       community_name: z.string().optional(),
       needs: z.array(z.string()).optional(),
     },
-    example: { requester_kind: "community", headcount: 80, date: "2026-11-26", community_name: "Thames Agent Builders" },
+    example: { requester_kind: "community", headcount: 120, date: "2026-11-28", community_name: "Unicorn Mafia", needs: ["food", "room"] },
     run: async (args, workspaceId) => text(await scoped(workspaceId, () => quoteBooking(getReadyDb(), args as Parameters<typeof quoteBooking>[1]))),
   },
   {
@@ -81,7 +81,7 @@ const tools: ToolDef[] = [
       limit: z.number().optional(),
       include_sample: z.boolean().optional(),
     },
-    example: { community: "Thames Agent Builders", headcount: 80, needs: ["food", "projector"], limit: 3 },
+    example: { community: "Unicorn Mafia", headcount: 120, needs: ["food", "room"], limit: 3 },
     run: async (args, workspaceId) => text(await scoped(workspaceId, () => findSponsors(getReadyDb(), args as Parameters<typeof findSponsors>[1]))),
   },
   {
@@ -94,7 +94,7 @@ const tools: ToolDef[] = [
       community_name: z.string().optional(),
       request_id: z.string().optional(),
     },
-    example: { headcount: 80, requester_kind: "community", community_name: "Thames Agent Builders" },
+    example: { headcount: 120, requester_kind: "community", community_name: "Unicorn Mafia" },
     run: async (args, workspaceId) => text(scoped(workspaceId, () => forecastTurnout(getReadyDb(), args as Parameters<typeof forecastTurnout>[1]))),
   },
   {
@@ -108,7 +108,7 @@ const tools: ToolDef[] = [
       headcount: z.number().optional(),
       community: z.string().optional(),
     },
-    example: { sponsor_name: "Tessl", headcount: 80, community: "Thames Agent Builders" },
+    example: { sponsor_name: "Pydantic", headcount: 120, community: "Unicorn Mafia" },
     run: async (args, workspaceId) => text(await scoped(workspaceId, () => draftSponsorAsk(getReadyDb(), args as Parameters<typeof draftSponsorAsk>[1]))),
   },
   {
@@ -159,7 +159,7 @@ const tools: ToolDef[] = [
     inputSchema: {
       query: z.string(),
     },
-    example: { query: "Thames Agent Builders" },
+    example: { query: "Unicorn Mafia" },
     run: async (args, workspaceId) => text(await scoped(workspaceId, () => recallHistory(getReadyDb(), String(args.query ?? "")))),
   },
 ];

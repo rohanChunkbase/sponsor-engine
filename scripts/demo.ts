@@ -5,7 +5,7 @@ const result = await runDemo(db);
 const lines = [
   "Demo",
   "",
-  `Message from ${result.triage.qualified?.sender_name} at ${result.triage.qualified?.organisation}.`,
+  `Message from ${result.triage.qualified?.organisation || result.triage.qualified?.sender_name}.`,
   `Kind: ${result.triage.qualified?.requester_kind}. People: ${result.triage.qualified?.headcount}. Date: ${result.triage.qualified?.event_date}.`,
   `Task owner: ${result.triage.task?.owner}. Priority: ${result.triage.task?.priority}.`,
   "",

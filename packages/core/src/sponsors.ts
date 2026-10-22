@@ -66,6 +66,9 @@ export async function findSponsors(
 
   const wantsFood = needs.length === 0 || needs.includes("food") || needs.includes("drinks");
   const wantsVenue = needs.includes("room") || needs.includes("venue");
+  const pastEvents = db.all<{ title: string; community_name: string | null; approx_size: number | null }>(
+    "SELECT title, community_name, approx_size FROM events WHERE approx_size IS NOT NULL",
+  );
   const sponsors = db.all<SponsorRow>(
     input.include_sample
       ? "SELECT * FROM sponsors"
@@ -90,6 +93,8 @@ export async function findSponsors(
       wantsVenue,
       focus,
       community,
+      headcount,
+      pastEvents,
     }))
     .filter((match) => match.score > 0 && match.sources.length > 0)
     .sort((a, b) => b.score - a.score);
@@ -133,11 +138,26 @@ export async function findSponsors(
 function scoreSponsor(
   sponsor: SponsorRow,
   claims: ClaimRow[],
-  input: { wantsFood: boolean; wantsVenue: boolean; focus: Set<string>; community: string | null },
+  input: {
+    wantsFood: boolean;
+    wantsVenue: boolean;
+    focus: Set<string>;
+    community: string | null;
+    headcount: number | null;
+    pastEvents: Array<{ title: string; community_name: string | null; approx_size: number | null }>;
+  },
 ): SponsorMatch {
   let score = 0;
   const reasons: string[] = [];
   const sources: SponsorMatch["sources"] = [];
+  const alike = similarClaim(claims, input);
+  if (alike) {
+    score += 100;
+    const range = (alike.evidence_quote || "").match(/\d{2,4}\s*[-–]\s*\d{2,4}/);
+    const size = range ? ` The public page says ${range[0]} participants.` : "";
+    reasons.push(`Sponsors who backed events like theirs. ${sponsor.company} is listed on ${alike.event_name || "a past event"}.${size}`);
+    if (alike.source_url) sources.push(toSource(alike));
+  }
   const food = claims.filter((claim) => claim.role === "food" || claim.role === "drinks");
   const statedFood = food.filter((claim) => claim.confidence === "stated" && claim.source_url);
   const venue = claims.filter((claim) => claim.role === "venue");
@@ -207,6 +227,45 @@ function scoreSponsor(
     reasons: reasons.slice(0, 3),
     sources: dedupeSources(sources).slice(0, 2),
   };
+}
+
+function similarClaim(
+  claims: ClaimRow[],
+  input: {
+    community: string | null;
+    headcount: number | null;
+    pastEvents: Array<{ title: string; community_name: string | null; approx_size: number | null }>;
+  },
+): ClaimRow | null {
+  if (!input.community || !input.headcount) return null;
+  for (const claim of claims) {
+    if (!sameCommunity(claim.community, input.community)) continue;
+    const event = input.pastEvents.find((row) =>
+      sameCommunity(row.community_name, input.community) && titlesMatch(row.title, claim.event_name) && row.approx_size,
+    );
+    if (!event?.approx_size) continue;
+    if (!sizeFits(input.headcount, event.approx_size, claim.evidence_quote || "")) continue;
+    return claim;
+  }
+  return null;
+}
+
+function sizeFits(headcount: number, approx: number, evidence: string): boolean {
+  const range = evidence.match(/(\d{2,4})\s*[-–]\s*(\d{2,4})/);
+  if (range) {
+    const low = Number(range[1]);
+    const high = Number(range[2]);
+    if (low <= high && low >= 5 && headcount >= low && headcount <= high) return true;
+  }
+  const ratio = headcount / approx;
+  return ratio >= 0.8 && ratio <= 1.2;
+}
+
+function titlesMatch(left: string | null, right: string | null): boolean {
+  if (!left || !right) return false;
+  const a = left.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const b = right.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  return a === b || a.includes(b) || b.includes(a);
 }
 
 function filler(sponsor: SponsorRow): SponsorMatch {

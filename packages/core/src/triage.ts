@@ -168,7 +168,7 @@ function replyFor(input: {
   needs: string[];
   badDate: string | null;
 }): string {
-  const name = input.sender ? input.sender.split(" ")[0] : "there";
+  const name = input.sender ? input.sender.split(" ")[0] : input.organisation || "there";
   const kindLabel = input.kind === "unknown" ? "booking" : `${input.kind} booking`;
   const who = input.organisation ? ` for ${input.organisation}` : "";
   const when = input.eventDate ? ` on ${formatDate(input.eventDate)}` : "";
@@ -194,7 +194,7 @@ export function parseKind(text: string): RequesterKind {
   return "unknown";
 }
 
-const HEADCOUNT_UNIT = "people|persons|person|pax|ppl|guests|attendees|heads|staff|capacity";
+const HEADCOUNT_UNIT = "people|persons|person|pax|ppl|guests|attendees|heads|staff|hackers|builders|capacity";
 
 export type HeadcountDetail = { value: number; low: number; high: number };
 
@@ -262,6 +262,8 @@ export function parseDate(text: string, now: Date = new Date()): string | null {
     const month = MONTHS[monthFirst[1].toLowerCase()];
     if (month) return stamp(Number(monthFirst[2]), month, monthFirst[3] ? Number(monthFirst[3]) : undefined, now);
   }
+  const lateSaturday = parseLateSaturday(text, now);
+  if (lateSaturday) return lateSaturday;
   return parseRelativeDate(text, now);
 }
 
@@ -292,6 +294,25 @@ function isRealDate(year: number, month: number, day: number): boolean {
   if (month < 1 || month > 12 || day < 1 || day > 31) return false;
   const utc = new Date(Date.UTC(year, month - 1, day));
   return utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === day;
+}
+
+function parseLateSaturday(text: string, now: Date): string | null {
+  const match = text.match(/\bsaturday\s+in\s+late\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\b/i);
+  if (!match) return null;
+  const month = MONTHS[match[1].toLowerCase()];
+  if (!month) return null;
+  const thisYear = lastSaturday(now.getFullYear(), month);
+  const year = Date.UTC(now.getFullYear(), month - 1, thisYear) < Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
+    ? now.getFullYear() + 1
+    : now.getFullYear();
+  const day = year === now.getFullYear() ? thisYear : lastSaturday(year, month);
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+}
+
+function lastSaturday(year: number, month: number): number {
+  const last = new Date(Date.UTC(year, month, 0));
+  const back = (last.getUTCDay() - 6 + 7) % 7;
+  return last.getUTCDate() - back;
 }
 
 function parseRelativeDate(text: string, now: Date): string | null {
@@ -335,6 +356,8 @@ function parseSender(text: string, given?: string): string | null {
 function parseOrganisation(text: string): string | null {
   const labelled = text.match(/\bfrom\s+(.+?)\s*\((?:SAMPLE|fictional)\)/i);
   if (labelled) return labelled[1].replace(/\s+/g, " ").trim();
+  const here = text.match(/(?:^|[.!?]\s*)(?:hi[!.,]?\s+)?([A-Z][A-Za-z0-9'’&]*(?:\s+[A-Z][A-Za-z0-9'’&]*){0,5})\s+here\b/);
+  if (here && !/^(hi|hello)$/i.test(here[1])) return here[1].replace(/\s+/g, " ").trim();
   const from = text.match(/\bfrom\s+([A-Z][^.\n,]{2,70}?)(?:\.|,|\n|\s+can\b|\s+we\b|\s+on\b)/);
   if (from && !/^(the|our|a|an)\b/i.test(from[1])) return from[1].trim();
   return null;
