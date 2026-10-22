@@ -26,10 +26,15 @@ test("remember stores a note that recall can find", async () => {
 });
 
 test("Cognee search uses the documented add, cognify, and search calls", async () => {
-  const calls: Array<{ url: string; json?: unknown; dataset?: string; auth: string | null }> = [];
+  const calls: Array<{ url: string; json?: unknown; dataset?: string; auth: string | null; apiKey: string | null; tenant: string | null }> = [];
   const fetchImpl: typeof fetch = async (input, init) => {
     const url = String(input);
-    const entry: (typeof calls)[number] = { url, auth: header(init, "authorization") };
+    const entry: (typeof calls)[number] = {
+      url,
+      auth: header(init, "authorization"),
+      apiKey: header(init, "x-api-key"),
+      tenant: header(init, "x-tenant-id"),
+    };
     if (typeof init?.body === "string") entry.json = JSON.parse(init.body);
     if (init?.body instanceof FormData) entry.dataset = String(init.body.get("datasetName"));
     calls.push(entry);
@@ -80,6 +85,56 @@ test("Cognee search uses the documented add, cognify, and search calls", async (
   assert.deepEqual(body.datasets, ["sponsor-engine-C01"]);
   assert.equal(body.search_type, "GRAPH_COMPLETION");
   assert.equal(search?.auth, "Bearer cog-key");
+  assert.equal(search?.apiKey, null);
+});
+
+test("Cognee Cloud uses X-Api-Key and a key alone discovers the service URL", async () => {
+  const cloudCalls: string[] = [];
+  const fetchImpl: typeof fetch = async (input, init) => {
+    const url = String(input);
+    cloudCalls.push(url);
+    assert.equal(header(init, "x-api-key"), "cloud-key");
+    assert.equal(header(init, "authorization"), null);
+    if (header(init, "x-tenant-id")) assert.equal(header(init, "x-tenant-id"), "tenant-1");
+    if (url.endsWith("/tenants/current/service-url")) {
+      return new Response(JSON.stringify({ service_url: "https://api.aws.cognee.ai" }), { status: 200 });
+    }
+    if (url.endsWith("/api/v1/search")) {
+      return new Response(
+        JSON.stringify([
+          {
+            dataset_id: "ds-cloud",
+            dataset_name: "sponsor-engine-test",
+            dataset_tenant_id: "tenant-1",
+            search_result: ["Cloud memory is ready."],
+          },
+        ]),
+        { status: 200 },
+      );
+    }
+    return new Response("no", { status: 404 });
+  };
+  const discovered = await recall("test", "memory", baseOptions({
+    env: { COGNEE_API_KEY: "cloud-key" },
+    fetchImpl,
+  }));
+  assert.equal(discovered.mode, "live");
+  assert.equal(discovered.data[0]?.source, "sponsor-engine-test");
+  assert.equal(cloudCalls.filter((url) => url.endsWith("/tenants/current/service-url")).length, 1);
+  await recall("test", "memory", baseOptions({ env: { COGNEE_API_KEY: "cloud-key" }, fetchImpl }));
+  assert.equal(cloudCalls.filter((url) => url.endsWith("/tenants/current/service-url")).length, 1);
+
+  cloudCalls.length = 0;
+  await recall("test", "memory", baseOptions({
+    env: {
+      COGNEE_API_KEY: "cloud-key",
+      COGNEE_URL: "https://api.aws.cognee.ai",
+      COGNEE_TENANT_ID: "tenant-1",
+    },
+    fetchImpl,
+  }));
+  assert.equal(cloudCalls.some((url) => url.endsWith("/tenants/current/service-url")), false);
+  assert.ok(cloudCalls.some((url) => url.startsWith("https://api.aws.cognee.ai/api/v1/search")));
 });
 
 test("Cognee CHUNKS results read the text field on each item", async () => {

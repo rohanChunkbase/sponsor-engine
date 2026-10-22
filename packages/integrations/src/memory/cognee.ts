@@ -11,14 +11,11 @@ function cogneeUrl(env: Record<string, string | undefined>): string | undefined 
 }
 
 export function cogneeConfigured(env: Record<string, string | undefined>): boolean {
-  return envValue(env, "COGNEE_API_KEY") !== undefined && cogneeUrl(env) !== undefined;
+  return envValue(env, "COGNEE_API_KEY") !== undefined;
 }
 
 export function cogneeMissing(env: Record<string, string | undefined>): string[] {
-  const missing: string[] = [];
-  if (envValue(env, "COGNEE_API_KEY") === undefined) missing.push("COGNEE_API_KEY");
-  if (cogneeUrl(env) === undefined) missing.push("COGNEE_URL");
-  return missing;
+  return envValue(env, "COGNEE_API_KEY") === undefined ? ["COGNEE_API_KEY"] : [];
 }
 
 const ADD_SEARCH_TIMEOUT_MS = 30_000;
@@ -30,15 +27,25 @@ function datasetName(organiserId: string): string {
   return `sponsor-engine-${canonicalOrganiser(organiserId).replace(/[^a-zA-Z0-9_-]/g, "_")}`;
 }
 
-function headers(env: Record<string, string | undefined>, json: boolean): Record<string, string> {
+const CLOUD_SERVICE_URL = "https://api.aws.cognee.ai/api/v1/tenants/current/service-url";
+const serviceUrlCache = new Map<string, string>();
+
+interface CogneeTarget {
+  base: string;
+  mode: "cloud" | "self-hosted";
+}
+
+function authHeaders(
+  env: Record<string, string | undefined>,
+  mode: CogneeTarget["mode"],
+  json: boolean,
+): Record<string, string> {
   const key = envValue(env, "COGNEE_API_KEY") ?? "";
-  const base = cogneeUrl(env) ?? "";
-  const cloud = base.includes("cognee.ai");
   const result: Record<string, string> = {
     Accept: "application/json",
     "User-Agent": API_USER_AGENT,
   };
-  if (cloud) result["X-Api-Key"] = key;
+  if (mode === "cloud") result["X-Api-Key"] = key;
   else result.Authorization = `Bearer ${key}`;
   const tenant = envValue(env, "COGNEE_TENANT_ID");
   if (tenant) result["X-Tenant-Id"] = tenant;
@@ -177,19 +184,64 @@ function redact(text: string, key: string): string {
   return text.split(key).join("[redacted]");
 }
 
+function readServiceUrl(text: string): string | null {
+  try {
+    const parsed = JSON.parse(text) as unknown;
+    if (typeof parsed === "string") return textValue(parsed);
+    if (parsed && typeof parsed === "object") {
+      const row = parsed as Record<string, unknown>;
+      return textValue(row.service_url) ?? textValue(row.serviceUrl) ?? textValue(row.url);
+    }
+  } catch {
+    return text.trim().startsWith("http") ? text.trim() : null;
+  }
+  return null;
+}
+
 export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvider): MemoryProvider {
-  const base = (cogneeUrl(options.env) ?? "").replace(/\/$/, "");
+  async function resolveTarget(): Promise<CogneeTarget> {
+    const explicit = cogneeUrl(options.env);
+    if (explicit) {
+      const base = explicit.replace(/\/$/, "");
+      return { base, mode: /cognee\.ai/i.test(base) ? "cloud" : "self-hosted" };
+    }
+    const key = envValue(options.env, "COGNEE_API_KEY") ?? "";
+    const cached = serviceUrlCache.get(key);
+    if (cached) return { base: cached, mode: "cloud" };
+    const response = await requestText({
+      url: CLOUD_SERVICE_URL,
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "User-Agent": API_USER_AGENT,
+        "X-Api-Key": key,
+      },
+      timeoutMs: STATUS_TIMEOUT_MS,
+      fetchImpl: options.fetchImpl,
+      lane: "cognee-health",
+      minIntervalMs: 0,
+    });
+    if (response.status < 200 || response.status >= 300) {
+      throw new CogneeHttpError(response.status, response.text, key);
+    }
+    const serviceUrl = readServiceUrl(response.text);
+    if (!serviceUrl) throw new Error("Cognee did not return a service URL.");
+    const base = serviceUrl.replace(/\/$/, "");
+    serviceUrlCache.set(key, base);
+    return { base, mode: "cloud" };
+  }
 
   async function post(
+    target: CogneeTarget,
     path: string,
     body: string | FormData,
     json: boolean,
     timeoutMs = ADD_SEARCH_TIMEOUT_MS,
   ): Promise<unknown> {
     const response = await requestText({
-      url: `${base}${path}`,
+      url: `${target.base}${path}`,
       method: "POST",
-      headers: headers(options.env, json),
+      headers: authHeaders(options.env, target.mode, json),
       body,
       timeoutMs,
       fetchImpl: options.fetchImpl,
@@ -206,16 +258,19 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
     }
   }
 
-  async function waitForCognify(datasetId: string): Promise<"completed" | "errored" | "processing"> {
+  async function waitForCognify(
+    target: CogneeTarget,
+    datasetId: string,
+  ): Promise<"completed" | "errored" | "processing"> {
     const key = envValue(options.env, "COGNEE_API_KEY") ?? "";
     for (let attempt = 0; attempt < STATUS_ATTEMPTS; attempt += 1) {
       if (attempt > 0 && options.fetchImpl === globalThis.fetch) {
         await new Promise((resolve) => setTimeout(resolve, STATUS_WAIT_MS));
       }
       const response = await requestText({
-        url: `${base}/api/v1/datasets/status?dataset=${encodeURIComponent(datasetId)}`,
+        url: `${target.base}/api/v1/datasets/status?dataset=${encodeURIComponent(datasetId)}`,
         method: "GET",
-        headers: headers(options.env, false),
+        headers: authHeaders(options.env, target.mode, false),
         timeoutMs: STATUS_TIMEOUT_MS,
         fetchImpl: options.fetchImpl,
         lane: "cognee-status",
@@ -236,7 +291,7 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
     label: "Cognee",
     slot: "memory",
     implemented: true,
-    requiredEnv: ["COGNEE_API_KEY", "COGNEE_URL"],
+    requiredEnv: ["COGNEE_API_KEY"],
     isAvailable: cogneeConfigured,
     missingEnv: cogneeMissing,
     async remember(organiserId, docs) {
@@ -254,12 +309,13 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
       if (normalised.length === 0) return localReceipt;
       const dataset = datasetName(organiserId);
       try {
+        const target = await resolveTarget();
         const form = new FormData();
         form.set("datasetName", dataset);
         for (const doc of normalised) {
           form.append("raw_data", `${doc.title}\n${doc.text}`);
         }
-        const added = await post("/api/v1/add", form, false);
+        const added = await post(target, "/api/v1/add", form, false);
         const datasetId = readDatasetId(added);
         const receipt = {
           organiserId: canonicalOrganiser(organiserId),
@@ -267,7 +323,7 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
           dataset,
         };
         try {
-          await post("/api/v1/cognify", JSON.stringify({ datasets: [dataset] }), true);
+          await post(target, "/api/v1/cognify", JSON.stringify({ datasets: [dataset] }), true);
         } catch (error) {
           return liveResult("cognee", receipt, {
             warning: `Cognee stored the documents. Cognify did not start (${errorText(error)}). Built-in memory also has a copy.`,
@@ -280,7 +336,7 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
           });
         }
         try {
-          const state = await waitForCognify(datasetId);
+          const state = await waitForCognify(target, datasetId);
           if (state === "completed") return liveResult("cognee", receipt);
           const warning =
             state === "errored"
@@ -310,7 +366,9 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
       }
       const dataset = datasetName(organiserId);
       try {
+        const target = await resolveTarget();
         const body = await post(
+          target,
           "/api/v1/search",
           JSON.stringify({
             query,
