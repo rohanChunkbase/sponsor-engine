@@ -1,0 +1,9 @@
+Otter direction and reaction sheets
+Source: https://koboyo.com/page-mascot
+Project: https://github.com/nilbuild/page-mascot
+Licence: MIT
+Copyright (c) Kamran Ahmed
+
+These files are the published colour otter.
+A pixel-style otter sheet is not published on that page.
+The fox is the only character with a pixel sheet.

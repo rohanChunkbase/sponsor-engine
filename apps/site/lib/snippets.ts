@@ -36,4 +36,5 @@ export const docsNav = [
   { href: "/docs/pricing", label: "Pricing" },
   { href: "/docs/data", label: "Data" },
   { href: "/docs/deploy", label: "Deploy" },
+  { href: "/mcp", label: "Try it live" },
 ] as const;

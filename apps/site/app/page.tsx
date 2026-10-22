@@ -1,7 +1,10 @@
+import { AskRaft } from "@/components/ask-raft";
 import { Diagram } from "@/components/diagram";
 import { CopyBlock } from "@/components/copy-block";
+import { Mascot } from "@/components/mascot";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { mcpConfig, startCommand } from "@/lib/snippets";
 
 const channels = ["WhatsApp", "Discord", "Telegram", "Slack", "Email"];
@@ -22,17 +25,32 @@ export default function HomePage() {
           <div className="wrap rise">
             <p className="eyebrow">London communities and venues</p>
             <h1 className="hero-title">Your community&rsquo;s front desk and sponsor desk, inside the agent you already use</h1>
+            <div className="hero-raft">
+              <Mascot
+                directions="/mascots/otter-directions.webp"
+                reactions="/mascots/otter-reactions.webp"
+                label="Raft"
+                size={168}
+              />
+              <div>
+                <p className="raft-line">
+                  Otters hold hands in a raft so no one drifts away. Sponsor Engine does that for your community.
+                </p>
+                <p className="raft-hint">Meet Raft. Move the pointer. Boop Raft.</p>
+              </div>
+            </div>
             <p className="hero-support">
               A chat request is qualified, priced from past bookings, and matched to real London sponsors. The drafted ask waits for one tap.
             </p>
             <div className="hero-actions">
-              <a className="btn-paper" href="/docs">
+              <ShimmerButton href="/docs" className="btn-paper">
                 Read the docs
-              </a>
+              </ShimmerButton>
               <a className="btn-text btn-text-sky" href="#flow">
                 See the flow
               </a>
             </div>
+            <AskRaft />
             <Diagram
               src="/diagrams/01-anatomy-of-a-sponsor-engine.png"
               alt="Anatomy of a sponsor engine. An organiser asks Grok Bot. The Sponsor MCP forecasts turnout, finds sponsors, drafts an ask, and waits for one approval before the test inbox."
@@ -44,7 +62,7 @@ export default function HomePage() {
         </section>
       </div>
 
-      <main id="content">
+      <main id="content" className="landing">
         <section className="section" id="compare">
           <div className="wrap">
             <p className="eyebrow">The same 80-person hack</p>
