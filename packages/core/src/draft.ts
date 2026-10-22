@@ -145,6 +145,10 @@ export function inferRecipient(website: string | null | undefined): string {
 function formatDate(iso: string): string {
   const [year, month, day] = iso.split("-").map(Number);
   const names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  if (!year || !month || !day) return iso;
-  return `${day} ${names[month - 1]} ${year}`;
+  const name = names[month - 1];
+  if (!year || !name || !day) return "the date they asked for";
+  const utc = new Date(Date.UTC(year, month - 1, day));
+  const real = utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === day;
+  if (!real) return "the date they asked for";
+  return `${day} ${name} ${year}`;
 }

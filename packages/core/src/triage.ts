@@ -29,13 +29,14 @@ export function triageInbound(db: Db, input: TriageInput) {
   const sender = parseSender(message, input.sender_name);
   const organisation = parseOrganisation(message);
   const eventDate = parseDate(message, now);
+  const badDate = dateProblem(message, now);
   const heads = parseHeadcountDetail(message);
   const headcount = heads?.value ?? null;
   const needs = parseNeeds(message);
   const kind = parseKind(message);
   const venue = parseVenue(message);
   const intent = /\b(book|booking|hire|quote|reserve|host)\b/i.test(message);
-  const parsed = message.length >= 12 && Boolean(headcount || eventDate) && (intent || kind !== "unknown" || Boolean(organisation));
+  const parsed = message.length >= 12 && Boolean(headcount || eventDate || badDate) && (intent || kind !== "unknown" || Boolean(organisation) || Boolean(badDate));
 
   const requestId = makeId("req");
   const taskId = makeId("task");
@@ -91,6 +92,7 @@ export function triageInbound(db: Db, input: TriageInput) {
     headcountLow: heads?.low ?? null,
     headcountHigh: heads?.high ?? null,
     needs,
+    badDate,
   });
 
   db.run(
@@ -164,6 +166,7 @@ function replyFor(input: {
   headcountLow: number | null;
   headcountHigh: number | null;
   needs: string[];
+  badDate: string | null;
 }): string {
   const name = input.sender ? input.sender.split(" ")[0] : "there";
   const kindLabel = input.kind === "unknown" ? "booking" : `${input.kind} booking`;
@@ -171,7 +174,8 @@ function replyFor(input: {
   const when = input.eventDate ? ` on ${formatDate(input.eventDate)}` : "";
   const size = headcountPhrase(input.headcount, input.headcountLow, input.headcountHigh);
   const needs = input.needs.length ? ` You asked for ${input.needs.join(", ")}.` : "";
-  return `Thanks ${name}. I have this as a ${kindLabel}${who}${when}${size}.${needs} A person here will confirm the price before anyone replies.`;
+  const question = input.badDate ? ` ${input.badDate} is not a real day. Which day did you mean?` : "";
+  return `Thanks ${name}. I have this as a ${kindLabel}${who}${when}${size}.${needs}${question} A person here will confirm the price before anyone replies.`;
 }
 
 function headcountPhrase(value: number | null, low: number | null, high: number | null): string {
@@ -237,24 +241,57 @@ function isHeadcount(value: number): boolean {
   return value >= 5 && value <= 5000;
 }
 
+const DAY_FIRST =
+  /\b(\d{1,2})(?:st|nd|rd|th)?\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:\s+(20\d{2}))?/i;
+const MONTH_FIRST =
+  /\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s+(20\d{2}))?/i;
+
 export function parseDate(text: string, now: Date = new Date()): string | null {
   const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
-  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
-  const dayFirst = text.match(
-    /\b(\d{1,2})(?:st|nd|rd|th)?\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)(?:\s+(20\d{2}))?/i,
-  );
+  if (iso) {
+    if (!isRealDate(Number(iso[1]), Number(iso[2]), Number(iso[3]))) return null;
+    return `${iso[1]}-${iso[2]}-${iso[3]}`;
+  }
+  const dayFirst = text.match(DAY_FIRST);
   if (dayFirst) {
     const month = MONTHS[dayFirst[2].toLowerCase()];
     if (month) return stamp(Number(dayFirst[1]), month, dayFirst[3] ? Number(dayFirst[3]) : undefined, now);
   }
-  const monthFirst = text.match(
-    /\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s+(20\d{2}))?/i,
-  );
+  const monthFirst = text.match(MONTH_FIRST);
   if (monthFirst) {
     const month = MONTHS[monthFirst[1].toLowerCase()];
     if (month) return stamp(Number(monthFirst[2]), month, monthFirst[3] ? Number(monthFirst[3]) : undefined, now);
   }
   return parseRelativeDate(text, now);
+}
+
+/** The date text the sender wrote, when that day is not on the calendar. */
+export function dateProblem(text: string, now: Date = new Date()): string | null {
+  const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
+  if (iso && !isRealDate(Number(iso[1]), Number(iso[2]), Number(iso[3]))) return iso[0];
+  const dayFirst = text.match(DAY_FIRST);
+  if (dayFirst) {
+    const month = MONTHS[dayFirst[2].toLowerCase()];
+    if (month && !calendarDay(Number(dayFirst[1]), month, dayFirst[3], now)) return dayFirst[0];
+  }
+  const monthFirst = text.match(MONTH_FIRST);
+  if (monthFirst) {
+    const month = MONTHS[monthFirst[1].toLowerCase()];
+    if (month && !calendarDay(Number(monthFirst[2]), month, monthFirst[3], now)) return monthFirst[0];
+  }
+  return null;
+}
+
+function calendarDay(day: number, month: number, yearText: string | undefined, now: Date): boolean {
+  const year = yearText ? Number(yearText) : inferYear(month, day, now);
+  return isRealDate(year, month, day);
+}
+
+function isRealDate(year: number, month: number, day: number): boolean {
+  if (!Number.isInteger(year) || !Number.isInteger(month) || !Number.isInteger(day)) return false;
+  if (month < 1 || month > 12 || day < 1 || day > 31) return false;
+  const utc = new Date(Date.UTC(year, month - 1, day));
+  return utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === day;
 }
 
 function parseRelativeDate(text: string, now: Date): string | null {
@@ -273,8 +310,8 @@ function parseRelativeDate(text: string, now: Date): string | null {
 }
 
 function stamp(day: number, month: number, year: number | undefined, now: Date): string | null {
-  if (day < 1 || day > 31) return null;
   const resolved = year ?? inferYear(month, day, now);
+  if (!isRealDate(resolved, month, day)) return null;
   return `${resolved}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
@@ -322,7 +359,9 @@ function parseVenue(text: string): string | null {
 function formatDate(iso: string): string {
   const [year, month, day] = iso.split("-").map(Number);
   const names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  return `${day} ${names[month - 1]} ${year}`;
+  const name = names[month - 1];
+  if (!name || !isRealDate(year, month, day)) return "the date you sent";
+  return `${day} ${name} ${year}`;
 }
 
 function clipInput(message: string): string {

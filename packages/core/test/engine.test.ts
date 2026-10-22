@@ -96,6 +96,28 @@ test("a 35-staff offsite and a ranged relative date both qualify", async () => {
   assert.equal(parseHeadcount("about 80 people"), 80);
 });
 
+test("an impossible date is not stored and the reply asks which day", () => {
+  const now = new Date(2026, 9, 22, 12, 0, 0);
+  for (const when of ["2026-13-45", "31 Feb"]) {
+    const result = triageInbound(db, {
+      message: `Can we book the room on ${when} for 40 people?`,
+      channel: "web",
+      now,
+    });
+    assert.equal(result.ok, true);
+    if (!result.ok) return;
+    assert.equal(result.qualified.event_date, null);
+    assert.equal(result.request?.event_date ?? null, null);
+    const body = String(result.outbox?.body);
+    assert.doesNotMatch(body, /undefined/);
+    assert.doesNotMatch(body, /on 45/);
+    assert.match(body, /Which day did you mean/i);
+  }
+  assert.equal(parseDate("2026-11-26", now), "2026-11-26");
+  assert.equal(parseDate("31 February 2026", now), null);
+  assert.equal(parseDate("Thursday 26 November 2026", now), "2026-11-26");
+});
+
 test("a short message is kept and logged as a failure", () => {
   const result = triageInbound(db, { message: "hey can someone look at this later??", channel: "whatsapp" });
   assert.equal(result.ok, false);
