@@ -80,8 +80,11 @@ test("londonEventsIndex builds venues and calendars from discover and the calend
     if (url.includes("/discover/get-paginated-events")) {
       return new Response(JSON.stringify(DISCOVER), { status: 200 });
     }
-    assert.match(url, /ics\/get\?entity=calendar&id=cal-wUKLVX9VWOdVkpg/);
-    return new Response(ICS, { status: 200 });
+    if (url.includes("ics/get")) {
+      assert.match(url, /id=cal-wUKLVX9VWOdVkpg/);
+      return new Response(ICS, { status: 200 });
+    }
+    return new Response("not found", { status: 404 });
   };
   const result = await londonEventsIndex(baseOptions({ fetchImpl }));
   assert.equal(result.mode, "live");

@@ -18,6 +18,7 @@ const EXPECTED_IDS = [
   "luma",
   "luma-discover",
   "luma-ics",
+  "meetup",
   "devpost",
   "companies-house",
 ] as const;
@@ -43,7 +44,7 @@ test("getStatus lists every provider and keeps one built-in CRM and one built-in
     [...EXPECTED_IDS],
   );
 
-  for (const id of ["local-crm", "local-memory", "luma", "luma-discover", "luma-ics", "devpost", "companies-house", "bundled-data"] as const) {
+  for (const id of ["local-crm", "local-memory", "luma", "luma-discover", "luma-ics", "meetup", "devpost", "companies-house", "bundled-data"] as const) {
     const item = row(status, id);
     assert.equal(item.connected, true, id);
     assert.deepEqual(item.missing, [], id);
@@ -56,6 +57,7 @@ test("getStatus lists every provider and keeps one built-in CRM and one built-in
   assert.equal(row(status, "luma").active, true);
   assert.equal(row(status, "luma-discover").active, true);
   assert.equal(row(status, "luma-ics").active, true);
+  assert.equal(row(status, "meetup").active, true);
   assert.equal(row(status, "devpost").active, true);
   assert.equal(row(status, "companies-house").active, true);
   assert.equal(row(status, "bundled-data").active, false);

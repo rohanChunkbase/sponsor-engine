@@ -131,6 +131,18 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
         : "No key. One calendar feed is read from the discover page. The feed asks for a 12 hour cache.",
     },
     {
+      id: "meetup",
+      name: "Meetup",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. The London search page needs no key."
+        : "No key. The London tech search page supplies the group and the RSVP count.",
+    },
+    {
       id: "devpost",
       name: "Devpost",
       slot: "data",

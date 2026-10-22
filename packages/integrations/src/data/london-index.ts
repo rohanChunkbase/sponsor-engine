@@ -9,6 +9,7 @@ import {
   type SourcePull,
 } from "./london.ts";
 import { pullLumaLondon } from "./luma-discover.ts";
+import { fetchMeetupEvents } from "./meetup.ts";
 
 export interface LondonIndexData extends LondonEventsIndex {
   sources: SourcePull[];
@@ -44,6 +45,7 @@ export async function buildLondonEventsIndex(options: ResolvedOptions): Promise<
       warning: `Luma discover did not respond (${errorText(error)}). Bundled data was used.`,
     });
   }
+  pulls.push(await caughtPull("meetup", "Meetup", () => fetchMeetupEvents(options)));
   const liveEvents = pulls.flatMap((pull) => pull.events);
   const useBundle = liveEvents.length === 0;
   if (useBundle) pulls.push({ id: "bundled-data", mode: "builtin", events: bundled });
@@ -55,4 +57,21 @@ export async function buildLondonEventsIndex(options: ResolvedOptions): Promise<
 
 function finish(sources: SourcePull[], events: LondonEvent[]): LondonIndexData {
   return { ...indexFromEvents(events), sources };
+}
+
+export async function caughtPull(
+  id: string,
+  label: string,
+  load: () => Promise<LondonEvent[]>,
+): Promise<SourcePull> {
+  try {
+    return { id, mode: "live", events: await load() };
+  } catch (error) {
+    return {
+      id,
+      mode: "builtin",
+      events: [],
+      warning: `${label} did not respond (${errorText(error)}).`,
+    };
+  }
 }
