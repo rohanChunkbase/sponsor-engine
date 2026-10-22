@@ -5,12 +5,13 @@ import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { kindOfMessage, money, waitingLabel } from "@/lib/labels";
-import { getReadyDb, isDryRun, listOutbox } from "@sponsor-engine/core";
+import { isDryRun, listOutbox } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
 
-export default function OutboxPage() {
-  const items = listOutbox(getReadyDb());
+export default async function OutboxPage() {
+  const items = listOutbox(await readyDb());
   const testMode = isDryRun();
 
   return (

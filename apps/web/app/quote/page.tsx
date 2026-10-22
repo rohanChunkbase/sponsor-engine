@@ -6,7 +6,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { AccuracyPanel } from "@/components/accuracy-panel";
 import { PriceButton } from "@/components/price-button";
 import { kindLabel, money } from "@/lib/labels";
-import { getReadyDb, latestQuote } from "@sponsor-engine/core";
+import { latestQuote } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,7 @@ export default async function QuotePage({ searchParams }: { searchParams: Promis
       </>
     );
   }
-  const db = getReadyDb();
+  const db = await readyDb();
   const request = db.get<{ organisation: string | null; requester_kind: string | null; headcount: number | null; event_date: string | null }>(
     "SELECT * FROM requests WHERE id = ?",
     [requestId],

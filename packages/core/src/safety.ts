@@ -1,5 +1,12 @@
-/** Test mode is the default. A false value is the only way to leave it. */
+/** Hosted demo. Dynamic lookup so a deploy can set this at runtime. */
+export function isDemoMode(): boolean {
+  const value = (process.env["DEMO_MODE"] ?? "").trim().toLowerCase();
+  return value === "true" || value === "1" || value === "yes";
+}
+
+/** Test mode is the default. A hosted demo cannot leave it. */
 export function isDryRun(): boolean {
+  if (isDemoMode()) return true;
   const value = (process.env.DRY_RUN ?? "true").trim().toLowerCase();
   return value !== "false" && value !== "0" && value !== "no";
 }

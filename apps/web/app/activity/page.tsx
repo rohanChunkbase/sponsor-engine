@@ -1,11 +1,12 @@
 import { ActivityFeed } from "@/components/activity-feed";
 import { PageIntro } from "@/components/shell";
-import { getReadyDb, listRuns } from "@sponsor-engine/core";
+import { listRuns } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
 
-export default function ActivityPage() {
-  const runs = listRuns(getReadyDb(), 40) as Array<{
+export default async function ActivityPage() {
+  const runs = listRuns(await readyDb(), 40) as Array<{
     id: string;
     tool: string;
     output_summary: string | null;

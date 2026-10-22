@@ -1,9 +1,10 @@
 import { HistoryDrop } from "@/components/history-drop";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { evaluateActiveHistory } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
-export function AccuracyPanel() {
-  const report = evaluateActiveHistory();
+export async function AccuracyPanel() {
+  const report = evaluateActiveHistory(await readyDb());
   const rows = [
     ...report.scores.map((score) => ({
       name: modelLabel(score.model),

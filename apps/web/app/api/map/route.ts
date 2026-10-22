@@ -1,5 +1,6 @@
-import { getReadyDb, mapPoints } from "@sponsor-engine/core";
+import { mapPoints } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
-export function GET() {
-  return Response.json(mapPoints(getReadyDb()));
+export async function GET() {
+  return Response.json(mapPoints(await readyDb()));
 }

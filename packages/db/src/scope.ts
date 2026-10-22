@@ -17,6 +17,10 @@ export function runWithWorkspace<T>(workspaceId: string, fn: () => T): T {
   return storage.run(workspaceId, fn);
 }
 
+export function enterWorkspace(workspaceId: string): void {
+  storage.enterWith(workspaceId);
+}
+
 /** Limit visitor rows when a workspace is active. Shared reference tables stay global. */
 export function scopeSql(sql: string, params: unknown[] = []): { sql: string; params: unknown[] } {
   const workspaceId = currentWorkspace();

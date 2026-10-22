@@ -6,7 +6,8 @@ import { RunDemo } from "@/components/run-demo";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { kindOfMessage, money, waitingLabel } from "@/lib/labels";
-import { findSponsors, getReadyDb } from "@sponsor-engine/core";
+import { findSponsors } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,7 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
     );
   }
 
-  const db = getReadyDb();
+  const db = await readyDb();
   const found = await findSponsors(db, { request_id: requestId, limit: 3, log: false });
   const emails = db.all<{ id: string; subject: string; body: string; status: string; sponsor_name: string | null; ask_gbp: number | null; blocked_reason: string | null; kind: string }>(
     "SELECT * FROM outbox WHERE request_id = ? AND kind = 'sponsor_email' ORDER BY created_at DESC",

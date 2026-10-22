@@ -1,12 +1,13 @@
 import type { MapPoint } from "@/components/map-view";
 import { LondonMap } from "@/components/london-map";
 import { PageIntro } from "@/components/shell";
-import { getReadyDb, mapPoints } from "@sponsor-engine/core";
+import { mapPoints } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
 
-export default function MapPage() {
-  const points = mapPoints(getReadyDb());
+export default async function MapPage() {
+  const points = mapPoints(await readyDb());
   return (
     <>
       <PageIntro kicker="Map" title="London events">

@@ -4,7 +4,9 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { after, before, test } from "node:test";
 import { openDb, repoRoot, seed, type Db } from "@sponsor-engine/db";
+import { runWithWorkspace } from "@sponsor-engine/db";
 import {
+  allowWrite,
   approveOutbox,
   assertDashboardOrigin,
   deliverOutbox,
@@ -13,7 +15,9 @@ import {
   inferRecipient,
   evaluateActiveHistory,
   evaluateSampleHistory,
+  isDryRun,
   resetVenueHistory,
+  resetWriteLimits,
   saveVenueCsv,
   findSponsors,
   getConnections,
@@ -32,6 +36,7 @@ const previous = {
   ALLOWLIST: process.env.ALLOWLIST,
   SPONSOR_ENGINE_VENUE_CSV: process.env.SPONSOR_ENGINE_VENUE_CSV,
   SPONSOR_ENGINE_OFFLINE: process.env.SPONSOR_ENGINE_OFFLINE,
+  DEMO_MODE: process.env.DEMO_MODE,
 };
 
 before(() => {
@@ -45,6 +50,7 @@ after(() => {
   restore("ALLOWLIST", previous.ALLOWLIST);
   restore("SPONSOR_ENGINE_VENUE_CSV", previous.SPONSOR_ENGINE_VENUE_CSV);
   restore("SPONSOR_ENGINE_OFFLINE", previous.SPONSOR_ENGINE_OFFLINE);
+  restore("DEMO_MODE", previous.DEMO_MODE);
   db.close();
 });
 
@@ -365,6 +371,46 @@ test("a short venue CSV is rejected before it replaces the history", () => {
   assert.equal(evaluateActiveHistory().source, "sample");
 
   if (before) writeFileSync(venue, before);
+});
+
+test("demo mode cannot mark a message sent", async () => {
+  process.env.DEMO_MODE = "true";
+  process.env.DRY_RUN = "false";
+  process.env.ALLOWLIST = "allowed@example.com";
+  assert.equal(isDryRun(), true);
+  const waiting = sendWithApproval(db, {
+    recipient: "allowed@example.com",
+    subject: "Demo",
+    body: "Hello",
+  });
+  const approved = await approveOutbox(db, waiting.item.id, "test");
+  assert.equal(approved.sent, false);
+  assert.equal(approved.item.status, "approved");
+  assert.throws(() => deliverOutbox(db, waiting.item.id), /does not send/i);
+  restore("DRY_RUN", previous.DRY_RUN);
+  restore("ALLOWLIST", previous.ALLOWLIST);
+  restore("DEMO_MODE", previous.DEMO_MODE);
+});
+
+test("write limits trip after the budget", () => {
+  resetWriteLimits();
+  assert.equal(allowWrite("203.0.113.8", 2, 60_000).ok, true);
+  assert.equal(allowWrite("203.0.113.8", 2, 60_000).ok, true);
+  assert.equal(allowWrite("203.0.113.8", 2, 60_000).ok, false);
+  assert.equal(allowWrite("203.0.113.9", 2, 60_000).ok, true);
+  resetWriteLimits();
+});
+
+test("a venue file stored for one browser stays there", () => {
+  const sample = readFileSync(path.join(repoRoot(), "packages/pricing/data/sample-bookings.csv"), "utf8");
+  runWithWorkspace("browser-a", () => {
+    const saved = saveVenueCsv(sample, db);
+    assert.equal(saved.source.source, "venue");
+    assert.equal(evaluateActiveHistory(db).source, "venue");
+  });
+  runWithWorkspace("browser-b", () => {
+    assert.equal(evaluateActiveHistory(db).source, "sample");
+  });
 });
 
 function reload(id: string) {

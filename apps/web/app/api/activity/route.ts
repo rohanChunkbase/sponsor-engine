@@ -1,5 +1,6 @@
-import { getReadyDb, listRuns } from "@sponsor-engine/core";
+import { listRuns } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
-export function GET() {
-  return Response.json(listRuns(getReadyDb(), 40));
+export async function GET() {
+  return Response.json(listRuns(await readyDb(), 40));
 }

@@ -7,12 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { kindLabel, kindOfMessage, priorityLabel, waitingLabel } from "@/lib/labels";
 import { inbox } from "@sponsor-engine/core";
-import { getReadyDb } from "@sponsor-engine/core";
+import { readyDb } from "@/lib/request";
 
 export const dynamic = "force-dynamic";
 
-export default function InboxPage() {
-  const data = inbox(getReadyDb());
+export default async function InboxPage() {
+  const data = inbox(await readyDb());
   const empty = data.requests.length === 0;
 
   return (

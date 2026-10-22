@@ -1,7 +1,7 @@
 import type { Db } from "@sponsor-engine/db";
 import { pushDealIfAvailable } from "./integrations.js";
 import { recordRun } from "./runs.js";
-import { isAllowlisted, isDryRun } from "./safety.js";
+import { isAllowlisted, isDemoMode, isDryRun } from "./safety.js";
 import type { OutboxRow } from "./types.js";
 import { makeId, nowIso } from "./util.js";
 
@@ -133,6 +133,9 @@ export function deliverOutbox(db: Db, id: string) {
   if (current.status !== "approved") {
     throw new Error("Refusing to send. A person has not approved this yet.");
   }
+  if (isDemoMode()) {
+    throw new Error("This demo does not send messages.");
+  }
   if (isDryRun()) {
     return {
       item: current,
@@ -220,6 +223,9 @@ export function mustOutbox(db: Db, id: string): OutboxRow {
 }
 
 function move(db: Db, current: OutboxRow, to: string, reason?: string) {
+  if (to === "sent" && isDemoMode()) {
+    throw new Error("This demo does not send messages.");
+  }
   const allowed = ALLOWED[current.status] ?? [];
   if (!allowed.includes(to)) {
     throw new Error(`Cannot move ${current.status} to ${to}.`);

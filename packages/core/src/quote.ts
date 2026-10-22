@@ -68,7 +68,7 @@ export async function quoteBooking(
   if (!headcount || headcount < 1) throw new Error("A quote needs a headcount.");
   const needs = input.needs ?? parseJson<string[]>(request?.needs_json, []);
   const communityName = input.community_name ?? request?.organisation ?? null;
-  const history = loadActiveHistory();
+  const history = loadActiveHistory(db);
   const shaped = toQuoteRequest(db, {
     date: input.date ?? request?.event_date ?? null,
     headcount,

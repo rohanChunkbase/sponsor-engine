@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { isDryRun } from "@sponsor-engine/core";
+import { isDemoMode, isDryRun } from "@sponsor-engine/core";
 
 const links = [
   ["/", "Inbox"],
@@ -30,7 +30,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </nav>
           <div className="ml-auto">
             <Badge tone="test" dot>
-              {testMode ? "Test mode" : "Live"}
+              {isDemoMode() || testMode ? "TEST MODE" : "Live"}
             </Badge>
           </div>
         </div>
