@@ -27,14 +27,3 @@ args = ["run", "mcp"]
 [mcp_servers.sponsor-engine.env]
 DRY_RUN = "true"`;
 
-export const docsNav = [
-  { href: "/docs", label: "Quick start" },
-  { href: "/docs/connect", label: "Connect" },
-  { href: "/docs/tools", label: "MCP tools" },
-  { href: "/docs/integrations", label: "Integrations" },
-  { href: "/docs/safety", label: "Safety" },
-  { href: "/docs/pricing", label: "Pricing" },
-  { href: "/docs/data", label: "Data" },
-  { href: "/docs/deploy", label: "Deploy" },
-  { href: "/mcp", label: "Try it live" },
-] as const;

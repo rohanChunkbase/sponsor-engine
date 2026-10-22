@@ -4,6 +4,7 @@ import { CopyBlock } from "@/components/copy-block";
 import { Mermaid } from "@/components/mermaid-diagram";
 import { ToolReference } from "@/components/tool-reference";
 import { Warning } from "@/components/warning";
+import type { ReactElement } from "react";
 
 function textOf(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") return String(node);
@@ -39,6 +40,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <table>{children}</table>
       </div>
     ),
+    pre: ({ children }) => {
+      const child = (Array.isArray(children) ? children[0] : children) as ReactElement<{ className?: string; children?: ReactNode }> | undefined;
+      const className = child?.props?.className ?? "";
+      if (className.includes("language-mermaid")) {
+        return <Mermaid chart={textOf(child?.props?.children).replace(/\n$/, "")} />;
+      }
+      return <pre>{children}</pre>;
+    },
     CopyBlock,
     Mermaid,
     ToolReference,

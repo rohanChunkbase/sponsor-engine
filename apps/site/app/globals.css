@@ -642,8 +642,24 @@ main :not(pre) > code {
 
 .docs-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.docs-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.docs-nav-label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
 }
 
 .docs-nav a {
@@ -758,11 +774,20 @@ main :not(pre) > code {
   color: var(--color-graphite);
 }
 
+.warning,
+.note {
+  border-radius: var(--radius-figure);
+  padding: 16px 20px;
+}
+
 .warning {
   background: var(--color-open-wash);
   color: var(--color-open-text);
-  border-radius: var(--radius-figure);
-  padding: 16px 20px;
+}
+
+.note {
+  background: var(--color-chip);
+  color: var(--color-chip-text);
 }
 
 .mermaid-frame {
@@ -828,7 +853,7 @@ main :not(pre) > code {
   }
 
   .docs-shell {
-    grid-template-columns: 200px minmax(0, 720px);
+    grid-template-columns: 240px minmax(0, 720px);
     gap: 64px;
     justify-content: space-between;
     padding-top: 48px;
