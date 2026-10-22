@@ -2,6 +2,7 @@ import { MessageChannel, Worker, receiveMessageOnPort } from "node:worker_thread
 import path from "node:path";
 import { repoRoot } from "./db.js";
 import type { Db } from "./db.js";
+import { scopeSql } from "./scope.js";
 
 function workerFile(): string {
   return path.join(repoRoot(), "packages/db/src/pg-worker.mjs");
@@ -53,15 +54,18 @@ export function openPostgres(url: string, schemaPath = schemaFile()): Db {
       call({ type: "exec", sql });
     },
     all<T>(sql: string, params: unknown[] = []) {
-      const body = call({ type: "query", sql, params });
+      const query = scopeSql(sql, params);
+      const body = call({ type: "query", sql: query.sql, params: query.params });
       return (body.rows ?? []) as T[];
     },
     get<T>(sql: string, params: unknown[] = []) {
-      const body = call({ type: "query", sql, params });
+      const query = scopeSql(sql, params);
+      const body = call({ type: "query", sql: query.sql, params: query.params });
       return (body.rows?.[0] as T | undefined) ?? undefined;
     },
     run(sql, params = []) {
-      const body = call({ type: "query", sql, params });
+      const query = scopeSql(sql, params);
+      const body = call({ type: "query", sql: query.sql, params: query.params });
       return { changes: body.changes ?? 0 };
     },
     close() {

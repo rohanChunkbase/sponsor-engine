@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Database from "better-sqlite3";
 import { openPostgres } from "./postgres.js";
+import { scopeSql } from "./scope.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
@@ -49,6 +50,7 @@ export function openDb(file = defaultDbPath()): Db {
   sqlite.pragma("foreign_keys = ON");
   const schema = fs.readFileSync(path.join(here, "schema.sql"), "utf8");
   sqlite.exec(schema);
+  ensureWorkspaceColumns(sqlite);
   return wrap(sqlite);
 }
 
@@ -70,6 +72,24 @@ export function resetSingleton(): void {
   singleton = null;
 }
 
+const SCOPED_TABLES = ["requests", "tasks", "quotes", "outbox", "approvals", "agent_runs", "failures"];
+
+function ensureWorkspaceColumns(sqlite: Database.Database): void {
+  for (const table of SCOPED_TABLES) {
+    const cols = sqlite.prepare(`PRAGMA table_info(${table})`).all() as Array<{ name: string }>;
+    if (!cols.some((col) => col.name === "workspace_id")) {
+      sqlite.exec(`ALTER TABLE ${table} ADD COLUMN workspace_id TEXT NOT NULL DEFAULT 'local'`);
+    }
+  }
+  sqlite.exec(`CREATE TABLE IF NOT EXISTS venue_files (
+    workspace_id TEXT PRIMARY KEY,
+    csv TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  )`);
+  sqlite.exec("CREATE INDEX IF NOT EXISTS idx_requests_workspace ON requests(workspace_id)");
+  sqlite.exec("CREATE INDEX IF NOT EXISTS idx_outbox_workspace ON outbox(workspace_id)");
+}
+
 function wrap(sqlite: Database.Database): Db {
   return {
     kind: "sqlite",
@@ -77,13 +97,16 @@ function wrap(sqlite: Database.Database): Db {
       sqlite.exec(sql);
     },
     all<T>(sql: string, params: unknown[] = []) {
-      return sqlite.prepare(sql).all(...(params as never[])) as T[];
+      const query = scopeSql(sql, params);
+      return sqlite.prepare(query.sql).all(...(query.params as never[])) as T[];
     },
     get<T>(sql: string, params: unknown[] = []) {
-      return sqlite.prepare(sql).get(...(params as never[])) as T | undefined;
+      const query = scopeSql(sql, params);
+      return sqlite.prepare(query.sql).get(...(query.params as never[])) as T | undefined;
     },
     run(sql: string, params: unknown[] = []) {
-      const info = sqlite.prepare(sql).run(...(params as never[]));
+      const query = scopeSql(sql, params);
+      const info = sqlite.prepare(query.sql).run(...(query.params as never[]));
       return { changes: info.changes };
     },
     close() {

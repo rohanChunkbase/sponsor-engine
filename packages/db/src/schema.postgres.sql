@@ -114,7 +114,8 @@ CREATE TABLE IF NOT EXISTS requests (
   venue_hint TEXT,
   status TEXT NOT NULL,
   suggested_reply TEXT,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
@@ -124,7 +125,8 @@ CREATE TABLE IF NOT EXISTS tasks (
   owner TEXT NOT NULL,
   priority TEXT NOT NULL,
   status TEXT NOT NULL,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
 
 CREATE TABLE IF NOT EXISTS quotes (
@@ -137,7 +139,8 @@ CREATE TABLE IF NOT EXISTS quotes (
   requester_kind TEXT,
   lines_json TEXT,
   source TEXT NOT NULL,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
 
 CREATE TABLE IF NOT EXISTS outbox (
@@ -153,7 +156,8 @@ CREATE TABLE IF NOT EXISTS outbox (
   ask_gbp INTEGER,
   blocked_reason TEXT,
   created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL
+  updated_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
 
 CREATE TABLE IF NOT EXISTS approvals (
@@ -162,7 +166,8 @@ CREATE TABLE IF NOT EXISTS approvals (
   actor TEXT NOT NULL,
   decision TEXT NOT NULL,
   note TEXT,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
 
 CREATE TABLE IF NOT EXISTS agent_runs (
@@ -173,7 +178,8 @@ CREATE TABLE IF NOT EXISTS agent_runs (
   status TEXT NOT NULL,
   started_at TEXT NOT NULL,
   finished_at TEXT,
-  request_id TEXT
+  request_id TEXT,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
 
 CREATE TABLE IF NOT EXISTS failures (
@@ -182,8 +188,23 @@ CREATE TABLE IF NOT EXISTS failures (
   request_id TEXT,
   message TEXT NOT NULL,
   raw_input TEXT,
-  created_at TEXT NOT NULL
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
 );
+
+CREATE TABLE IF NOT EXISTS venue_files (
+  workspace_id TEXT PRIMARY KEY,
+  csv TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+
+ALTER TABLE requests ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE tasks ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE quotes ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE outbox ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE approvals ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE agent_runs ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE failures ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
 
 CREATE INDEX IF NOT EXISTS idx_claims_company ON sponsor_claims(company);
 CREATE INDEX IF NOT EXISTS idx_claims_sponsor ON sponsor_claims(sponsor_id);
@@ -192,3 +213,5 @@ CREATE INDEX IF NOT EXISTS idx_bookings_kind ON bookings(requester_kind);
 CREATE INDEX IF NOT EXISTS idx_tasks_request ON tasks(request_id);
 CREATE INDEX IF NOT EXISTS idx_quotes_request ON quotes(request_id);
 CREATE INDEX IF NOT EXISTS idx_outbox_status ON outbox(status);
+CREATE INDEX IF NOT EXISTS idx_requests_workspace ON requests(workspace_id);
+CREATE INDEX IF NOT EXISTS idx_outbox_workspace ON outbox(workspace_id);
