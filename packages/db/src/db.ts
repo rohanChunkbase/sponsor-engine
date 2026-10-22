@@ -70,7 +70,12 @@ export function openDb(file = defaultDbPath()): Db {
   const sqlite = new Database(file);
   sqlite.pragma("journal_mode = WAL");
   sqlite.pragma("foreign_keys = ON");
-  sqlite.exec(readSchema());
+  // Old files gain client_request_id in ensureWorkspaceColumns. Creating the index first fails.
+  const schema = readSchema().replace(
+    /^CREATE UNIQUE INDEX IF NOT EXISTS idx_(?:quotes|outbox)_client_request[^;]*;\n?/gm,
+    "",
+  );
+  sqlite.exec(schema);
   ensureWorkspaceColumns(sqlite);
   return wrap(sqlite);
 }

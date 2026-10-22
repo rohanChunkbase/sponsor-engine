@@ -14,7 +14,7 @@ import { emptyGithubProfile } from "./github.ts";
 import { emptyRequester } from "./verify.ts";
 import { bundledOrganiserLeads } from "./organisers.ts";
 import { findSponsorsInSeed } from "./sponsors.ts";
-import { companySizeNote, emptyCompany } from "./parse.ts";
+import { companySizeNote, emptyCompany, lumaAggregatesFromPayload } from "./parse.ts";
 import type { DataSource } from "./types.ts";
 
 export function eventSlug(input: string): string {
@@ -110,16 +110,42 @@ export function lookupLuma(seedDir: string, eventUrlOrId: string): LumaEventHost
     }
   }
 
+  const fromSample = sample ? lumaAggregatesFromPayload(sample) : null;
+  const fromEvent = aggregatesFromEvent(matched[0]);
+  const registered = fromSample?.registered ?? fromEvent.registered;
+  const checkedIn = fromSample?.checkedIn ?? fromEvent.checkedIn;
+  const showUpRate = fromSample?.showUpRate ?? fromEvent.showUpRate;
   return {
     eventId: sample?.id ?? matched[0]?.event_id ?? (slug.startsWith("evt-") ? slug : null),
     name,
     url,
     startAt,
-    guestCount: null,
+    guestCount: registered,
+    registered,
+    checkedIn,
+    showUpRate,
     calendarName: matched[0]?.community ?? null,
     hosts,
     sponsors,
   };
+}
+
+function aggregatesFromEvent(event: EventRow | undefined): { registered: number | null; checkedIn: number | null; showUpRate: number | null } {
+  if (!event) return { registered: null, checkedIn: null, showUpRate: null };
+  const registered = finite(event.registrations) ?? (finite(event.approx_size) && (event.approx_size ?? 0) > 0 ? event.approx_size ?? null : null);
+  const checkedIn = finite(event.check_ins);
+  const explicit = finite(event.show_up_rate);
+  const showUpRate =
+    explicit != null && explicit >= 0 && explicit <= 1
+      ? explicit
+      : registered != null && registered > 0 && checkedIn != null
+        ? Math.round((checkedIn / registered) * 1000) / 1000
+        : null;
+  return { registered: registered ?? null, checkedIn, showUpRate };
+}
+
+function finite(value: number | null | undefined): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
 function hackathonsFromBundle(seedDir: string): DevpostHackathon[] {

@@ -9,6 +9,7 @@ import {
   type QuoteRequest,
 } from "@sponsor-engine/pricing";
 import { forecastTurnout, resolveCommunity } from "./forecast.js";
+import { communityLumaAggregates, lumaPitchSentence, type LumaCounts } from "./luma.js";
 import { recordRun } from "./runs.js";
 import type { RequesterKind } from "./types.js";
 import { gbp, gbpExact, makeId, nowIso, parseJson } from "./util.js";
@@ -43,6 +44,8 @@ export type QuoteLines = {
   market_band_high_gbp: number;
   /** Published rooms next to the community room, including a £0 community slot. */
   community_market: PublicMarket;
+  /** Registered, checked-in, and show-up. Null when Luma published no counts. */
+  luma: LumaCounts | null;
 };
 
 export type PublicMarket = {
@@ -116,6 +119,7 @@ export async function quoteBooking(
         comparables: parseJson<RoomComparable[]>(existing.comparables_json, []),
         lines: lines ?? undefined,
         market: lines?.community_market,
+        luma: lines?.luma ?? null,
         source: "pricing-module" as const,
         requester_kind: existing.requester_kind ?? "unknown",
         duplicate: true as const,
@@ -151,6 +155,7 @@ export async function quoteBooking(
     log: false,
   });
   const food = foodPassThrough(forecast.expected_heads);
+  const luma = communityLumaAggregates(db, communityName);
   const roomGbp = Math.round(room.price);
   const lines: QuoteLines = {
     room_gbp: roomGbp,
@@ -172,6 +177,7 @@ export async function quoteBooking(
     market_band_low_gbp: MARKET_EVENING_LOW_GBP,
     market_band_high_gbp: MARKET_EVENING_HIGH_GBP,
     community_market: publicMarket(community.market),
+    luma,
   };
   const comparables = room.comparables.map(toComparable);
   const sampleNote = historySource().source === "sample"
@@ -212,6 +218,7 @@ export async function quoteBooking(
     comparables,
     lines,
     market: lines.community_market,
+    luma,
     source: "pricing-module" as const,
     requester_kind: confirmed ? bookerType : "unknown",
   };
@@ -349,5 +356,6 @@ function deskParagraph(
   const note = unconfirmed
     ? " The booker type is not confirmed. This quote uses the company rate. A free community slot was not applied."
     : "";
-  return `${room} ${day} ${marketLine} ${food} ${contrast}${note}`;
+  const luma = lines.luma ? ` ${lumaPitchSentence(lines.luma)}` : "";
+  return `${room} ${day} ${marketLine} ${food} ${contrast}${note}${luma}`;
 }

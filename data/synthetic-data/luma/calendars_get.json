@@ -30,7 +30,7 @@
   "website": "https://thames-agent-builders.example",
   "event_defaults": {
     "visibility": "public",
-    "show_guest_list": true,
+    "show_guest_list": false,
     "feedback_email": {
       "enabled": true
     }

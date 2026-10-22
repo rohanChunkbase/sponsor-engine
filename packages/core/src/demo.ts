@@ -1,6 +1,7 @@
 import type { Db } from "@sponsor-engine/db";
 import { draftSponsorAsk } from "./draft.js";
 import { forecastTurnout } from "./forecast.js";
+import { manualLeadEstimate } from "./manual-time.js";
 import { quoteBooking } from "./quote.js";
 import { findSponsors } from "./sponsors.js";
 import { triageInbound } from "./triage.js";
@@ -8,6 +9,7 @@ import { triageInbound } from "./triage.js";
 export const DEMO_MESSAGE = "Hi! Unicorn Mafia here, we want to run our next hackathon at Expedite London for ~120 hackers, a Saturday in late November, need the room 10:00-22:00 plus food.";
 
 export async function runDemo(db: Db) {
+  const started = performance.now();
   const triage = await triageInbound(db, { message: DEMO_MESSAGE, channel: "whatsapp" });
   if (!triage.ok) {
     throw new Error(triage.failure?.message || "The demo message could not be read.");
@@ -32,6 +34,7 @@ export async function runDemo(db: Db) {
     sponsor_id: sponsorId,
     useTestInbox: true,
   });
+  const raft_ms = Math.max(0, Math.round(performance.now() - started));
   return {
     request_id: requestId,
     triage,
@@ -42,5 +45,9 @@ export async function runDemo(db: Db) {
     repeat,
     outbox_id: draft.outbox.id,
     chat_outbox_id: triage.outbox?.id ?? null,
+    timing: {
+      manual: manualLeadEstimate(),
+      raft_ms,
+    },
   };
 }

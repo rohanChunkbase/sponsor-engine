@@ -28,6 +28,9 @@ export interface EventRow {
   lon?: number | null;
   venue?: string | null;
   approx_size?: number | null;
+  registrations?: number | null;
+  check_ins?: number | null;
+  show_up_rate?: number | null;
 }
 
 export interface ClaimRow {
@@ -63,6 +66,8 @@ export interface SampleLumaEvent {
   url?: string;
   start_at?: string;
   hosts?: Array<Record<string, unknown>>;
+  guest_count?: number | null;
+  guest_counts?: Record<string, unknown>;
 }
 
 export interface SeedBundle {

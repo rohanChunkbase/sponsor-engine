@@ -1,0 +1,48 @@
+{
+  "label": "estimate",
+  "status": "placeholder",
+  "note": "PLACEHOLDER estimates. Rohan will replace these minutes with the real time a person spends on one lead. They are not measurements.",
+  "unit": "minutes",
+  "steps": [
+    {
+      "id": "read_dm",
+      "label": "Read the DM",
+      "minutes": 5,
+      "estimate": true,
+      "placeholder": true,
+      "value_status": "PLACEHOLDER"
+    },
+    {
+      "id": "check_calendar",
+      "label": "Check the calendar",
+      "minutes": 10,
+      "estimate": true,
+      "placeholder": true,
+      "value_status": "PLACEHOLDER"
+    },
+    {
+      "id": "price",
+      "label": "Price the room",
+      "minutes": 15,
+      "estimate": true,
+      "placeholder": true,
+      "value_status": "PLACEHOLDER"
+    },
+    {
+      "id": "find_sponsors",
+      "label": "Find sponsors",
+      "minutes": 20,
+      "estimate": true,
+      "placeholder": true,
+      "value_status": "PLACEHOLDER"
+    },
+    {
+      "id": "write_asks",
+      "label": "Write the asks",
+      "minutes": 25,
+      "estimate": true,
+      "placeholder": true,
+      "value_status": "PLACEHOLDER"
+    }
+  ]
+}

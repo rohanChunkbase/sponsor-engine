@@ -1,15 +1,5 @@
 -- SAMPLE / FICTIONAL hackathon demo data. Schema generated from csv/.
 
-DROP TABLE IF EXISTS "attendance";
-CREATE TABLE "attendance" (
-  "member_id" text,
-  "event_id" text,
-  "registered" boolean,
-  "checked_in" boolean,
-  "is_sample" text
-);
-COMMENT ON TABLE "attendance" IS 'SAMPLE / FICTIONAL demo data';
-
 DROP TABLE IF EXISTS "communities";
 CREATE TABLE "communities" (
   "community_id" text PRIMARY KEY,
@@ -62,45 +52,6 @@ CREATE TABLE "events" (
   "is_sample" text
 );
 COMMENT ON TABLE "events" IS 'SAMPLE / FICTIONAL demo data';
-
-DROP TABLE IF EXISTS "luma_guests_flat";
-CREATE TABLE "luma_guests_flat" (
-  "event_id" text,
-  "id" text PRIMARY KEY,
-  "user_id" text,
-  "user_email" text,
-  "user_name" text,
-  "user_first_name" text,
-  "user_last_name" text,
-  "approval_status" text,
-  "registered_at" text,
-  "checked_in_at" text,
-  "ticket_name" text,
-  "event_ticket_type_id" text,
-  "utm_source" text,
-  "answer_what_are_you_building" text,
-  "answer_dietary" text,
-  "answer_company" text,
-  "answer_job_title" text,
-  "is_sample" text
-);
-COMMENT ON TABLE "luma_guests_flat" IS 'SAMPLE / FICTIONAL demo data';
-
-DROP TABLE IF EXISTS "members";
-CREATE TABLE "members" (
-  "member_id" text PRIMARY KEY,
-  "name" text,
-  "email" text,
-  "home_community_id" text,
-  "interests" text,
-  "joined" text,
-  "is_sample" text,
-  "events_registered" integer,
-  "events_attended" integer,
-  "attended_event_ids" text,
-  "personal_show_up_rate" double precision
-);
-COMMENT ON TABLE "members" IS 'SAMPLE / FICTIONAL demo data';
 
 DROP TABLE IF EXISTS "organiser_contacts_c01";
 CREATE TABLE "organiser_contacts_c01" (

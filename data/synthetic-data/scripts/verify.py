@@ -20,10 +20,18 @@ check(all(4.8 <= p <= 6.2 for p in ph), f"food per head ~£5-6 (min {min(ph):.2f
 c01 = [e for e in ev if e["community_id"] == "C01"]
 r = sum(int(e["check_ins"]) for e in c01) / sum(int(e["registrations"]) for e in c01)
 check(abs(r - 0.62) < 0.01, f"C01 organiser history: {len(c01)} events, show-up {r:.1%}")
+check(not (ROOT / "csv" / "members.csv").exists(), "no members table export")
+check(not (ROOT / "csv" / "attendance.csv").exists(), "no attendance export")
+check(not (ROOT / "csv" / "luma_guests_flat.csv").exists(), "no flattened guest list")
+check(not list((ROOT / "luma").glob("events_guests_list_*.json")), "no Luma guest-list payloads")
+check(not (ROOT / "luma" / "calendars_contacts_list.json").exists(), "no Luma calendar contact list")
+counts = json.load(open(ROOT / "luma" / "event_counts.json"))
+check(counts.get("label") == "luma-aggregates", "event_counts.json is labelled luma-aggregates")
+by_id = {row["event_id"]: row for row in counts["events"]}
 for e in c01:
-    g = json.load(open(ROOT / "luma" / f"events_guests_list_{e['event_id']}.json"))["entries"]
-    chk = sum(1 for x in g if x["event_tickets"] and x["event_tickets"][0]["checked_in_at"])
-    check(len(g) == int(e["registrations"]) and chk == int(e["check_ins"]), f"Luma guest list {e['event_id']} matches events.csv ({len(g)} reg, {chk} checked in)")
+    row = by_id[e["event_id"]]
+    check(row["registered"] == int(e["registrations"]) and row["checked_in"] == int(e["check_ins"]), f"Luma counts {e['event_id']} match events.csv")
+    check("email" not in row and "user_name" not in row, f"Luma counts {e['event_id']} have no person fields")
 con = sqlite3.connect(ROOT / "sample.db")
 check(con.execute("select count(*) from events").fetchone()[0] == len(list(csv.DictReader(open(ROOT / "csv" / "events.csv")))), "sample.db loaded and matches events.csv")
 print("OK" if ok else "SOME CHECKS FAILED"); raise SystemExit(0 if ok else 1)

@@ -4,8 +4,8 @@ import csv
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "sql"; OUT.mkdir(exist_ok=True)
-PK = {"communities":"community_id","sponsors":"sponsor_id","events":"event_id","sponsor_deals":"deal_id","members":"member_id",
-      "speakers":"speaker_id","organiser_contacts_C01":"contact_id","luma_guests_flat":"id"}
+PK = {"communities":"community_id","sponsors":"sponsor_id","events":"event_id","sponsor_deals":"deal_id",
+      "speakers":"speaker_id","organiser_contacts_C01":"contact_id"}
 def typ(vals):
     vals = [v for v in vals if v != ""]
     if vals and all(v in ("True","False") for v in vals): return "boolean"

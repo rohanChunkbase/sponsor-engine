@@ -269,33 +269,27 @@ for e in c01_events:
         guests.append(luma_guest(fake, e, "approved", k < extra_chk, len(mrows) + k))
     lj(f"events_get_{e['event_id']}", luma_event(e, {"approved": {"guests": e["registrations"], "tickets": e["registrations"]},
         "pending_approval": {"guests": 0, "tickets": 0}, "waitlist": {"guests": 0, "tickets": 0}, "invited": {"guests": 0, "tickets": 0}, "declined": {"guests": 0, "tickets": 0}}))
-    lj(f"events_guests_list_{e['event_id']}", {"entries": guests, "has_more": False, "next_cursor": None})
-    for g in guests: flatten(g, e["event_id"])
+    # Guest rows stay in memory so later random draws do not shift. They are not written.
 
 # Upcoming E900: 80 approved + 8 waitlist, nobody checked in yet
 up_pool = random.sample(members, 88)
 up_guests = [luma_guest(m, up, "approved" if i < 80 else "waitlist", False, i) for i, m in enumerate(up_pool)]
 lj("events_get_E900", luma_event(up, {"approved": {"guests": 80, "tickets": 80}, "pending_approval": {"guests": 0, "tickets": 0},
     "waitlist": {"guests": 8, "tickets": 8}, "invited": {"guests": 0, "tickets": 0}, "declined": {"guests": 0, "tickets": 0}}))
-lj("events_guests_list_E900", {"entries": up_guests, "has_more": False, "next_cursor": None})
-for g in up_guests: flatten(g, "E900")
-write("luma_guests_flat", flat_rows)
+# No guest list and no member export. Luma keeps the ticket scan.
+def count_row(e):
+    def blank(value):
+        return None if value == "" else value
+    return {"event_id": e["event_id"], "registered": blank(e["registrations"]), "checked_in": blank(e["check_ins"]), "show_up_rate": blank(e["show_up_rate"])}
+lj("event_counts", {"_notice": "SAMPLE aggregate counts only. No guest names, emails, or ticket scans. Luma keeps check-in.",
+    "label": "luma-aggregates", "events": [count_row(e) for e in events + [up]]})
 
 lj("calendars_get", {"id": CAL_ID, "launch_status": "launched", "tint_color": "#3355ff", "name": org["name"], "slug": "thames-agent-builders-sample",
     "avatar_url": None, "url": "https://luma.com/thames-agent-builders-sample", "description": "SAMPLE calendar", "social_image_url": None, "cover_image_url": None,
     "is_personal": False, "location": {"city": "London", "region": "England", "country": "United Kingdom", "country_code": "GB", "timezone": "Europe/London"},
     "coordinate": {"longitude": org["lon"], "latitude": org["lat"]}, "instagram_handle": None, "twitter_handle": org["organiser_handle"].lstrip("@"),
     "youtube_handle": None, "tiktok_handle": None, "linkedin_handle": None, "website": "https://thames-agent-builders.example",
-    "event_defaults": {"visibility": "public", "show_guest_list": True, "feedback_email": {"enabled": True}}})
-contacts_entries = []
-for m in members:
-    if m["events_registered"] == 0 and random.random() < 0.6: continue
-    first, last = m["name"].replace(" (fictional)", "").split(" ", 1)
-    contacts_entries.append({"id": "cnt-SAMPLE" + m["member_id"], "user_id": "usr-SAMPLE" + m["member_id"], "created_at": m["joined"] + "T12:00:00.000Z",
-        "event_approved_count": m["events_registered"], "event_checked_in_count": m["events_attended"], "revenue_usd_cents": 0,
-        "tags": [{"id": "tag-SAMPLE-" + t.replace(" ", "-").lower(), "name": t} for t in m["interests"][:2]],
-        "membership": None, "name": f"{first} {last}", "avatar_url": None, "email": m["email"], "first_name": first, "last_name": last})
-lj("calendars_contacts_list", {"entries": contacts_entries, "has_more": False, "next_cursor": None})
+    "event_defaults": {"visibility": "public", "show_guest_list": False, "feedback_email": {"enabled": False}}})
 lj("events_ticket_types_list_E900", {"entries": [{"name": "Free", "require_approval": False, "is_hidden": False, "description": "SAMPLE free ticket",
     "valid_start_at": None, "valid_end_at": None, "max_capacity": 80, "type": "free", "cents": 0, "currency": None, "is_flexible": False, "min_cents": 0, "id": TT_FREE}]})
 lj("events_coupons_list_E900", {"entries": [], "has_more": False, "next_cursor": None})
@@ -349,7 +343,7 @@ gj("community_edges", [{"type": "Feature", "geometry": {"type": "LineString", "c
 
 write("communities", communities); write("sponsors", sponsors); write("events", events + [up])
 write("speakers", speakers); write("talks", talks); write("edges", edges)
-write("sponsor_deals", deals); write("members", members); write("attendance", attendance); write("organiser_contacts_C01", contacts)
+write("sponsor_deals", deals); write("organiser_contacts_C01", contacts)
 print("C01 show-up:", round(tc/tr, 3), "edges:", len(edges))
 
 # Chat snippets

@@ -1,0 +1,384 @@
+{
+ "_notice": "SAMPLE aggregate counts only. No guest names, emails, or ticket scans. Luma keeps check-in.",
+ "label": "luma-aggregates",
+ "events": [
+  {
+   "event_id": "E049",
+   "registered": 47,
+   "checked_in": 25,
+   "show_up_rate": 0.532
+  },
+  {
+   "event_id": "E058",
+   "registered": 43,
+   "checked_in": 28,
+   "show_up_rate": 0.651
+  },
+  {
+   "event_id": "E061",
+   "registered": 46,
+   "checked_in": 26,
+   "show_up_rate": 0.565
+  },
+  {
+   "event_id": "E040",
+   "registered": 85,
+   "checked_in": 54,
+   "show_up_rate": 0.635
+  },
+  {
+   "event_id": "E042",
+   "registered": 39,
+   "checked_in": 24,
+   "show_up_rate": 0.615
+  },
+  {
+   "event_id": "E010",
+   "registered": 79,
+   "checked_in": 47,
+   "show_up_rate": 0.595
+  },
+  {
+   "event_id": "E045",
+   "registered": 83,
+   "checked_in": 60,
+   "show_up_rate": 0.723
+  },
+  {
+   "event_id": "E026",
+   "registered": 55,
+   "checked_in": 28,
+   "show_up_rate": 0.509
+  },
+  {
+   "event_id": "E029",
+   "registered": 56,
+   "checked_in": 35,
+   "show_up_rate": 0.625
+  },
+  {
+   "event_id": "E009",
+   "registered": 116,
+   "checked_in": 78,
+   "show_up_rate": 0.672
+  },
+  {
+   "event_id": "E021",
+   "registered": 64,
+   "checked_in": 45,
+   "show_up_rate": 0.703
+  },
+  {
+   "event_id": "E031",
+   "registered": 60,
+   "checked_in": 41,
+   "show_up_rate": 0.683
+  },
+  {
+   "event_id": "E041",
+   "registered": 37,
+   "checked_in": 19,
+   "show_up_rate": 0.514
+  },
+  {
+   "event_id": "E044",
+   "registered": 50,
+   "checked_in": 36,
+   "show_up_rate": 0.72
+  },
+  {
+   "event_id": "E008",
+   "registered": 59,
+   "checked_in": 35,
+   "show_up_rate": 0.593
+  },
+  {
+   "event_id": "E047",
+   "registered": 62,
+   "checked_in": 42,
+   "show_up_rate": 0.677
+  },
+  {
+   "event_id": "E015",
+   "registered": 44,
+   "checked_in": 29,
+   "show_up_rate": 0.659
+  },
+  {
+   "event_id": "E018",
+   "registered": 49,
+   "checked_in": 34,
+   "show_up_rate": 0.694
+  },
+  {
+   "event_id": "E017",
+   "registered": 37,
+   "checked_in": 20,
+   "show_up_rate": 0.541
+  },
+  {
+   "event_id": "E036",
+   "registered": 51,
+   "checked_in": 32,
+   "show_up_rate": 0.627
+  },
+  {
+   "event_id": "E007",
+   "registered": 51,
+   "checked_in": 30,
+   "show_up_rate": 0.588
+  },
+  {
+   "event_id": "E037",
+   "registered": 71,
+   "checked_in": 44,
+   "show_up_rate": 0.62
+  },
+  {
+   "event_id": "E062",
+   "registered": 49,
+   "checked_in": 31,
+   "show_up_rate": 0.633
+  },
+  {
+   "event_id": "E023",
+   "registered": 38,
+   "checked_in": 26,
+   "show_up_rate": 0.684
+  },
+  {
+   "event_id": "E034",
+   "registered": 94,
+   "checked_in": 68,
+   "show_up_rate": 0.723
+  },
+  {
+   "event_id": "E013",
+   "registered": 59,
+   "checked_in": 31,
+   "show_up_rate": 0.525
+  },
+  {
+   "event_id": "E011",
+   "registered": 73,
+   "checked_in": 46,
+   "show_up_rate": 0.63
+  },
+  {
+   "event_id": "E012",
+   "registered": 78,
+   "checked_in": 54,
+   "show_up_rate": 0.692
+  },
+  {
+   "event_id": "E006",
+   "registered": 58,
+   "checked_in": 39,
+   "show_up_rate": 0.672
+  },
+  {
+   "event_id": "E039",
+   "registered": 56,
+   "checked_in": 38,
+   "show_up_rate": 0.679
+  },
+  {
+   "event_id": "E046",
+   "registered": 109,
+   "checked_in": 65,
+   "show_up_rate": 0.596
+  },
+  {
+   "event_id": "E052",
+   "registered": 55,
+   "checked_in": 34,
+   "show_up_rate": 0.618
+  },
+  {
+   "event_id": "E051",
+   "registered": 54,
+   "checked_in": 38,
+   "show_up_rate": 0.704
+  },
+  {
+   "event_id": "E057",
+   "registered": 32,
+   "checked_in": 22,
+   "show_up_rate": 0.688
+  },
+  {
+   "event_id": "E028",
+   "registered": 112,
+   "checked_in": 63,
+   "show_up_rate": 0.562
+  },
+  {
+   "event_id": "E059",
+   "registered": 39,
+   "checked_in": 29,
+   "show_up_rate": 0.744
+  },
+  {
+   "event_id": "E032",
+   "registered": 31,
+   "checked_in": 23,
+   "show_up_rate": 0.742
+  },
+  {
+   "event_id": "E038",
+   "registered": 66,
+   "checked_in": 34,
+   "show_up_rate": 0.515
+  },
+  {
+   "event_id": "E005",
+   "registered": 113,
+   "checked_in": 68,
+   "show_up_rate": 0.602
+  },
+  {
+   "event_id": "E053",
+   "registered": 60,
+   "checked_in": 45,
+   "show_up_rate": 0.75
+  },
+  {
+   "event_id": "E030",
+   "registered": 94,
+   "checked_in": 63,
+   "show_up_rate": 0.67
+  },
+  {
+   "event_id": "E019",
+   "registered": 47,
+   "checked_in": 29,
+   "show_up_rate": 0.617
+  },
+  {
+   "event_id": "E050",
+   "registered": 42,
+   "checked_in": 27,
+   "show_up_rate": 0.643
+  },
+  {
+   "event_id": "E004",
+   "registered": 71,
+   "checked_in": 46,
+   "show_up_rate": 0.648
+  },
+  {
+   "event_id": "E016",
+   "registered": 34,
+   "checked_in": 17,
+   "show_up_rate": 0.5
+  },
+  {
+   "event_id": "E014",
+   "registered": 58,
+   "checked_in": 39,
+   "show_up_rate": 0.672
+  },
+  {
+   "event_id": "E060",
+   "registered": 38,
+   "checked_in": 19,
+   "show_up_rate": 0.5
+  },
+  {
+   "event_id": "E048",
+   "registered": 63,
+   "checked_in": 33,
+   "show_up_rate": 0.524
+  },
+  {
+   "event_id": "E025",
+   "registered": 60,
+   "checked_in": 35,
+   "show_up_rate": 0.583
+  },
+  {
+   "event_id": "E035",
+   "registered": 37,
+   "checked_in": 22,
+   "show_up_rate": 0.595
+  },
+  {
+   "event_id": "E027",
+   "registered": 110,
+   "checked_in": 60,
+   "show_up_rate": 0.545
+  },
+  {
+   "event_id": "E003",
+   "registered": 110,
+   "checked_in": 65,
+   "show_up_rate": 0.591
+  },
+  {
+   "event_id": "E022",
+   "registered": 69,
+   "checked_in": 44,
+   "show_up_rate": 0.638
+  },
+  {
+   "event_id": "E056",
+   "registered": 36,
+   "checked_in": 20,
+   "show_up_rate": 0.556
+  },
+  {
+   "event_id": "E054",
+   "registered": 80,
+   "checked_in": 48,
+   "show_up_rate": 0.6
+  },
+  {
+   "event_id": "E002",
+   "registered": 69,
+   "checked_in": 42,
+   "show_up_rate": 0.609
+  },
+  {
+   "event_id": "E043",
+   "registered": 47,
+   "checked_in": 33,
+   "show_up_rate": 0.702
+  },
+  {
+   "event_id": "E033",
+   "registered": 42,
+   "checked_in": 26,
+   "show_up_rate": 0.619
+  },
+  {
+   "event_id": "E020",
+   "registered": 56,
+   "checked_in": 34,
+   "show_up_rate": 0.607
+  },
+  {
+   "event_id": "E024",
+   "registered": 60,
+   "checked_in": 34,
+   "show_up_rate": 0.567
+  },
+  {
+   "event_id": "E055",
+   "registered": 69,
+   "checked_in": 50,
+   "show_up_rate": 0.725
+  },
+  {
+   "event_id": "E001",
+   "registered": 97,
+   "checked_in": 61,
+   "show_up_rate": 0.629
+  },
+  {
+   "event_id": "E900",
+   "registered": 80,
+   "checked_in": null,
+   "show_up_rate": null
+  }
+ ]
+}

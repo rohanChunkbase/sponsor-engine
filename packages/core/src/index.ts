@@ -32,4 +32,8 @@ export { getConnections } from "./connections.js";
 export { inbox, counts, latestQuote, listRuns, mapPoints } from "./read.js";
 export { getReadyDb } from "./ready.js";
 export { runDemo, DEMO_MESSAGE } from "./demo.js";
+export { communityLumaAggregates, lumaPitchSentence } from "./luma.js";
+export type { LumaCounts } from "./luma.js";
+export { manualLeadEstimate } from "./manual-time.js";
+export type { ManualLeadEstimate, ManualLeadStep } from "./manual-time.js";
 export type { ConnectionCard } from "./connections.js";

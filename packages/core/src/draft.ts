@@ -1,5 +1,6 @@
 import type { Db } from "@sponsor-engine/db";
 import { forecastTurnout } from "./forecast.js";
+import { communityLumaAggregates, lumaPitchSentence } from "./luma.js";
 import { sendWithApproval } from "./outbox.js";
 import { FOOD_PER_HEAD_GBP, foodPassThrough, type QuoteLines } from "./quote.js";
 import { recordRun } from "./runs.js";
@@ -62,13 +63,14 @@ export async function draftSponsorAsk(
   const recipient = testInbox
     ? placeholderAtTestInbox(sponsor.company)
     : acceptContact(input.contact) || inferRecipient(sponsor.website, sponsor.sources, found.live_hosts);
+  const luma = communityLumaAggregates(db, community);
   const when = request?.event_date ? formatDate(request.event_date) : "the date they asked for";
   const venue = request?.venue_hint?.includes("Expedite") ? "Expedite" : "the venue";
   const subject = `Food for ${community} on ${when} — ${gbp(ask)}`;
   const body = [
     "Hello,",
     "",
-    `${community} asked to book an evening for ${headcount} people on ${when}. We expect ${forecast.expected_heads} people to come (${percent(forecast.show_up_rate)}). ${forecast.source === "history" ? "That rate comes from their past events." : "A free event with no history uses a 28% no-show."}`,
+    `${community} asked to book an evening for ${headcount} people on ${when}. We expect ${forecast.expected_heads} people to come (${percent(forecast.show_up_rate)}). ${forecast.source === "history" ? "That rate comes from their past events." : "A free event with no history uses a 28% no-show."}${luma ? ` ${lumaPitchSentence(luma)}` : ""}`,
     "",
     sponsor.reasons[0] || `${sponsor.company} has backed London events.`,
     source?.url ? `Source: ${source.url}` : "",
@@ -112,6 +114,7 @@ export async function draftSponsorAsk(
     per_head_gbp: FOOD_PER_HEAD_GBP,
     expected_heads: forecast.expected_heads,
     show_up_rate: forecast.show_up_rate,
+    luma,
     sponsor,
     outbox: sent.item,
     sent: false as const,

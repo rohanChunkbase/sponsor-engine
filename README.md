@@ -245,7 +245,9 @@ The write limit is 40 requests from one IP in one minute.
 
 A spam message goes to the spam lane. The lane does not create a task. The check is a local model. The model was trained on public SMS rows. It does not call the network.
 
-The app does not store a guest list. A request stores the message the sender typed. Do not commit personal data.
+The app does not store a guest list, a member list, or a check-in. Luma keeps the ticket scan. A quote or a sponsor pitch may use three Luma numbers when they were published: registered, checked-in, and show-up. A request stores the message the sender typed. Do not commit personal data.
+
+The demo shows a Before / After card. The left side is the manual work on one lead. Those minutes are read from `packages/core/src/manual-lead-time.estimate.json`. Every value is marked `estimate` and `PLACEHOLDER`. The right side is the elapsed time Raft measured for that same request.
 
 This repository has no mailer. Read [SECURITY.md](SECURITY.md).
 

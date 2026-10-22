@@ -115,7 +115,7 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
       row.event_id,
       communityIdByName.get(normalName(row.community)) ?? null,
       row.community, row.name, row.date, row.status, row.venue, row.area,
-      asFloat(row.lat), asFloat(row.lon), null, null, null, asInt(row.approx_size),
+      asFloat(row.lat), asFloat(row.lon), lumaRegistered(row), null, null, asInt(row.approx_size),
       null, null, null, row.url, row.source_url, row.platform, "", "real",
     );
   }
@@ -124,7 +124,7 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
       row.event_id,
       communityIdByName.get(normalName(row.community)) ?? null,
       row.community, row.name, cleanDate(row.date), row.status, row.venue, row.area,
-      null, null, null, null, null, asInt(row.approx_size),
+      null, null, lumaRegistered(row), null, null, asInt(row.approx_size),
       null, null, null, row.url, row.source_urls, row.platform, "", "real_new",
     );
   }
@@ -316,6 +316,13 @@ function count(db: Db, table: string): number {
 
 function normalName(value: string): string {
   return value.replace(/\s*\(SAMPLE\)\s*/gi, "").trim().toLowerCase();
+}
+
+/** A published Luma guest count. Participant blurbs such as "100-120" stay out of this column. */
+function lumaRegistered(row: Record<string, string>): number | null {
+  if (!/luma guest count/i.test(row.size_note || "")) return null;
+  const count = asInt(row.approx_size);
+  return count != null && count > 0 ? count : null;
 }
 
 function cleanDate(value: string | undefined): string {

@@ -1,4 +1,4 @@
-import type { CompanySize, DevpostHackathon, LumaEventHosts, LumaHost, SicCode } from "../types.ts";
+import type { CompanySize, DevpostHackathon, LumaAggregates, LumaEventHosts, LumaHost, SicCode } from "../types.ts";
 
 export function decodeHtml(value: string): string {
   return value
@@ -61,6 +61,50 @@ export function parseCompanyProfileHtml(html: string): {
   };
 }
 
+/**
+ * Registered, checked-in, and show-up from a Luma payload.
+ * Guest rows are counted in memory when a published total is missing, then dropped.
+ * Names, emails, phones, and ticket answers are not returned.
+ */
+export function lumaAggregatesFromPayload(payload: unknown): LumaAggregates {
+  const root = payload && typeof payload === "object" ? (payload as Record<string, unknown>) : {};
+  const event = root.event && typeof root.event === "object" ? (root.event as Record<string, unknown>) : root;
+  const counts = recordOf(root.guest_counts) ?? recordOf(event.guest_counts);
+  let registered =
+    numberOf(root.guest_count) ??
+    numberOf(event.guest_count) ??
+    numberOf(root.registered_count) ??
+    numberOf(event.registered_count) ??
+    countBucket(counts, "approved") ??
+    numberOf(root.num_guests) ??
+    numberOf(event.num_guests);
+  let checkedIn =
+    numberOf(root.checked_in_count) ??
+    numberOf(event.checked_in_count) ??
+    numberOf(root.checked_in_guests) ??
+    numberOf(event.checked_in_guests) ??
+    countBucket(counts, "checked_in") ??
+    numberOf(root.check_in_count) ??
+    numberOf(event.check_in_count);
+
+  if (registered == null || checkedIn == null) {
+    const rows = guestRows(root) ?? guestRows(event);
+    if (rows) {
+      if (registered == null) registered = rows.length;
+      if (checkedIn == null) checkedIn = rows.reduce<number>((total, row) => total + (isCheckedIn(row) ? 1 : 0), 0);
+    }
+  }
+
+  const showUp =
+    rateOf(root.show_up_rate) ??
+    rateOf(event.show_up_rate) ??
+    rateOf(root.showUpRate) ??
+    (registered != null && registered > 0 && checkedIn != null
+      ? Math.round((checkedIn / registered) * 1000) / 1000
+      : null);
+  return { registered, checkedIn, showUpRate: showUp };
+}
+
 export function parseLumaPayload(payload: unknown, input: string): LumaEventHosts {
   const root = payload && typeof payload === "object" ? (payload as Record<string, unknown>) : {};
   const event = root.event && typeof root.event === "object" ? (root.event as Record<string, unknown>) : root;
@@ -74,12 +118,16 @@ export function parseLumaPayload(payload: unknown, input: string): LumaEventHost
     .filter((host): host is LumaHost => host !== null);
   const calendar = root.calendar && typeof root.calendar === "object" ? (root.calendar as Record<string, unknown>) : {};
   const eventId = stringOf(root.api_id) ?? stringOf(event.api_id) ?? stringOf(event.id);
+  const aggregates = lumaAggregatesFromPayload(payload);
   return {
     eventId,
     name: stringOf(event.name) ?? stringOf(root.name),
     url: input.startsWith("http") ? input : null,
     startAt: stringOf(event.start_at) ?? stringOf(root.start_at),
-    guestCount: numberOf(root.guest_count) ?? numberOf(event.guest_count),
+    guestCount: aggregates.registered,
+    registered: aggregates.registered,
+    checkedIn: aggregates.checkedIn,
+    showUpRate: aggregates.showUpRate,
     calendarName: stringOf(calendar.name) ?? stringOf(calendar.calendar_name) ?? stringOf(root.calendar_name),
     hosts,
     sponsors: [],
@@ -169,6 +217,45 @@ export function emptyCompany(query: string, via: CompanySize["via"], sizeNote: s
     sourceUrl: null,
     via,
   };
+}
+
+function recordOf(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : null;
+}
+
+function countBucket(counts: Record<string, unknown> | null, key: string): number | null {
+  if (!counts) return null;
+  const bucket = counts[key];
+  if (typeof bucket === "number" && Number.isFinite(bucket)) return bucket;
+  const row = recordOf(bucket);
+  return row ? numberOf(row.guests) : null;
+}
+
+function guestRows(record: Record<string, unknown>): unknown[] | null {
+  for (const key of ["guests", "entries", "guest_list"]) {
+    if (Array.isArray(record[key])) return record[key] as unknown[];
+  }
+  return null;
+}
+
+function isCheckedIn(row: unknown): boolean {
+  const item = recordOf(row);
+  if (!item) return false;
+  if (typeof item.checked_in_at === "string" && item.checked_in_at.trim() !== "") return true;
+  if (item.checked_in === true) return true;
+  const tickets = Array.isArray(item.event_tickets) ? item.event_tickets : [];
+  return tickets.some((ticket) => {
+    const row = recordOf(ticket);
+    return Boolean(row && typeof row.checked_in_at === "string" && row.checked_in_at.trim() !== "");
+  });
+}
+
+function rateOf(value: unknown): number | null {
+  const number = numberOf(value);
+  if (number == null || number < 0) return null;
+  if (number > 1 && number <= 100) return Math.round((number / 100) * 1000) / 1000;
+  if (number > 1) return null;
+  return number;
 }
 
 function stringOf(value: unknown): string | null {

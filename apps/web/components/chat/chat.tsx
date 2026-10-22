@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { money } from "@/lib/labels";
-import { CardShell, DraftCard, QuoteCard, SponsorCard, SummaryCard, btn, type OutboxItem, type Qualified, type Quote, type Sponsor } from "./cards";
+import { BeforeAfterCard, CardShell, DraftCard, QuoteCard, SponsorCard, SummaryCard, btn, type DemoTiming, type OutboxItem, type Qualified, type Quote, type Sponsor } from "./cards";
 
 type RunResult = {
   request_id?: string;
@@ -14,6 +14,7 @@ type RunResult = {
   sponsors?: { matches: Sponsor[]; live_note?: string };
   draft?: { outbox?: OutboxItem; ask_gbp?: number; error?: string } | null;
   repeat?: { outbox?: OutboxItem } | null;
+  timing?: DemoTiming;
 };
 
 type StepState = "pending" | "running" | "done";
@@ -329,6 +330,7 @@ function RunView({ message, testMode }: { message: Extract<Message, { kind: "run
       {result && result.triage.ok && result.triage.qualified ? (
         <>
           <p className="text-[15px] leading-6 text-raft-ink">{intro(result)}</p>
+          {result.timing ? <BeforeAfterCard timing={result.timing} /> : null}
           <SummaryCard q={result.triage.qualified} hours={result.quote?.lines?.hours} />
           {result.quote && !result.quote.error ? <QuoteCard quote={result.quote} /> : null}
           {result.quote?.error ? <p className="text-[14px] text-raft-muted">I could not price this yet: {result.quote.error}</p> : null}

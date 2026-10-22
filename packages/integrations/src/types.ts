@@ -117,11 +117,19 @@ export interface LumaSponsor {
   sourceUrl: string | null;
 }
 
-export interface LumaEventHosts {
+/** Counts only. Guest names, emails, and ticket rows are not part of this type. */
+export interface LumaAggregates {
+  registered: number | null;
+  checkedIn: number | null;
+  showUpRate: number | null;
+}
+
+export interface LumaEventHosts extends LumaAggregates {
   eventId: string | null;
   name: string | null;
   url: string | null;
   startAt: string | null;
+  /** Same number as `registered`. Kept so older callers still read a headcount. */
   guestCount: number | null;
   calendarName: string | null;
   hosts: LumaHost[];

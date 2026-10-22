@@ -61,8 +61,60 @@ test("Luma host JSON uses the public event payload shape", async () => {
   assert.equal(result.provider, "luma");
   assert.equal(result.data.name, "Demo night");
   assert.equal(result.data.guestCount, 40);
+  assert.equal(result.data.registered, 40);
+  assert.equal(result.data.checkedIn, null);
+  assert.equal(result.data.showUpRate, null);
   assert.equal(result.data.hosts[0]?.linkedinHandle, "future");
   assert.equal(result.data.calendarName, "Encode Club");
+});
+
+test("Luma reads registered, checked-in, and show-up and drops guest rows", async () => {
+  const fetchImpl: typeof fetch = async () =>
+    new Response(
+      JSON.stringify({
+        api_id: "evt-SECRET",
+        guest_count: 40,
+        checked_in_count: 28,
+        event: { name: "Counts only" },
+        guests: [
+          {
+            user_email: "secret.guest@example.com",
+            user_name: "Secret Guest",
+            phone_number: "+447700900123",
+            checked_in_at: "2026-10-22T18:05:00.000Z",
+          },
+        ],
+        entries: [{ user_email: "another.guest@example.com", user_name: "Another Guest" }],
+      }),
+      { status: 200 },
+    );
+  const result = await lumaEventHosts("evt-SECRET", baseOptions({ fetchImpl }));
+  assert.equal(result.data.registered, 40);
+  assert.equal(result.data.checkedIn, 28);
+  assert.equal(result.data.showUpRate, 0.7);
+  const dumped = JSON.stringify(result.data);
+  assert.doesNotMatch(dumped, /secret\.guest|another\.guest|Secret Guest|\+447700900123/i);
+  assert.equal("guests" in result.data, false);
+  assert.equal("entries" in result.data, false);
+});
+
+test("a guest list with no published totals is reduced to counts", async () => {
+  const fetchImpl: typeof fetch = async () =>
+    new Response(
+      JSON.stringify({
+        name: "List only",
+        entries: [
+          { user_email: "a@example.com", user_name: "A Person", event_tickets: [{ checked_in_at: "2026-10-22T18:00:00.000Z" }] },
+          { user_email: "b@example.com", user_name: "B Person", checked_in_at: "" },
+        ],
+      }),
+      { status: 200 },
+    );
+  const result = await lumaEventHosts("evt-LIST", baseOptions({ fetchImpl }));
+  assert.equal(result.data.registered, 2);
+  assert.equal(result.data.checkedIn, 1);
+  assert.equal(result.data.showUpRate, 0.5);
+  assert.doesNotMatch(JSON.stringify(result.data), /@example\.com|A Person|B Person/);
 });
 
 test("the public Companies House page supplies status, date, and SIC codes", async () => {

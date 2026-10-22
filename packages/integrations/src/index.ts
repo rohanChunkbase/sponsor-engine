@@ -32,6 +32,7 @@ export type {
   CrmLeadRecord,
   DevpostHackathon,
   LocalCrmFile,
+  LumaAggregates,
   LumaEventHosts,
   LumaHost,
   LumaSponsor,
@@ -79,6 +80,8 @@ export async function recall(organiserId: string, query: string, options?: Regis
 export async function lumaEventHosts(eventUrlOrId: string, options?: RegistryOptions) {
   return createRegistry(options).data.lumaEventHosts(eventUrlOrId);
 }
+
+export { lumaAggregatesFromPayload, parseLumaPayload } from "./data/parse.ts";
 
 export async function devpostLondonHackathons(options?: RegistryOptions) {
   return createRegistry(options).data.devpostLondonHackathons();

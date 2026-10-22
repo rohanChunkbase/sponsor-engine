@@ -3,6 +3,7 @@ import { mkdtempSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { test } from "node:test";
+import Database from "better-sqlite3";
 import { openDb, runWithWorkspace } from "../src/index.ts";
 
 test("a workspace sees only its own requests", () => {
@@ -41,5 +42,27 @@ test("shared sponsor rows stay visible in every workspace", () => {
     const row = db.get<{ company: string }>("SELECT company FROM sponsors WHERE id = ?", ["sp1"]);
     assert.equal(row?.company, "Tessl");
   });
+  db.close();
+});
+
+test("an older sqlite file gains client_request_id before the index is created", () => {
+  const dir = mkdtempSync(path.join(tmpdir(), "old-sqlite-"));
+  const file = path.join(dir, "old.db");
+  const raw = new Database(file);
+  raw.exec(`
+    CREATE TABLE quotes (id TEXT PRIMARY KEY, request_id TEXT, price INTEGER);
+    CREATE TABLE requests (id TEXT PRIMARY KEY);
+    CREATE TABLE outbox (id TEXT PRIMARY KEY, status TEXT);
+    CREATE TABLE tasks (id TEXT PRIMARY KEY, request_id TEXT);
+    CREATE TABLE approvals (id TEXT PRIMARY KEY);
+    CREATE TABLE agent_runs (id TEXT PRIMARY KEY);
+    CREATE TABLE failures (id TEXT PRIMARY KEY);
+    CREATE TABLE sponsor_suppression (id TEXT PRIMARY KEY, domain TEXT);
+  `);
+  raw.close();
+  const db = openDb(file);
+  const cols = db.all<{ name: string }>("PRAGMA table_info(quotes)");
+  assert.ok(cols.some((col) => col.name === "client_request_id"));
+  db.run("INSERT INTO quotes (id, price, client_request_id) VALUES ('q1', 1, 'same')");
   db.close();
 });

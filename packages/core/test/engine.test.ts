@@ -227,6 +227,14 @@ test("an 80-person community evening is a free room and food is the sponsor ask"
   assert.equal(quote.currency, "GBP");
   assert.equal(quote.lines.sponsor_ask_gbp, quote.lines.food_gbp);
   assert.equal(quote.lines.food_gbp, Math.round(quote.lines.expected_heads * quote.lines.food_per_head));
+  assert.ok(quote.luma);
+  assert.equal(quote.luma?.source, "luma-aggregates");
+  assert.ok((quote.luma?.registered ?? 0) > 0);
+  assert.ok((quote.luma?.checked_in ?? 0) > 0);
+  assert.ok((quote.luma?.show_up_rate ?? 0) > 0 && (quote.luma?.show_up_rate ?? 1) < 1);
+  assert.match(quote.explanation, /counts only/i);
+  assert.match(quote.explanation, /checked in/i);
+  assert.doesNotMatch(quote.explanation, /@example\.com|user_email|guest list/i);
   assert.ok(quote.lines.food_gbp > 0);
   assert.ok(quote.lines.company_room_gbp > quote.lines.room_gbp);
   assert.ok(quote.comparables.length >= 1);
@@ -240,6 +248,22 @@ test("an 80-person community evening is a free room and food is the sponsor ask"
   assert.ok(quote.market.nearest.every((room) => room.url.startsWith("http")));
   assert.ok(quote.market.percentile >= 0 && quote.market.percentile <= 100);
   assert.match(quote.explanation, /percentile/i);
+});
+
+test("a published Luma guest count informs the quote without a checked-in list", async () => {
+  const quote = await quoteBooking(db, {
+    requester_kind: "community",
+    headcount: 80,
+    date: "2026-11-26",
+    community_name: "UK AI Agents Lab",
+    needs: ["room"],
+  });
+  assert.ok((quote.luma?.registered ?? 0) > 0);
+  assert.equal(quote.luma?.checked_in, null);
+  assert.equal(quote.luma?.show_up_rate, null);
+  assert.match(quote.explanation, /Checked-in was not published/);
+  assert.match(quote.explanation, /counts only/i);
+  assert.doesNotMatch(quote.explanation, /@example\.com|user_email/);
 });
 
 test("the held-out winner beats a constant median on the sample file", () => {
@@ -431,6 +455,34 @@ test("demo flow quotes from sample history, matches past sponsors, and waits", a
   assert.match(result.draft.outbox.body, /Reply no if you would rather we did not write again/);
   assert.equal(result.repeat.sent, false);
   assert.equal(isDryRun(), true);
+  assert.equal(result.quote.luma, null);
+  assert.doesNotMatch(result.quote.explanation, /Luma totals|Luma published/i);
+  assert.doesNotMatch(result.draft.outbox.body, /Luma totals|Luma published/i);
+  assert.equal(result.timing.manual.label, "estimate");
+  assert.equal(result.timing.manual.status, "placeholder");
+  assert.match(result.timing.manual.note, /PLACEHOLDER/);
+  assert.deepEqual(
+    result.timing.manual.steps.map((step) => step.id),
+    ["read_dm", "check_calendar", "price", "find_sponsors", "write_asks"],
+  );
+  assert.ok(result.timing.manual.steps.every((step) => step.estimate === true && step.placeholder === true && step.value_status === "PLACEHOLDER"));
+  assert.equal(
+    result.timing.manual.total_minutes,
+    result.timing.manual.steps.reduce((total, step) => total + step.minutes, 0),
+  );
+  assert.equal(typeof result.timing.raft_ms, "number");
+  assert.ok(Number.isFinite(result.timing.raft_ms));
+  assert.ok(result.timing.raft_ms >= 0);
+  assert.ok(result.timing.raft_ms < 120_000);
+  assert.equal(existsSync(path.join(repoRoot(), "data/synthetic-data/csv/members.csv")), false);
+  assert.equal(existsSync(path.join(repoRoot(), "data/synthetic-data/csv/attendance.csv")), false);
+  assert.equal(existsSync(path.join(repoRoot(), "data/synthetic-data/csv/luma_guests_flat.csv")), false);
+  assert.equal(existsSync(path.join(repoRoot(), "data/synthetic-data/luma/calendars_contacts_list.json")), false);
+  const countsFile = path.join(repoRoot(), "data/synthetic-data/luma/event_counts.json");
+  const counts = JSON.parse(readFileSync(countsFile, "utf8")) as { label: string; events: Array<Record<string, unknown>> };
+  assert.equal(counts.label, "luma-aggregates");
+  assert.ok(counts.events.length > 0);
+  assert.ok(counts.events.every((row) => !("email" in row) && !("user_name" in row) && !("user_email" in row)));
   const again = await draftSponsorAsk(db, { request_id: result.request_id, sponsor_id: result.sponsors.matches[1].sponsor_id });
   assert.match(again.outbox.recipient, /^sponsors\+[a-z0-9]+@example\.com$/);
   assert.equal(again.sent, false);
@@ -462,6 +514,10 @@ test("a sponsor draft never invents an email address", async () => {
   assert.doesNotMatch(draft.outbox.body, /partnerships@/i);
   assert.doesNotMatch(draft.outbox.body, /taken from the public website/i);
   assert.match(draft.outbox.body, /Find a contact/i);
+  assert.match(draft.outbox.body, /counts only/i);
+  assert.match(draft.outbox.body, /checked in/i);
+  assert.equal(draft.luma?.source, "luma-aggregates");
+  assert.doesNotMatch(draft.outbox.body, /@example\.com/);
   await assert.rejects(() => approveOutbox(db, draft.outbox.id, "test"), /Find a contact/);
 });
 

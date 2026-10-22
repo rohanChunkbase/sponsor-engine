@@ -30,7 +30,43 @@ export type QuoteLines = {
   market_band_high_gbp?: number;
 };
 
-export type Quote = { price: number; range?: { low: number; high: number }; lines?: QuoteLines; requester_kind?: string; error?: string };
+export type LumaCounts = {
+  registered: number | null;
+  checked_in: number | null;
+  show_up_rate: number | null;
+  events: number;
+  note: string;
+};
+
+export type Quote = {
+  price: number;
+  range?: { low: number; high: number };
+  lines?: QuoteLines;
+  requester_kind?: string;
+  error?: string;
+  luma?: LumaCounts | null;
+};
+
+export type ManualStep = {
+  id: string;
+  label: string;
+  minutes: number;
+  estimate: boolean;
+  placeholder: boolean;
+  value_status: string;
+};
+
+export type DemoTiming = {
+  manual: {
+    label: string;
+    status: string;
+    note: string;
+    unit: string;
+    total_minutes: number;
+    steps: ManualStep[];
+  };
+  raft_ms: number;
+};
 
 export type Sponsor = {
   sponsor_id: string;
@@ -108,6 +144,14 @@ export function QuoteCard({ quote }: { quote: Quote }) {
           {lines.company_room_gbp != null ? <Line label="A company would pay" value={money(lines.company_room_gbp)} muted /> : null}
         </ul>
       ) : null}
+      {quote.luma?.registered != null ? (
+        <p className="mt-4 text-[13px] leading-5 text-raft-muted">
+          {quote.luma.checked_in != null && quote.luma.show_up_rate != null
+            ? `Luma totals: ${quote.luma.registered} registered, ${quote.luma.checked_in} checked in, ${Math.round(quote.luma.show_up_rate * 100)}% show-up.`
+            : `Luma published ${quote.luma.registered} registered. Checked-in was not published.`}
+          {" "}Counts only. Ticket scan stays in Luma.
+        </p>
+      ) : null}
       {lines?.market_low_gbp != null && lines.market_high_gbp != null ? (
         <div className="mt-5">
           <div className="flex justify-between text-[12px] text-raft-muted">
@@ -139,6 +183,47 @@ function Line({ label, value, muted }: { label: string; value: string; muted?: b
       <span className="font-medium tabular-nums">{value}</span>
     </li>
   );
+}
+
+export function BeforeAfterCard({ timing }: { timing: DemoTiming }) {
+  const manual = timing.manual;
+  const estimated = manual.label === "estimate" && manual.status === "placeholder";
+  return (
+    <CardShell>
+      <div className="flex items-center justify-between gap-3">
+        <Label>Before / After</Label>
+        <span className="rounded-full bg-raft-cream px-2 py-0.5 text-[11px] font-medium tracking-wide text-raft-muted uppercase">{estimated ? "Manual times are estimates" : manual.label}</span>
+      </div>
+      <p className="mt-2 text-[12.5px] leading-5 text-raft-muted">{manual.note}</p>
+      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl bg-raft-cream/70 p-3">
+          <p className="text-[12px] font-medium tracking-wide text-raft-muted uppercase">Before · a person · {manual.label}</p>
+          <ul className="mt-2 space-y-1.5 text-[13.5px]">
+            {manual.steps.map((step) => (
+              <li key={step.id} className="flex items-baseline justify-between gap-3">
+                <span className="text-raft-ink">{step.label}</span>
+                <span className="shrink-0 font-medium tabular-nums text-raft-muted">{step.minutes} min · {step.value_status || "PLACEHOLDER"}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 border-t border-raft-line/80 pt-2 text-[13px] font-medium text-raft-ink">
+            {manual.total_minutes} {manual.unit} total · placeholder
+          </p>
+        </div>
+        <div className="rounded-xl bg-white p-3 ring-1 ring-raft-line">
+          <p className="text-[12px] font-medium tracking-wide text-raft-muted uppercase">After · Raft · measured</p>
+          <p className="mt-2 text-[32px] leading-none font-semibold tracking-[-0.03em] text-raft-ink tabular-nums">{formatMeasured(timing.raft_ms)}</p>
+          <p className="mt-2 text-[13px] leading-5 text-raft-muted">Elapsed time for this same request. This number is measured, not an estimate.</p>
+        </div>
+      </div>
+    </CardShell>
+  );
+}
+
+function formatMeasured(ms: number) {
+  if (ms < 1000) return `${Math.round(ms)} ms`;
+  const seconds = ms / 1000;
+  return seconds < 10 ? `${seconds.toFixed(1)} s` : `${Math.round(seconds)} s`;
 }
 
 export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
