@@ -1,0 +1,37 @@
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "WABA",
+      "changes": [
+        {
+          "field": "messages",
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "15550555555",
+              "phone_number_id": "123456"
+            },
+            "contacts": [
+              {
+                "profile": { "name": "Ada Fernwood" },
+                "wa_id": "447700900123"
+              }
+            ],
+            "messages": [
+              {
+                "from": "447700900123",
+                "id": "wamid.abc",
+                "timestamp": "1761156600",
+                "type": "text",
+                "text": {
+                  "body": "Hi, this is Ada Fernwood from Thames Agent Builders (SAMPLE). Can we book the room on 26 November for 80 people? We are a community and we need food."
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

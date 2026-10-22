@@ -1,5 +1,5 @@
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
-import { allowWrite, isDemoMode } from "@sponsor-engine/core";
+import { allowWrite } from "@sponsor-engine/core";
 import { bearerAllowed } from "./bearer.js";
 import { buildServer } from "./server.js";
 import { isWorkspaceId } from "./workspace-id.js";
@@ -10,20 +10,25 @@ function clientIp(request: Request): string {
   return request.headers.get("x-real-ip")?.trim() || "unknown";
 }
 
+function demoOn(env: NodeJS.ProcessEnv): boolean {
+  const value = (env["DEMO_MODE"] ?? "").trim().toLowerCase();
+  return value === "true" || value === "1" || value === "yes";
+}
+
 /** Header first. A bearer that is not the shared MCP_TOKEN can name the workspace. */
-export function workspaceFromRequest(request: Request): string | null {
+export function workspaceFromRequest(request: Request, env: NodeJS.ProcessEnv = process.env): string | null {
   const header = request.headers.get("x-workspace-id")?.trim() ?? "";
   if (isWorkspaceId(header)) return header;
-  const expected = process.env.MCP_TOKEN?.trim() ?? "";
-  if (isDemoMode() || expected) return null;
+  const expected = env.MCP_TOKEN?.trim() ?? "";
+  if (demoOn(env) || expected) return null;
   const match = /^Bearer\s+(\S+)\s*$/i.exec(request.headers.get("authorization")?.trim() ?? "");
   const token = match?.[1] ?? "";
   return isWorkspaceId(token) ? token : null;
 }
 
-export function mcpAuthorized(request: Request): boolean {
-  if (isDemoMode()) return true;
-  return bearerAllowed(request.headers.get("authorization") ?? undefined, process.env.MCP_TOKEN);
+export function mcpAuthorized(request: Request, env: NodeJS.ProcessEnv = process.env): boolean {
+  if (demoOn(env)) return true;
+  return bearerAllowed(request.headers.get("authorization") ?? undefined, env.MCP_TOKEN);
 }
 
 /**
@@ -31,7 +36,7 @@ export function mcpAuthorized(request: Request): boolean {
  * JSON responses suit a serverless host. Approve is not a tool.
  * MCP_TOKEN is ignored when DEMO_MODE is on.
  */
-export async function handleMcpRequest(request: Request): Promise<Response> {
+export async function handleMcpRequest(request: Request, env: NodeJS.ProcessEnv = process.env): Promise<Response> {
   const limit = allowWrite(clientIp(request));
   if (!limit.ok) {
     return Response.json(
@@ -39,7 +44,7 @@ export async function handleMcpRequest(request: Request): Promise<Response> {
       { status: 429, headers: { "retry-after": String(limit.retryAfter) } },
     );
   }
-  if (!mcpAuthorized(request)) {
+  if (!mcpAuthorized(request, env)) {
     return Response.json(
       { error: "The bearer token is missing or wrong." },
       { status: 401, headers: { "www-authenticate": "Bearer" } },
@@ -51,7 +56,7 @@ export async function handleMcpRequest(request: Request): Promise<Response> {
       { status: 405 },
     );
   }
-  const workspaceId = workspaceFromRequest(request);
+  const workspaceId = workspaceFromRequest(request, env);
   try {
     const transport = new WebStandardStreamableHTTPServerTransport({
       sessionIdGenerator: undefined,

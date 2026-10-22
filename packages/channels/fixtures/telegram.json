@@ -1,0 +1,10 @@
+{
+  "update_id": 100,
+  "message": {
+    "message_id": 55,
+    "date": 1761156600,
+    "text": "Hi, this is Ada Fernwood from Thames Agent Builders (SAMPLE). Can we book the room on 26 November for 80 people? We are a community and we need food.",
+    "chat": { "id": -100123, "type": "group", "title": "Thames organisers" },
+    "from": { "id": 7, "is_bot": false, "first_name": "Ada", "last_name": "Fernwood", "username": "ada" }
+  }
+}

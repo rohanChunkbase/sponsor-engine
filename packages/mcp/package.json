@@ -6,6 +6,7 @@
   "exports": {
     ".": "./src/server.ts",
     "./web": "./src/web.ts",
+    "./http": "./src/node-http.ts",
     "./catalog": "./src/catalog.ts",
     "./connect": "./src/connect.ts"
   },

@@ -65,7 +65,11 @@ You can also run the HTTP server:
 npm run mcp:http
 ```
 
-The HTTP server listens on `http://127.0.0.1:8787/mcp`.
+The HTTP server listens on `http://127.0.0.1:8787/mcp`. It uses the same handler as `/api/mcp`. Approve is not a tool.
+
+## Connect
+
+You can keep your own chat app and your own agent. The setup guides are in `docs/connect/`.
 
 ## Environment variables
 
