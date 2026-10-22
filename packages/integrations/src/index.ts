@@ -3,8 +3,9 @@
  * Import `createRegistry` from the core app. A missing key selects the built-in provider.
  */
 
+import { sponsorMatchEval as runSponsorMatchEval, loadSponsorMatchReport } from "./eval/sponsor-match.ts";
 import { createRegistry, getStatus, readLocalCrm } from "./registry.ts";
-import type { RegistryOptions } from "./options.ts";
+import { resolveOptions, type RegistryOptions } from "./options.ts";
 import type { CrmContact, MemoryDoc } from "./types.ts";
 
 export { createRegistry, getStatus, readLocalCrm };
@@ -121,3 +122,12 @@ export { isLikelySpam } from "./spam/classify.ts";
 export type { SpamVerdict } from "./spam/bayes.ts";
 export { triageInbound, triage_inbound } from "./triage.ts";
 export type { InboundRequest, InboundTask, TriageData } from "./triage.ts";
+export type { SponsorMatchNumbers, SponsorMatchReport, SponsorMatchRow } from "./eval/sponsor-match.ts";
+
+export function sponsorMatchEval(options?: RegistryOptions) {
+  return runSponsorMatchEval(resolveOptions(options).seedDir);
+}
+
+export function sponsorMatchReport() {
+  return loadSponsorMatchReport();
+}

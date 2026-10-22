@@ -16,12 +16,13 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && mkdir -p dist/spam && cp src/spam/model.json dist/spam/model.json",
+    "build": "tsc -p tsconfig.json && mkdir -p dist/spam dist/eval && cp src/spam/model.json dist/spam/model.json && cp src/eval/sponsor-labels.json src/eval/sponsor-match-report.json dist/eval/",
     "test": "node --experimental-strip-types --test --test-reporter spec test/**/*.test.ts",
     "smoke": "node --experimental-strip-types scripts/smoke-all.ts",
     "smoke:crm": "node --experimental-strip-types scripts/smoke-crm.ts",
     "smoke:memory": "node --experimental-strip-types scripts/smoke-memory.ts",
-    "smoke:live": "node --experimental-strip-types scripts/smoke-live.ts"
+    "smoke:live": "node --experimental-strip-types scripts/smoke-live.ts",
+    "eval:sponsors": "node --experimental-strip-types scripts/eval-sponsors.ts"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
