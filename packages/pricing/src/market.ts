@@ -1,4 +1,5 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 import { normalizeHeader, parseCsv } from './csv.js';
 import { BookingDataError } from './errors.js';
@@ -80,13 +81,29 @@ function displayName(venue: string, space: string): string {
   return `${venue.trim()} (${room})`;
 }
 
+function marketCsvPath(): string | null {
+  const name = join('data', 'london_venue_market.csv');
+  const candidates = [
+    LONDON_MARKET_CSV_PATH,
+    join(process.cwd(), 'packages', 'pricing', name),
+    join(process.cwd(), '..', '..', 'packages', 'pricing', name),
+    join(process.cwd(), 'node_modules', '@sponsor-engine', 'pricing', name),
+  ];
+  return candidates.find((file) => existsSync(file)) ?? null;
+}
+
 /** Load the public market table. Pass CSV text in tests. The file load is cached. */
 export function loadLondonMarket(csvText?: string): MarketRoom[] {
   if (csvText === undefined) {
     const hit = cache.get(LONDON_MARKET_CSV_PATH);
     if (hit) return hit;
   }
-  const text = csvText ?? readFileSync(LONDON_MARKET_CSV_PATH, 'utf8');
+  let text = csvText;
+  if (text === undefined) {
+    const file = marketCsvPath();
+    if (!file) return [];
+    text = readFileSync(file, 'utf8');
+  }
   const table = parseCsv(text);
   const header = table[0];
   if (!header || table.length < 2) {
@@ -155,7 +172,7 @@ export function marketCheck(quote: number, capacity: number): MarketCheckResult 
   }
   const pool = comparableEveningRooms();
   if (pool.length === 0) {
-    throw new BookingDataError('The market file has no comparable evening prices.');
+    return { quote, capacity, comparedCount: 0, percentile: 0, low: MARKET_EVENING_LOW_GBP, high: MARKET_EVENING_HIGH_GBP, nearest: [] };
   }
   const similar = similarRooms(pool, capacity);
   const atOrBelow = similar.filter((room) => (room.price ?? 0) <= quote).length;

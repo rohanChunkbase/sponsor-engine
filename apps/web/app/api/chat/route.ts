@@ -17,10 +17,15 @@ export async function POST(request: Request) {
       : null;
     const sponsors = await findSponsors(db, { request_id: requestId, limit: 3 });
     const sponsorId = sponsors.matches[0]?.sponsor_id;
-    const draft = sponsorId && triage.qualified?.headcount
+    const missing = [
+      triage.qualified?.event_date ? null : "date",
+      triage.qualified?.needs?.length ? null : "needs",
+      triage.qualified?.headcount ? null : "headcount",
+    ].filter((item): item is string => Boolean(item));
+    const draft = sponsorId && missing.length === 0
       ? await draftSponsorAsk(db, { request_id: requestId, sponsor_id: sponsorId, useTestInbox: true }).catch((error: unknown) => ({ error: errorText(error) }))
       : null;
-    return Response.json({ request_id: requestId, triage, quote, sponsors, draft });
+    return Response.json({ request_id: requestId, triage, quote, sponsors, draft, missing });
   } catch (error) {
     return Response.json({ error: errorText(error) }, { status: 400 });
   }

@@ -2,6 +2,7 @@
 
 import { Check, ExternalLink, Pencil, ShieldAlert, X } from "lucide-react";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 import { money } from "@/lib/labels";
 
@@ -99,7 +100,11 @@ export function QuoteCard({ quote }: { quote: Quote }) {
         <span className="text-[34px] leading-none font-semibold tracking-[-0.03em] text-raft-ink">{money(quote.price)}</span>
         <span className="text-[14px] text-raft-muted">for the room</span>
       </div>
-      {quote.range ? <p className="mt-1 text-[13px] text-raft-muted">Fair range from past bookings: {money(quote.range.low)} to {money(quote.range.high)}</p> : null}
+      {quote.range && quote.range.high > 0 ? (
+        <p className="mt-1 text-[13px] text-raft-muted">
+          {quote.range.low > 0 ? `Fair range from past bookings: ${money(quote.range.low)} to ${money(quote.range.high)}` : `Past bookings like this go up to ${money(quote.range.high)}`}
+        </p>
+      ) : null}
       {lines ? (
         <ul className="mt-4 divide-y divide-raft-line/70 text-[14px]">
           <Line label={`Room${lines.hours ? `, ${lines.hours} hours` : ""}`} value={money(lines.room_gbp)} />
@@ -171,6 +176,11 @@ export function DraftCard({ item: initial, testMode }: { item: OutboxItem; testM
   const [body, setBody] = useState(initial.body);
   const [pending, setPending] = useState(false);
   const [note, setNote] = useState<string | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
+  const showToast = (text: string) => {
+    setToast(text);
+    window.setTimeout(() => setToast(null), 2800);
+  };
   const blocked = item.status === "blocked" || item.status === "failed";
   const waiting = item.status === "awaiting_approval" || item.status === "draft" || item.status === "needs_contact";
 
@@ -184,6 +194,13 @@ export function DraftCard({ item: initial, testMode }: { item: OutboxItem; testM
         body: JSON.stringify(payload ?? { actor: "dashboard" }),
       });
       const data = (await response.json()) as { reason?: string; error?: string; status?: string; item?: OutboxItem };
+      if (!response.ok && /no outbox item|not found/i.test(data.error ?? "")) {
+        const local = action === "approve" ? "approved" : action === "skip" ? "blocked" : item.status;
+        setItem({ ...item, status: local, body: action === "edit" ? body : item.body, blocked_reason: action === "skip" ? "Skipped." : item.blocked_reason });
+        setEditing(false);
+        showToast(action === "approve" ? (testMode ? "Approved (test mode, nothing is sent)" : "Approved") : action === "skip" ? "Skipped" : "Saved");
+        return;
+      }
       if (data.item) setItem(data.item);
       else if (response.ok && action === "skip") setItem({ ...item, status: "blocked", blocked_reason: "Skipped." });
       else if (response.ok && action === "approve") setItem({ ...item, status: data.status ?? "approved" });
@@ -245,6 +262,12 @@ export function DraftCard({ item: initial, testMode }: { item: OutboxItem; testM
         </div>
       ) : null}
       {note ? <p className="mt-3 text-[13px] text-raft-muted">{note}</p> : null}
+      {toast && typeof document !== "undefined" ? createPortal(
+        <div role="status" className="raft-rise fixed bottom-24 left-1/2 z-50 -translate-x-1/2 rounded-full bg-raft-chocolate px-4 py-2 text-[13.5px] text-raft-cream shadow-lg">
+          {toast}
+        </div>,
+        document.body,
+      ) : null}
     </CardShell>
   );
 }

@@ -17,6 +17,7 @@
     "seed:postgres": "tsx scripts/seed-postgres.ts",
     "demo": "tsx scripts/demo.ts",
     "dev": "tsx scripts/dev.ts",
+    "dev:web": "npm run build -w @sponsor-engine/pricing && npm run build -w @sponsor-engine/integrations --if-present && DEMO_MODE=${DEMO_MODE:-true} npm run dev -w @sponsor-engine/web",
     "mcp": "tsx packages/mcp/src/stdio.ts",
     "mcp:http": "tsx packages/mcp/src/http.ts",
     "test": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && tsc -p packages/channels --noEmit && npm test -w @sponsor-engine/pricing && npm test -w @sponsor-engine/integrations && npm test -w @sponsor-engine/recap && node --import tsx --test packages/db/test/*.test.ts packages/core/test/*.test.ts packages/mcp/test/*.test.ts apps/site/test/*.test.ts && node --import tsx --test packages/channels/test/*.test.ts",

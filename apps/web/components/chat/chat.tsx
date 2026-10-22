@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { money } from "@/lib/labels";
+import { findByRequest, getConversation, loadConversations, saveConversation } from "@/lib/conversations";
 import { CardShell, DraftCard, QuoteCard, SponsorCard, SummaryCard, btn, type OutboxItem, type Qualified, type Quote, type Sponsor } from "./cards";
 
 type RunResult = {
@@ -14,6 +15,7 @@ type RunResult = {
   sponsors?: { matches: Sponsor[]; live_note?: string };
   draft?: { outbox?: OutboxItem; ask_gbp?: number; error?: string } | null;
   repeat?: { outbox?: OutboxItem } | null;
+  missing?: string[];
 };
 
 type StepState = "pending" | "running" | "done";
@@ -21,7 +23,7 @@ type Step = { label: string; detail?: string; state: StepState };
 
 type Message =
   | { id: string; role: "user"; text: string }
-  | { id: string; role: "assistant"; kind: "text"; text: string }
+  | { id: string; role: "assistant"; kind: "text"; text: string; action?: "demo" }
   | { id: string; role: "assistant"; kind: "run"; steps: Step[]; result?: RunResult; error?: string; retry?: () => void }
   | { id: string; role: "assistant"; kind: "drafts"; text: string; items: OutboxItem[] }
   | { id: string; role: "assistant"; kind: "sponsors"; text: string; sponsors: Sponsor[] }
@@ -34,11 +36,15 @@ const CAPABILITIES =
 
 let counter = 0;
 const nextId = () => `m${++counter}`;
+const newConversationId = () => `c${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
 
 export function Chat({ testMode }: { testMode: boolean }) {
   const router = useRouter();
   const params = useSearchParams();
   const requestId = params.get("request");
+  const conversationId = params.get("c");
+  const convId = useRef<string>(newConversationId());
+  const originalMessage = useRef<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -53,6 +59,8 @@ export function Chat({ testMode }: { testMode: boolean }) {
     const reset = () => {
       setMessages([]);
       lastSponsors.current = null;
+      convId.current = newConversationId();
+      originalMessage.current = null;
     };
     window.addEventListener("raft:new-chat", reset);
     return () => window.removeEventListener("raft:new-chat", reset);
@@ -63,7 +71,21 @@ export function Chat({ testMode }: { testMode: boolean }) {
   }, []);
 
   useEffect(() => {
+    if (conversationId) {
+      const stored = getConversation(conversationId);
+      if (stored) {
+        convId.current = stored.id;
+        setMessages(stored.messages as Message[]);
+        return;
+      }
+    }
     if (!requestId) return;
+    const stored = findByRequest(requestId);
+    if (stored) {
+      convId.current = stored.id;
+      setMessages(stored.messages as Message[]);
+      return;
+    }
     const id = nextId();
     setMessages([{ id, role: "assistant", kind: "loading" }]);
     fetch("/api/requests", { cache: "no-store" })
@@ -71,36 +93,35 @@ export function Chat({ testMode }: { testMode: boolean }) {
       .then((data: { requests: Array<Record<string, unknown>> }) => {
         const row = data.requests.find((item) => item.id === requestId);
         if (!row) {
-          setMessages([{ id, role: "assistant", kind: "text", text: "I could not find that request. It may have been cleared." }]);
+          setMessages([{ id, role: "assistant", kind: "text", text: "That request is not on this server any more. Paste the message again and I will read it." }]);
           return;
         }
-        const q: Qualified = {
-          sender_name: (row.sender_name as string) ?? null,
-          organisation: (row.organisation as string) ?? null,
-          requester_kind: (row.requester_kind as string) ?? null,
-          event_date: (row.event_date as string) ?? null,
-          headcount: (row.headcount as number) ?? null,
-          needs: (row.needs as string[]) ?? [],
-          venue_hint: (row.venue_hint as string) ?? null,
-        };
-        const outbox = (row.outbox as OutboxItem[]) ?? [];
-        setMessages([
-          { id: nextId(), role: "user", text: String(row.raw_message ?? "") },
-          {
-            id,
-            role: "assistant",
-            kind: "run",
-            steps: STEP_LABELS.map((label) => ({ label, state: "done" as const })),
-            result: {
-              request_id: requestId,
-              triage: { ok: true, qualified: q, outbox: outbox.find((item) => item.kind === "chat_reply") ?? null },
-              draft: { outbox: outbox.find((item) => item.kind === "sponsor_email") },
-            },
-          },
-        ]);
+        convId.current = newConversationId();
+        setMessages([{ id: nextId(), role: "user", text: String(row.raw_message ?? "") }]);
+        void run(String(row.raw_message ?? ""), "/api/chat");
       })
       .catch(() => setMessages([{ id, role: "assistant", kind: "text", text: "I could not load that request. Check your connection and try again." }]));
-  }, [requestId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [requestId, conversationId]);
+
+  useEffect(() => {
+    const finished = messages.filter((message) => message.role === "assistant" && message.kind === "run" && message.result && message.result.triage.ok);
+    if (finished.length === 0) return;
+    if (messages.some((message) => message.role === "assistant" && (message.kind === "loading" || (message.kind === "run" && !message.result && !message.error)))) return;
+    const first = finished[0] as Extract<Message, { kind: "run" }>;
+    const q = first.result?.triage.qualified;
+    const firstUser = messages.find((message) => message.role === "user") as Extract<Message, { role: "user" }> | undefined;
+    const existing = getConversation(convId.current);
+    saveConversation({
+      id: convId.current,
+      title: q?.organisation || firstUser?.text.slice(0, 40) || "Conversation",
+      subtitle: [q?.headcount ? `${q.headcount} people` : null, q?.event_date].filter(Boolean).join(" · ") || "No details",
+      request_id: first.result?.request_id,
+      original_message: existing?.original_message ?? originalMessage.current ?? firstUser?.text,
+      created_at: existing?.created_at ?? Date.now(),
+      messages: messages.map((message) => (message.role === "assistant" && message.kind === "run" ? { ...message, retry: undefined } : message)),
+    });
+  }, [messages]);
 
   async function run(text: string, endpoint: "/api/demo" | "/api/chat") {
     const id = nextId();
@@ -119,7 +140,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
     }, 520);
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetchWithTimeout(endpoint, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: endpoint === "/api/chat" ? JSON.stringify({ message: text }) : "{}",
@@ -149,27 +170,60 @@ export function Chat({ testMode }: { testMode: boolean }) {
     }
   }
 
-  async function showDrafts() {
+  async function showFoodSponsors() {
+    const known = lastSponsors.current;
+    if (known?.length) {
+      setMessages((list) => [...list, { id: nextId(), role: "assistant", kind: "sponsors", text: "These food sponsors fit this request. Each one links to the public page I used.", sponsors: known }]);
+      return;
+    }
     const id = nextId();
     setMessages((list) => [...list, { id, role: "assistant", kind: "loading" }]);
     try {
-      const response = await fetch("/api/requests", { cache: "no-store" });
-      const data = (await response.json()) as { outbox: OutboxItem[] };
-      const items = (data.outbox ?? []).filter((item) => item.status === "awaiting_approval" || item.status === "needs_contact" || item.status === "draft");
+      const response = await fetchWithTimeout("/api/sponsors", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ needs: ["food"], headcount: 100, focus: "hackathon" }) });
+      const data = (await response.json()) as { matches?: Sponsor[]; error?: string };
+      const matches = data.matches ?? [];
       patch(id, () =>
-        items.length
-          ? { id, role: "assistant", kind: "drafts", text: `${items.length} ${items.length === 1 ? "draft is" : "drafts are"} waiting for you. Nothing leaves without your approval.`, items: items.slice(0, 6) }
-          : { id, role: "assistant", kind: "text", text: "Nothing is waiting for you. Paste a booking message and I will draft the replies." },
+        matches.length
+          ? { id, role: "assistant", kind: "sponsors", text: "For a London hackathon of about 100 people, these sponsors have backed food at similar events. Each one links to the public page I used.", sponsors: matches }
+          : { id, role: "assistant", kind: "text", text: data.error || "I found no food sponsors in the London list yet." },
       );
     } catch {
-      patch(id, () => ({ id, role: "assistant", kind: "text", text: "I could not load your drafts. Check your connection and try again." }));
+      patch(id, () => ({ id, role: "assistant", kind: "text", text: "I could not load sponsors. Check your connection and try again." }));
     }
+  }
+
+  async function showDrafts() {
+    const id = nextId();
+    setMessages((list) => [...list, { id, role: "assistant", kind: "loading" }]);
+    const isWaiting = (item: OutboxItem) => item.status === "awaiting_approval" || item.status === "needs_contact" || item.status === "draft";
+    const local: OutboxItem[] = [];
+    for (const conversation of loadConversations()) {
+      for (const message of conversation.messages as Message[]) {
+        if (message.role === "assistant" && message.kind === "run" && message.result) {
+          local.push(...uniqueDrafts([message.result.triage.outbox, message.result.draft?.outbox, message.result.repeat?.outbox]));
+        }
+      }
+    }
+    let server: OutboxItem[] = [];
+    try {
+      const response = await fetchWithTimeout("/api/requests", { cache: "no-store" });
+      server = ((await response.json()) as { outbox?: OutboxItem[] }).outbox ?? [];
+    } catch {
+      server = [];
+    }
+    const items = uniqueDrafts([...local, ...server]).filter(isWaiting);
+    patch(id, () =>
+      items.length
+        ? { id, role: "assistant", kind: "drafts", text: `${items.length} ${items.length === 1 ? "draft is" : "drafts are"} waiting for you. Nothing leaves without your approval.`, items: items.slice(0, 6) }
+        : { id, role: "assistant", kind: "text", text: "No drafts are waiting for you. Run the demo and I will draft a reply and a sponsor email for you to approve.", action: "demo" },
+    );
   }
 
   async function send(raw: string) {
     const text = raw.trim();
     if (!text || busy) return;
-    if (requestId) router.replace("/");
+    if (requestId || conversationId) router.replace("/");
+    if (!originalMessage.current && text !== SUGGESTIONS[1] && text !== SUGGESTIONS[2]) originalMessage.current = text;
     setInput("");
     setBusy(true);
     setMessages((list) => [...list, { id: nextId(), role: "user", text }]);
@@ -177,13 +231,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
       if (text === SUGGESTIONS[0]) await run(text, "/api/demo");
       else if (text === SUGGESTIONS[2]) await showDrafts();
       else if (text === SUGGESTIONS[1]) {
-        const sponsors = lastSponsors.current;
-        setMessages((list) => [
-          ...list,
-          sponsors
-            ? { id: nextId(), role: "assistant", kind: "sponsors", text: "These sponsors fit the last request. Each one links to the public page I used.", sponsors }
-            : { id: nextId(), role: "assistant", kind: "text", text: "I need a request first. Run the Unicorn Mafia demo or paste the hackathon's message, and I will match food sponsors with sources." },
-        ]);
+        await showFoodSponsors();
       } else if (looksLikeQuestion(text)) {
         setMessages((list) => [...list, { id: nextId(), role: "assistant", kind: "text", text: CAPABILITIES }]);
       } else await run(text, "/api/chat");
@@ -218,7 +266,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
         ) : (
           <div className="mx-auto flex max-w-[760px] flex-col gap-6 px-6 py-8">
             {messages.map((message) => (
-              <MessageView key={message.id} message={message} testMode={testMode} />
+              <MessageView key={message.id} message={message} testMode={testMode} onDemo={() => void send(SUGGESTIONS[0])} />
             ))}
             <div ref={bottom} />
           </div>
@@ -260,7 +308,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
   );
 }
 
-function MessageView({ message, testMode }: { message: Message; testMode: boolean }) {
+function MessageView({ message, testMode, onDemo }: { message: Message; testMode: boolean; onDemo: () => void }) {
   if (message.role === "user") {
     return (
       <div className="raft-rise flex justify-end">
@@ -271,14 +319,26 @@ function MessageView({ message, testMode }: { message: Message; testMode: boolea
   return (
     <div className="raft-rise flex gap-3">
       <img src="/raft/icon.png" alt="" width={32} height={32} className="mt-0.5 h-8 w-8 shrink-0 rounded-full bg-white ring-1 ring-raft-line" />
-      <div className="flex min-w-0 flex-1 flex-col gap-3">{assistantBody(message, testMode)}</div>
+      <div className="flex min-w-0 flex-1 flex-col gap-3">{assistantBody(message, testMode, onDemo)}</div>
     </div>
   );
 }
 
-function assistantBody(message: Exclude<Message, { role: "user" }>, testMode: boolean) {
+function assistantBody(message: Exclude<Message, { role: "user" }>, testMode: boolean, onDemo: () => void) {
   if (message.kind === "loading") return <Skeleton />;
-  if (message.kind === "text") return <p className="pt-1 text-[15px] leading-6 text-raft-ink">{message.text}</p>;
+  if (message.kind === "text")
+    return (
+      <>
+        <p className="pt-1 text-[15px] leading-6 text-raft-ink">{message.text}</p>
+        {message.action === "demo" ? (
+          <div>
+            <button type="button" onClick={onDemo} className={btn("primary")}>
+              Run the Unicorn Mafia demo
+            </button>
+          </div>
+        ) : null}
+      </>
+    );
   if (message.kind === "drafts")
     return (
       <>
@@ -306,7 +366,8 @@ function RunView({ message, testMode }: { message: Extract<Message, { kind: "run
   const result = message.result;
   const working = !result && !message.error;
   const failed = result && !result.triage.ok;
-  const drafts = result ? uniqueDrafts([result.triage.outbox, result.draft?.outbox, result.repeat?.outbox]) : [];
+  const followUp = Boolean(result?.missing?.length);
+  const drafts = result && !followUp ? uniqueDrafts([result.triage.outbox, result.draft?.outbox, result.repeat?.outbox]) : [];
   return (
     <>
       <Steps steps={message.steps} working={working} />
@@ -341,6 +402,17 @@ function RunView({ message, testMode }: { message: Extract<Message, { kind: "run
                 ))}
               </div>
             </div>
+          ) : null}
+          {followUp ? (
+            <CardShell className="border-raft-lavender/60 bg-[#f6f2fd]">
+              <p className="text-[15px] font-medium text-raft-ink">Before I draft any sponsor emails, two quick questions:</p>
+              <ul className="mt-2 list-disc pl-5 text-[14.5px] leading-6 text-raft-ink">
+                {followUpQuestions(result.missing ?? []).map((question) => (
+                  <li key={question}>{question}</li>
+                ))}
+              </ul>
+              <p className="mt-2 text-[13px] text-raft-muted">The quote above is an estimate until I know these.</p>
+            </CardShell>
           ) : null}
           {drafts.map((item) => (
             <DraftCard key={item.id} item={item} testMode={testMode} />
@@ -403,7 +475,7 @@ function describeSteps(result: RunResult): Step[] {
     ok ? "Looks like a real booking request." : "Stopped here.",
     result.quote && !result.quote.error ? `${money(result.quote.price)} for the room` : ok ? "No price yet" : undefined,
     matches.length ? matches.map((match) => match.company).join(", ") : ok ? "No close matches" : undefined,
-    drafts.length ? `${drafts.length} drafts${blocked ? `, ${blocked} blocked` : ""}, waiting for you` : ok ? "Nothing to draft" : undefined,
+    result.missing?.length ? `Waiting for ${result.missing.join(" and ")}` : drafts.length ? `${drafts.length} drafts${blocked ? `, ${blocked} blocked` : ""}, waiting for you` : ok ? "Nothing to draft" : undefined,
   ];
   return STEP_LABELS.map((label, index) => ({ label, detail: details[index], state: ok || index < 2 ? "done" : "pending" }));
 }
@@ -422,6 +494,20 @@ function uniqueDrafts(items: Array<OutboxItem | null | undefined>) {
     seen.add(item.id);
     return true;
   });
+}
+
+function followUpQuestions(missing: string[]) {
+  const questions: string[] = [];
+  if (missing.includes("date")) questions.push("What date is the hackathon, and roughly what hours?");
+  if (missing.includes("needs")) questions.push("Do you need food and drinks, a room, or both?");
+  if (missing.includes("headcount")) questions.push("About how many people are you expecting?");
+  return questions.slice(0, 2);
+}
+
+function fetchWithTimeout(url: string, init: RequestInit = {}, ms = 45_000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return fetch(url, { ...init, signal: controller.signal }).finally(() => clearTimeout(timer));
 }
 
 function looksLikeQuestion(text: string) {
