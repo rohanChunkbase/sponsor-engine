@@ -1,0 +1,14 @@
+{
+  "token": "sample",
+  "team_id": "T001",
+  "type": "event_callback",
+  "event_id": "Ev900",
+  "event": {
+    "type": "message",
+    "channel": "C555",
+    "user": "U42",
+    "username": "Ada Fernwood",
+    "text": "Hi, this is Ada Fernwood from Thames Agent Builders (SAMPLE). Can we book the room on 26 November for 80 people? We are a community and we need food.",
+    "ts": "1761156600.000100"
+  }
+}

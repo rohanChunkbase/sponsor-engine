@@ -1,0 +1,17 @@
+node_modules
+.next
+dist
+.env
+packages/integrations/.data
+.env.local
+*.log
+data/sponsor-engine.db
+data/sponsor-engine.db-shm
+data/sponsor-engine.db-wal
+data/venue-bookings.csv
+coverage
+.DS_Store
+apps/site/public/brand
+apps/web/public/brand
+apps/site/app/favicon.ico
+apps/web/app/favicon.ico

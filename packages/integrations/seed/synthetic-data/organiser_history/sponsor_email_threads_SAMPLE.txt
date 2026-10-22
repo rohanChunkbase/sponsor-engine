@@ -1,0 +1,188 @@
+--- SAMPLE email thread (fictional) | deal D001 | Snackstack Vending (fictional) | asked 2026-09-05 | outcome: no ---
+To: Developer Relations lead, Snackstack Vending (fictional)
+Subject: Food for ~61 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £320 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, thanks. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D002 | Circlewren (fictional) | asked 2026-09-05 | outcome: no_reply ---
+To: Community & Events team, Circlewren (fictional)
+Subject: Food for ~61 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £320 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+(no reply)
+
+--- SAMPLE email thread (fictional) | deal D003 | Logwhistle (fictional) | asked 2026-09-05 | outcome: yes ---
+To: Developer Relations lead, Logwhistle (fictional)
+Subject: Food for ~61 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £320 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D004 | Dumpling Dynamo Kitchen (fictional) | asked 2026-07-31 | outcome: no ---
+To: Community & Events team, Dumpling Dynamo Kitchen (fictional)
+Subject: Food for ~42 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £250 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, thanks. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D005 | Tracefern (fictional) | asked 2026-07-31 | outcome: yes ---
+To: Office manager, Tracefern (fictional)
+Subject: Food for ~42 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £250 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D006 | Curry Compiler Co. (fictional) | asked 2026-07-18 | outcome: no_reply ---
+To: Office manager, Curry Compiler Co. (fictional)
+Subject: Food for ~65 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £335 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+(no reply)
+
+--- SAMPLE email thread (fictional) | deal D007 | Tracefern (fictional) | asked 2026-07-18 | outcome: no ---
+To: Office manager, Tracefern (fictional)
+Subject: Food for ~65 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £335 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, thanks. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D008 | Agentloom (fictional) | asked 2026-07-18 | outcome: no_reply ---
+To: Office manager, Agentloom (fictional)
+Subject: Food for ~65 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £335 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+(no reply)
+
+--- SAMPLE email thread (fictional) | deal D009 | Cachefinch (fictional) | asked 2026-07-18 | outcome: yes ---
+To: Developer Relations lead, Cachefinch (fictional)
+Subject: Food for ~65 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £335 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D010 | Testkettle (fictional) | asked 2026-06-07 | outcome: no ---
+To: Office manager, Testkettle (fictional)
+Subject: Food for ~46 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £245 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, thanks. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D011 | Deployhaven (fictional) | asked 2026-06-07 | outcome: no_reply ---
+To: Partnerships manager, Deployhaven (fictional)
+Subject: Food for ~46 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £245 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+(no reply)
+
+--- SAMPLE email thread (fictional) | deal D012 | Snackstack Vending (fictional) | asked 2026-06-07 | outcome: yes ---
+To: Developer Relations lead, Snackstack Vending (fictional)
+Subject: Food for ~46 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £245 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D013 | Testkettle (fictional) | asked 2026-04-26 | outcome: no_reply ---
+To: Office manager, Testkettle (fictional)
+Subject: Food for ~68 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £360 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+(no reply)
+
+--- SAMPLE email thread (fictional) | deal D014 | Deployhaven (fictional) | asked 2026-04-26 | outcome: yes ---
+To: Partnerships manager, Deployhaven (fictional)
+Subject: Food for ~68 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £360 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D015 | Benchmark & Bloom Recruiting (fictional) | asked 2026-03-24 | outcome: no ---
+To: Developer Relations lead, Benchmark & Bloom Recruiting (fictional)
+Subject: Food for ~39 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £200 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, maybe next time. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D016 | Bao Down Street Food (fictional) | asked 2026-03-24 | outcome: yes ---
+To: Community & Events team, Bao Down Street Food (fictional)
+Subject: Food for ~39 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £200 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D017 | Talentwharf (fictional) | asked 2026-02-22 | outcome: no ---
+To: Marketing coordinator, Talentwharf (fictional)
+Subject: Food for ~30 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £165 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, thanks. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D018 | Snackstack Vending (fictional) | asked 2026-02-22 | outcome: yes ---
+To: Developer Relations lead, Snackstack Vending (fictional)
+Subject: Food for ~30 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £165 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D019 | Tiny Taco Syndicate (fictional) | asked 2026-01-27 | outcome: no ---
+To: Partnerships manager, Tiny Taco Syndicate (fictional)
+Subject: Food for ~35 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £205 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, budget spent this quarter. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D020 | Promptmill (fictional) | asked 2026-01-27 | outcome: no_reply ---
+To: Partnerships manager, Promptmill (fictional)
+Subject: Food for ~35 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £205 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+(no reply)
+
+--- SAMPLE email thread (fictional) | deal D021 | Dumpling Dynamo Kitchen (fictional) | asked 2026-01-27 | outcome: no ---
+To: Community & Events team, Dumpling Dynamo Kitchen (fictional)
+Subject: Food for ~35 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £205 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, audience not a fit. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D022 | Falafel Foundry (fictional) | asked 2026-01-27 | outcome: yes ---
+To: Partnerships manager, Falafel Foundry (fictional)
+Subject: Food for ~35 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £205 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D023 | Vectorcove (fictional) | asked 2025-12-23 | outcome: no ---
+To: Partnerships manager, Vectorcove (fictional)
+Subject: Food for ~78 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £420 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, maybe next time. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D024 | Cachefinch (fictional) | asked 2025-12-23 | outcome: yes ---
+To: Developer Relations lead, Cachefinch (fictional)
+Subject: Food for ~78 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £420 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D025 | Deployhaven (fictional) | asked 2025-11-17 | outcome: no ---
+To: Partnerships manager, Deployhaven (fictional)
+Subject: Food for ~47 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £270 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, audience not a fit. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D026 | Stacklark (fictional) | asked 2025-11-17 | outcome: no ---
+To: Community & Events team, Stacklark (fictional)
+Subject: Food for ~47 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £270 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Not this time, maybe next time. (SAMPLE)
+
+--- SAMPLE email thread (fictional) | deal D027 | Logwhistle (fictional) | asked 2025-11-17 | outcome: yes ---
+To: Developer Relations lead, Logwhistle (fictional)
+Subject: Food for ~47 London agent builders?
+
+Hi there, we run Thames Agent Builders (SAMPLE). Would you cover £270 of food for our next hack night? You'd get a logo on the Luma page and a 2-minute slot.
+Reply: Happy to! Send the invoice. (SAMPLE)

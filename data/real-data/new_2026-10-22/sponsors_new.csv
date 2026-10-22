@@ -1,0 +1,82 @@
+company,website,category,roles,london_events_found,food_or_drinks_events,venue_events,stated_claims,is_new_company,evidence_urls,notes
+Just Eat,just-eat.co.uk,food delivery (venue),venue:3,3,0,3,3,false,https://www.linkedin.com/posts/nick-n%E2%AD%90%EF%B8%8F%F0%9F%8E%AC%F0%9F%93%BA-0b651b14_techlondon-communityfirst-aitooling-activity-7493445872349802496-SMQ3 https://www.meetup.com/cloud-native-london/events/315992081/ https://www.meetup.com/cloud-native-london/events/316265226/,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+OpenAI,openai.com,AI lab,co_host:1;tech_partner:1;prize_partner:1,3,0,0,3,false,https://luma.com/nightshift-london https://luma.com/whe8e3ip https://x.com/Areai51/status/2029533605068701849,NEW EVIDENCE for existing company (already in sponsors.csv with 6 events)
+Cloudflare,cloudflare.com,cloud / infra,venue:1;co_host:1,2,0,1,2,false,https://x.com/Cloudflare/status/2051161774141964432 https://x.com/uselayercode/status/1979215520600854950,NEW EVIDENCE for existing company (already in sponsors.csv with 2 events)
+Elastic,"elastic.co (well-known domain, not re-checked)",search / observability dev tool,food:2;venue:1,2,2,1,3,true,https://luma.com/hacknightldn https://www.meetup.com/london-elastic-fantastics/events/316183895/,new company; Food at two events (own hack night Jun 2026; Elastic London User Group tonight 22 Oct 2026 at Tessl)
+Fin (Intercom),"fin.ai / intercom.com (well-known domain, not re-checked)",AI customer-service,venue:2;food:1,2,1,2,2,true,https://x.com/IniAbiodun/status/1981646781462007819 https://x.com/fin_ai/status/2026661688917844103,"new company; Two events at its London office (Intercom Design Oct 2025, Fin ML meetup Mar 2026)"
+HAProxy Technologies,"haproxy.com (well-known domain, not re-checked)",networking / load balancing,general:2;food:2,2,2,0,2,true,https://www.haproxy.com/events/cloud-native-london-meetup-june-2026 https://www.haproxy.com/events/cloud-native-london-meetup-september-2026,new company
+NVIDIA,nvidia.com,big tech / AI infra,prize_partner:2;co_host:1,2,0,0,3,false,https://luma.com/iuecyow4 https://x.com/Badiaserra/status/2057495711776723446,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Pulumi,"pulumi.com (well-known domain, not re-checked)",infra-as-code dev tool,food:2;drinks:1,2,2,0,3,true,https://www.linkedin.com/posts/dipalipatel1_next-months-cloud-native-london-event-is-activity-7454988028873437184-8l-Q https://www.linkedin.com/posts/london-platform-user-group-lopug_kubernetes-activity-7480732827387498496-5VOt,"new company; Two separate events paying for food (Cloud Native London May 2026, LoPUG Jul 2026)"
+Tessl,tessl.io,AI devtool (venue),co_host:1;venue:1,2,0,1,1,false,https://www.meetup.com/london-elastic-fantastics/events/316183895/ https://x.com/TheMekon_Venus/status/2001055508858278256,NEW EVIDENCE for existing company (already in sponsors.csv with 4 events)
+Twilio,"twilio.com (well-known domain, not re-checked)",communications API,food:2;general:1;prize_partner:1,2,2,0,2,true,https://luma.com/qn9exp2n https://x.com/uselayercode/status/1979215520600854950,new company
+Vercel,vercel.com,devtool (hosting),food:1;prize_partner:1,2,1,0,1,false,https://luma.com/4f1qbg8g https://x.com/Areai51/status/2029533605068701849,NEW EVIDENCE for existing company (already in sponsors.csv with 2 events)
+Vonage,vonage.com,communications API (venue),venue:2;food:1,2,1,2,2,false,https://luma.com/347t02d7 https://x.com/VonageDev/status/2028890900785492352,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events); Hosts Laravel London and Londroid at 15 Bonhill St
+AG Grid,"ag-grid.com (well-known domain, not re-checked)",JS data-grid dev tool,food:1;drinks:1;venue:1,1,1,1,3,true,https://guild.host/events/jsmonthly-london-october-mrpzgz,"new company; Upcoming 29 Oct 2026: food, drinks and venue all stated"
+AWS,aws.amazon.com,cloud / infra,venue:1;food:1;drinks:1,1,1,1,3,false,https://luma.com/758nubw3,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Accurx,,healthtech,food:1;venue:1,1,1,1,2,false,https://www.linkedin.com/posts/london-platform-user-group-lopug_lopug-ai-platformengineering-activity-7502663862798680065-gEQv,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Adaptavist,"adaptavist.com (well-known domain, not re-checked)",software consultancy / Atlassian partner,venue:1,1,0,1,1,true,https://www.linkedin.com/posts/london-platform-user-group-lopug_kubernetes-activity-7480732827387498496-5VOt,new company
+Agent Arena,,AI agent platform,general:1,1,0,0,1,true,https://x.com/AgentArena42/status/2054856735186129323,new company
+Alibaba Cloud,"alibabacloud.com (well-known domain, not re-checked)",cloud,general:1,1,0,0,1,true,https://www.aiagentslab.uk/events,new company
+Altinity,"altinity.com (well-known domain, not re-checked)",database (ClickHouse) services,food:1;general:1,1,1,0,2,true,https://www.meetup.com/data-engineering-london/events/315978046/,new company
+Amplitude,"amplitude.com (well-known domain, not re-checked)",product analytics,general:1;food:1,1,1,0,1,true,https://www.experimentationlondon.com/,new company
+Anthropic,anthropic.com,AI lab,co_host:1,1,0,0,1,false,https://x.com/michellezfr/status/2078111832577884461,NEW EVIDENCE for existing company (already in sponsors.csv with 6 events)
+Attio,"attio.com (well-known domain, not re-checked)",CRM / SaaS,venue:1;prize_partner:1,1,0,1,2,true,https://x.com/attio/status/2071615061206986780,new company
+Axiometa,,hardware / AI (category not checked),co_host:1,1,0,0,1,true,https://x.com/michellezfr/status/2078111832577884461,new company
+BGA,,blockchain for good alliance,prize_partner:1,1,0,0,1,true,https://luma.com/4f1qbg8g,new company
+Bayes Business School (City St George's),,university venue,venue:1,1,0,1,1,true,https://x.com/TheMekon_Venus/status/2105410089418916165,new company
+Bilt.me,"bilt.me (well-known domain, not re-checked)",app builder,prize_partner:1,1,0,0,1,true,https://luma.com/4f1qbg8g,new company
+Black Forest Labs,"bfl.ai (well-known domain, not re-checked)",AI lab (image models),co_host:1,1,0,0,1,true,https://x.com/stephenbtl/status/2015019651592278423,new company
+Boltzbit,,AI startup,tech_partner:1,1,0,0,1,true,https://luma.com/pp9vh9ig,new company
+CGI,"cgi.com (well-known domain, not re-checked)",IT services,venue:1,1,0,1,1,true,https://x.com/HelloMunawarAli/status/2090197003237986763,new company
+Canton Network,,blockchain,general:1,1,0,0,1,true,https://x.com/antifragiledon/status/2093744042265772310,new company
+CodeRabbit,coderabbit.ai,AI devtool (code review),food:1;drinks:1,1,1,0,2,false,https://www.linkedin.com/posts/nick-n%E2%AD%90%EF%B8%8F%F0%9F%8E%AC%F0%9F%93%BA-0b651b14_techlondon-communityfirst-aitooling-activity-7493445872349802496-SMQ3,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Cursor,cursor.com,devtool (AI coding),co_host:1,1,0,0,1,false,https://somo.social/en/e/hands-off-hackathon-625,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Dawn Capital,dawncapital.com,VC,venue:1,1,0,1,1,false,https://x.com/stephenbtl/status/2015019651592278423,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Deepgram,"deepgram.com (well-known domain, not re-checked)",voice AI,prize_partner:1;food:1,1,1,0,1,true,https://x.com/uselayercode/status/1979215520600854950,new company
+Doggett's Coat and Badge,,pub venue,venue:1,1,0,1,1,true,https://x.com/pgEdgeInc/status/2107831583696719961,new company
+Encode Hub,encode.club,venue (community hub),venue:1,1,0,1,1,false,https://luma.com/4f1qbg8g,NEW EVIDENCE for existing company (already in sponsors.csv with 7 events)
+FLock.io,"flock.io (well-known domain, not re-checked)",decentralised AI,prize_partner:1,1,0,0,1,true,https://luma.com/4f1qbg8g,new company
+Fetch.ai,fetch.ai,Web3 / AI,food:1,1,1,0,0,false,https://www.aiagentslab.uk/events,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Fivium,"fivium.co.uk (well-known domain, not re-checked)",software consultancy,venue:1,1,0,1,1,true,https://eventslist.co.uk/london/events/who-ya-gonna-call-2026-10-07-london,new company
+Focused,,software consultancy,food:1,1,1,0,1,true,https://www.linkedin.com/posts/london-platform-user-group-lopug_lopug-ai-platformengineering-activity-7502663862798680065-gEQv,new company
+GfK Online Pricing Intelligence,,data / market research,food:1;drinks:1,1,1,0,2,true,https://www.meetup.com/london-elastic-fantastics/events/316183895/,new company
+Google,"google.com (well-known domain, not re-checked)",big tech,venue:1,1,0,1,1,true,https://x.com/AgentArena42/status/2054856735186129323,new company
+Graphcore,"graphcore.ai (well-known domain, not re-checked)",AI hardware,general:1;venue:1;food:1,1,1,1,1,true,https://luma.com/e999291v https://x.com/sylvainviguier/status/2096994879008121280,new company
+Halkin,,venue (workspace),venue:1,1,0,1,1,false,https://somo.social/en/e/hands-off-hackathon-625,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Imperial College London,imperial.ac.uk,university / venue,venue:1,1,0,1,1,false,https://www.aiagentslab.uk/events,NEW EVIDENCE for existing company (already in sponsors.csv with 6 events)
+JetBrains,jetbrains.com,devtool,general:1,1,0,0,1,false,https://www.meetup.com/djangolondon/events/316661881/,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Kraken Tech,,energy tech,venue:1;food:1,1,1,1,1,false,https://www.meetup.com/djangolondon/events/316661881/,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Lonely Planet,"lonelyplanet.com (well-known domain, not re-checked)",travel media (tech team sponsor),food:1;drinks:1,1,1,0,2,true,https://www.meetup.com/london-elastic-fantastics/events/316183895/,new company
+Manus AI,"manus.im (well-known domain, not re-checked)",AI agent,general:1,1,0,0,1,true,https://somo.social/en/e/hands-off-hackathon-625,new company
+Mindstone,"mindstone.com (well-known domain, not re-checked)",AI training / community,co_host:1;food:1,1,1,0,1,true,https://x.com/TheMekon_Venus/status/2079937747574223009,new company
+Minor Figures,,food & drink brand (oat milk / coffee),drinks:1,1,1,0,1,false,https://luma.com/4f1qbg8g,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Mollie,mollie.com,payments,co_host:1;food:1,1,1,0,1,false,https://luma.com/whe8e3ip,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+Mubit,,AI devtool,food:1;co_host:1,1,1,0,1,false,https://luma.com/nightshift-london,NEW EVIDENCE for existing company (already in sponsors.csv with 2 events)
+Newspeak House,newspeak.house,venue (community),venue:1,1,0,1,1,false,https://luma.com/qn9exp2n,NEW EVIDENCE for existing company (already in sponsors.csv with 1 events)
+One Avenue Group,,venue (event spaces),venue:1,1,0,1,1,true,https://www.experimentationlondon.com/,new company
+Origin Coffee,"origincoffee.co.uk (well-known domain, not re-checked)",coffee roaster (drinks brand),drinks:1,1,1,0,1,true,https://luma.com/4f1qbg8g,"new company; Drinks brand partner (cold brew), Encode Club community partner"
+Prime Intellect,"primeintellect.ai (well-known domain, not re-checked)",AI compute,tech_partner:1,1,0,0,1,true,https://x.com/Badiaserra/status/2057495711776723446,new company
+Pydantic,pydantic.dev,devtool,co_host:1,1,0,0,1,false,https://x.com/jaimemh/status/2016795337805971764,NEW EVIDENCE for existing company (already in sponsors.csv with 2 events)
+Ramen Space,ramenclub.com/ramen-space,venue (coworking),venue:1,1,0,1,1,false,https://luma.com/maxxing-london,NEW EVIDENCE for existing company (already in sponsors.csv with 3 events)
+Red Badger,"red-badger.com (well-known domain, not re-checked)",digital consultancy,general:1,1,0,0,1,true,https://www.meetup.com/london-elastic-fantastics/events/316183895/,new company
+Red Hat AI,"redhat.com (well-known domain, not re-checked)",enterprise open source / AI infra,co_host:1;food:1,1,1,0,1,true,https://luma.com/iuecyow4,new company
+Rime,"rime.ai (well-known domain, not re-checked)",voice AI,prize_partner:1;food:1,1,1,0,1,true,https://x.com/uselayercode/status/1979215520600854950,new company
+Seapoint,,startup / sponsor (category not checked),general:1,1,0,0,1,true,https://somo.social/en/e/hands-off-hackathon-625,new company
+Sequoia Capital,"sequoiacap.com (well-known domain, not re-checked)",VC,co_host:1;food:1,1,1,0,1,true,https://x.com/Areai51/status/2029533605068701849,new company
+Solvimon,,billing / fintech,prize_partner:1,1,0,0,1,true,https://luma.com/4f1qbg8g,new company
+Speechmatics,"speechmatics.com (well-known domain, not re-checked)",voice AI,venue:1;food:1,1,1,1,1,true,https://x.com/Speechmatics/status/2017208682140889359,new company; Old Street HQ; 'impressive amount of pizza'
+Stelia AI,,AI infra,co_host:1,1,0,0,1,true,https://luma.com/iuecyow4,new company
+Sui,"sui.io (well-known domain, not re-checked)",blockchain,prize_partner:1,1,0,0,1,true,https://luma.com/4f1qbg8g,new company
+SurrealDB,"surrealdb.com (well-known domain, not re-checked)",database / dev tool,venue:1,1,0,1,1,true,https://x.com/jaimemh/status/2016795337805971764,new company
+Sustainable Ventures,"sustainableventures.co.uk (well-known domain, not re-checked)",venue (workspace / innovation hub),venue:1,1,0,1,1,true,https://luma.com/iuecyow4,new company
+Syntasso,"syntasso.io (well-known domain, not re-checked)",platform engineering dev tool,drinks:1,1,1,0,1,true,https://www.linkedin.com/posts/london-platform-user-group-lopug_kubernetes-activity-7480732827387498496-5VOt,new company
+Tarmac IO,"tarmac.io (well-known domain, not re-checked)",software consultancy,general:1;food:1,1,1,0,1,true,https://eventslist.co.uk/london/events/who-ya-gonna-call-2026-10-07-london,new company
+The London Art Bar,,bar venue,venue:1,1,0,1,1,true,https://www.meetup.com/data-engineering-london/events/315978046/,new company
+The Ministry (Borough),,venue (members' club / workspace),venue:1,1,0,1,1,true,https://luma.com/whe8e3ip,new company
+Torc,,developer jobs platform,general:1,1,0,0,1,true,https://guild.host/events/jsmonthly-london-october-mrpzgz,new company
+University College London (UCL),"ucl.ac.uk (well-known domain, not re-checked)",university venue,venue:1,1,0,1,1,true,https://luma.com/pp9vh9ig,new company
+Vorboss,"vorboss.com (well-known domain, not re-checked)",telecoms / ISP,venue:1,1,0,1,1,true,https://www.linkedin.com/posts/dipalipatel1_next-months-cloud-native-london-event-is-activity-7454988028873437184-8l-Q,new company
+Young Nola,"youngnola.co (well-known domain, not re-checked)","caterer / restaurant (Louisiana Creole, Shoreditch)",food:1,1,1,0,1,true,https://x.com/antifragiledon/status/2093744042265772310,"new company; Only named restaurant/caterer found; credited by an attendee on X, not by the organiser"
+Z.AI,"z.ai (well-known domain, not re-checked)",AI lab,general:1,1,0,0,1,true,https://luma.com/pp9vh9ig,new company
+Zed Industries,"zed.dev (well-known domain, not re-checked)",code editor dev tool,co_host:1,1,0,0,0,true,https://x.com/RustNationUK/status/1989296250143809640,new company
+poolside,"poolside.ai (well-known domain, not re-checked)",AI lab,venue:1,1,0,1,1,true,https://x.com/Badiaserra/status/2057495711776723446,new company

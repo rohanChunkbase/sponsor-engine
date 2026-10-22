@@ -1,0 +1,308 @@
+[
+ {
+  "community_id": "NC02",
+  "name": "AI Native Dev",
+  "url": "https://x.com/TheMekon_Venus/status/2001055508858278256",
+  "focus": "AI-native development",
+  "events_found": 1,
+  "sponsor_companies": "Tessl",
+  "event_urls": "https://x.com/TheMekon_Venus/status/2001055508858278256"
+ },
+ {
+  "community_id": "NC03",
+  "name": "Black Forest Labs",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Black Forest Labs;Dawn Capital",
+  "event_urls": "https://x.com/stephenbtl/status/2015019651592278423"
+ },
+ {
+  "community_id": "NC04",
+  "name": "Cantor8",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Canton Network;Young Nola",
+  "event_urls": "https://x.com/antifragiledon/status/2093744042265772310"
+ },
+ {
+  "community_id": "NC06",
+  "name": "Creative AI Meetup",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Bayes Business School (City St George's)",
+  "event_urls": "https://x.com/TheMekon_Venus/status/2105410089418916165"
+ },
+ {
+  "community_id": "NC07",
+  "name": "Cursor community",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Cursor;Halkin;Manus AI;Seapoint",
+  "event_urls": "https://somo.social/en/e/hands-off-hackathon-625"
+ },
+ {
+  "community_id": "NC08",
+  "name": "Data Engineering London",
+  "url": "https://www.meetup.com/data-engineering-london/",
+  "focus": "Data engineering",
+  "events_found": 1,
+  "sponsor_companies": "Altinity;The London Art Bar",
+  "event_urls": "https://www.meetup.com/data-engineering-london/events/315978046/"
+ },
+ {
+  "community_id": "NC09",
+  "name": "DevOps Society",
+  "url": "https://luma.com/hacknightldn",
+  "focus": "DevOps / observability",
+  "events_found": 1,
+  "sponsor_companies": "Elastic",
+  "event_urls": "https://luma.com/hacknightldn"
+ },
+ {
+  "community_id": "NC11",
+  "name": "Elastic London User Group",
+  "url": "https://www.meetup.com/london-elastic-fantastics/",
+  "focus": "Elastic / search / AI agents",
+  "events_found": 1,
+  "sponsor_companies": "Elastic;GfK Online Pricing Intelligence;Lonely Planet;Red Badger;Tessl",
+  "event_urls": "https://www.meetup.com/london-elastic-fantastics/events/316183895/"
+ },
+ {
+  "community_id": "NC13",
+  "name": "Experimentation London",
+  "url": "https://www.experimentationlondon.com/",
+  "focus": "A/B testing / CRO",
+  "events_found": 1,
+  "sponsor_companies": "Amplitude;One Avenue Group",
+  "event_urls": "https://www.experimentationlondon.com/"
+ },
+ {
+  "community_id": "NC14",
+  "name": "Fin (Intercom)",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Fin (Intercom)",
+  "event_urls": "https://x.com/fin_ai/status/2026661688917844103"
+ },
+ {
+  "community_id": "NC15",
+  "name": "Global HackTour",
+  "url": "https://luma.com/pp9vh9ig",
+  "focus": "AI hackathon tour",
+  "events_found": 1,
+  "sponsor_companies": "Boltzbit;University College London (UCL);Z.AI",
+  "event_urls": "https://luma.com/pp9vh9ig"
+ },
+ {
+  "community_id": "NC16",
+  "name": "ISC2 London Chapter",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "CGI",
+  "event_urls": "https://x.com/HelloMunawarAli/status/2090197003237986763"
+ },
+ {
+  "community_id": "NC17",
+  "name": "Intercom Design",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Fin (Intercom)",
+  "event_urls": "https://x.com/IniAbiodun/status/1981646781462007819"
+ },
+ {
+  "community_id": "NC18",
+  "name": "JS Monthly London",
+  "url": "https://guild.host/events/jsmonthly-london-october-mrpzgz",
+  "focus": "JavaScript",
+  "events_found": 2,
+  "sponsor_companies": "AG Grid;CodeRabbit;Just Eat;Torc",
+  "event_urls": "https://guild.host/events/jsmonthly-london-october-mrpzgz https://www.linkedin.com/posts/nick-n%E2%AD%90%EF%B8%8F%F0%9F%8E%AC%F0%9F%93%BA-0b651b14_techlondon-communityfirst-aitooling-activity-7493445872349802496-SMQ3"
+ },
+ {
+  "community_id": "NC19",
+  "name": "Laravel London",
+  "url": "https://luma.com/347t02d7",
+  "focus": "PHP / Laravel",
+  "events_found": 1,
+  "sponsor_companies": "Vonage",
+  "event_urls": "https://luma.com/347t02d7"
+ },
+ {
+  "community_id": "NC20",
+  "name": "London AI Meetup",
+  "url": "https://x.com/AgentArena42/status/2054856735186129323",
+  "focus": "AI",
+  "events_found": 1,
+  "sponsor_companies": "Agent Arena;Google",
+  "event_urls": "https://x.com/AgentArena42/status/2054856735186129323"
+ },
+ {
+  "community_id": "NC21",
+  "name": "London Agentic AI",
+  "url": "https://luma.com/758nubw3",
+  "focus": "Agentic AI",
+  "events_found": 1,
+  "sponsor_companies": "AWS",
+  "event_urls": "https://luma.com/758nubw3"
+ },
+ {
+  "community_id": "NC22",
+  "name": "London Platform User Group (LoPUG)",
+  "url": "https://www.linkedin.com/company/london-platform-user-group-lopug",
+  "focus": "Platform engineering",
+  "events_found": 2,
+  "sponsor_companies": "Accurx;Adaptavist;Focused;Pulumi;Syntasso",
+  "event_urls": "https://www.linkedin.com/posts/london-platform-user-group-lopug_kubernetes-activity-7480732827387498496-5VOt https://www.linkedin.com/posts/london-platform-user-group-lopug_lopug-ai-platformengineering-activity-7502663862798680065-gEQv"
+ },
+ {
+  "community_id": "NC23",
+  "name": "London PostgreSQL Meetup",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Doggett's Coat and Badge",
+  "event_urls": "https://x.com/pgEdgeInc/status/2107831583696719961"
+ },
+ {
+  "community_id": "NC24",
+  "name": "London PyTorch Meetup",
+  "url": "https://luma.com/e999291v",
+  "focus": "PyTorch / ML",
+  "events_found": 1,
+  "sponsor_companies": "Graphcore",
+  "event_urls": "https://luma.com/e999291v"
+ },
+ {
+  "community_id": "NC25",
+  "name": "Londonmaxxing",
+  "url": "https://luma.com/maxxing-london",
+  "focus": "London civic/consumer hackathons",
+  "events_found": 1,
+  "sponsor_companies": "Ramen Space",
+  "event_urls": "https://luma.com/maxxing-london"
+ },
+ {
+  "community_id": "NC26",
+  "name": "Londroid",
+  "url": "https://x.com/londroid",
+  "focus": "Android",
+  "events_found": 1,
+  "sponsor_companies": "Vonage",
+  "event_urls": "https://x.com/VonageDev/status/2028890900785492352"
+ },
+ {
+  "community_id": "NC27",
+  "name": "Mindstone",
+  "url": "https://mindstone.com",
+  "focus": "Practical AI meetups",
+  "events_found": 1,
+  "sponsor_companies": "Mindstone",
+  "event_urls": "https://x.com/TheMekon_Venus/status/2079937747574223009"
+ },
+ {
+  "community_id": "NC28",
+  "name": "Mubit",
+  "url": "https://luma.com/nightshift-london",
+  "focus": "AI hackathon (company-run)",
+  "events_found": 1,
+  "sponsor_companies": "Mubit;OpenAI",
+  "event_urls": "https://luma.com/nightshift-london"
+ },
+ {
+  "community_id": "NC29",
+  "name": "Platform Engineering London",
+  "url": "https://www.meetup.com/platform-engineering-london/",
+  "focus": "Platform engineering / on-call",
+  "events_found": 1,
+  "sponsor_companies": "Fivium;Tarmac IO",
+  "event_urls": "https://www.meetup.com/platform-engineering-london/events/316553802/"
+ },
+ {
+  "community_id": "NC30",
+  "name": "Rare Founders",
+  "url": "https://luma.com/whe8e3ip",
+  "focus": "Founder community / build hackathons",
+  "events_found": 1,
+  "sponsor_companies": "Mollie;OpenAI;The Ministry (Borough)",
+  "event_urls": "https://luma.com/whe8e3ip"
+ },
+ {
+  "community_id": "NC31",
+  "name": "Rust London User Group",
+  "url": "https://www.meetup.com/rust-london-user-group/",
+  "focus": "Rust",
+  "events_found": 1,
+  "sponsor_companies": "Zed Industries",
+  "event_urls": "https://x.com/RustNationUK/status/1989296250143809640"
+ },
+ {
+  "community_id": "NC32",
+  "name": "Sequoia Capital",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "OpenAI;Sequoia Capital",
+  "event_urls": "https://x.com/Areai51/status/2029533605068701849"
+ },
+ {
+  "community_id": "NC33",
+  "name": "SurrealDB",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "Pydantic;SurrealDB",
+  "event_urls": "https://x.com/jaimemh/status/2016795337805971764"
+ },
+ {
+  "community_id": "NC37",
+  "name": "Voice AI Space",
+  "url": "https://x.com/Speechmatics/status/2017208682140889359",
+  "focus": "Voice AI",
+  "events_found": 1,
+  "sponsor_companies": "Speechmatics",
+  "event_urls": "https://x.com/Speechmatics/status/2017208682140889359"
+ },
+ {
+  "community_id": "NC38",
+  "name": "Write the Docs London",
+  "url": "https://www.meetup.com/write-the-docs-london/",
+  "focus": "Technical writing",
+  "events_found": 1,
+  "sponsor_companies": "Cloudflare",
+  "event_urls": "https://x.com/Cloudflare/status/2051161774141964432"
+ },
+ {
+  "community_id": "NC39",
+  "name": "notanother.pizza",
+  "url": "https://luma.com/qn9exp2n",
+  "focus": "Tools for community organisers",
+  "events_found": 1,
+  "sponsor_companies": "Newspeak House;Twilio",
+  "event_urls": "https://luma.com/qn9exp2n"
+ },
+ {
+  "community_id": "NC40",
+  "name": "poolside",
+  "url": "",
+  "focus": "",
+  "events_found": 1,
+  "sponsor_companies": "NVIDIA;Prime Intellect;poolside",
+  "event_urls": "https://x.com/Badiaserra/status/2057495711776723446"
+ },
+ {
+  "community_id": "NC41",
+  "name": "vLLM Meetups",
+  "url": "https://luma.com/iuecyow4",
+  "focus": "LLM inference (vLLM / llm-d)",
+  "events_found": 1,
+  "sponsor_companies": "NVIDIA;Red Hat AI;Stelia AI;Sustainable Ventures",
+  "event_urls": "https://luma.com/iuecyow4"
+ }
+]

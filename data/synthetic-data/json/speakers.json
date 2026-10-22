@@ -1,0 +1,305 @@
+{
+  "_notice": "SAMPLE / FICTIONAL data for a hackathon demo. Not real people, companies or events.",
+  "records": [
+    {
+      "speaker_id": "P01",
+      "name": "Jonah Ashgrove (fictional)",
+      "topic": "data viz",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P02",
+      "name": "Zed Marlow (fictional)",
+      "topic": "open source",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P03",
+      "name": "Tess Tennant (fictional)",
+      "topic": "IoT",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P04",
+      "name": "Quinn Whitlow (fictional)",
+      "topic": "creative coding",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P05",
+      "name": "Ada Quillon (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P06",
+      "name": "Pax Whitlow (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "name": "Leah Ostrander (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P08",
+      "name": "Cleo Halloway (fictional)",
+      "topic": "security",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P09",
+      "name": "Gwen Linnell (fictional)",
+      "topic": "ML ops",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P10",
+      "name": "Nico Kestrel (fictional)",
+      "topic": "fintech",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P11",
+      "name": "Tobi Rookwood (fictional)",
+      "topic": "Rust",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P12",
+      "name": "Cleo Morrow (fictional)",
+      "topic": "open source",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P13",
+      "name": "Hiro Pemberly (fictional)",
+      "topic": "security",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P14",
+      "name": "Tobi Halloway (fictional)",
+      "topic": "product",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P15",
+      "name": "Dev Halloway (fictional)",
+      "topic": "RAG",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P16",
+      "name": "Pax Sallis (fictional)",
+      "topic": "product",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P17",
+      "name": "Ada Tennant (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P18",
+      "name": "Rhea Nettle (fictional)",
+      "topic": "RAG",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P19",
+      "name": "Zed Ostrander (fictional)",
+      "topic": "AI agents",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P20",
+      "name": "Cleo Nettle (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P21",
+      "name": "Tess Arkwright (fictional)",
+      "topic": "Rust",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P22",
+      "name": "Xan Marlow (fictional)",
+      "topic": "IoT",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P23",
+      "name": "Kemi Kestrel (fictional)",
+      "topic": "RAG",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "name": "Theo Rookwood (fictional)",
+      "topic": "LLM evals",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P25",
+      "name": "Dev Ashgrove (fictional)",
+      "topic": "product",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P26",
+      "name": "Jonah Morrow (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P27",
+      "name": "Gwen Brackley (fictional)",
+      "topic": "security",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P28",
+      "name": "Orla Rookwood (fictional)",
+      "topic": "open source",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P29",
+      "name": "Wren Darrow (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P30",
+      "name": "Mira Fernwood (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P31",
+      "name": "Yara Calder (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P32",
+      "name": "Isla Pemberly (fictional)",
+      "topic": "LLM evals",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P33",
+      "name": "Cleo Kestrel (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P34",
+      "name": "Leah Morrow (fictional)",
+      "topic": "data viz",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P35",
+      "name": "Saffi Kestrel (fictional)",
+      "topic": "IoT",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P36",
+      "name": "Juno Tennant (fictional)",
+      "topic": "open source",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "name": "Wren Rookwood (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P38",
+      "name": "Ravi Pemberly (fictional)",
+      "topic": "creative coding",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P39",
+      "name": "Priya Morrow (fictional)",
+      "topic": "Rust",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P40",
+      "name": "Esme Linnell (fictional)",
+      "topic": "Rust",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P41",
+      "name": "Leah Vance (fictional)",
+      "topic": "creative coding",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P42",
+      "name": "Quinn Morrow (fictional)",
+      "topic": "product",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P43",
+      "name": "Ravi Fernwood (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P44",
+      "name": "Noor Whitlow (fictional)",
+      "topic": "founders",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P45",
+      "name": "Luca Fernwood (fictional)",
+      "topic": "design systems",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P46",
+      "name": "Xan Arkwright (fictional)",
+      "topic": "IoT",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P47",
+      "name": "Uma Marlow (fictional)",
+      "topic": "ML ops",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P48",
+      "name": "Saffi Whitlow (fictional)",
+      "topic": "IoT",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P49",
+      "name": "Elio Kestrel (fictional)",
+      "topic": "devrel",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P50",
+      "name": "Arlo Brackley (fictional)",
+      "topic": "design systems",
+      "is_sample": "SAMPLE"
+    }
+  ]
+}

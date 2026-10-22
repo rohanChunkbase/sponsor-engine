@@ -1,0 +1,20 @@
+{
+  "name": "@sponsor-engine/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/server.ts",
+    "./web": "./src/web.ts",
+    "./http": "./src/node-http.ts",
+    "./catalog": "./src/catalog.ts",
+    "./connect": "./src/connect.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.2",
+    "@sponsor-engine/core": "0.1.0",
+    "@sponsor-engine/db": "0.1.0",
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.1"
+  }
+}

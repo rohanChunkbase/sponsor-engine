@@ -1,0 +1,15 @@
+{
+  "t": "MESSAGE_CREATE",
+  "d": {
+    "id": "9001",
+    "channel_id": "555",
+    "timestamp": "2026-10-22T18:10:00.000Z",
+    "content": "Hi, this is Ada Fernwood from Thames Agent Builders (SAMPLE). Can we book the room on 26 November for 80 people? We are a community and we need food.",
+    "author": {
+      "id": "42",
+      "username": "ada",
+      "global_name": "Ada Fernwood",
+      "bot": false
+    }
+  }
+}

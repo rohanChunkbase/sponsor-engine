@@ -1,0 +1,17 @@
+{
+  "name": "@sponsor-engine/channels",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./inbound": "./src/inbound.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.2",
+    "@slack/bolt": "^4.7.3",
+    "@sponsor-engine/core": "0.1.0",
+    "@sponsor-engine/mcp": "0.1.0",
+    "discord.js": "^14.27.0"
+  }
+}

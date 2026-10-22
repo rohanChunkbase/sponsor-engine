@@ -1,0 +1,51 @@
+speaker_id,name,topic,is_sample
+P01,Jonah Ashgrove (fictional),data viz,SAMPLE
+P02,Zed Marlow (fictional),open source,SAMPLE
+P03,Tess Tennant (fictional),IoT,SAMPLE
+P04,Quinn Whitlow (fictional),creative coding,SAMPLE
+P05,Ada Quillon (fictional),devrel,SAMPLE
+P06,Pax Whitlow (fictional),devrel,SAMPLE
+P07,Leah Ostrander (fictional),founders,SAMPLE
+P08,Cleo Halloway (fictional),security,SAMPLE
+P09,Gwen Linnell (fictional),ML ops,SAMPLE
+P10,Nico Kestrel (fictional),fintech,SAMPLE
+P11,Tobi Rookwood (fictional),Rust,SAMPLE
+P12,Cleo Morrow (fictional),open source,SAMPLE
+P13,Hiro Pemberly (fictional),security,SAMPLE
+P14,Tobi Halloway (fictional),product,SAMPLE
+P15,Dev Halloway (fictional),RAG,SAMPLE
+P16,Pax Sallis (fictional),product,SAMPLE
+P17,Ada Tennant (fictional),devrel,SAMPLE
+P18,Rhea Nettle (fictional),RAG,SAMPLE
+P19,Zed Ostrander (fictional),AI agents,SAMPLE
+P20,Cleo Nettle (fictional),devrel,SAMPLE
+P21,Tess Arkwright (fictional),Rust,SAMPLE
+P22,Xan Marlow (fictional),IoT,SAMPLE
+P23,Kemi Kestrel (fictional),RAG,SAMPLE
+P24,Theo Rookwood (fictional),LLM evals,SAMPLE
+P25,Dev Ashgrove (fictional),product,SAMPLE
+P26,Jonah Morrow (fictional),devrel,SAMPLE
+P27,Gwen Brackley (fictional),security,SAMPLE
+P28,Orla Rookwood (fictional),open source,SAMPLE
+P29,Wren Darrow (fictional),founders,SAMPLE
+P30,Mira Fernwood (fictional),founders,SAMPLE
+P31,Yara Calder (fictional),founders,SAMPLE
+P32,Isla Pemberly (fictional),LLM evals,SAMPLE
+P33,Cleo Kestrel (fictional),founders,SAMPLE
+P34,Leah Morrow (fictional),data viz,SAMPLE
+P35,Saffi Kestrel (fictional),IoT,SAMPLE
+P36,Juno Tennant (fictional),open source,SAMPLE
+P37,Wren Rookwood (fictional),founders,SAMPLE
+P38,Ravi Pemberly (fictional),creative coding,SAMPLE
+P39,Priya Morrow (fictional),Rust,SAMPLE
+P40,Esme Linnell (fictional),Rust,SAMPLE
+P41,Leah Vance (fictional),creative coding,SAMPLE
+P42,Quinn Morrow (fictional),product,SAMPLE
+P43,Ravi Fernwood (fictional),devrel,SAMPLE
+P44,Noor Whitlow (fictional),founders,SAMPLE
+P45,Luca Fernwood (fictional),design systems,SAMPLE
+P46,Xan Arkwright (fictional),IoT,SAMPLE
+P47,Uma Marlow (fictional),ML ops,SAMPLE
+P48,Saffi Whitlow (fictional),IoT,SAMPLE
+P49,Elio Kestrel (fictional),devrel,SAMPLE
+P50,Arlo Brackley (fictional),design systems,SAMPLE

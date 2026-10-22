@@ -1,0 +1,1140 @@
+{
+ "type": "FeatureCollection",
+ "name": "events (SAMPLE)",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E049",
+    "community_id": "C12",
+    "title": "Bermondsey Open Source Pub lightning talks #1 (SAMPLE)",
+    "date": "2025-10-27",
+    "registrations": 47,
+    "check_ins": 25
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E058",
+    "community_id": "C14",
+    "title": "Old Street Security Social build day #3 (SAMPLE)",
+    "date": "2025-11-03",
+    "registrations": 43,
+    "check_ins": 28
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E061",
+    "community_id": "C15",
+    "title": "Liverpool St Design Engineers workshop #2 (SAMPLE)",
+    "date": "2025-11-05",
+    "registrations": 46,
+    "check_ins": 26
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E040",
+    "community_id": "C09",
+    "title": "Stratford Startup Breakfast lightning talks #3 (SAMPLE)",
+    "date": "2025-11-06",
+    "registrations": 85,
+    "check_ins": 54
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E042",
+    "community_id": "C10",
+    "title": "Farringdon Fintech Tinkerers workshop #1 (SAMPLE)",
+    "date": "2025-11-11",
+    "registrations": 39,
+    "check_ins": 24
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E010",
+    "community_id": "C01",
+    "title": "Thames Agent Builders build day #10 (SAMPLE)",
+    "date": "2025-12-08",
+    "registrations": 79,
+    "check_ins": 47
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E045",
+    "community_id": "C11",
+    "title": "White City Women in ML hack night #1 (SAMPLE)",
+    "date": "2025-12-10",
+    "registrations": 83,
+    "check_ins": 60
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "event_id": "E026",
+    "community_id": "C05",
+    "title": "Hackney Hardware Club lightning talks #4 (SAMPLE)",
+    "date": "2025-12-23",
+    "registrations": 55,
+    "check_ins": 28
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E029",
+    "community_id": "C06",
+    "title": "Southbank Data Folk lightning talks #3 (SAMPLE)",
+    "date": "2025-12-28",
+    "registrations": 56,
+    "check_ins": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E009",
+    "community_id": "C01",
+    "title": "Thames Agent Builders build day #9 (SAMPLE)",
+    "date": "2026-01-06",
+    "registrations": 116,
+    "check_ins": 78
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E021",
+    "community_id": "C04",
+    "title": "Kings Cross Rust Night demo night #3 (SAMPLE)",
+    "date": "2026-01-06",
+    "registrations": 64,
+    "check_ins": 45
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "event_id": "E031",
+    "community_id": "C07",
+    "title": "Camden Creative Coders build day #1 (SAMPLE)",
+    "date": "2026-01-07",
+    "registrations": 60,
+    "check_ins": 41
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E041",
+    "community_id": "C09",
+    "title": "Stratford Startup Breakfast panel #4 (SAMPLE)",
+    "date": "2026-02-02",
+    "registrations": 37,
+    "check_ins": 19
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E044",
+    "community_id": "C10",
+    "title": "Farringdon Fintech Tinkerers demo night #3 (SAMPLE)",
+    "date": "2026-02-17",
+    "registrations": 50,
+    "check_ins": 36
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E008",
+    "community_id": "C01",
+    "title": "Thames Agent Builders panel #8 (SAMPLE)",
+    "date": "2026-02-19",
+    "registrations": 59,
+    "check_ins": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E047",
+    "community_id": "C11",
+    "title": "White City Women in ML talks + pizza #3 (SAMPLE)",
+    "date": "2026-02-23",
+    "registrations": 62,
+    "check_ins": 42
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E015",
+    "community_id": "C03",
+    "title": "Docklands DevRel Circle panel #1 (SAMPLE)",
+    "date": "2026-02-24",
+    "registrations": 44,
+    "check_ins": 29
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E018",
+    "community_id": "C03",
+    "title": "Docklands DevRel Circle build day #4 (SAMPLE)",
+    "date": "2026-02-24",
+    "registrations": 49,
+    "check_ins": 34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "event_id": "E017",
+    "community_id": "C03",
+    "title": "Docklands DevRel Circle hack night #3 (SAMPLE)",
+    "date": "2026-03-05",
+    "registrations": 37,
+    "check_ins": 20
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1365,
+     51.5136
+    ]
+   },
+   "properties": {
+    "event_id": "E036",
+    "community_id": "C08",
+    "title": "Soho Product Guild hack night #3 (SAMPLE)",
+    "date": "2026-03-05",
+    "registrations": 51,
+    "check_ins": 32
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E007",
+    "community_id": "C01",
+    "title": "Thames Agent Builders build day #7 (SAMPLE)",
+    "date": "2026-03-16",
+    "registrations": 51,
+    "check_ins": 30
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E037",
+    "community_id": "C08",
+    "title": "Soho Product Guild lightning talks #4 (SAMPLE)",
+    "date": "2026-03-16",
+    "registrations": 71,
+    "check_ins": 44
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E062",
+    "community_id": "C15",
+    "title": "Liverpool St Design Engineers demo night #3 (SAMPLE)",
+    "date": "2026-03-27",
+    "registrations": 49,
+    "check_ins": 31
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E023",
+    "community_id": "C05",
+    "title": "Hackney Hardware Club panel #1 (SAMPLE)",
+    "date": "2026-03-28",
+    "registrations": 38,
+    "check_ins": 26
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "event_id": "E034",
+    "community_id": "C08",
+    "title": "Soho Product Guild demo night #1 (SAMPLE)",
+    "date": "2026-03-28",
+    "registrations": 94,
+    "check_ins": 68
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1156,
+     51.4613
+    ]
+   },
+   "properties": {
+    "event_id": "E013",
+    "community_id": "C02",
+    "title": "Lambeth LLM Lab lightning talks #3 (SAMPLE)",
+    "date": "2026-04-05",
+    "registrations": 59,
+    "check_ins": 31
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1156,
+     51.4613
+    ]
+   },
+   "properties": {
+    "event_id": "E011",
+    "community_id": "C02",
+    "title": "Lambeth LLM Lab talks + pizza #1 (SAMPLE)",
+    "date": "2026-04-12",
+    "registrations": 73,
+    "check_ins": 46
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E012",
+    "community_id": "C02",
+    "title": "Lambeth LLM Lab talks + pizza #2 (SAMPLE)",
+    "date": "2026-04-15",
+    "registrations": 78,
+    "check_ins": 54
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E006",
+    "community_id": "C01",
+    "title": "Thames Agent Builders panel #6 (SAMPLE)",
+    "date": "2026-04-17",
+    "registrations": 58,
+    "check_ins": 39
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E039",
+    "community_id": "C09",
+    "title": "Stratford Startup Breakfast demo night #2 (SAMPLE)",
+    "date": "2026-04-23",
+    "registrations": 56,
+    "check_ins": 38
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.224,
+     51.512
+    ]
+   },
+   "properties": {
+    "event_id": "E046",
+    "community_id": "C11",
+    "title": "White City Women in ML hack night #2 (SAMPLE)",
+    "date": "2026-04-23",
+    "registrations": 109,
+    "check_ins": 65
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E052",
+    "community_id": "C12",
+    "title": "Bermondsey Open Source Pub talks + pizza #4 (SAMPLE)",
+    "date": "2026-05-03",
+    "registrations": 55,
+    "check_ins": 34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "event_id": "E051",
+    "community_id": "C12",
+    "title": "Bermondsey Open Source Pub talks + pizza #3 (SAMPLE)",
+    "date": "2026-05-15",
+    "registrations": 54,
+    "check_ins": 38
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E057",
+    "community_id": "C14",
+    "title": "Old Street Security Social talks + pizza #2 (SAMPLE)",
+    "date": "2026-05-18",
+    "registrations": 32,
+    "check_ins": 22
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E028",
+    "community_id": "C06",
+    "title": "Southbank Data Folk build day #2 (SAMPLE)",
+    "date": "2026-05-19",
+    "registrations": 112,
+    "check_ins": 63
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E059",
+    "community_id": "C14",
+    "title": "Old Street Security Social build day #4 (SAMPLE)",
+    "date": "2026-05-20",
+    "registrations": 39,
+    "check_ins": 29
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1426,
+     51.539
+    ]
+   },
+   "properties": {
+    "event_id": "E032",
+    "community_id": "C07",
+    "title": "Camden Creative Coders panel #2 (SAMPLE)",
+    "date": "2026-05-21",
+    "registrations": 31,
+    "check_ins": 23
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E038",
+    "community_id": "C09",
+    "title": "Stratford Startup Breakfast panel #1 (SAMPLE)",
+    "date": "2026-05-24",
+    "registrations": 66,
+    "check_ins": 34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E005",
+    "community_id": "C01",
+    "title": "Thames Agent Builders talks + pizza #5 (SAMPLE)",
+    "date": "2026-05-27",
+    "registrations": 113,
+    "check_ins": 68
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E053",
+    "community_id": "C13",
+    "title": "Islington Indie Hackers build day #1 (SAMPLE)",
+    "date": "2026-05-30",
+    "registrations": 60,
+    "check_ins": 45
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E030",
+    "community_id": "C06",
+    "title": "Southbank Data Folk panel #4 (SAMPLE)",
+    "date": "2026-06-06",
+    "registrations": 94,
+    "check_ins": 63
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0235,
+     51.5054
+    ]
+   },
+   "properties": {
+    "event_id": "E019",
+    "community_id": "C04",
+    "title": "Kings Cross Rust Night demo night #1 (SAMPLE)",
+    "date": "2026-06-08",
+    "registrations": 47,
+    "check_ins": 29
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E050",
+    "community_id": "C12",
+    "title": "Bermondsey Open Source Pub workshop #2 (SAMPLE)",
+    "date": "2026-06-09",
+    "registrations": 42,
+    "check_ins": 27
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E004",
+    "community_id": "C01",
+    "title": "Thames Agent Builders lightning talks #4 (SAMPLE)",
+    "date": "2026-06-23",
+    "registrations": 71,
+    "check_ins": 46
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E016",
+    "community_id": "C03",
+    "title": "Docklands DevRel Circle workshop #2 (SAMPLE)",
+    "date": "2026-06-29",
+    "registrations": 34,
+    "check_ins": 17
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E014",
+    "community_id": "C02",
+    "title": "Lambeth LLM Lab panel #4 (SAMPLE)",
+    "date": "2026-07-02",
+    "registrations": 58,
+    "check_ins": 39
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E060",
+    "community_id": "C15",
+    "title": "Liverpool St Design Engineers workshop #1 (SAMPLE)",
+    "date": "2026-07-11",
+    "registrations": 38,
+    "check_ins": 19
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E048",
+    "community_id": "C11",
+    "title": "White City Women in ML hack night #4 (SAMPLE)",
+    "date": "2026-07-13",
+    "registrations": 63,
+    "check_ins": 33
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E025",
+    "community_id": "C05",
+    "title": "Hackney Hardware Club hack night #3 (SAMPLE)",
+    "date": "2026-07-17",
+    "registrations": 60,
+    "check_ins": 35
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E035",
+    "community_id": "C08",
+    "title": "Soho Product Guild talks + pizza #2 (SAMPLE)",
+    "date": "2026-07-20",
+    "registrations": 37,
+    "check_ins": 22
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E027",
+    "community_id": "C06",
+    "title": "Southbank Data Folk workshop #1 (SAMPLE)",
+    "date": "2026-07-22",
+    "registrations": 110,
+    "check_ins": 60
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E003",
+    "community_id": "C01",
+    "title": "Thames Agent Builders demo night #3 (SAMPLE)",
+    "date": "2026-08-02",
+    "registrations": 110,
+    "check_ins": 65
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1238,
+     51.5308
+    ]
+   },
+   "properties": {
+    "event_id": "E022",
+    "community_id": "C04",
+    "title": "Kings Cross Rust Night lightning talks #4 (SAMPLE)",
+    "date": "2026-08-04",
+    "registrations": 69,
+    "check_ins": 44
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E056",
+    "community_id": "C14",
+    "title": "Old Street Security Social lightning talks #1 (SAMPLE)",
+    "date": "2026-08-10",
+    "registrations": 36,
+    "check_ins": 20
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E054",
+    "community_id": "C13",
+    "title": "Islington Indie Hackers lightning talks #2 (SAMPLE)",
+    "date": "2026-08-23",
+    "registrations": 80,
+    "check_ins": 48
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E002",
+    "community_id": "C01",
+    "title": "Thames Agent Builders talks + pizza #2 (SAMPLE)",
+    "date": "2026-09-01",
+    "registrations": 69,
+    "check_ins": 42
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.1053,
+     51.5203
+    ]
+   },
+   "properties": {
+    "event_id": "E043",
+    "community_id": "C10",
+    "title": "Farringdon Fintech Tinkerers talks + pizza #2 (SAMPLE)",
+    "date": "2026-09-03",
+    "registrations": 47,
+    "check_ins": 33
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E033",
+    "community_id": "C07",
+    "title": "Camden Creative Coders build day #3 (SAMPLE)",
+    "date": "2026-09-05",
+    "registrations": 42,
+    "check_ins": 26
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E020",
+    "community_id": "C04",
+    "title": "Kings Cross Rust Night workshop #2 (SAMPLE)",
+    "date": "2026-09-06",
+    "registrations": 56,
+    "check_ins": 34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E024",
+    "community_id": "C05",
+    "title": "Hackney Hardware Club workshop #2 (SAMPLE)",
+    "date": "2026-09-23",
+    "registrations": 60,
+    "check_ins": 34
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0919,
+     51.5035
+    ]
+   },
+   "properties": {
+    "event_id": "E055",
+    "community_id": "C13",
+    "title": "Islington Indie Hackers build day #3 (SAMPLE)",
+    "date": "2026-09-26",
+    "registrations": 69,
+    "check_ins": 50
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0876,
+     51.5256
+    ]
+   },
+   "properties": {
+    "event_id": "E001",
+    "community_id": "C01",
+    "title": "Thames Agent Builders demo night #1 (SAMPLE)",
+    "date": "2026-10-03",
+    "registrations": 97,
+    "check_ins": 61
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -0.0795,
+     51.5245
+    ]
+   },
+   "properties": {
+    "event_id": "E900",
+    "community_id": "C01",
+    "title": "Thames Agent Builders hack night #5 (SAMPLE)",
+    "date": "2026-11-19",
+    "registrations": 80,
+    "check_ins": ""
+   }
+  }
+ ]
+}

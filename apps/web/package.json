@@ -1,0 +1,34 @@
+{
+  "name": "@sponsor-engine/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node ../../packages/brand/scripts/copy-public.mjs .",
+    "prebuild": "node ../../packages/brand/scripts/copy-public.mjs .",
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "@sponsor-engine/brand": "0.1.0",
+    "@sponsor-engine/channels": "0.1.0",
+    "@sponsor-engine/core": "0.1.0",
+    "@sponsor-engine/mcp": "0.1.0",
+    "better-sqlite3": "12.9.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.546.0",
+    "maplibre-gl": "^5.9.0",
+    "next": "^15.5.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "tailwindcss": "^4.1.14"
+  }
+}

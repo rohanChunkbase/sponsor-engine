@@ -1,0 +1,425 @@
+{
+ "_notice": "REAL public data collected 22 Oct 2026 from public event pages. Company-level only. Check source_url before reuse.",
+ "records": [
+  {
+   "community_id": "RC01",
+   "name": "Encode Club",
+   "url": "https://luma.com/encode-london-2026",
+   "url_note": "community page",
+   "focus": "AI + Web3 hackathons",
+   "events_found": 4,
+   "sponsor_companies": 16,
+   "event_urls": "https://luma.com/encode-london-2026 https://luma.com/gttihhxt https://luma.com/Encode-London-25 https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/"
+  },
+  {
+   "community_id": "RC02",
+   "name": "London.js",
+   "url": "https://www.meetup.com/london-js/",
+   "url_note": "community page",
+   "focus": "JavaScript",
+   "events_found": 4,
+   "sponsor_companies": 6,
+   "event_urls": "https://www.meetup.com/london-js/ https://www.meetup.com/london-js/ https://www.meetup.com/london-js/ https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn"
+  },
+  {
+   "community_id": "RC03",
+   "name": "AI Engineer London",
+   "url": "https://luma.com/94ma079o",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI engineering",
+   "events_found": 3,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/94ma079o https://luma.com/u8rvf61f https://luma.com/ubg0u3a2"
+  },
+  {
+   "community_id": "RC04",
+   "name": "Outpost (formerly AI Demo Nights)",
+   "url": "https://luma.com/ai-demo-night-12",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI engineers / demo nights / hackathons",
+   "events_found": 3,
+   "sponsor_companies": 4,
+   "event_urls": "https://luma.com/ai-demo-night-12 https://luma.com/hacksprint-london https://luma.com/dde-ldn-hack"
+  },
+  {
+   "community_id": "RC05",
+   "name": "UK AI Agents Lab",
+   "url": "https://luma.com/aiagentslab",
+   "url_note": "community page",
+   "focus": "AI agents (student/Imperial)",
+   "events_found": 3,
+   "sponsor_companies": 3,
+   "event_urls": "https://luma.com/7srz7k7v https://luma.com/ukai-tg9s https://luma.com/gh3531qm"
+  },
+  {
+   "community_id": "RC06",
+   "name": "AI Builders",
+   "url": "https://luma.com/lon-nov10",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI builders meetup",
+   "events_found": 2,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/lon-nov10 https://luma.com/lon-sep10"
+  },
+  {
+   "community_id": "RC07",
+   "name": "AI Demo Days",
+   "url": "https://luma.com/8h0pmpvl",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI demos",
+   "events_found": 2,
+   "sponsor_companies": 4,
+   "event_urls": "https://luma.com/8h0pmpvl https://luma.com/sup0n60r"
+  },
+  {
+   "community_id": "RC08",
+   "name": "AI Tinkerers London",
+   "url": "https://london.aitinkerers.org/",
+   "url_note": "community page",
+   "focus": "AI engineers",
+   "events_found": 2,
+   "sponsor_companies": 8,
+   "event_urls": "https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026 https://london.aitinkerers.org/p/agents-vs-wall-street"
+  },
+  {
+   "community_id": "RC09",
+   "name": "Claude Community Events",
+   "url": "https://luma.com/4z45zkng",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "Claude / Claude Code",
+   "events_found": 2,
+   "sponsor_companies": 4,
+   "event_urls": "https://luma.com/4z45zkng https://luma.com/ictqc1wp"
+  },
+  {
+   "community_id": "RC10",
+   "name": "Imperial AI Society x Imperial Blockchain Society",
+   "url": "https://luma.com/e2ie935t",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "student AI / Web3",
+   "events_found": 2,
+   "sponsor_companies": 11,
+   "event_urls": "https://luma.com/e2ie935t https://luma.com/vq6mrlt4"
+  },
+  {
+   "community_id": "RC11",
+   "name": "JavaScript London",
+   "url": "https://www.meetup.com/javascript-london/",
+   "url_note": "community page",
+   "focus": "JavaScript",
+   "events_found": 2,
+   "sponsor_companies": 3,
+   "event_urls": "https://www.meetup.com/javascript-london/events/315267535/ https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_"
+  },
+  {
+   "community_id": "RC12",
+   "name": "SpaceXAI for London (Grok Bot / Cursor community)",
+   "url": "https://luma.com/eveur09a",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "Grok Bot / Cursor builders",
+   "events_found": 2,
+   "sponsor_companies": 9,
+   "event_urls": "https://luma.com/eveur09a https://luma.com/cursor-td9f"
+  },
+  {
+   "community_id": "RC13",
+   "name": "#WPLDN (London WordPress)",
+   "url": "https://www.meetup.com/london-wordpress/",
+   "url_note": "community page",
+   "focus": "WordPress",
+   "events_found": 1,
+   "sponsor_companies": 4,
+   "event_urls": "https://www.meetup.com/london-wordpress/"
+  },
+  {
+   "community_id": "RC14",
+   "name": "AI for the rest of us",
+   "url": "https://luma.com/AI4MARCH",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI literacy",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/AI4MARCH"
+  },
+  {
+   "community_id": "RC15",
+   "name": "BlueDot Impact",
+   "url": "https://luma.com/def-acc-hack",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI safety",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/def-acc-hack"
+  },
+  {
+   "community_id": "RC16",
+   "name": "Briefcase x Stripe",
+   "url": "https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI fintech",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026"
+  },
+  {
+   "community_id": "RC17",
+   "name": "Claude Builder Club @ Imperial",
+   "url": "https://luma.com/3gl81s7c",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "student Claude club",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/3gl81s7c"
+  },
+  {
+   "community_id": "RC18",
+   "name": "Cloud Native London",
+   "url": "https://www.meetup.com/cloud-native-london/",
+   "url_note": "community page",
+   "focus": "cloud native / DevOps",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://www.meetup.com/cloud-native-london/"
+  },
+  {
+   "community_id": "RC19",
+   "name": "Create With",
+   "url": "https://luma.com/cw-london-nov25",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI + no-code",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/cw-london-nov25"
+  },
+  {
+   "community_id": "RC20",
+   "name": "Django London",
+   "url": "https://www.meetup.com/djangolondon/",
+   "url_note": "community page",
+   "focus": "Python / Django",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://www.meetup.com/djangolondon/events/315788543/"
+  },
+  {
+   "community_id": "RC21",
+   "name": "Dwelly",
+   "url": "https://luma.com/ja5x0m76",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "company-hosted hackathon",
+   "events_found": 1,
+   "sponsor_companies": 5,
+   "event_urls": "https://luma.com/ja5x0m76"
+  },
+  {
+   "community_id": "RC22",
+   "name": "Encode: AI for Science Fellowship (Pillar VC x ARIA)",
+   "url": "https://luma.com/0szx6bcb",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI for science",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/0szx6bcb"
+  },
+  {
+   "community_id": "RC23",
+   "name": "Ignite London",
+   "url": "https://luma.com/k9kvyn76",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI & deep tech founders",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/k9kvyn76"
+  },
+  {
+   "community_id": "RC24",
+   "name": "Iterate",
+   "url": "https://luma.com/3iipivod",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI x science",
+   "events_found": 1,
+   "sponsor_companies": 14,
+   "event_urls": "https://luma.com/3iipivod"
+  },
+  {
+   "community_id": "RC25",
+   "name": "LLM London",
+   "url": "https://luma.com/1t3v9g5j",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "LLM practitioners",
+   "events_found": 1,
+   "sponsor_companies": 1,
+   "event_urls": "https://luma.com/1t3v9g5j"
+  },
+  {
+   "community_id": "RC26",
+   "name": "Led by Community",
+   "url": "https://luma.com/ai-hackathon-community",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "community tools",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/ai-hackathon-community"
+  },
+  {
+   "community_id": "RC27",
+   "name": "Networx London",
+   "url": "https://luma.com/ntl-l92c",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "tech networking",
+   "events_found": 1,
+   "sponsor_companies": 1,
+   "event_urls": "https://luma.com/ntl-l92c"
+  },
+  {
+   "community_id": "RC28",
+   "name": "Newspeak House",
+   "url": "https://luma.com/qyd193bj",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "civic tech",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/qyd193bj"
+  },
+  {
+   "community_id": "RC29",
+   "name": "ODSC AI",
+   "url": "https://luma.com/ppyy0sqw",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "data science",
+   "events_found": 1,
+   "sponsor_companies": 1,
+   "event_urls": "https://luma.com/ppyy0sqw"
+  },
+  {
+   "community_id": "RC30",
+   "name": "OpenUK",
+   "url": "https://luma.com/openuklondonmeetupsep26",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "open source",
+   "events_found": 1,
+   "sponsor_companies": 1,
+   "event_urls": "https://luma.com/openuklondonmeetupsep26"
+  },
+  {
+   "community_id": "RC31",
+   "name": "Paid x Lawhive",
+   "url": "https://luma.com/i8shxwff",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "startup operators",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://luma.com/i8shxwff"
+  },
+  {
+   "community_id": "RC32",
+   "name": "Postman Developer Events",
+   "url": "https://luma.com/5ifrs74x",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "vendor devrel",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://luma.com/5ifrs74x"
+  },
+  {
+   "community_id": "RC33",
+   "name": "Product Hackathons",
+   "url": "https://luma.com/vpjma1oe",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "product hackathons",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/vpjma1oe"
+  },
+  {
+   "community_id": "RC34",
+   "name": "PyData London",
+   "url": "https://www.meetup.com/pydata-london-meetup/",
+   "url_note": "community page",
+   "focus": "Python data science",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://www.meetup.com/pydata-london-meetup/events/316770322/"
+  },
+  {
+   "community_id": "RC35",
+   "name": "Ramen Space",
+   "url": "https://luma.com/5gvgdu8q",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "founder coworking",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/5gvgdu8q"
+  },
+  {
+   "community_id": "RC36",
+   "name": "SHIPYARD",
+   "url": "https://luma.com/ou24kgyr",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI agent hackathons",
+   "events_found": 1,
+   "sponsor_companies": 5,
+   "event_urls": "https://luma.com/ou24kgyr"
+  },
+  {
+   "community_id": "RC37",
+   "name": "Surface",
+   "url": "https://luma.com/9accbeul",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "frontier builders",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://luma.com/9accbeul"
+  },
+  {
+   "community_id": "RC38",
+   "name": "Unicorn Mafia",
+   "url": "https://luma.com/umhack",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "elite dev hackathons",
+   "events_found": 1,
+   "sponsor_companies": 8,
+   "event_urls": "https://luma.com/umhack"
+  },
+  {
+   "community_id": "RC39",
+   "name": "Vercel Events",
+   "url": "https://luma.com/eveLDN",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "vendor devrel",
+   "events_found": 1,
+   "sponsor_companies": 2,
+   "event_urls": "https://luma.com/eveLDN"
+  },
+  {
+   "community_id": "RC40",
+   "name": "WilbeLABS",
+   "url": "https://luma.com/87m4mw6b",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI x bio",
+   "events_found": 1,
+   "sponsor_companies": 3,
+   "event_urls": "https://luma.com/87m4mw6b"
+  },
+  {
+   "community_id": "RC41",
+   "name": "oscarama events",
+   "url": "https://luma.com/p7pnjcu8",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "AI agent hackathons",
+   "events_found": 1,
+   "sponsor_companies": 6,
+   "event_urls": "https://luma.com/p7pnjcu8"
+  },
+  {
+   "community_id": "RC42",
+   "name": "{Tech: Europe}",
+   "url": "https://luma.com/ldn-hack",
+   "url_note": "first event page found (no community page captured)",
+   "focus": "agentic AI hackathons",
+   "events_found": 1,
+   "sponsor_companies": 4,
+   "event_urls": "https://luma.com/ldn-hack"
+  }
+ ]
+}

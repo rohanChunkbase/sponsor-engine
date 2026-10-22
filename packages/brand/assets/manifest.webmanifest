@@ -1,0 +1,19 @@
+{
+  "name": "Sponsor Engine",
+  "short_name": "Sponsor Engine",
+  "icons": [
+    {
+      "src": "/brand/raft-app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/raft-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6B4A33",
+  "background_color": "#FAF6EE",
+  "display": "standalone"
+}

@@ -1,0 +1,692 @@
+[
+  {
+    "eventId": "L-encode-london-2026",
+    "name": "Encode London Hackathon",
+    "community": "Encode Club",
+    "sponsors": [
+      {
+        "company": "Encode Hub",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/encode-london-2026"
+      },
+      {
+        "company": "Saint",
+        "role": "prize_partner",
+        "sourceUrl": "https://luma.com/encode-london-2026"
+      },
+      {
+        "company": "MongoDB",
+        "role": "prize_partner",
+        "sourceUrl": "https://luma.com/encode-london-2026"
+      },
+      {
+        "company": "Google DeepMind",
+        "role": "prize_partner",
+        "sourceUrl": "https://luma.com/encode-london-2026"
+      }
+    ]
+  },
+  {
+    "eventId": "L-gttihhxt",
+    "name": "AI London Hackathon & Conference",
+    "community": "Encode Club",
+    "sponsors": [
+      {
+        "company": "Encode Hub",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/gttihhxt"
+      }
+    ]
+  },
+  {
+    "eventId": "L-Encode-London-25",
+    "name": "Encode London Hackathon and Conference",
+    "community": "Encode Club",
+    "sponsors": [
+      {
+        "company": "Encode Hub",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "DFINITY",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Concordium",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "OpenAI",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Arbitrum Foundation",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Livepeer",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Envio",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Story Protocol",
+        "role": "general",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Square Mile Coffee Roasters",
+        "role": "drinks",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      },
+      {
+        "company": "Minor Figures",
+        "role": "drinks",
+        "sourceUrl": "https://luma.com/Encode-London-25"
+      }
+    ]
+  },
+  {
+    "eventId": "O-scoop-london-bowl",
+    "name": "Scoop AI Hackathon: London Bowl",
+    "community": "Encode Club",
+    "sponsors": [
+      {
+        "company": "Neo",
+        "role": "co_host",
+        "sourceUrl": "https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/"
+      },
+      {
+        "company": "SpoonOS",
+        "role": "co_host",
+        "sourceUrl": "https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/"
+      },
+      {
+        "company": "ElevenLabs",
+        "role": "tech_partner",
+        "sourceUrl": "https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/"
+      },
+      {
+        "company": "Encode Hub",
+        "role": "venue",
+        "sourceUrl": "https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/"
+      }
+    ]
+  },
+  {
+    "eventId": "O-londonjs-2026-07",
+    "name": "London.js with incident.io - Thursday 30th July 2026",
+    "community": "London.js",
+    "sponsors": [
+      {
+        "company": "incident.io",
+        "role": "general",
+        "sourceUrl": "https://www.meetup.com/london-js/"
+      }
+    ]
+  },
+  {
+    "eventId": "O-londonjs-2026-04",
+    "name": "London.js with Motorway & Omnea - Thursday 30th April 2026",
+    "community": "London.js",
+    "sponsors": [
+      {
+        "company": "Motorway",
+        "role": "general",
+        "sourceUrl": "https://www.meetup.com/london-js/"
+      },
+      {
+        "company": "Omnea",
+        "role": "general",
+        "sourceUrl": "https://www.meetup.com/london-js/"
+      }
+    ]
+  },
+  {
+    "eventId": "O-londonjs-2026-10",
+    "name": "London.js at VEED.IO on Wednesday 28th October 2026",
+    "community": "London.js",
+    "sponsors": [
+      {
+        "company": "VEED",
+        "role": "venue",
+        "sourceUrl": "https://www.meetup.com/london-js/"
+      },
+      {
+        "company": "VEED",
+        "role": "general",
+        "sourceUrl": "https://www.meetup.com/london-js/"
+      },
+      {
+        "company": "VEED",
+        "role": "food",
+        "sourceUrl": "https://www.meetup.com/london-js/"
+      }
+    ]
+  },
+  {
+    "eventId": "O-londonjs-2026-01",
+    "name": "London.js January 2026",
+    "community": "London.js",
+    "sponsors": [
+      {
+        "company": "Flagsmith",
+        "role": "general",
+        "sourceUrl": "https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn"
+      },
+      {
+        "company": "Accurx",
+        "role": "general",
+        "sourceUrl": "https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn"
+      }
+    ]
+  },
+  {
+    "eventId": "L-ai-demo-night-12",
+    "name": "AI Demo Nights #12 ⚡️ AUG 2026",
+    "community": "Outpost (formerly AI Demo Nights)",
+    "sponsors": [
+      {
+        "company": "Dawn Capital",
+        "role": "general",
+        "sourceUrl": "https://luma.com/ai-demo-night-12"
+      },
+      {
+        "company": "Parallel Web Systems",
+        "role": "general",
+        "sourceUrl": "https://luma.com/ai-demo-night-12"
+      }
+    ]
+  },
+  {
+    "eventId": "L-hacksprint-london",
+    "name": "Daytona HackSprint - London, August 2026",
+    "community": "Outpost (formerly AI Demo Nights)",
+    "sponsors": [
+      {
+        "company": "Daytona",
+        "role": "general",
+        "sourceUrl": "https://luma.com/hacksprint-london"
+      },
+      {
+        "company": "OpenAI",
+        "role": "general",
+        "sourceUrl": "https://luma.com/hacksprint-london"
+      }
+    ]
+  },
+  {
+    "eventId": "L-dde-ldn-hack",
+    "name": "DevDay Community Hackathon: London",
+    "community": "Outpost (formerly AI Demo Nights)",
+    "sponsors": [
+      {
+        "company": "OpenAI",
+        "role": "general",
+        "sourceUrl": "https://luma.com/dde-ldn-hack"
+      }
+    ]
+  },
+  {
+    "eventId": "L-94ma079o",
+    "name": "AI Engineer London #10",
+    "community": "AI Engineer London",
+    "sponsors": [
+      {
+        "company": "Tessl",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/94ma079o"
+      },
+      {
+        "company": "Tessl",
+        "role": "food",
+        "sourceUrl": "https://luma.com/94ma079o"
+      },
+      {
+        "company": "Toyo (formerly Layercode)",
+        "role": "general",
+        "sourceUrl": "https://luma.com/94ma079o"
+      }
+    ]
+  },
+  {
+    "eventId": "L-u8rvf61f",
+    "name": "AI Engineer London #8",
+    "community": "AI Engineer London",
+    "sponsors": [
+      {
+        "company": "Tessl",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/u8rvf61f"
+      },
+      {
+        "company": "Tessl",
+        "role": "food",
+        "sourceUrl": "https://luma.com/u8rvf61f"
+      },
+      {
+        "company": "Toyo (formerly Layercode)",
+        "role": "general",
+        "sourceUrl": "https://luma.com/u8rvf61f"
+      }
+    ]
+  },
+  {
+    "eventId": "L-ubg0u3a2",
+    "name": "AI Engineer London Meetup #7",
+    "community": "AI Engineer London",
+    "sponsors": [
+      {
+        "company": "Tessl",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/ubg0u3a2"
+      },
+      {
+        "company": "Tessl",
+        "role": "food",
+        "sourceUrl": "https://luma.com/ubg0u3a2"
+      },
+      {
+        "company": "Toyo (formerly Layercode)",
+        "role": "general",
+        "sourceUrl": "https://luma.com/ubg0u3a2"
+      }
+    ]
+  },
+  {
+    "eventId": "L-lon-nov10",
+    "name": "AI Builders London - Nov 10",
+    "community": "AI Builders",
+    "sponsors": [
+      {
+        "company": "Civo",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/lon-nov10"
+      }
+    ]
+  },
+  {
+    "eventId": "L-lon-sep10",
+    "name": "AI Builders Monthly London",
+    "community": "AI Builders",
+    "sponsors": [
+      {
+        "company": "The Bower (beyond)",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/lon-sep10"
+      }
+    ]
+  },
+  {
+    "eventId": "L-4z45zkng",
+    "name": "Claude Code Meetup London",
+    "community": "Claude Community Events",
+    "sponsors": [
+      {
+        "company": "Anthropic",
+        "role": "food",
+        "sourceUrl": "https://luma.com/4z45zkng"
+      },
+      {
+        "company": "Anthropic",
+        "role": "drinks",
+        "sourceUrl": "https://luma.com/4z45zkng"
+      },
+      {
+        "company": "MMC Ventures",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/4z45zkng"
+      }
+    ]
+  },
+  {
+    "eventId": "L-ictqc1wp",
+    "name": "Claude Code London 03 - 'Build an MCP App' Hack Night",
+    "community": "Claude Community Events",
+    "sponsors": [
+      {
+        "company": "Brainstation",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/ictqc1wp"
+      },
+      {
+        "company": "Alpic",
+        "role": "prize_partner",
+        "sourceUrl": "https://super-mcp-world.netlify.app/"
+      },
+      {
+        "company": "Anthropic",
+        "role": "general",
+        "sourceUrl": "https://super-mcp-world.netlify.app/"
+      }
+    ]
+  },
+  {
+    "eventId": "L-eveur09a",
+    "name": "Grok Bot Community Engineering London Hackathon",
+    "community": "SpaceXAI for London (Grok Bot / Cursor community)",
+    "sponsors": [
+      {
+        "company": "Expedite",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/eveur09a"
+      },
+      {
+        "company": "Supabase",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/eveur09a"
+      },
+      {
+        "company": "Cognee",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/eveur09a"
+      },
+      {
+        "company": "Zero",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/eveur09a"
+      },
+      {
+        "company": "SpaceXAI",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/eveur09a"
+      },
+      {
+        "company": "Cursor",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/eveur09a"
+      }
+    ]
+  },
+  {
+    "eventId": "L-cursor-td9f",
+    "name": "Grok Bot Commerce London Hackathon",
+    "community": "SpaceXAI for London (Grok Bot / Cursor community)",
+    "sponsors": [
+      {
+        "company": "Fleek",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/cursor-td9f"
+      },
+      {
+        "company": "Wassist",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/cursor-td9f"
+      },
+      {
+        "company": "Supabase",
+        "role": "tech_partner",
+        "sourceUrl": "https://luma.com/cursor-td9f"
+      },
+      {
+        "company": "Huge",
+        "role": "co_host",
+        "sourceUrl": "https://luma.com/cursor-td9f"
+      }
+    ]
+  },
+  {
+    "eventId": "L-e2ie935t",
+    "name": "UK AI Agent Hackathon EP3 by ASI (Artificial Superintelligence Alliance) | The Largest Web3 × AI Hackathon in Europe",
+    "community": "Imperial AI Society x Imperial Blockchain Society",
+    "sponsors": [
+      {
+        "company": "Artificial Superintelligence Alliance (ASI)",
+        "role": "general",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      },
+      {
+        "company": "Fetch.ai",
+        "role": "general",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      },
+      {
+        "company": "CUDOS",
+        "role": "general",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      },
+      {
+        "company": "SingularityNET",
+        "role": "general",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      },
+      {
+        "company": "Midnight",
+        "role": "general",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      },
+      {
+        "company": "Sierra AI",
+        "role": "general",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      },
+      {
+        "company": "Imperial College London",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/e2ie935t"
+      }
+    ]
+  },
+  {
+    "eventId": "L-vq6mrlt4",
+    "name": "AI Agent Hackathon x DEG",
+    "community": "Imperial AI Society x Imperial Blockchain Society",
+    "sponsors": [
+      {
+        "company": "Digital Energy Grid (DEG)",
+        "role": "general",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      },
+      {
+        "company": "Beckn Labs",
+        "role": "co_host",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      },
+      {
+        "company": "Lovable",
+        "role": "general",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      },
+      {
+        "company": "CUDOS",
+        "role": "general",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      },
+      {
+        "company": "Sierra AI",
+        "role": "general",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      },
+      {
+        "company": "Anthropic",
+        "role": "general",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      },
+      {
+        "company": "Imperial College London",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/vq6mrlt4"
+      }
+    ]
+  },
+  {
+    "eventId": "L-8h0pmpvl",
+    "name": "AI Demo Days #12",
+    "community": "AI Demo Days",
+    "sponsors": [
+      {
+        "company": "Cloudflare",
+        "role": "general",
+        "sourceUrl": "https://luma.com/8h0pmpvl"
+      },
+      {
+        "company": "StackOne",
+        "role": "general",
+        "sourceUrl": "https://luma.com/8h0pmpvl"
+      }
+    ]
+  },
+  {
+    "eventId": "L-sup0n60r",
+    "name": "AI Demo Days #11",
+    "community": "AI Demo Days",
+    "sponsors": [
+      {
+        "company": "OpenAI",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/sup0n60r"
+      },
+      {
+        "company": "Jack & Jill",
+        "role": "general",
+        "sourceUrl": "https://luma.com/sup0n60r"
+      },
+      {
+        "company": "StackOne",
+        "role": "general",
+        "sourceUrl": "https://luma.com/sup0n60r"
+      },
+      {
+        "company": "Cloudflare",
+        "role": "general",
+        "sourceUrl": "https://luma.com/sup0n60r"
+      }
+    ]
+  },
+  {
+    "eventId": "L-7srz7k7v",
+    "name": "UK AI Agent lab: Gemini Edition",
+    "community": "UK AI Agents Lab",
+    "sponsors": [
+      {
+        "company": "Google DeepMind",
+        "role": "co_host",
+        "sourceUrl": "https://luma.com/7srz7k7v"
+      },
+      {
+        "company": "Imperial College London",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/7srz7k7v"
+      }
+    ]
+  },
+  {
+    "eventId": "L-ukai-tg9s",
+    "name": "Shaping the Future of AI with Microsoft",
+    "community": "UK AI Agents Lab",
+    "sponsors": [
+      {
+        "company": "Microsoft",
+        "role": "co_host",
+        "sourceUrl": "https://luma.com/ukai-tg9s"
+      },
+      {
+        "company": "Imperial College London",
+        "role": "venue",
+        "sourceUrl": "https://luma.com/ukai-tg9s"
+      }
+    ]
+  },
+  {
+    "eventId": "O-ait-2026-09-22",
+    "name": "AI Tinkerers London - 22nd September 2026",
+    "community": "AI Tinkerers London",
+    "sponsors": [
+      {
+        "company": "Fleek",
+        "role": "venue",
+        "sourceUrl": "https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026"
+      },
+      {
+        "company": "Conveo",
+        "role": "general",
+        "sourceUrl": "https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026"
+      },
+      {
+        "company": "Dex",
+        "role": "general",
+        "sourceUrl": "https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026"
+      },
+      {
+        "company": "ACI.dev",
+        "role": "general",
+        "sourceUrl": "https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026"
+      },
+      {
+        "company": "Mozilla AI",
+        "role": "general",
+        "sourceUrl": "https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026"
+      }
+    ]
+  },
+  {
+    "eventId": "O-ait-agents-vs-wall-street",
+    "name": "Agents vs Wall Street // $10k cash prize (AI Tinkerers London)",
+    "community": "AI Tinkerers London",
+    "sponsors": [
+      {
+        "company": "Primer",
+        "role": "co_host",
+        "sourceUrl": "https://london.aitinkerers.org/p/agents-vs-wall-street"
+      },
+      {
+        "company": "OpenStocks",
+        "role": "co_host",
+        "sourceUrl": "https://london.aitinkerers.org/p/agents-vs-wall-street"
+      },
+      {
+        "company": "OpenAI",
+        "role": "co_host",
+        "sourceUrl": "https://london.aitinkerers.org/p/agents-vs-wall-street"
+      }
+    ]
+  },
+  {
+    "eventId": "O-jslondon-2026-07",
+    "name": "JavaScript London in Collaboration with Healthtech-1",
+    "community": "JavaScript London",
+    "sponsors": [
+      {
+        "company": "Healthtech-1",
+        "role": "general",
+        "sourceUrl": "https://www.meetup.com/javascript-london/events/315267535/"
+      },
+      {
+        "company": "Wave Talent",
+        "role": "venue",
+        "sourceUrl": "https://www.meetup.com/javascript-london/events/315267535/"
+      },
+      {
+        "company": "Healthtech-1",
+        "role": "food",
+        "sourceUrl": "https://www.meetup.com/javascript-london/events/315267535/"
+      }
+    ]
+  },
+  {
+    "eventId": "O-jslondon-2026-02",
+    "name": "JavaScript London - first meetup of 2026",
+    "community": "JavaScript London",
+    "sponsors": [
+      {
+        "company": "Wave Talent",
+        "role": "co_host",
+        "sourceUrl": "https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_"
+      },
+      {
+        "company": "Omnea",
+        "role": "co_host",
+        "sourceUrl": "https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_"
+      }
+    ]
+  }
+]

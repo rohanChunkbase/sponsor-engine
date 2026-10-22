@@ -1,0 +1,35 @@
+community_id,name,url,focus,events_found,sponsor_companies,event_urls
+NC02,AI Native Dev,https://x.com/TheMekon_Venus/status/2001055508858278256,AI-native development,1,Tessl,https://x.com/TheMekon_Venus/status/2001055508858278256
+NC03,Black Forest Labs,,,1,Black Forest Labs;Dawn Capital,https://x.com/stephenbtl/status/2015019651592278423
+NC04,Cantor8,,,1,Canton Network;Young Nola,https://x.com/antifragiledon/status/2093744042265772310
+NC06,Creative AI Meetup,,,1,Bayes Business School (City St George's),https://x.com/TheMekon_Venus/status/2105410089418916165
+NC07,Cursor community,,,1,Cursor;Halkin;Manus AI;Seapoint,https://somo.social/en/e/hands-off-hackathon-625
+NC08,Data Engineering London,https://www.meetup.com/data-engineering-london/,Data engineering,1,Altinity;The London Art Bar,https://www.meetup.com/data-engineering-london/events/315978046/
+NC09,DevOps Society,https://luma.com/hacknightldn,DevOps / observability,1,Elastic,https://luma.com/hacknightldn
+NC11,Elastic London User Group,https://www.meetup.com/london-elastic-fantastics/,Elastic / search / AI agents,1,Elastic;GfK Online Pricing Intelligence;Lonely Planet;Red Badger;Tessl,https://www.meetup.com/london-elastic-fantastics/events/316183895/
+NC13,Experimentation London,https://www.experimentationlondon.com/,A/B testing / CRO,1,Amplitude;One Avenue Group,https://www.experimentationlondon.com/
+NC14,Fin (Intercom),,,1,Fin (Intercom),https://x.com/fin_ai/status/2026661688917844103
+NC15,Global HackTour,https://luma.com/pp9vh9ig,AI hackathon tour,1,Boltzbit;University College London (UCL);Z.AI,https://luma.com/pp9vh9ig
+NC16,ISC2 London Chapter,,,1,CGI,https://x.com/HelloMunawarAli/status/2090197003237986763
+NC17,Intercom Design,,,1,Fin (Intercom),https://x.com/IniAbiodun/status/1981646781462007819
+NC18,JS Monthly London,https://guild.host/events/jsmonthly-london-october-mrpzgz,JavaScript,2,AG Grid;CodeRabbit;Just Eat;Torc,https://guild.host/events/jsmonthly-london-october-mrpzgz https://www.linkedin.com/posts/nick-n%E2%AD%90%EF%B8%8F%F0%9F%8E%AC%F0%9F%93%BA-0b651b14_techlondon-communityfirst-aitooling-activity-7493445872349802496-SMQ3
+NC19,Laravel London,https://luma.com/347t02d7,PHP / Laravel,1,Vonage,https://luma.com/347t02d7
+NC20,London AI Meetup,https://x.com/AgentArena42/status/2054856735186129323,AI,1,Agent Arena;Google,https://x.com/AgentArena42/status/2054856735186129323
+NC21,London Agentic AI,https://luma.com/758nubw3,Agentic AI,1,AWS,https://luma.com/758nubw3
+NC22,London Platform User Group (LoPUG),https://www.linkedin.com/company/london-platform-user-group-lopug,Platform engineering,2,Accurx;Adaptavist;Focused;Pulumi;Syntasso,https://www.linkedin.com/posts/london-platform-user-group-lopug_kubernetes-activity-7480732827387498496-5VOt https://www.linkedin.com/posts/london-platform-user-group-lopug_lopug-ai-platformengineering-activity-7502663862798680065-gEQv
+NC23,London PostgreSQL Meetup,,,1,Doggett's Coat and Badge,https://x.com/pgEdgeInc/status/2107831583696719961
+NC24,London PyTorch Meetup,https://luma.com/e999291v,PyTorch / ML,1,Graphcore,https://luma.com/e999291v
+NC25,Londonmaxxing,https://luma.com/maxxing-london,London civic/consumer hackathons,1,Ramen Space,https://luma.com/maxxing-london
+NC26,Londroid,https://x.com/londroid,Android,1,Vonage,https://x.com/VonageDev/status/2028890900785492352
+NC27,Mindstone,https://mindstone.com,Practical AI meetups,1,Mindstone,https://x.com/TheMekon_Venus/status/2079937747574223009
+NC28,Mubit,https://luma.com/nightshift-london,AI hackathon (company-run),1,Mubit;OpenAI,https://luma.com/nightshift-london
+NC29,Platform Engineering London,https://www.meetup.com/platform-engineering-london/,Platform engineering / on-call,1,Fivium;Tarmac IO,https://www.meetup.com/platform-engineering-london/events/316553802/
+NC30,Rare Founders,https://luma.com/whe8e3ip,Founder community / build hackathons,1,Mollie;OpenAI;The Ministry (Borough),https://luma.com/whe8e3ip
+NC31,Rust London User Group,https://www.meetup.com/rust-london-user-group/,Rust,1,Zed Industries,https://x.com/RustNationUK/status/1989296250143809640
+NC32,Sequoia Capital,,,1,OpenAI;Sequoia Capital,https://x.com/Areai51/status/2029533605068701849
+NC33,SurrealDB,,,1,Pydantic;SurrealDB,https://x.com/jaimemh/status/2016795337805971764
+NC37,Voice AI Space,https://x.com/Speechmatics/status/2017208682140889359,Voice AI,1,Speechmatics,https://x.com/Speechmatics/status/2017208682140889359
+NC38,Write the Docs London,https://www.meetup.com/write-the-docs-london/,Technical writing,1,Cloudflare,https://x.com/Cloudflare/status/2051161774141964432
+NC39,notanother.pizza,https://luma.com/qn9exp2n,Tools for community organisers,1,Newspeak House;Twilio,https://luma.com/qn9exp2n
+NC40,poolside,,,1,NVIDIA;Prime Intellect;poolside,https://x.com/Badiaserra/status/2057495711776723446
+NC41,vLLM Meetups,https://luma.com/iuecyow4,LLM inference (vLLM / llm-d),1,NVIDIA;Red Hat AI;Stelia AI;Sustainable Ventures,https://luma.com/iuecyow4

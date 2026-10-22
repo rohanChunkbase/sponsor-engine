@@ -1,0 +1,33 @@
+{
+  "name": "@sponsor-engine/integrations",
+  "version": "0.1.0",
+  "description": "Swappable CRM, memory, and public-data providers for Sponsor Engine. Built-in tools run when no key is set.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && mkdir -p dist/spam dist/eval && cp src/spam/model.json dist/spam/model.json && cp src/eval/sponsor-labels.json src/eval/sponsor-match-report.json dist/eval/",
+    "test": "node --experimental-strip-types --test --test-reporter spec test/**/*.test.ts",
+    "smoke": "node --experimental-strip-types scripts/smoke-all.ts",
+    "smoke:crm": "node --experimental-strip-types scripts/smoke-crm.ts",
+    "smoke:memory": "node --experimental-strip-types scripts/smoke-memory.ts",
+    "smoke:live": "node --experimental-strip-types scripts/smoke-live.ts",
+    "smoke:datakit": "node --experimental-strip-types scripts/smoke-datakit.ts",
+    "smoke:cognee": "node --experimental-strip-types scripts/smoke-cognee.ts",
+    "eval:sponsors": "node --experimental-strip-types scripts/eval-sponsors.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  }
+}

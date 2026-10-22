@@ -1,0 +1,617 @@
+
+Grok Bot Community Engineering London Hackathon
+London
+Grok Bot Hackathon
+Submit
+Judge Portal
+London
+Grok Bot Community Engineering London Hackathon
+Build open-source tools that London community leads will actually use.
+Thursday, 22nd October · 6:00 PM – 11:00 PM · Expedite London HQ — London
+An evening hackathon for community engineers, DevRels, organisers and builders. Every track comes from a problem a London community lead sent us, and everything you build is open source.
+Register on Luma →
+See tracks
+Grok BotAgent
+CCursorCode editor
+SSupabaseTechnology partner
+CCogneeTechnology partner
+ZZeroTechnology partner
+NNotionTechnology partner
+EExpediteVenue partner
+Grok Bot
+Pick a real problem a London community lead sent us. Build it with Grok Bot and Cursor, and ship it as open source so another community can run it next week.
+Vet new members. Introduce people. Run the weekly promo. Build an open venue database. Price a booking. Or bring your own community's problem.
+Francisco Terpolilli 🤌Host · EU Ambassador @ Cursor
+18:00
+Where, when, how big?
+✓ Thu 22 Oct → doors 18:00, code freeze 21:50
+✓ Expedite London HQ → 7 Lyric Square, London
+✓ Solo or teams of up to 5 → Top 5 demo live, 3 mins each
+Register on Luma →Schedule →Prizes →
+Live demos. Ship fast. Real communities 🤌
+＋Message Grok Bot…
+Tracks
+Five problems London community leads sent us, plus a wildcard for your own community idea. Every project must be open source. Click a track for the brief, starters and integrations.
+Track 1 · Vetting & moderation
+Gatekeeper
+Review applications, keep scammers out, and share a blocklist across groups.
+Read the full brief →
+Track 2 · Members, intros & speakers
+Know Your Members
+Find out who your members are, introduce them to each other, and find speakers among them.
+Read the full brief →
+Track 3 · Run sheet, promo & newsletter
+Event Autopilot
+Turn one event into a run sheet, posts, visuals and a newsletter that a lead approves with one click.
+Read the full brief →
+Track 4 · Venues, communities, events
+Open Venue & Events DB
+An open database of London venues, communities and events that approved organisers keep up to date together.
+Read the full brief →
+Track 5 · Inbound, pricing, sponsors
+Front Desk & Revenue
+Answer inbound in chat, price bookings fairly, and find sponsors.
+Read the full brief →
+Wildcard · Your own community idea
+Weird Stuff
+You already run or know a community and have an idea that doesn't fit the other tracks. Build that.
+Read the full brief →
+Close ✕
+Tech partner
+Supabase
+Supabase →
+Postgres database, auth, storage and realtime for your community tooling.
+Docs →Auth guide →Database →
+Isabelle Roser
+Connection · Supabase
+Tech partner
+Cognee
+Cognee →
+Open-source memory for AI agents: turn docs, chats and data into one recallable memory layer.
+Docs →Quickstart →MCP →GitHub →
+Luca Stromann
+Product · cognee
+Tech partner
+Zero
+Zero →
+The GTM OS: pipeline, lead search, enrichment, warm intros and sequences, with agents handling the admin.
+Docs →MCP →API →Luma sync →
+Mariia Nedelkina
+Connection · Zero
+Tech partner
+Notion
+Notion →
+Docs, wikis and databases for your community, with an official API and a hosted MCP server your agents can use.
+API docs →Notion MCP →JS SDK →Create an integration →Templates →
+Waseef Mohammad Khan
+Campus Leader · Notion
+Tech partner
+Grok Bot
+Grok Bot →
+An agent that reads your community's context, plans the build with you and does the research. Use the skill to point it at your repo.
+Skill →
+Francisco Terpolilli 🤌
+EU Ambassador · SpaceXAI
+Tech partner
+Cursor
+Cursor →
+The code editor and agent you build with. Plan, write and ship before code freeze.
+CLI →IDE →SDK →
+Francisco Terpolilli 🤌
+EU Ambassador · Cursor
+Close ✕
+Track 1 · Vetting & moderation
+Gatekeeper
+Review applications, keep scammers out, and share a blocklist across groups.
+The problem
+Leads read every application by hand and kick bots and scammers one by one. A scammer removed from one group joins the next, because communities share nothing.
+What community leads told us
+Every application gets read by hand, often by one tired lead.
+Checking a new member means asking "do they fit what we do?", not just "are they real?".
+A scammer kicked from one WhatsApp group turns up in the next. There is no shared blocklist.
+Chat apps have weak moderation tools, so every removal and warning is manual.
+What to build
+An open-source application reviewer. It scores each applicant against the community's own written rules, says accept, ask or decline, and shows why. Store decisions in Supabase.
+A shared blocklist that several communities can write to: hashed phone numbers or handles, evidence, who reported it, and an appeal route. Row-level security in Supabase keeps each community's reports private until they're confirmed.
+A WhatsApp or Discord moderation bot that flags scam patterns and drafts the removal message. A human presses send.
+A review queue for the borderline cases, so a lead clears a week of decisions in ten minutes.
+What a winning demo looks like
+An applicant arrives, gets scored and routed with a clear reason. Then a known scammer tries to join a second group and gets stopped.
+Suggested partner stack
+Supabase for the shared blocklist and auth, Grok Bot to write the reviewer's reasoning, Cursor to build the bot.
+Click a partner for docs and who to find on the night.
+Open-source starters to fork
+detoxify Apache-2.0
+Pretrained toxicity classifiers. A quick first pass on chat messages.
+SMS spam dataset free dataset
+5,574 labelled messages to test a scam filter.
+StopForumSpam API free API
+Checks emails, usernames and IPs against reported spammers.
+Supabase Apache-2.0
+Postgres, auth and row-level security for a blocklist shared between communities.
+Integrations: where community leads live
+WhatsAppCloud API (official): Free to start. Talks 1:1 with people who message a business number. Outbound needs approved templates; group support is limited.
+Baileys · MIT: Unofficial. Logs in as a linked device and can read and post in groups. Against WhatsApp's terms, so use a spare test number.
+whatsapp-web.js · Apache-2.0: Unofficial, drives WhatsApp Web. Same caveat as Baileys.
+DiscordDiscord API (official): Free. Full bot access to the servers that add your bot.
+discord.js · Apache-2.0: Node library.
+discord.py · MIT: Python library.
+Data community leads offered
+Unicorn Mafia: past event data, channel history, member info with consent, and access to their WhatsApp bot. Ask on the night.
+AI Agent Lab: will share most data apart from API access. Ask on the night.
+Free data
+Sources you can scrape today
+SMS spam dataset (Hugging Face) tested 22 OctYou get: 5,574 labelled messages (sms, label ham/spam). Real scam wording to train or test a chat moderation filter.
+Access: No key. Rows API returns up to 100 rows per call.
+curl -s 'https://datasets-server.huggingface.co/rows?dataset=ucirvine/sms_spam&config=plain_text&split=train&offset=0&length=100' | jq -r '.rows[].row | [.label, .sms] | @tsv'
+GitHub REST API tested 22 OctYou get: Users/orgs: created_at, public_repos, followers. Repos: stars, topics, language, pushed_at. Search users, repos and orgs by location or topic.
+Access: No key: 60 requests/hour, search 10/minute. A free personal token raises it to 5,000/hour.
+curl -s 'https://api.github.com/users/octocat' | jq '{created_at, public_repos, followers}'
+Devpost project search tested 22 OctYou get: JSON: name, tagline, url, members (usernames), tags (tech stack), winner, like_count, comment_count. 62k+ results for "community".
+Access: No key. Use Accept: application/json.
+curl -s -H 'Accept: application/json' 'https://devpost.com/software/search?query=community+bot' | jq -r '.software[] | [.name, .winner, (.tags|join(","))] | @tsv'
+All sources and working snippets: Data starter kit.
+Never load private member data into a public repo. Collect opt-in applications on the night, or use a lead's data inside the room only. To check whether an applicant's handle belongs to a real builder, use GitHub (account age, repos, followers) and Devpost (past projects).
+How it’s judged
+Right accept and decline calls on a test set. Clear reasons. Few real people wrongly blocked. Time saved for a lead.
+Every project must be open source (public repo, MIT, Apache-2.0 or AGPL-3.0). All tracks also use the six shared judging criteria below, each scored 1–5.
+Track 2 · Members, intros & speakers
+Know Your Members
+Find out who your members are, introduce them to each other, and find speakers among them.
+The problem
+Most leads know a member as a phone number. Nobody gets introduced, threads die, and finding a good panellist means asking around.
+What community leads told us
+One builder group has over a thousand members known only by phone number. Its chat dropped from hundreds of messages a month to a few dozen.
+A co-working space wants to know who keeps coming back, why, and what they get out of it.
+Organisers want to send every member a few quick questions and actually use the answers.
+Finding good panellists and people to demo is slow and depends on who you already know.
+What to build
+A short opt-in questionnaire sent over WhatsApp or Discord. Answers go into a member graph in Cognee or Supabase.
+An intro bot that suggests one good introduction a week per member, explains why, and still works a month later without the organiser.
+A speaker finder: give it a topic and it suggests members and London builders, with proof of what they've built (GitHub, Devpost, Hacker News) or hosted (Luma).
+A thread reviver that spots dead conversations worth restarting and drafts the nudge, with a log of what it tried and where it failed.
+What a winning demo looks like
+An introduction or revived thread that no organiser made by hand, shown end to end. Then a speaker shortlist for a real topic, each name with evidence.
+Suggested partner stack
+Cognee for the member graph, Supabase for answers and consent, Notion as the lead's view, Grok Bot to write the intros.
+Click a partner for docs and who to find on the night.
+Open-source starters to fork
+Cognee Apache-2.0
+Turns answers, chats and profiles into a knowledge graph your agent can query.
+sentence-transformers Apache-2.0
+Embeddings for matching members by what they build and want.
+graphology MIT
+Graph library for the member network and connection-density metrics.
+mem0 Apache-2.0
+Per-member memory for a bot that remembers past conversations.
+Luma event JSON (hosts and speakers) free, no key
+Each event lists its hosts with LinkedIn, X and website handles. That is a good source of speakers.
+Integrations: where community leads live
+WhatsAppCloud API (official): Free to start. Talks 1:1 with people who message a business number. Outbound needs approved templates; group support is limited.
+Baileys · MIT: Unofficial. Logs in as a linked device and can read and post in groups. Against WhatsApp's terms, so use a spare test number.
+whatsapp-web.js · Apache-2.0: Unofficial, drives WhatsApp Web. Same caveat as Baileys.
+DiscordDiscord API (official): Free. Full bot access to the servers that add your bot.
+discord.js · Apache-2.0: Node library.
+discord.py · MIT: Python library.
+NotionNotion API + JS SDK · MIT: Free. Read and write databases and pages your integration is shared with.
+Notion MCP server · MIT: Lets Grok Bot or Cursor read and write a Notion workspace.
+LinkedInShare on LinkedIn (official): Self-serve, but only posts as the signed-in member. Reading other people, groups or company pages needs partner approval you won't get tonight. Scraping is against their terms. Use a lead's own data export or manual paste.
+Data community leads offered
+The Hack Collective: a Luma calendar subscriber export (about 450 names and emails, shared with consent) and a synthetic member-profile dataset. Use it in the room; don't commit it to a public repo.
+AI Pilled: their Luma history and LinkedIn posts (all public), useful for the speaker finder.
+Free data
+Sources you can scrape today
+Luma single event JSON tested 22 OctYou get: Full event: description, hosts[] (name, linkedin_handle, twitter_handle, website), sessions, ticket_info, categories, guest_count, calendar. The event id is in the discover feed (api_id).
+Access: No key. Same courtesy limits as above.
+curl -s 'https://api.lu.ma/event/get?event_api_id=evt-Yz7RR89Zlv56tya' | jq '{name: .event.name, start: .event.start_at, going: .guest_count}'
+GitHub REST API tested 22 OctYou get: Users/orgs: created_at, public_repos, followers. Repos: stars, topics, language, pushed_at. Search users, repos and orgs by location or topic.
+Access: No key: 60 requests/hour, search 10/minute. A free personal token raises it to 5,000/hour.
+curl -s 'https://api.github.com/users/octocat' | jq '{created_at, public_repos, followers}'
+Devpost project search tested 22 OctYou get: JSON: name, tagline, url, members (usernames), tags (tech stack), winner, like_count, comment_count. 62k+ results for "community".
+Access: No key. Use Accept: application/json.
+curl -s -H 'Accept: application/json' 'https://devpost.com/software/search?query=community+bot' | jq -r '.software[] | [.name, .winner, (.tags|join(","))] | @tsv'
+Hacker News Algolia API tested 22 OctYou get: hits[]: title, url, points, num_comments, created_at, author. Filters: tags=story|show_hn, numericFilters=created_at_i>…
+Access: No key. Roughly 10,000 requests/hour per IP.
+curl -s 'https://hn.algolia.com/api/v1/search_by_date?query=hackathon&tags=story&hitsPerPage=5' | jq -r '.hits[] | [.created_at, .points, .title] | @tsv'
+All sources and working snippets: Data starter kit.
+GitHub's API turns an opt-in handle into languages and projects. Devpost project search and Hacker News show what someone has shipped or said.
+How it’s judged
+How good the intros and speaker picks are. Evidence for each one. Honesty about failures. Whether a lead would run it every week.
+Every project must be open source (public repo, MIT, Apache-2.0 or AGPL-3.0). All tracks also use the six shared judging criteria below, each scored 1–5.
+Track 3 · Run sheet, promo & newsletter
+Event Autopilot
+Turn one event into a run sheet, posts, visuals and a newsletter that a lead approves with one click.
+The problem
+Every week someone writes the event page, makes the visuals, posts everywhere, sends the newsletter and chases volunteers. All by hand.
+What community leads told us
+Venues, food, suppliers, pages, money and volunteers all live in different places. Leads want one place to dump it all and have it sorted.
+The post and visuals for each event take hours, and AI design tools aren't good enough to ship yet.
+Someone writes the newsletter, group messages and social posts every single week.
+Volunteers burn out on admin a machine could do. Time saved per volunteer is the number that matters.
+What to build
+An event workspace in Notion: drop in notes, quotes and receipts, and it builds the run sheet, budget and volunteer rota.
+A promo pipeline: event page copy, on-brand visuals from code templates rather than image models, a Ghost newsletter and posts for WhatsApp, LinkedIn and Discord. The lead approves each one.
+A weekly digest that pulls this week's events from Luma and drafts the newsletter and group message.
+A helper for the night: check-in, timings and last-minute changes pushed to the group.
+What a winning demo looks like
+One event goes from a one-line idea to a run sheet, visuals, a newsletter draft and posts. Show the volunteer hours saved.
+Suggested partner stack
+Notion as the workspace, Supabase for event data, Zero to turn Luma guests into follow-ups, Grok Bot for copy, Cursor for templates.
+Click a partner for docs and who to find on the night.
+Open-source starters to fork
+listmonk AGPL-3.0
+Self-hosted newsletter and mailing-list manager with an API.
+Postiz AGPL-3.0
+Schedules posts to LinkedIn, X, Discord and more.
+Ghost MIT
+Newsletter and site with an Admin API for sending.
+fabric.js MIT
+Canvas templates for event visuals that always match the brand.
+Puppeteer Apache-2.0
+Render an HTML template to a PNG for each event.
+ical-generator MIT
+Calendar invites and feeds for the run sheet.
+Integrations: where community leads live
+Ghost newsletterGhost · MIT: Open-source newsletter and site. Self-host free, or Ghost(Pro) paid.
+Admin API: Create posts, send newsletters and manage members. JS client in TryGhost/SDK (MIT): https://github.com/TryGhost/SDK
+Content API: Read-only public posts.
+SubstackRSS feed: No official API. Every publication has <name>.substack.com/feed for posts, and writers can export subscribers as CSV from the dashboard. Posting has to stay manual.
+LinkedInShare on LinkedIn (official): Self-serve, but only posts as the signed-in member. Reading other people, groups or company pages needs partner approval you won't get tonight. Scraping is against their terms. Use a lead's own data export or manual paste.
+WhatsAppCloud API (official): Free to start. Talks 1:1 with people who message a business number. Outbound needs approved templates; group support is limited.
+Baileys · MIT: Unofficial. Logs in as a linked device and can read and post in groups. Against WhatsApp's terms, so use a spare test number.
+whatsapp-web.js · Apache-2.0: Unofficial, drives WhatsApp Web. Same caveat as Baileys.
+NotionNotion API + JS SDK · MIT: Free. Read and write databases and pages your integration is shared with.
+Notion MCP server · MIT: Lets Grok Bot or Cursor read and write a Notion workspace.
+LumaLuma API (official): Needs Luma Plus (paid) and covers your own calendar. Public pages and the discover feed are in the Data starter kit.
+Zero Luma sync: Zero pulls Luma guests into its pipeline, so attendees become contacts you can enrich and follow up.
+Data community leads offered
+Outpost: past event data and channel history, anonymised CSVs on request. Ask on the night.
+AI Pilled: Luma history and LinkedIn posts (public) to learn a community's voice and visual style.
+Free data
+Sources you can scrape today
+Luma single event JSON tested 22 OctYou get: Full event: description, hosts[] (name, linkedin_handle, twitter_handle, website), sessions, ticket_info, categories, guest_count, calendar. The event id is in the discover feed (api_id).
+Access: No key. Same courtesy limits as above.
+curl -s 'https://api.lu.ma/event/get?event_api_id=evt-Yz7RR89Zlv56tya' | jq '{name: .event.name, start: .event.start_at, going: .guest_count}'
+Luma calendar .ics feed tested 22 OctYou get: Standard iCalendar: DTSTART, DTEND, SUMMARY, LOCATION, URL per event, past and future. Calendar ids come from calendar_api_id in the discover feed.
+Access: No key. Feed says refresh every 12h.
+curl -s 'https://api.lu.ma/ics/get?entity=calendar&id=cal-wUKLVX9VWOdVkpg' | grep -E '^(DTSTART|SUMMARY)' | head
+Eventbrite listing (schema.org JSON-LD) tested 22 OctYou get: ld+json ItemList of Event: name, description, startDate, endDate, location (venue name, address), url. About 20 per page; add ?page=2.
+Access: No key for pages. Official API needs a free OAuth token and only covers your own events.
+curl -s -A 'Mozilla/5.0' 'https://www.eventbrite.co.uk/d/united-kingdom--london/tech-events/' | python3 -c "import sys,re,json;[print(i['item']['startDate'],i['item']['name']) for m in re.findall(r'ld\+json\">(.*?)</script>',sys.stdin.read(),re.S) for d in [json.loads(m)] if isinstance(d,dict) and d.get('@type')=='ItemList' for i in d['itemListElement']]"
+All sources and working snippets: Data starter kit.
+Luma event JSON (api.lu.ma/event/get) and .ics feeds give real event text, dates and venues to test the pipeline on. Make up budgets and rotas.
+How it’s judged
+How much of the weekly work really runs itself. Quality of the copy and visuals. Hours saved. Whether a lead would trust it with a real event.
+Every project must be open source (public repo, MIT, Apache-2.0 or AGPL-3.0). All tracks also use the six shared judging criteria below, each scored 1–5.
+Track 4 · Venues, communities, events
+Open Venue & Events DB
+An open database of London venues, communities and events that approved organisers keep up to date together.
+The problem
+Finding a free venue for an evening or weekend event is one of the hardest jobs organisers have. The knowledge sits in people's heads. The same goes for which communities exist and which events are worth going to.
+What community leads told us
+Finding a venue that will host evening and weekend events for free is the hardest job one organiser told us about.
+No one has an up-to-date list of a city's communities: size, audience, what they run and who to contact.
+A volunteer adds events to a shared community calendar by hand.
+Builders want a ranked list of the best events and hackathons in their city, not filler.
+Communities shouldn't compete. Organisers want one shared agent they can all ask.
+What to build
+The venue database: capacity, AV, evening and weekend hours, free or paid terms, the contact, and which communities hosted there. Only approved organisers can post, and they vouch for each other. Built on Supabase with PostGIS for "near me" search.
+A communities directory in the same database: size, audience, what they run and how to reach the lead, kept fresh from Luma calendars.
+An events layer: pull Luma, Devpost, BuilderBase and Meetup into one London calendar, rank events with the reasons shown, and publish an .ics feed other calendars can subscribe to.
+Organiser outreach: scrape the hosts of London Luma events (name, LinkedIn, X, website), match them to venues and communities, and draft the intro. Track replies in Zero or Supabase.
+A shared agent on top: any approved organiser asks in WhatsApp or Discord "free space for 80 people next Thursday near Old Street?" and gets venues, past hosts and a drafted request. Use Cognee for memory and Grok Bot for the agent.
+What a winning demo looks like
+Two organisers add real venues. A third finds one by asking in chat and sends the request. The ranked events feed and .ics calendar update from live data.
+Suggested partner stack
+Supabase for the database and PostGIS, Cognee and Grok Bot for the shared agent, Zero for organiser outreach, Notion as a public view.
+Click a partner for docs and who to find on the night.
+Open-source starters to fork
+Supabase Apache-2.0
+Postgres, auth, row-level security and storage. PostGIS is one click: https://supabase.com/docs/guides/database/extensions/postgis
+Overture Maps places MIT (repo) · open data
+Free global places data to seed halls, co-working spaces and bars. Guide: https://docs.overturemaps.org/guides/places/
+OpenStreetMap via Overpass Turbo ODbL data · free
+Query community centres, co-working spaces and event venues in London.
+Meilisearch MIT core
+Fast typo-tolerant search over venues and communities.
+ical-generator MIT
+Publish the shared calendar as an .ics feed.
+Hack Club hackathons MIT
+An open-source hackathon listing site to fork for the events layer.
+Cognee Apache-2.0
+Memory for the shared organiser agent.
+Integrations: where community leads live
+LumaLuma API (official): Needs Luma Plus (paid) and covers your own calendar. Public pages and the discover feed are in the Data starter kit.
+Zero Luma sync: Zero pulls Luma guests into its pipeline, so attendees become contacts you can enrich and follow up.
+WhatsAppCloud API (official): Free to start. Talks 1:1 with people who message a business number. Outbound needs approved templates; group support is limited.
+Baileys · MIT: Unofficial. Logs in as a linked device and can read and post in groups. Against WhatsApp's terms, so use a spare test number.
+whatsapp-web.js · Apache-2.0: Unofficial, drives WhatsApp Web. Same caveat as Baileys.
+DiscordDiscord API (official): Free. Full bot access to the servers that add your bot.
+discord.js · Apache-2.0: Node library.
+discord.py · MIT: Python library.
+NotionNotion API + JS SDK · MIT: Free. Read and write databases and pages your integration is shared with.
+Notion MCP server · MIT: Lets Grok Bot or Cursor read and write a Notion workspace.
+SlackBolt for JavaScript · MIT: Official framework for Slack apps. Free workspaces work.
+Data community leads offered
+Hack Radar: its database of scraped events, for seeding and labelling the ranking. Ask on the night.
+The Hack Collective: its public Luma calendar of London hackathons, to compare your auto-calendar against.
+Free data
+Sources you can scrape today
+Luma discover API (London) tested 22 OctYou get: entries[].event: name, start_at, end_at, url, location_type, geo_address_info (venue, address, lat/lng); guest_count; calendar. Page with pagination_cursor=next_cursor.
+Access: No key. Undocumented, so cache results and keep it to a few calls a minute.
+curl -s 'https://api.lu.ma/discover/get-paginated-events?discover_place_api_id=discplace-QCcNk3HXowOR97j&pagination_limit=50' | jq -r '.entries[].event | [.start_at, .name, .geo_address_info.address] | @tsv'
+Luma single event JSON tested 22 OctYou get: Full event: description, hosts[] (name, linkedin_handle, twitter_handle, website), sessions, ticket_info, categories, guest_count, calendar. The event id is in the discover feed (api_id).
+Access: No key. Same courtesy limits as above.
+curl -s 'https://api.lu.ma/event/get?event_api_id=evt-Yz7RR89Zlv56tya' | jq '{name: .event.name, start: .event.start_at, going: .guest_count}'
+Luma calendar .ics feed tested 22 OctYou get: Standard iCalendar: DTSTART, DTEND, SUMMARY, LOCATION, URL per event, past and future. Calendar ids come from calendar_api_id in the discover feed.
+Access: No key. Feed says refresh every 12h.
+curl -s 'https://api.lu.ma/ics/get?entity=calendar&id=cal-wUKLVX9VWOdVkpg' | grep -E '^(DTSTART|SUMMARY)' | head
+Devpost hackathons API tested 22 OctYou get: title, url, submission_period_dates, displayed_location, themes, prize_amount (HTML), registrations_count, organization_name. 9 per page; meta.total_count. Filters: status[]=upcoming|open|ended, search=london.
+Access: No key. Send a browser User-Agent; plain bots get 403 on hackathon subdomains.
+curl -s -g 'https://devpost.com/api/hackathons?status[]=ended&search=london' | jq -r '.hackathons[] | [.title, .submission_period_dates, .registrations_count, .organization_name] | @tsv'
+BuilderBase public discovery API tested 22 OctYou get: data.events[]: name, slug, start_at, end_at, format, event_type, location (city, country, lat, lng), participant_count, track_count, organization.name, theme_tags; data.next_cursor.
+Access: No key for discovery. The full API (registrations, submissions, judging) needs a key: developers.builderbase.com.
+curl -s 'https://edge.builderbase.com/super-events/public/discovery?status=active&limit=100' | jq -r '.data.events[] | [.start_at, .name, .location.city, .participant_count] | @tsv'
+Meetup search page (embedded JSON) tested 22 OctYou get: __NEXT_DATA__ → __APOLLO_STATE__ "Event:*" objects: title, dateTime, eventUrl, eventType, rsvps.totalCount, group ref. About 25 per page.
+Access: No key for the page. The official GraphQL API needs a paid Pro plan, so parse the page.
+python3 -c "import re,json,urllib.request as u;h=u.urlopen(u.Request('https://www.meetup.com/find/?location=gb--17--London&source=EVENTS&keywords=tech',headers={'User-Agent':'Mozilla/5.0'})).read().decode();a=json.loads(re.search(r'__NEXT_DATA__[^>]*>(.*?)</script>',h,re.S)[1])['props']['pageProps']['__APOLLO_STATE__'];[print(v['dateTime'],v['title']) for k,v in a.items() if k.startswith('Event:')]"
+MLH season page (embedded JSON) tested 22 OctYou get: <script data-page="app"> JSON: props.upcomingEvents and props.pastEvents with name, startsAt, endsAt, location, formatType, url, logoUrl.
+Access: No key.
+curl -sL 'https://mlh.io/seasons/2027/events' | python3 -c "import sys,re,json;p=json.loads(re.search(r'data-page=\"app\" type=\"application/json\">(.*?)</script>',sys.stdin.read(),re.S)[1])['props'];[print(e['startsAt'][:10],e['name'],e['location']) for e in p['upcomingEvents']]"
+All sources and working snippets: Data starter kit.
+Every source is free with no key: Luma's London discover feed and event JSON (each event lists its hosts with LinkedIn, X and website), Luma .ics calendars, Devpost, BuilderBase, MLH, Meetup and dev.events. Hand-label 30 events to test your ranking. Respect each site's terms and cache what you fetch.
+How it’s judged
+Real venues and data entered tonight. A trust model that stops junk. How fast a venue is found. Whether three leads would post their venues tomorrow.
+Every project must be open source (public repo, MIT, Apache-2.0 or AGPL-3.0). All tracks also use the six shared judging criteria below, each scored 1–5.
+Track 5 · Inbound, pricing, sponsors
+Front Desk & Revenue
+Answer inbound in chat, price bookings fairly, and find sponsors.
+The problem
+Requests, quotes, pricing and sponsor deals all happen by hand in group chats and DMs. That decides whether events happen at all.
+What community leads told us
+A venue wants pricing that works for it and its hosts. Communities book often, bring leads and have no budget. Companies book rarely and pay a lot.
+Replies and quotes are manual. Venues want an automatic first reply in chat.
+Requests arrive in a full WhatsApp group and get lost. Leads need them turned into a ranked task list, and want to know when the bot fails instead of it dying silently.
+Sponsors live in people's heads and spreadsheets. Communities want a simple sponsor CRM.
+What to build
+A pricing engine trained on a venue's real booking history. It quotes each request and explains community versus company pricing.
+An inbound bot that replies in WhatsApp, qualifies the request, then books a call or sends the quote.
+A front desk that turns every chat message into a task with an owner and a priority, and logs what it couldn't handle.
+A sponsor CRM: scrape Luma event hosts and Devpost hackathon organisers to see who already backs London events, size them with Companies House, and draft the email. Run it in Zero or Twenty.
+What a winning demo looks like
+A chat request comes in, gets qualified, priced from past bookings and quoted. Then it's matched to a likely sponsor with a drafted email.
+Suggested partner stack
+Zero for sponsor and organiser pipeline (it syncs Luma guests), Supabase for bookings, Grok Bot for replies, Cursor for the pricing model.
+Click a partner for docs and who to find on the night.
+Open-source starters to fork
+Chatwoot MIT core
+Open-source shared inbox with a WhatsApp channel.
+Twenty AGPL-3.0 core
+Open-source CRM with an API, for the sponsor pipeline.
+Frappe CRM AGPL-3.0
+A lighter open-source CRM alternative.
+Cal.com AGPL-3.0
+Open-source booking for venue viewings and sponsor calls.
+LightGBM MIT
+Gradient boosting for a pricing model on a small booking history.
+Integrations: where community leads live
+WhatsAppCloud API (official): Free to start. Talks 1:1 with people who message a business number. Outbound needs approved templates; group support is limited.
+Baileys · MIT: Unofficial. Logs in as a linked device and can read and post in groups. Against WhatsApp's terms, so use a spare test number.
+whatsapp-web.js · Apache-2.0: Unofficial, drives WhatsApp Web. Same caveat as Baileys.
+SlackBolt for JavaScript · MIT: Official framework for Slack apps. Free workspaces work.
+LinkedInShare on LinkedIn (official): Self-serve, but only posts as the signed-in member. Reading other people, groups or company pages needs partner approval you won't get tonight. Scraping is against their terms. Use a lead's own data export or manual paste.
+LumaLuma API (official): Needs Luma Plus (paid) and covers your own calendar. Public pages and the discover feed are in the Data starter kit.
+Zero Luma sync: Zero pulls Luma guests into its pipeline, so attendees become contacts you can enrich and follow up.
+Data community leads offered
+Night Office: a redacted history of their events and what was paid, to train and test pricing. Ask on the night.
+Free data
+Sources you can scrape today
+Luma single event JSON tested 22 OctYou get: Full event: description, hosts[] (name, linkedin_handle, twitter_handle, website), sessions, ticket_info, categories, guest_count, calendar. The event id is in the discover feed (api_id).
+Access: No key. Same courtesy limits as above.
+curl -s 'https://api.lu.ma/event/get?event_api_id=evt-Yz7RR89Zlv56tya' | jq '{name: .event.name, start: .event.start_at, going: .guest_count}'
+Devpost hackathons API tested 22 OctYou get: title, url, submission_period_dates, displayed_location, themes, prize_amount (HTML), registrations_count, organization_name. 9 per page; meta.total_count. Filters: status[]=upcoming|open|ended, search=london.
+Access: No key. Send a browser User-Agent; plain bots get 403 on hackathon subdomains.
+curl -s -g 'https://devpost.com/api/hackathons?status[]=ended&search=london' | jq -r '.hackathons[] | [.title, .submission_period_dates, .registrations_count, .organization_name] | @tsv'
+Companies House (UK company data) tested 22 OctYou get: Company number, status, SIC codes (industry), incorporation date, registered address, filing history and accounts. Good for sizing a sponsor.
+Access: Free API key from developer.company-information.service.gov.uk (basic auth, key as username). 600 requests per 5 minutes. No key at all: the HTML search at find-and-update.company-information.service.gov.uk, or the free monthly bulk company data product.
+curl -s -A 'Mozilla/5.0' 'https://find-and-update.company-information.service.gov.uk/search/companies?q=cloudflare' | grep -o 'href="/company/[0-9A-Z]*"' | head -3   # with a key: curl -u "$CH_KEY:" https://api.company-information.service.gov.uk/search/companies?q=cloudflare
+BuilderBase public discovery API tested 22 OctYou get: data.events[]: name, slug, start_at, end_at, format, event_type, location (city, country, lat, lng), participant_count, track_count, organization.name, theme_tags; data.next_cursor.
+Access: No key for discovery. The full API (registrations, submissions, judging) needs a key: developers.builderbase.com.
+curl -s 'https://edge.builderbase.com/super-events/public/discovery?status=active&limit=100' | jq -r '.data.events[] | [.start_at, .name, .location.city, .participant_count] | @tsv'
+All sources and working snippets: Data starter kit.
+Companies House (free key, or the no-key search page) sizes a UK sponsor. Devpost's hackathon API shows organisers and prize pools. Luma event JSON names the hosts of every London event.
+How it’s judged
+Prices that make sense on held-out bookings and are explained. Fast, correct replies. Sponsor matches that fit. Whether a venue would use it for real.
+Every project must be open source (public repo, MIT, Apache-2.0 or AGPL-3.0). All tracks also use the six shared judging criteria below, each scored 1–5.
+Wildcard · Your own community idea
+Weird Stuff
+You already run or know a community and have an idea that doesn't fit the other tracks. Build that.
+The problem
+Some of the best tools come from people fixing their own community's problem. If yours doesn't fit a track, bring it here.
+What community leads told us
+Tell the judges which community it's for and what hurts today.
+Show it working on real data or with a real lead in the room.
+What to build
+Anything that solves a real problem for a real community, built in the open.
+Start from the Data starter kit and the integrations below if you need data or a channel.
+What a winning demo looks like
+Name the community, show the problem, and show your build fixing it live.
+Suggested partner stack
+Pick from Supabase, Cognee, Zero, Notion, Grok Bot and Cursor.
+Click a partner for docs and who to find on the night.
+Open-source starters to fork
+Grok Bot skill MIT
+Point Grok Bot at your repo and community context.
+Cognee Apache-2.0
+Memory layer for any community agent.
+Supabase Apache-2.0
+Database, auth and storage.
+Integrations: where community leads live
+WhatsAppCloud API (official): Free to start. Talks 1:1 with people who message a business number. Outbound needs approved templates; group support is limited.
+Baileys · MIT: Unofficial. Logs in as a linked device and can read and post in groups. Against WhatsApp's terms, so use a spare test number.
+whatsapp-web.js · Apache-2.0: Unofficial, drives WhatsApp Web. Same caveat as Baileys.
+DiscordDiscord API (official): Free. Full bot access to the servers that add your bot.
+discord.js · Apache-2.0: Node library.
+discord.py · MIT: Python library.
+SlackBolt for JavaScript · MIT: Official framework for Slack apps. Free workspaces work.
+NotionNotion API + JS SDK · MIT: Free. Read and write databases and pages your integration is shared with.
+Notion MCP server · MIT: Lets Grok Bot or Cursor read and write a Notion workspace.
+Ghost newsletterGhost · MIT: Open-source newsletter and site. Self-host free, or Ghost(Pro) paid.
+Admin API: Create posts, send newsletters and manage members. JS client in TryGhost/SDK (MIT): https://github.com/TryGhost/SDK
+Content API: Read-only public posts.
+SubstackRSS feed: No official API. Every publication has <name>.substack.com/feed for posts, and writers can export subscribers as CSV from the dashboard. Posting has to stay manual.
+LinkedInShare on LinkedIn (official): Self-serve, but only posts as the signed-in member. Reading other people, groups or company pages needs partner approval you won't get tonight. Scraping is against their terms. Use a lead's own data export or manual paste.
+Free data
+Sources you can scrape today
+Luma discover API (London) tested 22 OctYou get: entries[].event: name, start_at, end_at, url, location_type, geo_address_info (venue, address, lat/lng); guest_count; calendar. Page with pagination_cursor=next_cursor.
+Access: No key. Undocumented, so cache results and keep it to a few calls a minute.
+curl -s 'https://api.lu.ma/discover/get-paginated-events?discover_place_api_id=discplace-QCcNk3HXowOR97j&pagination_limit=50' | jq -r '.entries[].event | [.start_at, .name, .geo_address_info.address] | @tsv'
+Devpost hackathons API tested 22 OctYou get: title, url, submission_period_dates, displayed_location, themes, prize_amount (HTML), registrations_count, organization_name. 9 per page; meta.total_count. Filters: status[]=upcoming|open|ended, search=london.
+Access: No key. Send a browser User-Agent; plain bots get 403 on hackathon subdomains.
+curl -s -g 'https://devpost.com/api/hackathons?status[]=ended&search=london' | jq -r '.hackathons[] | [.title, .submission_period_dates, .registrations_count, .organization_name] | @tsv'
+GitHub REST API tested 22 OctYou get: Users/orgs: created_at, public_repos, followers. Repos: stars, topics, language, pushed_at. Search users, repos and orgs by location or topic.
+Access: No key: 60 requests/hour, search 10/minute. A free personal token raises it to 5,000/hour.
+curl -s 'https://api.github.com/users/octocat' | jq '{created_at, public_repos, followers}'
+Hacker News Algolia API tested 22 OctYou get: hits[]: title, url, points, num_comments, created_at, author. Filters: tags=story|show_hn, numericFilters=created_at_i>…
+Access: No key. Roughly 10,000 requests/hour per IP.
+curl -s 'https://hn.algolia.com/api/v1/search_by_date?query=hackathon&tags=story&hitsPerPage=5' | jq -r '.hits[] | [.created_at, .points, .title] | @tsv'
+All sources and working snippets: Data starter kit.
+Anything public goes. The Data starter kit has tested snippets for Luma, Meetup, Eventbrite, dev.events, Devpost, BuilderBase, MLH, GitHub, Hacker News, Companies House and Hugging Face.
+How it’s judged
+Same criteria as every track. A real community that would use it next week matters most.
+Every project must be open source (public repo, MIT, Apache-2.0 or AGPL-3.0). All tracks also use the six shared judging criteria below, each scored 1–5.
+Schedule
+6:00 PM – 11:00 PM · Thursday, 22nd October
+18:00Doors open & setup @ Expedite London HQ
+18:05Kickoff & tracks
+18:10Hacking begins
+18:15🍕 Dinner
+21:50Code freeze, submissions & initial judging
+22:20Live demos of Top 5 (3 mins each)
+22:45Final judging & awards
+23:00Close
+Partners & Sponsors
+Host & co-organisers
+Francisco Terpolilli
+Host · EU Ambassador @ Cursor
+Keanu Czirjak
+Co-organiser · Hackradar
+Louis Le
+Co-organiser · The Hack Collective
+Venue partner
+Expedite London HQ — 7 Lyric Square, London
+William Schulz
+Made it possible · Expedite
+Technology Partners
+Community Partners
+Unicorn Mafia
+Lead · Charlie Cheesman
+basedcollective
+Lead · Fatema Al Khalifa
+Kickstart Global
+Leads · Ilya VencjunsPeter AshiagborIlya Vencjuns +1
+Hackradar
+Lead · Keanu Czirjak
+AI Agents Lab
+Leads · May YuMinghan XiaoMay Yu +1
+Corgi Community
+Lead · Claudia Maggi
+Night Office
+Leads · Oli KingshottShreyas RaghuOli Kingshott +1
+The Hack Collective
+Lead · Louis Le
+United Italian Societies
+Lead · Umberto Belluzzo
+Outpost
+Leads · Andy TylerOscar FalemaraAndy Tyler +1
+AI Pilled
+Leads · Nuan ZhangYiran QinNuan Zhang +1
+Imperial Entrepreneurs
+Lead · Hela Hałas
+Zakee Abdi
+Community lead
+Judges
+Every judge leads a partner community, so the people judging your build are the people who'd actually use it.
+Charlie Cheesman
+Judge · Unicorn Mafia
+Fatema Al Khalifa
+Judge · basedcollective
+Ilya Vencjuns
+Judge · Kickstart Global
+Keanu Czirjak
+Judge · Hackradar
+May Yu
+Judge · AI Agents Lab
+Claudia Maggi
+Judge · Corgi Community
+Oli Kingshott
+Judge · Night Office
+Louis Le
+Judge · The Hack Collective
+Umberto Belluzzo
+Judge · United Italian Societies
+Andy Tyler
+Judge · Outpost
+Nuan Zhang
+Judge · AI Pilled
+Hela Hałas
+Judge · Imperial Entrepreneurs
+Luca Stromann
+Judge · cognee
+William Schulz
+Judge · Expedite
+Demo Format & Criteria
+Demo format
+Work solo or in teams of up to 5.
+Every team submits a working demo at code freeze (21:50).
+The Top 5 teams present live, 3 minutes each.
+From those finalists, judges award 1st, 2nd and 3rd place.
+Judging criteria
+Technical execution
+Is it open source, and could another community run it next week?
+Use of community context
+Better than what leads use today
+Real-world usefulness
+Demo quality
+Open source is required: a public GitHub repo with an MIT, Apache-2.0 or AGPL-3.0 licence file.
+Tech Partners
+Primary tools for builders, and who to find on the night
+Supabase →
+Postgres database, auth, storage and realtime for your community tooling.
+Docs →Auth guide →Database →
+Isabelle Roser
+Connection · Supabase
+Cognee →
+Open-source memory for AI agents: turn docs, chats and data into one recallable memory layer.
+Docs →Quickstart →MCP →GitHub →
+Luca Stromann
+Product · cognee
+Zero →
+The GTM OS: pipeline, lead search, enrichment, warm intros and sequences, with agents handling the admin.
+Docs →MCP →API →Luma sync →
+Mariia Nedelkina
+Connection · Zero
+Notion →
+Docs, wikis and databases for your community, with an official API and a hosted MCP server your agents can use.
+API docs →Notion MCP →JS SDK →Create an integration →Templates →
+Waseef Mohammad Khan
+Campus Leader · Notion
+Grok Bot →
+An agent that reads your community's context, plans the build with you and does the research. Use the skill to point it at your repo.
+Skill →
+Francisco Terpolilli 🤌
+EU Ambassador · SpaceXAI
+Cursor →
+The code editor and agent you build with. Plan, write and ship before code freeze.
+CLI →IDE →SDK →
+Francisco Terpolilli 🤌
+EU Ambassador · Cursor
+Prizes
+Rewards for top performers
+🥇 1st place
+3 months Cursor Ultra per person + Supabase credits
+🥈 2nd place
+2 months Cursor Ultra per person + Supabase credits
+🥉 3rd place
+1 month Cursor Ultra per person + Supabase credits
+Registration is subject to host approval · Register on Luma →

@@ -1,0 +1,131 @@
+company,website,website_note,category,london_events,london_events_stated,food_or_drinks_events,venue_events,roles,event_types,communities,evidence_urls
+Encode Hub,encode.club,"well-known company domain, not re-checked today",venue (community hub),7,7,0,6,venue:6;general:1,hackathon;meetup / talk night,Encode Club;Postman Developer Events;SHIPYARD;Unicorn Mafia,https://luma.com/5ifrs74x https://luma.com/Encode-London-25 https://luma.com/encode-london-2026 https://luma.com/gttihhxt https://luma.com/ou24kgyr https://luma.com/umhack https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+Anthropic,anthropic.com,"well-known company domain, not re-checked today",AI lab,6,5,1,0,general:5;food:1;drinks:1,hackathon;meetup / talk night,Claude Builder Club @ Imperial;Claude Community Events;Dwelly;Imperial AI Society x Imperial Blockchain Society;Iterate,https://luma.com/3gl81s7c https://luma.com/3iipivod https://luma.com/4z45zkng https://luma.com/ja5x0m76 https://luma.com/vq6mrlt4 https://super-mcp-world.netlify.app/
+Imperial College London,imperial.ac.uk,"well-known company domain, not re-checked today",university / venue,6,6,0,5,venue:5;general:1,hackathon;meetup / talk night,Claude Builder Club @ Imperial;Imperial AI Society x Imperial Blockchain Society;Surface;UK AI Agents Lab,https://luma.com/3gl81s7c https://luma.com/7srz7k7v https://luma.com/9accbeul https://luma.com/e2ie935t https://luma.com/ukai-tg9s https://luma.com/vq6mrlt4
+OpenAI,openai.com,"well-known company domain, not re-checked today",AI lab,6,4,0,1,general:3;co_host:2;venue:1,demo night;hackathon;meetup / talk night,AI Demo Days;AI Tinkerers London;Encode Club;Outpost (formerly AI Demo Nights);WilbeLABS,https://london.aitinkerers.org/p/agents-vs-wall-street https://luma.com/87m4mw6b https://luma.com/Encode-London-25 https://luma.com/dde-ldn-hack https://luma.com/hacksprint-london https://luma.com/sup0n60r
+Google DeepMind,deepmind.google,"well-known company domain, not re-checked today",AI lab,4,4,0,0,co_host:2;prize_partner:1;general:1,hackathon;meetup / talk night,Encode Club;Iterate;UK AI Agents Lab;{Tech: Europe},https://luma.com/3iipivod https://luma.com/7srz7k7v https://luma.com/encode-london-2026 https://luma.com/ldn-hack
+Lovable,lovable.dev,"well-known company domain, not re-checked today",AI devtool (app builder),4,3,0,0,general:3;tech_partner:1,hackathon;meetup / talk night,Imperial AI Society x Imperial Blockchain Society;Led by Community;Paid x Lawhive;Product Hackathons,https://luma.com/ai-hackathon-community https://luma.com/i8shxwff https://luma.com/vpjma1oe https://luma.com/vq6mrlt4
+Supabase,supabase.com,"well-known company domain, not re-checked today",devtool (database),4,4,0,0,tech_partner:3;general:1,hackathon;meetup / talk night,Postman Developer Events;SpaceXAI for London (Grok Bot / Cursor community);Vercel Events,https://luma.com/5ifrs74x https://luma.com/cursor-td9f https://luma.com/eveLDN https://luma.com/eveur09a
+Tessl,tessl.io,"well-known company domain, not re-checked today",AI devtool (venue),4,4,3,4,venue:4;food:3,hackathon;meetup / talk night,AI Engineer London;Led by Community,https://luma.com/94ma079o https://luma.com/ai-hackathon-community https://luma.com/u8rvf61f https://luma.com/ubg0u3a2
+ElevenLabs,elevenlabs.io,"well-known company domain, not re-checked today",AI startup / devtool,3,3,0,0,tech_partner:2;general:1,hackathon,Dwelly;Encode Club;SHIPYARD,https://luma.com/ja5x0m76 https://luma.com/ou24kgyr https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+Ramen Space,ramenclub.com/ramen-space,"well-known company domain, not re-checked today",venue (coworking),3,3,0,3,venue:3,demo night;hackathon;meetup / talk night,Create With;Product Hackathons;Ramen Space,https://luma.com/5gvgdu8q https://luma.com/cw-london-nov25 https://luma.com/vpjma1oe
+Toyo (formerly Layercode),,,AI devtool (voice),3,3,0,0,general:3,meetup / talk night,AI Engineer London,https://luma.com/94ma079o https://luma.com/u8rvf61f https://luma.com/ubg0u3a2
+CUDOS,,,Web3 / cloud,2,2,0,0,general:2,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/e2ie935t https://luma.com/vq6mrlt4
+Cloudflare,cloudflare.com,"well-known company domain, not re-checked today",cloud / infra,2,2,0,0,general:2,demo night,AI Demo Days,https://luma.com/8h0pmpvl https://luma.com/sup0n60r
+Cognee,cognee.ai,"well-known company domain, not re-checked today",devtool (AI memory),2,2,0,0,tech_partner:1;general:1,hackathon,Briefcase x Stripe;SpaceXAI for London (Grok Bot / Cursor community),https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026 https://luma.com/eveur09a
+Cognition,cognition.ai,"well-known company domain, not re-checked today",AI lab / devtool,2,2,0,0,general:2,hackathon,Iterate;Unicorn Mafia,https://luma.com/3iipivod https://luma.com/umhack
+Daytona,daytona.io,"well-known company domain, not re-checked today",devtool (sandboxes),2,2,0,0,general:1;tech_partner:1,hackathon,Outpost (formerly AI Demo Nights);SHIPYARD,https://luma.com/hacksprint-london https://luma.com/ou24kgyr
+Expedite,,,venue / startup,2,2,0,1,venue:1;general:1,hackathon,SpaceXAI for London (Grok Bot / Cursor community);Unicorn Mafia,https://luma.com/eveur09a https://luma.com/umhack
+Fleek,,,startup (venue),2,2,0,2,venue:2,hackathon;meetup / talk night,AI Tinkerers London;SpaceXAI for London (Grok Bot / Cursor community),https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026 https://luma.com/cursor-td9f
+Modal,modal.com,"well-known company domain, not re-checked today",cloud / infra,2,2,0,0,general:1;tech_partner:1,hackathon,Iterate;{Tech: Europe},https://luma.com/3iipivod https://luma.com/ldn-hack
+Mubit,,,AI devtool,2,2,0,0,general:2,hackathon;meetup / talk night,Unicorn Mafia;oscarama events,https://luma.com/p7pnjcu8 https://luma.com/umhack
+Omnea,,,startup,2,1,0,0,co_host:1;general:1,meetup / talk night,JavaScript London;London.js,https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_ https://www.meetup.com/london-js/
+Pydantic,pydantic.dev,"well-known company domain, not re-checked today",devtool,2,2,0,0,general:1;tech_partner:1,hackathon,Unicorn Mafia;{Tech: Europe},https://luma.com/ldn-hack https://luma.com/umhack
+Sierra AI,,,AI startup,2,2,0,0,general:2,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/e2ie935t https://luma.com/vq6mrlt4
+StackOne,stackone.com,"well-known company domain, not re-checked today",devtool (integrations),2,2,0,0,general:2,demo night,AI Demo Days,https://luma.com/8h0pmpvl https://luma.com/sup0n60r
+Vercel,vercel.com,"well-known company domain, not re-checked today",devtool (hosting),2,2,0,0,co_host:2,meetup / talk night,Vercel Events;oscarama events,https://luma.com/eveLDN https://luma.com/p7pnjcu8
+Wave Talent,,,recruiter (venue),2,2,0,1,venue:1;co_host:1,meetup / talk night,JavaScript London,https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_ https://www.meetup.com/javascript-london/events/315267535/
+ACI.dev,aci.dev,"well-known company domain, not re-checked today",AI devtool,1,1,0,0,general:1,meetup / talk night,AI Tinkerers London,https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+AIDDA Institute,,,research institute,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+ARIA,aria.org.uk,"well-known company domain, not re-checked today",public funder,1,1,0,0,co_host:1,demo night,Encode: AI for Science Fellowship (Pillar VC x ARIA),https://luma.com/0szx6bcb
+AWS,aws.amazon.com,"well-known company domain, not re-checked today",cloud / infra,1,1,0,0,general:1,hackathon,Surface,https://luma.com/9accbeul
+Accurx,,,healthtech,1,1,0,0,general:1,meetup / talk night,London.js,https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn
+Alpic,,,AI devtool (MCP hosting),1,1,0,0,prize_partner:1,hackathon,Claude Community Events,https://super-mcp-world.netlify.app/
+Amass,,,data infra,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+Apart Research,,,research nonprofit,1,1,0,0,co_host:1,hackathon,BlueDot Impact,https://luma.com/def-acc-hack
+Arbitrum Foundation,,,Web3,1,0,0,0,general:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Artificial Superintelligence Alliance (ASI),,,Web3 / AI,1,1,0,0,general:1,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/e2ie935t
+Beckn Labs,,,open protocol org,1,1,0,0,co_host:1,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/vq6mrlt4
+"Birkbeck, University of London",bbk.ac.uk,"well-known company domain, not re-checked today",university / venue,1,1,0,1,venue:1,meetup / talk night,PyData London,https://www.meetup.com/pydata-london-meetup/events/316770322/
+Brainstation,brainstation.io,"well-known company domain, not re-checked today",venue (education),1,1,0,1,venue:1,hackathon,Claude Community Events,https://luma.com/ictqc1wp
+Briefcase,,,fintech startup,1,1,0,0,general:1,hackathon,Briefcase x Stripe,https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026
+Bright Data,brightdata.com,"well-known company domain, not re-checked today",data / scraping,1,1,0,0,general:1,meetup / talk night,oscarama events,https://luma.com/p7pnjcu8
+BuilderBase,,,builder community,1,1,0,0,general:1,hackathon,Unicorn Mafia,https://luma.com/umhack
+Cambridge Compute Co. (C3),,,cloud / infra,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+Campaign Lab,,,community / nonprofit,1,1,0,0,co_host:1,hackathon,Newspeak House,https://luma.com/qyd193bj
+Civo,civo.com,"well-known company domain, not re-checked today",cloud / infra (venue),1,1,0,1,venue:1,meetup / talk night,AI Builders,https://luma.com/lon-nov10
+CodeRabbit,coderabbit.ai,"well-known company domain, not re-checked today",AI devtool (code review),1,1,0,0,general:1,meetup / talk night,oscarama events,https://luma.com/p7pnjcu8
+Concordium,concordium.com,"well-known company domain, not re-checked today",Web3,1,0,0,0,general:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Conduct,,,AI startup,1,1,0,0,co_host:1,hackathon,{Tech: Europe},https://luma.com/ldn-hack
+Conveo,,,AI startup,1,1,0,0,general:1,meetup / talk night,AI Tinkerers London,https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+Create With,createwith.com,"well-known company domain, not re-checked today",community / conference,1,1,0,0,general:1,demo night,Ramen Space,https://luma.com/5gvgdu8q
+Cursor,cursor.com,"well-known company domain, not re-checked today",devtool (AI coding),1,1,0,0,tech_partner:1,hackathon,SpaceXAI for London (Grok Bot / Cursor community),https://luma.com/eveur09a
+DFINITY,,,Web3,1,0,0,0,general:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Datamellon,,,cloud consultancy,1,1,0,0,co_host:1,meetup / talk night,Ignite London,https://luma.com/k9kvyn76
+Dawn Capital,dawncapital.com,"well-known company domain, not re-checked today",VC,1,1,0,0,general:1,demo night,Outpost (formerly AI Demo Nights),https://luma.com/ai-demo-night-12
+Dex,meetdex.ai,"well-known company domain, not re-checked today",AI recruiting,1,1,0,0,general:1,meetup / talk night,AI Tinkerers London,https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+Digital Energy Grid (DEG),,,energy / Web3,1,1,0,0,general:1,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/vq6mrlt4
+Dwelly,,,startup,1,1,0,0,co_host:1,hackathon,Dwelly,https://luma.com/ja5x0m76
+EQT,eqtgroup.com,"well-known company domain, not re-checked today",VC / investor,1,1,0,0,general:1,hackathon,Dwelly,https://luma.com/ja5x0m76
+Envio,,,Web3 devtool,1,0,0,0,general:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Fetch.ai,fetch.ai,"well-known company domain, not re-checked today",Web3 / AI,1,1,0,0,general:1,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/e2ie935t
+Filter,,,agency,1,1,0,0,general:1,meetup / talk night,#WPLDN (London WordPress),https://www.meetup.com/london-wordpress/
+Flagsmith,flagsmith.com,"well-known company domain, not re-checked today",devtool (feature flags),1,1,0,0,general:1,meetup / talk night,London.js,https://www.linkedin.com/posts/flagsmith_we-are-proud-to-be-co-sponsoring-another-activity-7419766946281226240-Tdfn
+Fora,fora.space,"well-known company domain, not re-checked today",venue (workspace),1,0,0,1,venue:1,meetup / talk night,Ignite London,https://luma.com/k9kvyn76
+GXL,,,AI startup,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+General Catalyst,generalcatalyst.com,"well-known company domain, not re-checked today",VC,1,1,0,0,general:1,hackathon,Dwelly,https://luma.com/ja5x0m76
+Granola,granola.ai,"well-known company domain, not re-checked today",AI startup,1,1,0,0,general:1,hackathon,Surface,https://luma.com/9accbeul
+Halcyon Futures,,,funder / nonprofit,1,1,0,0,general:1,hackathon,BlueDot Impact,https://luma.com/def-acc-hack
+Halkin,,,venue (workspace),1,1,0,1,venue:1,meetup / talk night,oscarama events,https://luma.com/p7pnjcu8
+Healthtech-1,,,healthtech startup,1,1,1,0,general:1;food:1,meetup / talk night,JavaScript London,https://www.meetup.com/javascript-london/events/315267535/
+Huge,,,agency,1,1,0,0,co_host:1,hackathon,SpaceXAI for London (Grok Bot / Cursor community),https://luma.com/cursor-td9f
+Hugging Face,huggingface.co,"well-known company domain, not re-checked today",AI lab / devtool,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+IQ Capital,iqcapital.vc,"well-known company domain, not re-checked today",VC,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+Infosys,infosys.com,"well-known company domain, not re-checked today",IT services,1,1,1,1,general:1;venue:1;food:1,meetup / talk night,OpenUK,https://luma.com/openuklondonmeetupsep26
+Jack & Jill,,,AI recruiting,1,1,0,0,general:1,demo night,AI Demo Days,https://luma.com/sup0n60r
+JetBrains,jetbrains.com,"well-known company domain, not re-checked today",devtool,1,1,0,0,general:1,meetup / talk night,Django London,https://www.meetup.com/djangolondon/events/315788543/
+Just Eat,just-eat.co.uk,"well-known company domain, not re-checked today",food delivery (venue),1,1,0,1,venue:1,meetup / talk night,Cloud Native London,https://www.meetup.com/cloud-native-london/
+Kinsta,kinsta.com,"well-known company domain, not re-checked today",hosting,1,1,0,0,general:1,meetup / talk night,#WPLDN (London WordPress),https://www.meetup.com/london-wordpress/
+Kraken Tech,,,energy tech,1,1,0,0,general:1,meetup / talk night,Django London,https://www.meetup.com/djangolondon/events/315788543/
+Lawhive,,,startup,1,1,0,0,co_host:1,meetup / talk night,Paid x Lawhive,https://luma.com/i8shxwff
+Leapter,,,AI startup,1,1,1,0,food:1;drinks:1,meetup / talk night,AI for the rest of us,https://www.linkedin.com/posts/ai-for-the-rest-of-us-live_what-a-line-up-we-cant-wait-to-see-you-activity-7439322188387778560-Nq4G
+Livepeer,,,Web3,1,0,0,0,general:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+MMC Ventures,mmc.vc,"well-known company domain, not re-checked today",VC,1,1,0,1,venue:1,meetup / talk night,Claude Community Events,https://luma.com/4z45zkng
+Make.com,make.com,"well-known company domain, not re-checked today",devtool / automation,1,1,1,0,general:1;food:1,meetup / talk night,Create With,https://luma.com/cw-london-nov25
+Man Group,man.com,"well-known company domain, not re-checked today",investment firm,1,1,1,0,food:1;drinks:1,meetup / talk night,PyData London,https://www.meetup.com/pydata-london-meetup/events/316770322/
+Microsoft,microsoft.com,"well-known company domain, not re-checked today",big tech,1,0,0,0,co_host:1,meetup / talk night,UK AI Agents Lab,https://luma.com/ukai-tg9s
+Midnight,,,Web3,1,1,0,0,general:1,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/e2ie935t
+Minor Figures,,,food & drink brand (oat milk / coffee),1,0,1,0,drinks:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Mollie,mollie.com,"well-known company domain, not re-checked today",payments,1,1,0,0,general:1,meetup / talk night,#WPLDN (London WordPress),https://www.meetup.com/london-wordpress/
+MongoDB,mongodb.com,"well-known company domain, not re-checked today",devtool (database),1,1,0,0,prize_partner:1,hackathon,Encode Club,https://luma.com/encode-london-2026
+Motorway,,,startup,1,0,0,0,general:1,meetup / talk night,London.js,https://www.meetup.com/london-js/
+Mozilla AI,,,open-source AI,1,1,0,0,general:1,meetup / talk night,AI Tinkerers London,https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026
+NVIDIA,nvidia.com,"well-known company domain, not re-checked today",big tech / AI infra,1,1,0,0,co_host:1,hackathon,WilbeLABS,https://luma.com/87m4mw6b
+Neo,,,Web3,1,1,0,0,co_host:1,hackathon,Encode Club,https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+Newspeak House,newspeak.house,"well-known company domain, not re-checked today",venue (community),1,1,0,1,venue:1,hackathon,Newspeak House,https://luma.com/qyd193bj
+NumFOCUS,numfocus.org,"well-known company domain, not re-checked today",nonprofit,1,1,0,0,general:1,meetup / talk night,PyData London,https://www.meetup.com/pydata-london-meetup/events/316770322/
+Octopus Energy,octopus.energy,"well-known company domain, not re-checked today",energy company,1,1,1,1,venue:1;general:1;food:1,meetup / talk night,Django London,https://www.meetup.com/djangolondon/events/315788543/
+OpenStocks,,,fintech startup,1,1,0,0,co_host:1,meetup / talk night,AI Tinkerers London,https://london.aitinkerers.org/p/agents-vs-wall-street
+Originator,,,AI startup,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+Paid,,,startup (venue),1,1,0,1,venue:1,meetup / talk night,Paid x Lawhive,https://luma.com/i8shxwff
+Parallel Web Systems,parallel.ai,"well-known company domain, not re-checked today",AI devtool (search API),1,1,0,0,general:1,demo night,Outpost (formerly AI Demo Nights),https://luma.com/ai-demo-night-12
+Pillar VC,pillar.vc,"well-known company domain, not re-checked today",VC,1,1,0,0,co_host:1,demo night,Encode: AI for Science Fellowship (Pillar VC x ARIA),https://luma.com/0szx6bcb
+Polaron,,,deep tech startup,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+Postman,postman.com,"well-known company domain, not re-checked today",devtool (APIs),1,1,0,0,co_host:1,meetup / talk night,Postman Developer Events,https://luma.com/5ifrs74x
+Primer,,,startup,1,1,0,0,co_host:1,meetup / talk night,AI Tinkerers London,https://london.aitinkerers.org/p/agents-vs-wall-street
+Render,render.com,"well-known company domain, not re-checked today",cloud / hosting,1,1,0,0,general:1,hackathon,Unicorn Mafia,https://luma.com/umhack
+Saint,,,AI startup,1,1,0,0,prize_partner:1,hackathon,Encode Club,https://luma.com/encode-london-2026
+Serova,,,biotech,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+SingularityNET,,,Web3 / AI,1,1,0,0,general:1,hackathon,Imperial AI Society x Imperial Blockchain Society,https://luma.com/e2ie935t
+Snowflake,snowflake.com,"well-known company domain, not re-checked today",data platform (venue),1,1,0,1,venue:1;general:1,meetup / talk night,ODSC AI,https://luma.com/ppyy0sqw
+SpaceXAI,,,AI lab,1,1,0,0,tech_partner:1,hackathon,SpaceXAI for London (Grok Bot / Cursor community),https://luma.com/eveur09a
+SpoonOS,,,Web3 / AI,1,1,0,0,co_host:1,hackathon,Encode Club,https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+Square Mile Coffee Roasters,,,food & drink brand (coffee),1,0,1,0,drinks:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Story Protocol,,,Web3,1,0,0,0,general:1,hackathon,Encode Club,https://luma.com/Encode-London-25
+Stripe,stripe.com,"well-known company domain, not re-checked today",payments,1,1,0,0,general:1,hackathon,Briefcase x Stripe,https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026
+Swift Food,,,food / catering,1,1,1,0,food:1,meetup / talk night,oscarama events,https://luma.com/p7pnjcu8
+Tavily,tavily.com,"well-known company domain, not re-checked today",AI devtool (search API),1,1,0,0,tech_partner:1,hackathon,SHIPYARD,https://luma.com/ou24kgyr
+TechShack,,,recruiter,1,0,0,0,general:1,meetup / talk night,Cloud Native London,https://www.meetup.com/cloud-native-london/
+Tezos Foundation,,,Web3 foundation,1,1,0,0,general:1,hackathon,SHIPYARD,https://luma.com/ou24kgyr
+The Bower (beyond),,,venue,1,1,0,1,venue:1,meetup / talk night,AI Builders,https://luma.com/lon-sep10
+The Residency,,,founder community,1,1,0,0,general:1,hackathon,Unicorn Mafia,https://luma.com/umhack
+VEED,veed.io,"well-known company domain, not re-checked today",AI video startup,1,1,1,1,venue:1;general:1;food:1,meetup / talk night,London.js,https://www.meetup.com/london-js/
+Vonage,vonage.com,"well-known company domain, not re-checked today",communications API (venue),1,1,1,1,venue:1;food:1,meetup / talk night,Networx London,https://luma.com/ntl-l92c
+Voyager Ventures,,,VC,1,1,0,0,general:1,hackathon,Iterate,https://luma.com/3iipivod
+Wassist,,,AI startup,1,1,0,0,tech_partner:1,hackathon,SpaceXAI for London (Grok Bot / Cursor community),https://luma.com/cursor-td9f
+Weights & Biases,wandb.ai,"well-known company domain, not re-checked today",devtool (MLOps),1,1,0,1,venue:1;general:1,meetup / talk night,LLM London,https://luma.com/1t3v9g5j
+WilbeLABS,,,venue (labs),1,1,0,1,venue:1,hackathon,WilbeLABS,https://luma.com/87m4mw6b
+XCHG,,,venue (workspace),1,1,0,1,venue:1,meetup / talk night,AI for the rest of us,https://luma.com/AI4MARCH
+Zero,zero.inc,"well-known company domain, not re-checked today",AI CRM,1,1,0,0,tech_partner:1,hackathon,SpaceXAI for London (Grok Bot / Cursor community),https://luma.com/eveur09a
+incident.io,incident.io,"well-known company domain, not re-checked today",devtool (incidents),1,0,0,0,general:1,meetup / talk night,London.js,https://www.meetup.com/london-js/
+show.fm,,,media,1,1,0,0,general:1,meetup / talk night,#WPLDN (London WordPress),https://www.meetup.com/london-wordpress/

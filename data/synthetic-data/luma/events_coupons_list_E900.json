@@ -1,0 +1,6 @@
+{
+  "_notice": "SAMPLE / FICTIONAL. Shaped like Luma API responses (field names from public-api.luma.com/openapi.json). Not real Luma data; ids are fake; the _notice key is not part of real responses.",
+  "entries": [],
+  "has_more": false,
+  "next_cursor": null
+}

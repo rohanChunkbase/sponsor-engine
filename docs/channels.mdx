@@ -1,0 +1,57 @@
+---
+title: "Channels"
+description: "How a chat message enters the desk. The server does not open the chat apps."
+---
+
+A channel is the place where the ask starts.
+The desk can record WhatsApp, Discord, Telegram, Slack, email, and the web form.
+The server does not open those apps.
+You send the message text to `triage_inbound`.
+You set `channel` to the name of the app.
+The server stores that word.
+A reply waits for a person.
+
+The tool stores the channel word you send.
+The tool description names `whatsapp`, `email`, and `web`.
+You can also send `discord`, `telegram`, or `slack`.
+Use these names.
+
+| Name | Meaning |
+| --- | --- |
+| `whatsapp` | A WhatsApp message you paste or forward. |
+| `discord` | A Discord message you paste or forward. |
+| `telegram` | A Telegram message you paste or forward. |
+| `slack` | A Slack message you paste or forward. |
+| `email` | An email you paste. This is not a mailbox login. |
+| `web` | The form on the dashboard inbox. |
+
+You can omit `channel`.
+The server still reads the message.
+
+## What the desk does
+
+1. You send the message text and the channel name.
+2. `triage_inbound` records who is asking, the date, the headcount, and the need.
+3. The desk opens a task with an owner and a priority.
+4. Later tools quote the room, match sponsors, and draft an email.
+5. The draft waits in the outbox.
+6. You press Approve, Edit, or Skip.
+
+The server does not post back into WhatsApp, Discord, Telegram, or Slack.
+Read [Safety](/safety) before you expect a send.
+
+## Email
+
+Email uses the same path.
+`draft_sponsor_ask` writes the sponsor email.
+`send_with_approval` puts that email in the outbox.
+Approve does not deliver mail.
+This build has no mail service.
+A row can be marked `sent` only after the gates on the [Safety](/safety) page.
+
+## Connect an agent to a channel
+
+The agent holds the chat.
+Sponsor Engine holds the desk.
+Connect the agent with the steps on [Connect your agent](/connect).
+Then ask the agent to call `triage_inbound` with the message and the channel name.

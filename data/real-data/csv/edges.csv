@@ -1,0 +1,62 @@
+source,target,source_name,target_name,shared_sponsors,shared_sponsor_names,direct_links,direct_link_detail,weight,evidence_urls
+RC19,RC35,Create With,Ramen Space,1,Ramen Space,2,Create With general at L-5gvgdu8q;Ramen Space venue at L-cw-london-nov25,12,https://luma.com/5gvgdu8q https://luma.com/cw-london-nov25
+RC01,RC36,Encode Club,SHIPYARD,2,ElevenLabs;Encode Hub,1,Encode Hub venue at L-ou24kgyr,9,https://luma.com/Encode-London-25 https://luma.com/encode-london-2026 https://luma.com/gttihhxt https://luma.com/ou24kgyr https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+RC01,RC32,Encode Club,Postman Developer Events,1,Encode Hub,1,Encode Hub venue at L-5ifrs74x,7,https://luma.com/5ifrs74x https://luma.com/Encode-London-25 https://luma.com/encode-london-2026 https://luma.com/gttihhxt https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+RC01,RC38,Encode Club,Unicorn Mafia,1,Encode Hub,1,Encode Hub general at L-umhack,7,https://luma.com/Encode-London-25 https://luma.com/encode-london-2026 https://luma.com/gttihhxt https://luma.com/umhack https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+RC33,RC35,Product Hackathons,Ramen Space,1,Ramen Space,1,Ramen Space venue at L-vpjma1oe,7,https://luma.com/5gvgdu8q https://luma.com/vpjma1oe
+RC17,RC10,Claude Builder Club @ Imperial,Imperial AI Society x Imperial Blockchain Society,2,Anthropic;Imperial College London,0,,4,https://luma.com/3gl81s7c https://luma.com/e2ie935t https://luma.com/vq6mrlt4
+RC24,RC42,Iterate,{Tech: Europe},2,Google DeepMind;Modal,0,,4,https://luma.com/3iipivod https://luma.com/ldn-hack
+RC07,RC08,AI Demo Days,AI Tinkerers London,1,OpenAI,0,,2,https://london.aitinkerers.org/p/agents-vs-wall-street https://luma.com/sup0n60r
+RC07,RC01,AI Demo Days,Encode Club,1,OpenAI,0,,2,https://luma.com/Encode-London-25 https://luma.com/sup0n60r
+RC07,RC04,AI Demo Days,Outpost (formerly AI Demo Nights),1,OpenAI,0,,2,https://luma.com/dde-ldn-hack https://luma.com/hacksprint-london https://luma.com/sup0n60r
+RC07,RC40,AI Demo Days,WilbeLABS,1,OpenAI,0,,2,https://luma.com/87m4mw6b https://luma.com/sup0n60r
+RC03,RC26,AI Engineer London,Led by Community,1,Tessl,0,,2,https://luma.com/94ma079o https://luma.com/ai-hackathon-community https://luma.com/u8rvf61f https://luma.com/ubg0u3a2
+RC08,RC01,AI Tinkerers London,Encode Club,1,OpenAI,0,,2,https://london.aitinkerers.org/p/agents-vs-wall-street https://luma.com/Encode-London-25
+RC08,RC04,AI Tinkerers London,Outpost (formerly AI Demo Nights),1,OpenAI,0,,2,https://london.aitinkerers.org/p/agents-vs-wall-street https://luma.com/dde-ldn-hack https://luma.com/hacksprint-london
+RC08,RC12,AI Tinkerers London,SpaceXAI for London (Grok Bot / Cursor community),1,Fleek,0,,2,https://london.aitinkerers.org/p/ai-tinkerers-london-22nd-september-2026 https://luma.com/cursor-td9f
+RC08,RC40,AI Tinkerers London,WilbeLABS,1,OpenAI,0,,2,https://london.aitinkerers.org/p/agents-vs-wall-street https://luma.com/87m4mw6b
+RC16,RC12,Briefcase x Stripe,SpaceXAI for London (Grok Bot / Cursor community),1,Cognee,0,,2,https://hackalendar.com/e/stripe-briefcase-ai-fintech-london-hackathon-2026 https://luma.com/eveur09a
+RC17,RC09,Claude Builder Club @ Imperial,Claude Community Events,1,Anthropic,0,,2,https://luma.com/3gl81s7c https://luma.com/4z45zkng https://super-mcp-world.netlify.app/
+RC17,RC21,Claude Builder Club @ Imperial,Dwelly,1,Anthropic,0,,2,https://luma.com/3gl81s7c https://luma.com/ja5x0m76
+RC17,RC24,Claude Builder Club @ Imperial,Iterate,1,Anthropic,0,,2,https://luma.com/3gl81s7c https://luma.com/3iipivod
+RC17,RC37,Claude Builder Club @ Imperial,Surface,1,Imperial College London,0,,2,https://luma.com/3gl81s7c https://luma.com/9accbeul
+RC17,RC05,Claude Builder Club @ Imperial,UK AI Agents Lab,1,Imperial College London,0,,2,https://luma.com/3gl81s7c https://luma.com/7srz7k7v https://luma.com/ukai-tg9s
+RC09,RC21,Claude Community Events,Dwelly,1,Anthropic,0,,2,https://luma.com/4z45zkng https://luma.com/ja5x0m76 https://super-mcp-world.netlify.app/
+RC09,RC10,Claude Community Events,Imperial AI Society x Imperial Blockchain Society,1,Anthropic,0,,2,https://luma.com/4z45zkng https://luma.com/vq6mrlt4 https://super-mcp-world.netlify.app/
+RC09,RC24,Claude Community Events,Iterate,1,Anthropic,0,,2,https://luma.com/3iipivod https://luma.com/4z45zkng https://super-mcp-world.netlify.app/
+RC19,RC33,Create With,Product Hackathons,1,Ramen Space,0,,2,https://luma.com/cw-london-nov25 https://luma.com/vpjma1oe
+RC21,RC01,Dwelly,Encode Club,1,ElevenLabs,0,,2,https://luma.com/ja5x0m76 https://neonewstoday.com/events/scoop-ai-hackathon-heads-to-london-for-third-global-stop/
+RC21,RC10,Dwelly,Imperial AI Society x Imperial Blockchain Society,1,Anthropic,0,,2,https://luma.com/ja5x0m76 https://luma.com/vq6mrlt4
+RC21,RC24,Dwelly,Iterate,1,Anthropic,0,,2,https://luma.com/3iipivod https://luma.com/ja5x0m76
+RC21,RC36,Dwelly,SHIPYARD,1,ElevenLabs,0,,2,https://luma.com/ja5x0m76 https://luma.com/ou24kgyr
+RC01,RC24,Encode Club,Iterate,1,Google DeepMind,0,,2,https://luma.com/3iipivod https://luma.com/encode-london-2026
+RC01,RC04,Encode Club,Outpost (formerly AI Demo Nights),1,OpenAI,0,,2,https://luma.com/Encode-London-25 https://luma.com/dde-ldn-hack https://luma.com/hacksprint-london
+RC01,RC05,Encode Club,UK AI Agents Lab,1,Google DeepMind,0,,2,https://luma.com/7srz7k7v https://luma.com/encode-london-2026
+RC01,RC40,Encode Club,WilbeLABS,1,OpenAI,0,,2,https://luma.com/87m4mw6b https://luma.com/Encode-London-25
+RC01,RC42,Encode Club,{Tech: Europe},1,Google DeepMind,0,,2,https://luma.com/encode-london-2026 https://luma.com/ldn-hack
+RC10,RC24,Imperial AI Society x Imperial Blockchain Society,Iterate,1,Anthropic,0,,2,https://luma.com/3iipivod https://luma.com/vq6mrlt4
+RC10,RC26,Imperial AI Society x Imperial Blockchain Society,Led by Community,1,Lovable,0,,2,https://luma.com/ai-hackathon-community https://luma.com/vq6mrlt4
+RC10,RC31,Imperial AI Society x Imperial Blockchain Society,Paid x Lawhive,1,Lovable,0,,2,https://luma.com/i8shxwff https://luma.com/vq6mrlt4
+RC10,RC33,Imperial AI Society x Imperial Blockchain Society,Product Hackathons,1,Lovable,0,,2,https://luma.com/vpjma1oe https://luma.com/vq6mrlt4
+RC10,RC37,Imperial AI Society x Imperial Blockchain Society,Surface,1,Imperial College London,0,,2,https://luma.com/9accbeul https://luma.com/e2ie935t https://luma.com/vq6mrlt4
+RC10,RC05,Imperial AI Society x Imperial Blockchain Society,UK AI Agents Lab,1,Imperial College London,0,,2,https://luma.com/7srz7k7v https://luma.com/e2ie935t https://luma.com/ukai-tg9s https://luma.com/vq6mrlt4
+RC24,RC05,Iterate,UK AI Agents Lab,1,Google DeepMind,0,,2,https://luma.com/3iipivod https://luma.com/7srz7k7v
+RC24,RC38,Iterate,Unicorn Mafia,1,Cognition,0,,2,https://luma.com/3iipivod https://luma.com/umhack
+RC11,RC02,JavaScript London,London.js,1,Omnea,0,,2,https://www.linkedin.com/posts/javascript-london_last-thursday-javascript-london-hosted-its-activity-7427276270167572480-axR_ https://www.meetup.com/london-js/
+RC26,RC31,Led by Community,Paid x Lawhive,1,Lovable,0,,2,https://luma.com/ai-hackathon-community https://luma.com/i8shxwff
+RC26,RC33,Led by Community,Product Hackathons,1,Lovable,0,,2,https://luma.com/ai-hackathon-community https://luma.com/vpjma1oe
+RC04,RC36,Outpost (formerly AI Demo Nights),SHIPYARD,1,Daytona,0,,2,https://luma.com/hacksprint-london https://luma.com/ou24kgyr
+RC04,RC40,Outpost (formerly AI Demo Nights),WilbeLABS,1,OpenAI,0,,2,https://luma.com/87m4mw6b https://luma.com/dde-ldn-hack https://luma.com/hacksprint-london
+RC31,RC33,Paid x Lawhive,Product Hackathons,1,Lovable,0,,2,https://luma.com/i8shxwff https://luma.com/vpjma1oe
+RC32,RC36,Postman Developer Events,SHIPYARD,1,Encode Hub,0,,2,https://luma.com/5ifrs74x https://luma.com/ou24kgyr
+RC32,RC12,Postman Developer Events,SpaceXAI for London (Grok Bot / Cursor community),1,Supabase,0,,2,https://luma.com/5ifrs74x https://luma.com/cursor-td9f https://luma.com/eveur09a
+RC32,RC38,Postman Developer Events,Unicorn Mafia,1,Encode Hub,0,,2,https://luma.com/5ifrs74x https://luma.com/umhack
+RC32,RC39,Postman Developer Events,Vercel Events,1,Supabase,0,,2,https://luma.com/5ifrs74x https://luma.com/eveLDN
+RC36,RC38,SHIPYARD,Unicorn Mafia,1,Encode Hub,0,,2,https://luma.com/ou24kgyr https://luma.com/umhack
+RC12,RC38,SpaceXAI for London (Grok Bot / Cursor community),Unicorn Mafia,1,Expedite,0,,2,https://luma.com/eveur09a https://luma.com/umhack
+RC12,RC39,SpaceXAI for London (Grok Bot / Cursor community),Vercel Events,1,Supabase,0,,2,https://luma.com/cursor-td9f https://luma.com/eveLDN https://luma.com/eveur09a
+RC37,RC05,Surface,UK AI Agents Lab,1,Imperial College London,0,,2,https://luma.com/7srz7k7v https://luma.com/9accbeul https://luma.com/ukai-tg9s
+RC05,RC42,UK AI Agents Lab,{Tech: Europe},1,Google DeepMind,0,,2,https://luma.com/7srz7k7v https://luma.com/ldn-hack
+RC38,RC41,Unicorn Mafia,oscarama events,1,Mubit,0,,2,https://luma.com/p7pnjcu8 https://luma.com/umhack
+RC38,RC42,Unicorn Mafia,{Tech: Europe},1,Pydantic,0,,2,https://luma.com/ldn-hack https://luma.com/umhack
+RC39,RC41,Vercel Events,oscarama events,1,Vercel,0,,2,https://luma.com/eveLDN https://luma.com/p7pnjcu8

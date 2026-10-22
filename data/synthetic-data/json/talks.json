@@ -1,0 +1,675 @@
+{
+  "_notice": "SAMPLE / FICTIONAL data for a hackathon demo. Not real people, companies or events.",
+  "records": [
+    {
+      "speaker_id": "P21",
+      "event_id": "E049",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P27",
+      "event_id": "E049",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P21",
+      "event_id": "E058",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P08",
+      "event_id": "E058",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "event_id": "E058",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P43",
+      "event_id": "E061",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P05",
+      "event_id": "E061",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P03",
+      "event_id": "E061",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P12",
+      "event_id": "E040",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P13",
+      "event_id": "E042",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P32",
+      "event_id": "E010",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "event_id": "E045",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E026",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P25",
+      "event_id": "E029",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P43",
+      "event_id": "E029",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P32",
+      "event_id": "E029",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P40",
+      "event_id": "E009",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P45",
+      "event_id": "E009",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P38",
+      "event_id": "E009",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P04",
+      "event_id": "E021",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "event_id": "E021",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P39",
+      "event_id": "E031",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P05",
+      "event_id": "E041",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P01",
+      "event_id": "E041",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P14",
+      "event_id": "E041",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P32",
+      "event_id": "E044",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P06",
+      "event_id": "E044",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P30",
+      "event_id": "E044",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P04",
+      "event_id": "E008",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "event_id": "E008",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P36",
+      "event_id": "E008",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P27",
+      "event_id": "E047",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "event_id": "E047",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P46",
+      "event_id": "E047",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P40",
+      "event_id": "E015",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P34",
+      "event_id": "E018",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P03",
+      "event_id": "E018",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P05",
+      "event_id": "E017",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P20",
+      "event_id": "E017",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P14",
+      "event_id": "E017",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "event_id": "E036",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P47",
+      "event_id": "E036",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P15",
+      "event_id": "E036",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P25",
+      "event_id": "E007",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P13",
+      "event_id": "E007",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P34",
+      "event_id": "E007",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P16",
+      "event_id": "E037",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E037",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P41",
+      "event_id": "E037",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P36",
+      "event_id": "E062",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P36",
+      "event_id": "E023",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P27",
+      "event_id": "E023",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P48",
+      "event_id": "E023",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P50",
+      "event_id": "E034",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E013",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P23",
+      "event_id": "E013",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P44",
+      "event_id": "E013",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P45",
+      "event_id": "E011",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P43",
+      "event_id": "E011",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "event_id": "E012",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P11",
+      "event_id": "E012",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P36",
+      "event_id": "E006",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P33",
+      "event_id": "E039",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P22",
+      "event_id": "E039",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P11",
+      "event_id": "E046",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P35",
+      "event_id": "E046",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P39",
+      "event_id": "E046",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P23",
+      "event_id": "E052",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P21",
+      "event_id": "E052",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P21",
+      "event_id": "E051",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "event_id": "E051",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P27",
+      "event_id": "E051",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P28",
+      "event_id": "E057",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P47",
+      "event_id": "E057",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P21",
+      "event_id": "E057",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P16",
+      "event_id": "E028",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E028",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P35",
+      "event_id": "E028",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P25",
+      "event_id": "E059",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P48",
+      "event_id": "E032",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P17",
+      "event_id": "E032",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "event_id": "E032",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P29",
+      "event_id": "E038",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P26",
+      "event_id": "E038",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P47",
+      "event_id": "E005",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P19",
+      "event_id": "E053",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P02",
+      "event_id": "E030",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P34",
+      "event_id": "E030",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P09",
+      "event_id": "E030",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P01",
+      "event_id": "E019",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P20",
+      "event_id": "E019",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P14",
+      "event_id": "E050",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P02",
+      "event_id": "E004",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P50",
+      "event_id": "E004",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P18",
+      "event_id": "E016",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P36",
+      "event_id": "E016",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P33",
+      "event_id": "E016",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E014",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P10",
+      "event_id": "E014",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "event_id": "E014",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P30",
+      "event_id": "E060",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P10",
+      "event_id": "E048",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P09",
+      "event_id": "E048",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P24",
+      "event_id": "E025",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P38",
+      "event_id": "E025",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P15",
+      "event_id": "E035",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P20",
+      "event_id": "E027",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P06",
+      "event_id": "E027",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P26",
+      "event_id": "E003",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E003",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P14",
+      "event_id": "E003",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P05",
+      "event_id": "E022",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P47",
+      "event_id": "E022",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P21",
+      "event_id": "E022",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P12",
+      "event_id": "E056",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P32",
+      "event_id": "E056",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P45",
+      "event_id": "E054",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E054",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P07",
+      "event_id": "E054",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P42",
+      "event_id": "E002",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P20",
+      "event_id": "E002",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P03",
+      "event_id": "E002",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P37",
+      "event_id": "E043",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P25",
+      "event_id": "E043",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P06",
+      "event_id": "E043",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P50",
+      "event_id": "E033",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P23",
+      "event_id": "E020",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P28",
+      "event_id": "E020",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P08",
+      "event_id": "E024",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P50",
+      "event_id": "E024",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P48",
+      "event_id": "E055",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P39",
+      "event_id": "E001",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P01",
+      "event_id": "E001",
+      "is_sample": "SAMPLE"
+    },
+    {
+      "speaker_id": "P41",
+      "event_id": "E001",
+      "is_sample": "SAMPLE"
+    }
+  ]
+}

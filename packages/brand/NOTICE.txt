@@ -1,0 +1,5 @@
+Raft drawings approved for Sponsor Engine on 22 October 2026.
+
+source/raft-mascot-sheet.jpg, source/raft-wordmark.jpg, and source/raft-app-icon.jpg are the approved files.
+scripts/build_assets.py crops the three poses, the wordmark, the head mark, and the icon sizes into assets/.
+The page-mascot stock otter is not used.
