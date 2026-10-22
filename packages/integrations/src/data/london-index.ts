@@ -9,6 +9,7 @@ import {
   type SourcePull,
 } from "./london.ts";
 import { pullLumaLondon } from "./luma-discover.ts";
+import { fetchBuilderBaseEvents } from "./organisers.ts";
 import { fetchEventbriteEvents } from "./eventbrite.ts";
 import { fetchMeetupEvents } from "./meetup.ts";
 
@@ -48,6 +49,7 @@ export async function buildLondonEventsIndex(options: ResolvedOptions): Promise<
   }
   pulls.push(await caughtPull("meetup", "Meetup", () => fetchMeetupEvents(options)));
   pulls.push(await caughtPull("eventbrite", "Eventbrite", () => fetchEventbriteEvents(options)));
+  pulls.push(await caughtPull("builderbase", "BuilderBase", () => fetchBuilderBaseEvents(options)));
   const liveEvents = pulls.flatMap((pull) => pull.events);
   const useBundle = liveEvents.length === 0;
   if (useBundle) pulls.push({ id: "bundled-data", mode: "builtin", events: bundled });

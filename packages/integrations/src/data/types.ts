@@ -1,4 +1,5 @@
 import type { LondonIndexData } from "./london-index.ts";
+import type { OrganiserLeadsData } from "./organisers.ts";
 import type { FindSponsorsData } from "./sponsors.ts";
 import type {
   CompanySize,
@@ -26,4 +27,6 @@ export interface DataSource {
   londonEventsIndex(): Promise<ProviderResult<LondonIndexData>>;
   /** Sponsors that backed events similar to the query. The query event is left out. */
   findSponsors(query: string): Promise<ProviderResult<FindSponsorsData>>;
+  /** Hackathon organisers to approach as sponsor or partner leads. */
+  organiserLeads(): Promise<ProviderResult<OrganiserLeadsData>>;
 }

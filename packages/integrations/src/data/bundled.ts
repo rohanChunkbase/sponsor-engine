@@ -10,6 +10,7 @@ import {
 } from "../seed/load.ts";
 import type { CompanySize, DevpostHackathon, LumaEventHosts, LumaHost, LumaSponsor } from "../types.ts";
 import { bundledLondonEvents, indexFromEvents } from "./london.ts";
+import { bundledOrganiserLeads } from "./organisers.ts";
 import { findSponsorsInSeed } from "./sponsors.ts";
 import { companySizeNote, emptyCompany } from "./parse.ts";
 import type { DataSource } from "./types.ts";
@@ -197,6 +198,13 @@ export function createBundledData(options: ResolvedOptions): DataSource {
       const data = findSponsorsInSeed(options.seedDir, query);
       const warning = data.sponsors.length === 0 ? "No similar events have sponsor claims." : undefined;
       return builtinResult("bundled-data", data, warning);
+    },
+    async organiserLeads() {
+      const leads = bundledOrganiserLeads(options.seedDir);
+      return builtinResult("bundled-data", {
+        leads,
+        sources: [{ id: "bundled-data", mode: "builtin" as const, count: leads.length }],
+      });
     },
   };
 }

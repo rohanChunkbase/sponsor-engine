@@ -155,6 +155,18 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
         : "No key. The London tech listing supplies events from the page JSON-LD.",
     },
     {
+      id: "builderbase",
+      name: "BuilderBase",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. Public discovery needs no key."
+        : "No key. Public discovery lists hackathon organisers, size, and theme tags.",
+    },
+    {
       id: "devpost",
       name: "Devpost",
       slot: "data",

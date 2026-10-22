@@ -16,6 +16,7 @@ export type { CrmProvider } from "./crm/types.ts";
 export type { MemoryProvider } from "./memory/types.ts";
 export type { DataSource } from "./data/types.ts";
 export type { FindSponsorsData, SimilarEvent, SponsorMatch } from "./data/sponsors.ts";
+export type { OrganiserLead, OrganiserLeadsData } from "./data/organisers.ts";
 export type { ProviderRegistry } from "./registry.ts";
 export type { RegistryOptions, ResolvedOptions } from "./options.ts";
 export type {
@@ -91,3 +92,7 @@ export async function findSponsors(query: string, options?: RegistryOptions) {
 }
 
 export const find_sponsors = findSponsors;
+
+export async function organiserLeads(options?: RegistryOptions) {
+  return createRegistry(options).data.organiserLeads();
+}
