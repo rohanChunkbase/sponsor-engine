@@ -9,6 +9,7 @@ import {
   deliverOutbox,
   DEMO_MESSAGE,
   draftSponsorAsk,
+  inferRecipient,
   evaluateActiveHistory,
   evaluateSampleHistory,
   resetVenueHistory,
@@ -74,7 +75,8 @@ test("a 35-staff offsite and a ranged relative date both qualify", async () => {
   const quote = await quoteBooking(db, { request_id: requestId });
   assert.ok(quote.price > 0);
   const draft = await draftSponsorAsk(db, { request_id: requestId });
-  assert.equal(draft.outbox.status, "awaiting_approval");
+  assert.equal(draft.outbox.status, "needs_contact");
+  assert.equal(draft.outbox.recipient, "");
 
   const ranged = triageInbound(db, {
     message: "Can we book a meetup next thurs for 40-50 ppl?",
@@ -238,11 +240,39 @@ test("demo flow quotes, matches three sponsors, and waits for approval", async (
   assert.equal(result.draft.ask_gbp, result.quote.lines.food_gbp);
   assert.match(result.draft.outbox.body, /free community slot/i);
   assert.equal(result.sponsors.matches.length, 3);
-  assert.equal(result.draft.outbox.status, "awaiting_approval");
+  assert.equal(result.draft.outbox.status, "needs_contact");
+  assert.equal(result.draft.outbox.recipient, "");
   assert.equal(result.draft.sent, false);
   assert.ok(result.draft.ask_gbp > 0);
   const again = await draftSponsorAsk(db, { request_id: result.request_id, sponsor_id: result.sponsors.matches[1].sponsor_id });
-  assert.equal(again.outbox.status, "awaiting_approval");
+  assert.equal(again.outbox.status, "needs_contact");
+});
+
+test("a sponsor draft never invents an email address", async () => {
+  assert.equal(inferRecipient("elastic.co (well-known domain, not re-checked)"), "");
+  assert.equal(inferRecipient(null), "");
+  assert.equal(
+    inferRecipient("https://elastic.co", [{ url: "https://x.com/elastic/status/123", quote: "Elastic hosted the meetup." }]),
+    "",
+  );
+  assert.equal(
+    inferRecipient(null, [{ url: "https://luma.com/abc", quote: "Write to partnerships@tessl.io for the night." }]),
+    "partnerships@tessl.io",
+  );
+  assert.equal(
+    inferRecipient(null, [], { hosts: [{ name: "Ada", linkedin: "https://www.linkedin.com/in/ada" }] }),
+    "https://www.linkedin.com/in/ada",
+  );
+  const draft = await draftSponsorAsk(db, {
+    headcount: 80,
+    community: "Thames Agent Builders (SAMPLE)",
+  });
+  assert.equal(draft.outbox.recipient, "");
+  assert.equal(draft.outbox.status, "needs_contact");
+  assert.doesNotMatch(draft.outbox.body, /partnerships@/i);
+  assert.doesNotMatch(draft.outbox.body, /taken from the public website/i);
+  assert.match(draft.outbox.body, /Find a contact/i);
+  await assert.rejects(() => approveOutbox(db, draft.outbox.id, "test"), /Find a contact/);
 });
 
 test("a venue CSV replaces the sample history and the check runs again", () => {

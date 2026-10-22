@@ -54,7 +54,7 @@ export async function draftSponsorAsk(
   const sponsor = pickSponsor(found.matches, input.sponsor_id, input.sponsor_name) ?? found.matches[0];
   if (!sponsor) throw new Error("No sponsor match to write to.");
   const source = sponsor.sources[0];
-  const recipient = inferRecipient(sponsor.website);
+  const recipient = inferRecipient(sponsor.website, sponsor.sources, found.live_hosts);
   const when = request?.event_date ? formatDate(request.event_date) : "the date they asked for";
   const venue = request?.venue_hint?.includes("Expedite") ? "Expedite" : "the venue";
   const subject = `Food for ${community} on ${when} — ${gbp(ask)}`;
@@ -73,7 +73,9 @@ export async function draftSponsorAsk(
         : `The room price is ${gbp(room)}. This ask does not include the room.`,
     `We are asking for ${gbp(ask)} for food and drinks. That is ${gbpExact(FOOD_PER_HEAD_GBP)} for each of the ${stored?.expected_heads ?? forecast.expected_heads} people we expect. The ask matches the food cost. It does not add a room fee.`,
     "",
-    `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. The address ${recipient} is taken from the public website. It is not a checked inbox.`,
+    recipient
+      ? `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. The contact ${recipient} is copied from a public page. It is not a checked inbox.`
+      : `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. There is no public contact on the pages we have. Find a contact before this can be sent.`,
     "",
     "Thank you,",
     "Venue lead",
@@ -132,14 +134,79 @@ function loadLoose(matches: SponsorMatch[], id: string): SponsorMatch | undefine
   return matches.find((match) => match.sponsor_id === id);
 }
 
-export function inferRecipient(website: string | null | undefined): string {
-  const domain = (website || "")
-    .replace(/^https?:\/\//, "")
-    .replace(/^www\./, "")
-    .split("/")[0]
-    .trim();
-  if (!domain || domain.includes("example.")) return "partnerships@example.com";
-  return `partnerships@${domain}`;
+type ContactSource = { url?: string | null; quote?: string | null };
+
+/**
+ * A contact only when a source already published one.
+ * A company website is not an address. This function never builds partnerships@domain.
+ */
+export function inferRecipient(
+  website?: string | null,
+  sources?: ContactSource[],
+  hosts?: unknown,
+): string {
+  void website;
+  const fromPages = (sources ?? []).map((source) => `${source.quote ?? ""}\n${source.url ?? ""}`).join("\n");
+  const email = firstEmail(`${fromPages}\n${hostValues(hosts, "email").join("\n")}`);
+  if (email) return email;
+  const profile = [
+    ...hostValues(hosts, "linkedin"),
+    ...hostValues(hosts, "x"),
+    ...hostValues(hosts, "twitter"),
+    ...(sources ?? []).map((source) => source.url ?? ""),
+  ].map((value) => contactLink(value)).find((value): value is string => Boolean(value));
+  if (profile) return profile;
+  const site = hostValues(hosts, "website").map((value) => hostSite(value)).find((value): value is string => Boolean(value));
+  return site ?? "";
+}
+
+function firstEmail(text: string): string | null {
+  const matches = text.match(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi) ?? [];
+  return matches.find((email) => {
+    const domain = email.split("@")[1]?.toLowerCase() ?? "";
+    return domain !== "example.com" && domain !== "example.org" && !domain.endsWith(".example");
+  }) ?? null;
+}
+
+function contactLink(value: string): string | null {
+  const trimmed = value.trim();
+  if (!/^https?:\/\//i.test(trimmed)) return null;
+  let url: URL;
+  try {
+    url = new URL(trimmed);
+  } catch {
+    return null;
+  }
+  const host = url.hostname.replace(/^www\./, "").toLowerCase();
+  const path = url.pathname.replace(/\/$/, "");
+  if (host === "linkedin.com" && /^\/(in|company)\//i.test(path)) return trimmed;
+  if ((host === "x.com" || host === "twitter.com") && /^\/[A-Za-z0-9_]{1,30}$/.test(path)) return trimmed;
+  return null;
+}
+
+function hostSite(value: string): string | null {
+  const trimmed = value.trim();
+  if (!/^https?:\/\//i.test(trimmed)) return null;
+  try {
+    const url = new URL(trimmed);
+    if (!url.hostname.includes(".")) return null;
+    return trimmed;
+  } catch {
+    return null;
+  }
+}
+
+function hostValues(hosts: unknown, key: string, depth = 0): string[] {
+  if (!hosts || typeof hosts !== "object" || depth > 6) return [];
+  if (Array.isArray(hosts)) return hosts.flatMap((item) => hostValues(item, key, depth + 1));
+  const row = hosts as Record<string, unknown>;
+  const found: string[] = [];
+  const raw = row[key];
+  if (typeof raw === "string" && raw.trim()) found.push(raw.trim());
+  for (const child of Object.values(row)) {
+    if (child && typeof child === "object") found.push(...hostValues(child, key, depth + 1));
+  }
+  return found;
 }
 
 function formatDate(iso: string): string {

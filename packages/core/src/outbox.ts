@@ -7,6 +7,7 @@ import { makeId, nowIso } from "./util.js";
 
 const ALLOWED: Record<string, string[]> = {
   draft: ["awaiting_approval", "blocked"],
+  needs_contact: ["blocked"],
   awaiting_approval: ["approved", "blocked"],
   approved: ["sent", "blocked"],
   sent: [],
@@ -24,20 +25,23 @@ export function createOutbox(
     sponsorId?: string | null;
     sponsorName?: string | null;
     askGbp?: number | null;
+    status?: "awaiting_approval" | "needs_contact";
   },
 ): OutboxRow {
   const id = makeId("out");
   const at = nowIso();
+  const status = input.status === "needs_contact" ? "needs_contact" : "awaiting_approval";
   db.run(
     `INSERT INTO outbox
       (id, kind, recipient, subject, body, status, request_id, sponsor_id, sponsor_name, ask_gbp, blocked_reason, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?, 'awaiting_approval', ?, ?, ?, ?, NULL, ?, ?)`,
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?)`,
     [
       id,
       input.kind,
       input.recipient,
       input.subject,
       input.body,
+      status,
       input.requestId ?? null,
       input.sponsorId ?? null,
       input.sponsorName ?? null,
@@ -61,17 +65,21 @@ export function sendWithApproval(
     sponsorId?: string | null;
     sponsorName?: string | null;
     askGbp?: number | null;
+    status?: "awaiting_approval" | "needs_contact";
   },
 ) {
+  const kind = input.kind ?? "sponsor_email";
+  const missingContact = kind === "sponsor_email" && !input.recipient.trim();
   const item = createOutbox(db, {
-    kind: input.kind ?? "sponsor_email",
-    recipient: input.recipient,
+    kind,
+    recipient: input.recipient.trim(),
     subject: input.subject,
     body: input.body,
     requestId: input.requestId,
     sponsorId: input.sponsorId,
     sponsorName: input.sponsorName,
     askGbp: input.askGbp,
+    status: missingContact ? "needs_contact" : input.status,
   });
   recordRun(db, {
     tool: "send_with_approval",
@@ -84,6 +92,9 @@ export function sendWithApproval(
 
 export async function approveOutbox(db: Db, id: string, actor = "dashboard") {
   const current = mustOutbox(db, id);
+  if (current.status === "needs_contact" || !current.recipient.trim()) {
+    throw new Error("Find a contact before this can be approved.");
+  }
   move(db, current, "approved");
   db.run(
     `INSERT INTO approvals (id, outbox_id, actor, decision, note, created_at) VALUES (?, ?, ?, 'approve', ?, ?)`,
@@ -160,7 +171,7 @@ export function deliverOutbox(db: Db, id: string) {
 
 export function skipOutbox(db: Db, id: string, actor = "dashboard") {
   const current = mustOutbox(db, id);
-  if (current.status !== "awaiting_approval" && current.status !== "draft") {
+  if (current.status !== "awaiting_approval" && current.status !== "draft" && current.status !== "needs_contact") {
     throw new Error(`You can skip a message only while it is waiting. This one is ${current.status}.`);
   }
   move(db, current, "blocked", "A person skipped this.");
@@ -179,7 +190,7 @@ export function skipOutbox(db: Db, id: string, actor = "dashboard") {
 
 export function editOutbox(db: Db, id: string, input: { subject?: string; body?: string; actor?: string }) {
   const current = mustOutbox(db, id);
-  if (current.status !== "awaiting_approval" && current.status !== "draft") {
+  if (current.status !== "awaiting_approval" && current.status !== "draft" && current.status !== "needs_contact") {
     throw new Error(`You can edit a message only while it is waiting. This one is ${current.status}.`);
   }
   const subject = input.subject?.trim() || current.subject;

@@ -33,12 +33,12 @@ export default function OutboxPage() {
         </Card>
       ) : (
         items.map((item) => {
-          const waiting = item.status === "awaiting_approval" || item.status === "draft";
+          const waiting = item.status === "awaiting_approval" || item.status === "draft" || item.status === "needs_contact";
           return (
             <Card key={item.id}>
               <CardHeader>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge tone={item.status === "awaiting_approval" ? "open" : item.status === "approved" || item.status === "sent" ? "review" : "neutral"} dot>
+                  <Badge tone={item.status === "awaiting_approval" || item.status === "needs_contact" ? "open" : item.status === "approved" || item.status === "sent" ? "review" : "neutral"} dot>
                     {waitingLabel(item.status, item.blocked_reason)}
                   </Badge>
                   <Badge tone="test" dot>Test mode</Badge>
@@ -46,11 +46,11 @@ export default function OutboxPage() {
                   {item.ask_gbp ? <span>{money(item.ask_gbp)}</span> : null}
                 </div>
                 <CardTitle>{item.subject}</CardTitle>
-                <p className="text-[16px] leading-6 text-muted-foreground">To {item.recipient}{item.sponsor_name ? ` · ${item.sponsor_name}` : ""}</p>
+                <p className="text-[16px] leading-6 text-muted-foreground">{item.recipient ? `To ${item.recipient}` : "Find a contact"}{item.sponsor_name ? ` · ${item.sponsor_name}` : ""}</p>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
                 <p className="whitespace-pre-wrap text-[16px] leading-6">{item.body}</p>
-                {waiting ? <Decisions id={item.id} body={item.body} /> : <p className="text-muted-foreground">{item.blocked_reason || waitingLabel(item.status)}. Nothing was sent from this screen.</p>}
+                {waiting ? <Decisions id={item.id} body={item.body} status={item.status} /> : <p className="text-muted-foreground">{item.blocked_reason || waitingLabel(item.status)}. Nothing was sent from this screen.</p>}
               </CardContent>
             </Card>
           );

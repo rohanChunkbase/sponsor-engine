@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-export function Decisions({ id, body }: { id: string; body: string }) {
+export function Decisions({ id, body, status }: { id: string; body: string; status?: string }) {
   const router = useRouter();
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(body);
@@ -31,10 +31,14 @@ export function Decisions({ id, body }: { id: string; body: string }) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-center gap-3">
-        <Button disabled={pending} onClick={() => post("approve")}>
-          <Check data-icon="inline-start" />
-          Approve
-        </Button>
+        {status === "needs_contact" ? (
+          <p className="text-[16px] leading-6">Find a contact before you can approve this.</p>
+        ) : (
+          <Button disabled={pending} onClick={() => post("approve")}>
+            <Check data-icon="inline-start" />
+            Approve
+          </Button>
+        )}
         <Button variant="secondary" disabled={pending} onClick={() => setEditing((open) => !open)}>
           <Pencil data-icon="inline-start" />
           Edit

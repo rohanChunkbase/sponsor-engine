@@ -77,14 +77,14 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
       <Card>
         <CardHeader>
           <CardTitle>Email</CardTitle>
-          <CardDescription>The ask is about £5.50 for each person we expect. It waits here until you approve it.</CardDescription>
+          <CardDescription>The ask is about £5.50 for each person we expect. It waits here until you approve it. Find a contact when the page has none.</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           {emails.length === 0 ? <DraftButton requestId={requestId} sponsorId={top?.sponsor_id} label="Write the email" /> : null}
           {emails.map((email) => (
             <div key={email.id} className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center gap-2">
-                <Badge tone={email.status === "awaiting_approval" ? "open" : email.status === "approved" ? "review" : "neutral"} dot>
+                <Badge tone={email.status === "awaiting_approval" || email.status === "needs_contact" ? "open" : email.status === "approved" ? "review" : "neutral"} dot>
                   {waitingLabel(email.status, email.blocked_reason)}
                 </Badge>
                 <span>{kindOfMessage(email.kind)}</span>
@@ -92,7 +92,7 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
               </div>
               <h3 className="text-[18px] leading-6 font-medium">{email.subject}</h3>
               <p className="whitespace-pre-wrap text-[16px] leading-6">{email.body}</p>
-              {email.status === "awaiting_approval" || email.status === "draft" ? <Decisions id={email.id} body={email.body} /> : <p className="text-muted-foreground">{waitingLabel(email.status, email.blocked_reason)}. Nothing else happens until you say so.</p>}
+              {email.status === "awaiting_approval" || email.status === "draft" || email.status === "needs_contact" ? <Decisions id={email.id} body={email.body} status={email.status} /> : <p className="text-muted-foreground">{waitingLabel(email.status, email.blocked_reason)}. Nothing else happens until you say so.</p>}
             </div>
           ))}
           <Link className="text-primary" href="/outbox">Open everything waiting to send</Link>

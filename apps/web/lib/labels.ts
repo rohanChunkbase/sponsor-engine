@@ -19,6 +19,7 @@ export function kindLabel(kind: string | null | undefined): string {
 }
 
 export function waitingLabel(status: string, reason?: string | null): string {
+  if (status === "needs_contact") return "Find a contact";
   if (status === "awaiting_approval" || status === "draft") return "Waiting for you";
   if (status === "approved") return "Approved";
   if (status === "sent") return "Sent";

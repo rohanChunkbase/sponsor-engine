@@ -49,7 +49,7 @@ export default function InboxPage() {
         <section className="flex flex-col gap-3">
           {data.requests.map((row) => {
             const request = row as unknown as RequestCard;
-            const waiting = (request.outbox || []).filter((item) => item.status === "awaiting_approval" || item.status === "draft");
+            const waiting = (request.outbox || []).filter((item) => item.status === "awaiting_approval" || item.status === "draft" || item.status === "needs_contact");
             return (
               <Card key={String(request.id)}>
                 <CardHeader>
@@ -74,7 +74,7 @@ export default function InboxPage() {
                   {waiting.map((item) => (
                     <div key={item.id} className="flex flex-col gap-3 rounded-[12px] bg-surface p-4">
                       <p className="font-medium">{kindOfMessage(item.kind)} · {waitingLabel(item.status, item.blocked_reason)}</p>
-                      <Decisions id={item.id} body={item.body} />
+                      <Decisions id={item.id} body={item.body} status={item.status} />
                     </div>
                   ))}
                 </CardContent>
