@@ -1071,3 +1071,74 @@ main :not(pre) > code {
     align-items: start;
   }
 }
+
+.recap-page {
+  padding: 32px 0 72px;
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(ellipse 70% 36% at 15% 0%, rgba(109, 40, 217, 0.16), transparent 62%),
+    radial-gradient(ellipse 55% 32% at 95% 8%, rgba(14, 116, 144, 0.14), transparent 58%),
+    radial-gradient(circle, rgba(18, 19, 22, 0.14) 1px, transparent 1.15px);
+  background-size: auto, auto, 22px 22px;
+}
+
+.recap-page h1 {
+  margin: 8px 0 16px;
+  font-family: var(--font-sans);
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.recap-scroller {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px max(16px, calc((100% - 1120px) / 2)) 28px;
+}
+
+.recap-slide {
+  flex: 0 0 min(760px, 88vw);
+  scroll-snap-align: center;
+}
+
+.recap-slide h2 {
+  margin: 16px 0 8px;
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.recap-slide p {
+  margin: 0 0 16px;
+  color: var(--color-graphite);
+}
+
+.recap-stretch {
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: var(--shadow-workspace);
+  transform-origin: center center;
+}
+
+.recap-stretch img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.recap-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recap-stretch {
+    transform: none !important;
+  }
+}
