@@ -9,6 +9,7 @@ import {
   deliverOutbox,
   DEMO_MESSAGE,
   draftSponsorAsk,
+  evaluateSampleHistory,
   findSponsors,
   getConnections,
   listFailures,
@@ -23,15 +24,18 @@ const db: Db = openDb(path.join(root, "test.db"));
 const previous = {
   DRY_RUN: process.env.DRY_RUN,
   ALLOWLIST: process.env.ALLOWLIST,
+  SPONSOR_ENGINE_VENUE_CSV: process.env.SPONSOR_ENGINE_VENUE_CSV,
 };
 
 before(() => {
+  process.env.SPONSOR_ENGINE_VENUE_CSV = path.join(root, "venue-bookings.csv");
   seed(db);
 });
 
 after(() => {
   restore("DRY_RUN", previous.DRY_RUN);
   restore("ALLOWLIST", previous.ALLOWLIST);
+  restore("SPONSOR_ENGINE_VENUE_CSV", previous.SPONSOR_ENGINE_VENUE_CSV);
   db.close();
 });
 
@@ -57,66 +61,40 @@ test("a short message is kept and logged as a failure", () => {
   assert.ok(failures.some((row) => /date|headcount|short/i.test(row.message)));
 });
 
-test("quotes from past bookings stay in a sensible band and name both rates", async () => {
+test("an 80-person community evening is a free room and food is the sponsor ask", async () => {
   const quote = await quoteBooking(db, {
     requester_kind: "community",
     headcount: 80,
+    date: "2026-11-26",
     community_name: "Thames Agent Builders (SAMPLE)",
-    needs: ["food", "room"],
+    needs: ["food", "room", "evening", "projector"],
   });
-  assert.ok(quote.price >= 250 && quote.price <= 800, `price ${quote.price}`);
-  assert.match(quote.explanation, /community/i);
-  assert.match(quote.explanation, /company/i);
+  assert.equal(quote.price, 0);
+  assert.equal(quote.lines.room_gbp, 0);
+  assert.equal(quote.range.low, 0);
+  assert.equal(quote.range.high, 0);
+  assert.equal(quote.currency, "GBP");
+  assert.equal(quote.lines.sponsor_ask_gbp, quote.lines.food_gbp);
+  assert.equal(quote.lines.food_gbp, Math.round(quote.lines.expected_heads * quote.lines.food_per_head));
+  assert.ok(quote.lines.food_gbp > 0);
+  assert.ok(quote.lines.company_room_gbp > quote.lines.room_gbp);
   assert.ok(quote.comparables.length >= 1);
-  const company = await quoteBooking(db, { requester_kind: "company", headcount: 40, needs: ["food"] });
-  const communityPer = quote.lines.room_per_head + quote.lines.food_per_head;
-  const companyPer = company.lines.room_per_head + company.lines.food_per_head;
-  assert.ok(companyPer > communityPer + 10, `company ${companyPer} community ${communityPer}`);
+  assert.ok(quote.comparables.every((row) => row.freeCommunitySlot));
+  assert.match(quote.explanation, /free community slot/i);
+  assert.match(quote.explanation, /company/i);
+  assert.match(quote.explanation, /sponsor ask/i);
 });
 
-test("held-out community bookings stay close to the quoted price", async () => {
-  const hold = openDb(path.join(root, "holdout.db"));
-  const stored: Array<Record<string, number | string>> = [];
-  for (let index = 0; index < 12; index++) {
-    const headcount = 50 + index * 4;
-    const show = 0.62 + (index % 3) * 0.02;
-    const checkIns = Math.round(headcount * show);
-    const foodPer = 5.3 + (index % 4) * 0.15;
-    const food = Math.round(checkIns * foodPer);
-    const room = Math.round(checkIns * 2.5);
-    const row = {
-      id: `H${index}`,
-      headcount,
-      checkIns,
-      show,
-      room,
-      food,
-      foodPer,
-      price: room + food,
-    };
-    stored.push(row);
-    hold.run(
-      `INSERT INTO bookings
-        (id, title, date, requester_kind, headcount, registrations, check_ins, show_up_rate, room_gbp, food_cost_gbp, food_per_head_gbp, price_gbp, is_sample)
-       VALUES (?, ?, '2026-01-01', 'community', ?, ?, ?, ?, ?, ?, ?, ?, 'SAMPLE')`,
-      [row.id, `Holdout ${index}`, headcount, headcount, checkIns, show, room, food, foodPer, row.price],
-    );
-  }
-  const errors: number[] = [];
-  for (const row of stored) {
-    hold.run("DELETE FROM bookings WHERE id = ?", [row.id]);
-    const quote = await quoteBooking(hold, { requester_kind: "community", headcount: Number(row.headcount) });
-    errors.push(Math.abs(quote.price - Number(row.price)) / Number(row.price));
-    hold.run(
-      `INSERT INTO bookings
-        (id, title, date, requester_kind, headcount, registrations, check_ins, show_up_rate, room_gbp, food_cost_gbp, food_per_head_gbp, price_gbp, is_sample)
-       VALUES (?, ?, '2026-01-01', 'community', ?, ?, ?, ?, ?, ?, ?, ?, 'SAMPLE')`,
-      [row.id, "Holdout", row.headcount, row.headcount, row.checkIns, row.show, row.room, row.food, row.foodPer, row.price],
-    );
-  }
-  const mape = errors.reduce((sum, value) => sum + value, 0) / errors.length;
-  assert.ok(mape < 0.15, `mape ${mape}`);
-  hold.close();
+test("held-out nearest bookings beat the other scores on the sample file", () => {
+  const report = evaluateSampleHistory();
+  const knn = report.scores.find((row) => row.model === "knn-rules");
+  const gbdt = report.scores.find((row) => row.model === "gbdt");
+  assert.ok(knn);
+  assert.ok(gbdt);
+  assert.equal(report.winner, "knn-rules");
+  assert.ok(knn.maeGbp < gbdt.maeGbp, `knn ${knn.maeGbp} gbdt ${gbdt.maeGbp}`);
+  assert.ok(knn.maeGbp < report.baselineMedian.maeGbp, `knn ${knn.maeGbp} median ${report.baselineMedian.maeGbp}`);
+  assert.ok(knn.mapePercent > 0 && knn.mapePercent < 40);
 });
 
 test("sponsor matches are real London companies with sources", async () => {
@@ -190,7 +168,10 @@ test("connections stay on the built-in tools when no integrations package is pre
 
 test("demo flow quotes, matches three sponsors, and waits for approval", async () => {
   const result = await runDemo(db);
-  assert.ok(result.quote.price > 0);
+  assert.equal(result.quote.price, 0);
+  assert.equal(result.quote.lines.room_gbp, 0);
+  assert.ok(result.quote.lines.company_room_gbp > 0);
+  assert.ok(result.quote.lines.food_gbp > 0);
   assert.equal(result.sponsors.matches.length, 3);
   assert.equal(result.draft.outbox.status, "awaiting_approval");
   assert.equal(result.draft.sent, false);

@@ -38,50 +38,6 @@ export type BookingRow = {
   notes: string | null;
 };
 
-export type Comparable = {
-  id: string;
-  title: string;
-  date: string | null;
-  headcount: number | null;
-  check_ins: number | null;
-  price: number;
-  requester_kind: string;
-  note: string;
-};
-
-/** Shape passed to packages/pricing quotePrice, when that package exists. */
-export type PricingRequest = {
-  requester_kind: RequesterKind;
-  headcount: number;
-  date?: string | null;
-  needs: string[];
-  community_name?: string | null;
-  request_id?: string | null;
-};
-
-export type PricingHistoryRow = {
-  id: string;
-  title: string;
-  date: string | null;
-  requester_kind: string;
-  headcount: number | null;
-  check_ins: number | null;
-  show_up_rate: number | null;
-  price_gbp: number;
-  room_gbp: number | null;
-  food_cost_gbp: number | null;
-  food_per_head_gbp: number | null;
-  venue_area: string | null;
-  is_sample: string | null;
-};
-
-export type PricingQuote = {
-  price: number;
-  currency: string;
-  explanation: string;
-  comparables: Comparable[];
-};
-
 export type SponsorMatch = {
   sponsor_id: string;
   company: string;

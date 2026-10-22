@@ -1,18 +1,44 @@
 import type { Db } from "@sponsor-engine/db";
-import { forecastTurnout } from "./forecast.js";
-import { quoteFromPricingModule } from "./pricing.js";
+import { quotePrice, type QuoteRequest } from "@sponsor-engine/pricing";
+import { forecastTurnout, resolveCommunity } from "./forecast.js";
 import { recordRun } from "./runs.js";
-import type { BookingRow, Comparable, PricingHistoryRow, PricingRequest, RequesterKind } from "./types.js";
-import { gbp, gbpExact, makeId, median, nowIso, parseJson, percent } from "./util.js";
+import type { RequesterKind } from "./types.js";
+import { gbp, gbpExact, makeId, nowIso, parseJson } from "./util.js";
+import { loadActiveHistory } from "./venue-history.js";
+
+export const FOOD_PER_HEAD_GBP = 5.5;
+
+export type PriceBand = { low: number; high: number };
 
 export type QuoteLines = {
   room_gbp: number;
   food_gbp: number;
   expected_heads: number;
   show_up_rate: number;
-  room_per_head: number;
   food_per_head: number;
+  sponsor_ask_gbp: number;
+  range: PriceBand;
+  community_room_gbp: number;
+  community_range: PriceBand;
+  company_room_gbp: number;
+  company_range: PriceBand;
 };
+
+export type RoomComparable = {
+  bookingId: string;
+  date: string;
+  bookerType: string;
+  headcount: number;
+  hours: number;
+  pricePaidGbp: number;
+  freeCommunitySlot: boolean;
+  isEvening: boolean;
+  isWeekend: boolean;
+};
+
+export function foodPassThrough(expectedHeads: number): number {
+  return Math.round(expectedHeads * FOOD_PER_HEAD_GBP);
+}
 
 export async function quoteBooking(
   db: Db,
@@ -37,34 +63,46 @@ export async function quoteBooking(
     : undefined;
   const kind = (input.requester_kind ?? request?.requester_kind ?? "community") as RequesterKind;
   const headcount = input.headcount ?? request?.headcount ?? null;
-  if (!headcount || headcount < 1) {
-    throw new Error("A quote needs a headcount.");
-  }
+  if (!headcount || headcount < 1) throw new Error("A quote needs a headcount.");
   const needs = input.needs ?? parseJson<string[]>(request?.needs_json, []);
   const communityName = input.community_name ?? request?.organisation ?? null;
-  const history = db.all<BookingRow>("SELECT * FROM bookings");
-  const pricingRequest: PricingRequest = {
-    requester_kind: kind === "unknown" ? "community" : kind,
-    headcount,
+  const bookerType = kind === "company" ? "company" : "community";
+  const history = loadActiveHistory();
+  const shaped = toQuoteRequest(db, {
     date: input.date ?? request?.event_date ?? null,
+    headcount,
+    bookerType,
+    communityName,
     needs,
+  });
+  const room = quotePrice(shaped, history);
+  const communityRequest = bookerType === "community" ? shaped : communityTwin(shaped);
+  const companyRequest = bookerType === "company" ? shaped : companyTwin(shaped);
+  const community = bookerType === "community" ? room : quotePrice(communityRequest, history);
+  const company = bookerType === "company" ? room : quotePrice(companyRequest, history);
+  const forecast = forecastTurnout(db, {
+    headcount,
+    requester_kind: bookerType,
     community_name: communityName,
-    request_id: input.request_id ?? null,
+    request_id: input.request_id,
+    log: false,
+  });
+  const food = foodPassThrough(forecast.expected_heads);
+  const lines: QuoteLines = {
+    room_gbp: Math.round(room.price),
+    food_gbp: food,
+    expected_heads: forecast.expected_heads,
+    show_up_rate: forecast.show_up_rate,
+    food_per_head: FOOD_PER_HEAD_GBP,
+    sponsor_ask_gbp: food,
+    range: room.range,
+    community_room_gbp: Math.round(community.price),
+    community_range: community.range,
+    company_room_gbp: Math.round(company.price),
+    company_range: company.range,
   };
-  const external = await quoteFromPricingModule(pricingRequest, history.map(toHistory));
-  const fallback = explainFromHistory(db, pricingRequest, history, kind === "unknown");
-  const chosen = external
-    ? {
-        price: external.price,
-        currency: external.currency || "GBP",
-        explanation: external.explanation,
-        comparables: external.comparables?.length ? external.comparables : fallback.comparables,
-        lines: fallback.lines,
-        contrast: fallback.contrast,
-        source: "pricing-module" as const,
-      }
-    : { ...fallback, currency: "GBP", source: "fallback" as const };
-
+  const comparables = room.comparables.map(toComparable);
+  const explanation = `${room.explanation}\n\n${deskParagraph(bookerType, lines, forecast.summary)}`;
   const id = makeId("quo");
   db.run(
     `INSERT INTO quotes
@@ -73,143 +111,119 @@ export async function quoteBooking(
     [
       id,
       input.request_id ?? null,
-      chosen.price,
-      chosen.currency,
-      chosen.explanation,
-      JSON.stringify(chosen.comparables),
-      pricingRequest.requester_kind,
-      JSON.stringify({ ...chosen.lines, contrast: chosen.contrast }),
-      chosen.source,
+      lines.room_gbp,
+      room.currency,
+      explanation,
+      JSON.stringify(comparables),
+      bookerType,
+      JSON.stringify(lines),
+      "pricing-module",
       nowIso(),
     ],
   );
   recordRun(db, {
     tool: "quote_booking",
-    inputSummary: `${pricingRequest.requester_kind} · ${headcount} people`,
-    outputSummary: `${gbp(chosen.price)} · ${chosen.source === "pricing-module" ? "pricing module" : "past bookings"}`,
+    inputSummary: `${bookerType} · ${headcount} people`,
+    outputSummary: `${gbp(lines.room_gbp)} room · ${gbp(food)} food`,
     requestId: input.request_id,
   });
-  return { id, ...chosen, requester_kind: pricingRequest.requester_kind };
-}
-
-function explainFromHistory(db: Db, request: PricingRequest, history: BookingRow[], kindWasUnknown: boolean) {
-  const kind = request.requester_kind === "company" ? "company" : "community";
-  const forecast = forecastTurnout(db, {
-    headcount: request.headcount,
-    requester_kind: kind,
-    community_name: request.community_name,
-    request_id: request.request_id,
-    log: false,
-  });
-  const same = history.filter((row) => row.requester_kind === kind);
-  const band = same.filter((row) => {
-    const size = row.headcount || 0;
-    return size >= request.headcount * 0.5 && size <= request.headcount * 2;
-  });
-  const pool = band.length >= 4 ? band : same;
-  const roomRate = median(pool.map(roomPerHead).filter((value) => value > 0)) ?? (kind === "company" ? 18 : 2.5);
-  const foodRate = median(pool.map(foodPerHead).filter((value) => value > 0)) ?? (kind === "company" ? 14 : 5.5);
-  const room = Math.round(roomRate * forecast.expected_heads);
-  const food = Math.round(foodRate * forecast.expected_heads);
-  const price = room + food;
-  const otherKind = kind === "company" ? "community" : "company";
-  const otherRows = history.filter((row) => row.requester_kind === otherKind);
-  const otherPer = median(otherRows.map(totalPerHead).filter((value) => value > 0));
-  const thisPer = roomRate + foodRate;
-  const comparables = nearest(pool, request.headcount).slice(0, 3).map(toComparable);
-  const who = request.community_name || (kind === "company" ? "This company" : "This community");
-  const kindLabel = kind === "company" ? "a company booking" : "a community evening";
-  const lines = [
-    `This quote is for ${kindLabel}. ${who} asked for ${request.headcount} people.`,
-    forecast.summary,
-    `Past ${kind} bookings of a similar size put the room at ${gbpExact(roomRate)} per person who comes, and food at ${gbpExact(foodRate)} per person. ${forecast.expected_heads} × ${gbpExact(roomRate)} is ${gbp(room)} for the room. ${forecast.expected_heads} × ${gbpExact(foodRate)} is ${gbp(food)} for food. The quote is ${gbp(price)}.`,
-    otherPer
-      ? `A ${otherKind} booking is a different rate. The typical ${otherKind} cost in this history is ${gbpExact(otherPer)} per person who comes. The same ${forecast.expected_heads} people at that rate would be about ${gbp(otherPer * forecast.expected_heads)}. Communities book often and bring the next hosts. Companies book rarely, so the room rate is higher.`
-      : `The other rate is not in the history yet.`,
-    comparables.length
-      ? `The closest past bookings are ${comparables.map((row) => `${row.title} (${gbp(row.price)})`).join("; ")}.`
-      : `There are no close past bookings yet. The figure uses the backup rate of ${gbpExact(thisPer)} per person.`,
-  ];
-  if (kindWasUnknown) {
-    lines.push("The message does not say community or company. This quote uses the community rate. Confirm the kind before you send it.");
-  }
-  if (Math.abs(foodRate - 5.5) <= 1) {
-    lines.push("Food sits near £5.50 per person. That is the planning figure for a community evening.");
-  }
   return {
-    price,
-    explanation: lines.join("\n\n"),
+    id,
+    price: lines.room_gbp,
+    currency: room.currency,
+    range: room.range,
+    explanation,
     comparables,
-    lines: {
-      room_gbp: room,
-      food_gbp: food,
-      expected_heads: forecast.expected_heads,
-      show_up_rate: forecast.show_up_rate,
-      room_per_head: round2(roomRate),
-      food_per_head: round2(foodRate),
-    } satisfies QuoteLines,
-    contrast: {
-      community_per_head: kind === "community" ? round2(thisPer) : otherPer ? round2(otherPer) : null,
-      company_per_head: kind === "company" ? round2(thisPer) : otherPer ? round2(otherPer) : null,
-    },
+    lines,
+    source: "pricing-module" as const,
+    requester_kind: bookerType,
   };
 }
 
-function roomPerHead(row: BookingRow): number {
-  const heads = came(row);
-  return (row.room_gbp || 0) / heads;
-}
-
-function foodPerHead(row: BookingRow): number {
-  if (row.food_per_head_gbp && row.food_per_head_gbp > 0) return row.food_per_head_gbp;
-  return (row.food_cost_gbp || 0) / came(row);
-}
-
-function totalPerHead(row: BookingRow): number {
-  return row.price_gbp / came(row);
-}
-
-function came(row: BookingRow): number {
-  if (row.check_ins && row.check_ins > 0) return row.check_ins;
-  if (row.headcount && row.show_up_rate) return Math.max(1, Math.round(row.headcount * row.show_up_rate));
-  return Math.max(1, row.headcount || 1);
-}
-
-function nearest(rows: BookingRow[], headcount: number): BookingRow[] {
-  return [...rows].sort((a, b) => Math.abs((a.headcount || 0) - headcount) - Math.abs((b.headcount || 0) - headcount));
-}
-
-function toComparable(row: BookingRow): Comparable {
+function toQuoteRequest(
+  db: Db,
+  input: {
+    date: string | null;
+    headcount: number;
+    bookerType: "community" | "company";
+    communityName: string | null;
+    needs: string[];
+  },
+): QuoteRequest {
+  const date = quoteDate(input.date);
+  const evening = input.needs.includes("evening");
   return {
-    id: row.id,
-    title: row.title,
-    date: row.date,
-    headcount: row.headcount,
-    check_ins: row.check_ins,
-    price: row.price_gbp,
-    requester_kind: row.requester_kind,
-    note: `${row.headcount ?? "?"} registered, ${row.check_ins ?? "?"} came. ${gbpExact(totalPerHead(row))} per person who came. Show-up ${row.show_up_rate ? percent(row.show_up_rate) : "n/a"}.`,
+    date,
+    isEvening: evening,
+    isWeekend: isWeekendDate(date),
+    hours: evening ? 4 : 8,
+    headcount: Math.round(input.headcount),
+    bookerType: input.bookerType,
+    repeatBookerCount: repeatCount(db, input.communityName, input.bookerType),
+    broughtLeads: input.bookerType === "community",
+    avNeeds: input.needs.includes("projector"),
+    cateringNeeds: false,
   };
 }
 
-function toHistory(row: BookingRow): PricingHistoryRow {
+function communityTwin(request: QuoteRequest): QuoteRequest {
+  return { ...request, bookerType: "community", broughtLeads: true };
+}
+
+function companyTwin(request: QuoteRequest): QuoteRequest {
+  return { ...request, bookerType: "company", broughtLeads: false, repeatBookerCount: 0 };
+}
+
+function repeatCount(db: Db, name: string | null, kind: "community" | "company"): number {
+  if (kind !== "community" || !name) return 0;
+  const community = resolveCommunity(db, null, name);
+  if (!community) return 0;
+  const row = db.get<{ n: number }>("SELECT COUNT(*) AS n FROM bookings WHERE community_id = ?", [community.id]);
+  return Number(row?.n ?? 0);
+}
+
+function quoteDate(value: string | null): string {
+  if (value && /^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
+  return new Date().toISOString().slice(0, 10);
+}
+
+function isWeekendDate(iso: string): boolean {
+  const [year, month, day] = iso.split("-").map(Number);
+  const weekday = new Date(Date.UTC(year, (month || 1) - 1, day || 1)).getUTCDay();
+  return weekday === 0 || weekday === 6;
+}
+
+function toComparable(row: {
+  bookingId: string;
+  date: string;
+  bookerType: string;
+  headcount: number;
+  hours: number;
+  pricePaidGbp: number;
+  freeCommunitySlot: boolean;
+  isEvening: boolean;
+  isWeekend: boolean;
+}): RoomComparable {
   return {
-    id: row.id,
-    title: row.title,
+    bookingId: row.bookingId,
     date: row.date,
-    requester_kind: row.requester_kind,
+    bookerType: row.bookerType,
     headcount: row.headcount,
-    check_ins: row.check_ins,
-    show_up_rate: row.show_up_rate,
-    price_gbp: row.price_gbp,
-    room_gbp: row.room_gbp,
-    food_cost_gbp: row.food_cost_gbp,
-    food_per_head_gbp: row.food_per_head_gbp,
-    venue_area: row.venue_area,
-    is_sample: row.is_sample,
+    hours: row.hours,
+    pricePaidGbp: row.pricePaidGbp,
+    freeCommunitySlot: row.freeCommunitySlot,
+    isEvening: row.isEvening,
+    isWeekend: row.isWeekend,
   };
 }
 
-function round2(value: number): number {
-  return Math.round(value * 100) / 100;
+function deskParagraph(kind: "community" | "company", lines: QuoteLines, forecastSummary: string): string {
+  const room = kind === "community" && lines.room_gbp === 0
+    ? `The room is ${gbp(0)}. This is a free community slot. Similar community evenings were free, and communities bring leads.`
+    : `The room is ${gbp(lines.room_gbp)}. The room range is ${gbp(lines.range.low)} to ${gbp(lines.range.high)}.`;
+  const food = `Food and drinks are passed through at ${gbpExact(FOOD_PER_HEAD_GBP)} for each person we expect. ${forecastSummary} The food cost is ${gbp(lines.food_gbp)}. The sponsor ask covers that food cost. The ask is ${gbp(lines.sponsor_ask_gbp)}.`;
+  const contrast = kind === "community"
+    ? `A company pays ${gbp(lines.company_room_gbp)} for the same room. The company range is ${gbp(lines.company_range.low)} to ${gbp(lines.company_range.high)}.`
+    : `A community that brings leads pays ${gbp(lines.community_room_gbp)} for the same room. The community range is ${gbp(lines.community_range.low)} to ${gbp(lines.community_range.high)}.`;
+  return `${room} ${food} ${contrast}`;
 }

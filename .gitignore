@@ -7,5 +7,6 @@ dist
 data/sponsor-engine.db
 data/sponsor-engine.db-shm
 data/sponsor-engine.db-wal
+data/venue-bookings.csv
 coverage
 .DS_Store

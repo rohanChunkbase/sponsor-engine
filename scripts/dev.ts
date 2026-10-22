@@ -1,6 +1,17 @@
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { repoRoot } from "@sponsor-engine/db";
 import { getReadyDb } from "@sponsor-engine/core";
+
+const rootForBuild = repoRoot();
+if (!existsSync(join(rootForBuild, "packages/pricing/dist/index.js"))) {
+  const built = spawnSync("npm", ["run", "build", "-w", "@sponsor-engine/pricing"], {
+    cwd: rootForBuild,
+    stdio: "inherit",
+  });
+  if (built.status !== 0) process.exit(built.status ?? 1);
+}
 
 getReadyDb();
 const root = repoRoot();
