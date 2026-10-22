@@ -7,6 +7,7 @@ import { openDb, repoRoot, seed, type Db } from "@sponsor-engine/db";
 import { runWithWorkspace } from "@sponsor-engine/db";
 import {
   allowWrite,
+  recallHistory,
   approveOutbox,
   assertDashboardOrigin,
   deliverOutbox,
@@ -300,6 +301,17 @@ test("approve stores a CRM draft and does not send email", async () => {
   assert.equal(saved.data?.draft, true);
   assert.equal(saved.data?.askAmount, 264);
   assert.match(approved.reason, /Email was not sent/);
+});
+
+test("recall_history uses built-in memory when no key is set", async () => {
+  delete process.env.COGNEE_API_KEY;
+  const recalled = await recallHistory(db, "food sponsor");
+  assert.equal(recalled.memory?.provider, "local-memory");
+  assert.equal(recalled.memory?.mode, "builtin");
+  assert.ok((recalled.memory?.hits.length ?? 0) > 0);
+  assert.match(recalled.note, /Built-in memory/);
+  assert.ok(recalled.events);
+  assert.ok(recalled.claims);
 });
 
 test("approval from another site is refused", () => {

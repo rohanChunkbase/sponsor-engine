@@ -81,14 +81,44 @@ export async function pushDealIfAvailable(input: {
   }
 }
 
-export async function recallIfAvailable(query: string) {
-  const fn = findFunction(await loadOptionalPackage("integrations"), ["recall", "recallHistory", "cogneeRecall"]);
+export type MemoryRecall = {
+  provider: string;
+  mode: string;
+  hits: Array<{ title: string; text: string; source: string; score: number }>;
+};
+
+/** MemoryProvider.recall. No key uses the built-in keyword search. */
+export async function recallIfAvailable(organiserId: string, query: string): Promise<MemoryRecall | null> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["recall"]);
   if (!fn) return null;
   try {
-    return await fn(query);
+    return readRecall(await fn(organiserId, query));
   } catch {
     return null;
   }
+}
+
+function readRecall(value: unknown): MemoryRecall | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  const rows = Array.isArray(record.data) ? record.data : [];
+  const hits = rows.flatMap((row) => {
+    if (!row || typeof row !== "object") return [];
+    const item = row as Record<string, unknown>;
+    const text = typeof item.text === "string" ? item.text : "";
+    if (!text) return [];
+    return [{
+      title: typeof item.title === "string" ? item.title : "",
+      text,
+      source: typeof item.source === "string" ? item.source : "",
+      score: typeof item.score === "number" ? item.score : 0,
+    }];
+  });
+  return {
+    provider: typeof record.provider === "string" ? record.provider : "memory",
+    mode: typeof record.mode === "string" ? record.mode : "",
+    hits,
+  };
 }
 
 export async function integrationStatus(): Promise<unknown | null> {

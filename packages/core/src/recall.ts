@@ -4,7 +4,7 @@ import { recordRun } from "./runs.js";
 
 export async function recallHistory(db: Db, query: string) {
   const text = query.trim();
-  const external = text ? await recallIfAvailable(text) : null;
+  const memory = text ? await recallIfAvailable(text, text) : null;
   const like = `%${text.replace(/[%_]/g, "")}%`;
   const events = text
     ? db.all<{ title: string; date: string | null; community_name: string | null; source_url: string | null }>(
@@ -28,19 +28,24 @@ export async function recallHistory(db: Db, query: string) {
         [like, like],
       )
     : [];
+  const provider = memory?.provider ?? "";
   recordRun(db, {
     tool: "recall_history",
     inputSummary: text.slice(0, 140),
-    outputSummary: external ? "Cognee plus the local list." : `${events.length} events, ${claims.length} sponsor notes.`,
+    outputSummary: memory ? `${provider} · ${memory.hits.length} notes` : `${events.length} events, ${claims.length} sponsor notes.`,
   });
   return {
-    source: external ? "cognee+local" : "local",
-    external,
+    source: memory ? `${provider}+local` : "local",
+    memory,
     events,
     claims,
     bookings,
-    note: external
-      ? "Cognee answered, and the local list is included too."
-      : "Cognee is not connected. This answer uses the bookings and sponsor notes on this computer.",
+    note: memoryNote(provider),
   };
+}
+
+function memoryNote(provider: string): string {
+  if (provider === "cognee") return "Cognee answered, and the list on this computer is included too.";
+  if (provider) return "Built-in memory answered, and the list on this computer is included too.";
+  return "Cognee is not connected. This answer uses the bookings and sponsor notes on this computer.";
 }
