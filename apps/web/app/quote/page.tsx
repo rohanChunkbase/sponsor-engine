@@ -37,16 +37,18 @@ export default async function QuotePage({ searchParams }: { searchParams: Promis
         {request ? `${kindLabel(request.requester_kind)} · ${request.headcount || "?"} people${request.event_date ? ` · ${request.event_date}` : ""}` : "This message is not in the inbox."}
       </PageIntro>
       {!quote ? (
-        <Card>
-          <CardHeader>
-            <CardTitle>Price this booking</CardTitle>
-            <CardDescription>The room price comes from past bookings of the same kind. Food is passed through.</CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <PriceButton requestId={requestId} />
-          </CardFooter>
-        </Card>
-        <AccuracyPanel />
+        <>
+          <Card>
+            <CardHeader>
+              <CardTitle>Price this booking</CardTitle>
+              <CardDescription>The room price comes from past bookings of the same kind. Food is passed through.</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <PriceButton requestId={requestId} />
+            </CardFooter>
+          </Card>
+          <AccuracyPanel />
+        </>
       ) : (
         <QuoteView requestId={requestId} quote={quote} />
       )}
