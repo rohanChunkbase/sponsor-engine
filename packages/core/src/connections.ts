@@ -128,6 +128,9 @@ export async function getConnections(): Promise<{ cards: ConnectionCard[]; sourc
   const cards = CATALOG.map((card) => {
     const remote = byId.get(card.id);
     if (!remote) return applyLocal(card);
+    if (card.state === "coming-soon" && remote.state !== "connected") {
+      return { ...card, plain: remote.detail ?? card.plain, step: remote.step ?? card.step };
+    }
     return {
       ...card,
       state: remote.state,

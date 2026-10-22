@@ -19,7 +19,7 @@
     "dev": "tsx scripts/dev.ts",
     "mcp": "tsx packages/mcp/src/stdio.ts",
     "mcp:http": "tsx packages/mcp/src/http.ts",
-    "test": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && npm test -w @sponsor-engine/pricing && node --import tsx --test packages/db/test/*.test.ts packages/core/test/*.test.ts packages/mcp/test/*.test.ts",
+    "test": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && npm test -w @sponsor-engine/pricing && npm test -w @sponsor-engine/integrations && node --import tsx --test packages/db/test/*.test.ts packages/core/test/*.test.ts packages/mcp/test/*.test.ts",
     "typecheck": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit"
   },
   "devDependencies": {

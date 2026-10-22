@@ -31,10 +31,12 @@ const previous = {
   DRY_RUN: process.env.DRY_RUN,
   ALLOWLIST: process.env.ALLOWLIST,
   SPONSOR_ENGINE_VENUE_CSV: process.env.SPONSOR_ENGINE_VENUE_CSV,
+  SPONSOR_ENGINE_OFFLINE: process.env.SPONSOR_ENGINE_OFFLINE,
 };
 
 before(() => {
   process.env.SPONSOR_ENGINE_VENUE_CSV = path.join(root, "venue-bookings.csv");
+  process.env.SPONSOR_ENGINE_OFFLINE = "1";
   seed(db);
 });
 
@@ -42,6 +44,7 @@ after(() => {
   restore("DRY_RUN", previous.DRY_RUN);
   restore("ALLOWLIST", previous.ALLOWLIST);
   restore("SPONSOR_ENGINE_VENUE_CSV", previous.SPONSOR_ENGINE_VENUE_CSV);
+  restore("SPONSOR_ENGINE_OFFLINE", previous.SPONSOR_ENGINE_OFFLINE);
   db.close();
 });
 
@@ -260,17 +263,20 @@ test("approval from another site is refused", () => {
   assert.throws(() => assertDashboardOrigin(cross), /this site/);
 });
 
-test("connections stay on the built-in tools when no integrations package is present", async () => {
+test("integrations report status and missing keys stay optional", async () => {
   const status = await getConnections();
-  assert.equal(status.source, "built-in");
+  assert.equal(status.source, "integrations");
   const zero = status.cards.find((card) => card.id === "zero");
   const cognee = status.cards.find((card) => card.id === "cognee");
   const house = status.cards.find((card) => card.id === "companies-house");
-  assert.equal(zero?.state, "built-in");
-  assert.match(zero?.step || "", /ZERO_API_KEY/);
-  assert.match(cognee?.step || "", /COGNEE_API_KEY/);
-  assert.match(house?.step || "", /COMPANIES_HOUSE_API_KEY/);
+  const luma = status.cards.find((card) => card.id === "luma");
+  assert.equal(zero?.state, "missing");
+  assert.match(`${zero?.plain ?? ""} ${zero?.step ?? ""}`, /ZERO_API_KEY/);
+  assert.match(`${cognee?.plain ?? ""} ${cognee?.step ?? ""}`, /COGNEE_API_KEY/);
+  assert.match(`${house?.plain ?? ""} ${house?.step ?? ""}`, /COMPANIES_HOUSE_API_KEY/);
+  assert.equal(luma?.state, "connected");
   assert.equal(status.cards.find((card) => card.id === "hubspot")?.state, "coming-soon");
+  assert.equal(status.cards.find((card) => card.id === "crm-builtin")?.state, "built-in");
 });
 
 test("demo flow quotes, matches three sponsors, and waits for approval", async () => {
