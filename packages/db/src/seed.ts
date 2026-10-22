@@ -61,36 +61,21 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
   const extra = path.join(real, "new_2026-10-22");
   const sample = path.join(root, "data", "synthetic-data");
 
-  db.exec(`
-    DELETE FROM approvals;
-    DELETE FROM outbox;
-    DELETE FROM quotes;
-    DELETE FROM tasks;
-    DELETE FROM requests;
-    DELETE FROM failures;
-    DELETE FROM agent_runs;
-    DELETE FROM bookings;
-    DELETE FROM sponsor_claims;
-    DELETE FROM sponsors;
-    DELETE FROM events;
-    DELETE FROM communities;
-  `);
-
   const insertCommunity = dbInsert(db, "communities", [
     "id", "name", "focus", "url", "area", "lat", "lon", "members_estimate",
     "organiser_name", "events_found", "sponsor_companies", "is_sample", "source",
-  ]);
+  ], "id");
   const insertEvent = dbInsert(db, "events", [
     "id", "community_id", "community_name", "title", "date", "status", "venue", "area",
     "lat", "lon", "registrations", "check_ins", "show_up_rate", "approx_size",
     "food_cost_gbp", "food_per_head_gbp", "ticket", "url", "source_url", "platform",
     "is_sample", "source",
-  ]);
+  ], "id");
   const insertSponsor = dbInsert(db, "sponsors", [
     "id", "company", "website", "category", "roles", "london_events", "london_events_stated",
     "food_or_drinks_events", "venue_events", "typical_ask_gbp", "in_kind", "audiences",
     "contact_role", "evidence_urls", "notes", "is_sample", "source",
-  ]);
+  ], "id");
   const insertClaim = dbInsert(db, "sponsor_claims", [
     "event_id", "event_name", "event_date", "community", "company", "sponsor_id", "role",
     "confidence", "evidence_quote", "source_url", "is_sample", "source",
@@ -99,7 +84,7 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
     "id", "event_id", "community_id", "title", "date", "requester_kind", "headcount",
     "registrations", "check_ins", "show_up_rate", "venue_area", "ticket", "room_gbp",
     "food_cost_gbp", "food_per_head_gbp", "price_gbp", "is_sample", "notes",
-  ]);
+  ], "id");
 
   for (const row of readCsv(path.join(real, "csv", "communities.csv"))) {
     insertCommunity.run(
@@ -248,9 +233,23 @@ export function seed(db: Db, root = repoRoot()): { counts: Record<string, number
 
   const addClaim = (row: Record<string, string>, source: string, sample = "") => {
     const company = row.company.trim();
+    const eventDate = cleanDate(row.event_date);
+    const sponsorId = sponsorIdByCompany.get(company.toLowerCase()) ?? null;
+    if (claimExists(db, {
+      event_id: row.event_id,
+      event_name: row.event_name,
+      event_date: eventDate,
+      community: row.community,
+      company,
+      role: row.role,
+      confidence: row.confidence,
+      evidence_quote: row.evidence_quote,
+      source_url: row.source_url,
+      source,
+    })) return;
     insertClaim.run(
-      row.event_id, row.event_name, cleanDate(row.event_date), row.community, company,
-      sponsorIdByCompany.get(company.toLowerCase()) ?? null,
+      row.event_id, row.event_name, eventDate, row.community, company,
+      sponsorId,
       row.role, row.confidence, row.evidence_quote, row.source_url, sample, source,
     );
   };
@@ -326,9 +325,43 @@ function mergeRoles(left: string, right: string): string {
   return [...map.entries()].map(([role, value]) => `${role}:${value}`).join(";");
 }
 
-function dbInsert(db: Db, table: string, columns: string[]) {
+function claimExists(db: Db, row: {
+  event_id: string;
+  event_name: string;
+  event_date: string;
+  community: string;
+  company: string;
+  role: string;
+  confidence: string;
+  evidence_quote: string;
+  source_url: string;
+  source: string;
+}): boolean {
+  const found = db.get<{ n: number }>(
+    `SELECT 1 AS n FROM sponsor_claims
+     WHERE COALESCE(event_id, '') = COALESCE(?, '')
+       AND COALESCE(event_name, '') = COALESCE(?, '')
+       AND COALESCE(event_date, '') = COALESCE(?, '')
+       AND COALESCE(community, '') = COALESCE(?, '')
+       AND COALESCE(company, '') = COALESCE(?, '')
+       AND COALESCE(role, '') = COALESCE(?, '')
+       AND COALESCE(confidence, '') = COALESCE(?, '')
+       AND COALESCE(evidence_quote, '') = COALESCE(?, '')
+       AND COALESCE(source_url, '') = COALESCE(?, '')
+       AND COALESCE(source, '') = COALESCE(?, '')
+     LIMIT 1`,
+    [
+      row.event_id, row.event_name, row.event_date, row.community, row.company,
+      row.role, row.confidence, row.evidence_quote, row.source_url, row.source,
+    ],
+  );
+  return found != null;
+}
+
+function dbInsert(db: Db, table: string, columns: string[], conflict?: string) {
   const placeholders = columns.map(() => "?").join(", ");
-  const sql = `INSERT INTO ${table} (${columns.join(", ")}) VALUES (${placeholders})`;
+  const conflictSql = conflict ? ` ON CONFLICT(${conflict}) DO NOTHING` : "";
+  const sql = `INSERT INTO ${table} (${columns.join(", ")}) VALUES (${placeholders})${conflictSql}`;
   return {
     run(...values: unknown[]) {
       db.run(sql, values);

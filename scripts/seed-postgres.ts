@@ -11,4 +11,5 @@ if (!process.env.DATABASE_URL?.trim()) {
 const db = getDb();
 const counts = seed(db);
 console.log(JSON.stringify(counts, null, 2));
+console.log("Seed finished. Running it again adds only missing catalog rows. Messages stay in place.");
 db.close();
