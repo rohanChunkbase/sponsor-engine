@@ -17,6 +17,7 @@ export type { MemoryProvider } from "./memory/types.ts";
 export type { DataSource } from "./data/types.ts";
 export type { FindSponsorsData, SimilarEvent, SponsorMatch } from "./data/sponsors.ts";
 export type { OrganiserLead, OrganiserLeadsData } from "./data/organisers.ts";
+export type { DevpostProject } from "./data/devpost-projects.ts";
 export type { ProviderRegistry } from "./registry.ts";
 export type { RegistryOptions, ResolvedOptions } from "./options.ts";
 export type {
@@ -95,4 +96,8 @@ export const find_sponsors = findSponsors;
 
 export async function organiserLeads(options?: RegistryOptions) {
   return createRegistry(options).data.organiserLeads();
+}
+
+export async function devpostProjects(query: string, options?: RegistryOptions) {
+  return createRegistry(options).data.devpostProjects(query);
 }

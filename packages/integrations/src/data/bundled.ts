@@ -206,5 +206,8 @@ export function createBundledData(options: ResolvedOptions): DataSource {
         sources: [{ id: "bundled-data", mode: "builtin" as const, count: leads.length }],
       });
     },
+    async devpostProjects() {
+      return builtinResult("bundled-data", [], "The bundle has no Devpost project search.");
+    },
   };
 }

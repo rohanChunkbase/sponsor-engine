@@ -2,6 +2,7 @@ import { envValue } from "../options.ts";
 import type { ResolvedOptions } from "../options.ts";
 import { createBundledData } from "./bundled.ts";
 import { companySize as fetchCompanySize } from "./companies-house.ts";
+import { devpostProjects as fetchDevpostProjects } from "./devpost-projects.ts";
 import { devpostLondonHackathons as fetchDevpost } from "./devpost.ts";
 import { buildLondonEventsIndex } from "./london-index.ts";
 import { buildOrganiserLeads } from "./organisers.ts";
@@ -39,6 +40,9 @@ export function createLiveData(options: ResolvedOptions): DataSource {
     },
     organiserLeads() {
       return buildOrganiserLeads(options);
+    },
+    devpostProjects(query) {
+      return fetchDevpostProjects(query, options);
     },
   };
 }

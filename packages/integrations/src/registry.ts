@@ -189,6 +189,18 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
       detail: devpostDetail,
     },
     {
+      id: "devpost-projects",
+      name: "Devpost projects",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. The project search needs no key."
+        : "No key. The public project search returns members, tags, and winners.",
+    },
+    {
       id: "companies-house",
       name: "Companies House",
       slot: "data",

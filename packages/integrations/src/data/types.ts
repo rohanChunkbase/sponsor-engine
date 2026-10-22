@@ -1,4 +1,5 @@
 import type { LondonIndexData } from "./london-index.ts";
+import type { DevpostProject } from "./devpost-projects.ts";
 import type { OrganiserLeadsData } from "./organisers.ts";
 import type { FindSponsorsData } from "./sponsors.ts";
 import type {
@@ -29,4 +30,6 @@ export interface DataSource {
   findSponsors(query: string): Promise<ProviderResult<FindSponsorsData>>;
   /** Hackathon organisers to approach as sponsor or partner leads. */
   organiserLeads(): Promise<ProviderResult<OrganiserLeadsData>>;
+  /** Public Devpost software search. */
+  devpostProjects(query: string): Promise<ProviderResult<DevpostProject[]>>;
 }
