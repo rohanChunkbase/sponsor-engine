@@ -139,11 +139,11 @@ The page shows an Accuracy card. The card calculates the average error on held-o
 
 Drop a venue CSV on the Quote page. The app saves the file and runs the check again. The sample file is fictional. Do not treat those prices as a real venue.
 
-The sponsor page ranks London sponsors. Each card has a reason and a source link.
+The sponsor page ranks London sponsors. Each card shows a company size, a reason, and a source link. With no key, the size comes from the public Companies House page. When that page is off, the bundled note is used.
 
-**To send** holds every message that needs a person. Each one has **Approve**, **Edit**, and **Skip**.
+**To send** holds every message that needs a person. Each one has **Approve**, **Edit**, and **Skip**. Approve stores the deal in the CRM. The built-in CRM is used when no key is set. Approve does not send email.
 
-**Connections** shows the built-in tools. It also shows the one line that connects Zero, Twenty, Cognee, Luma, Devpost, Companies House, or email.
+**Connections** reads `getStatus()`. The built-in CRM and the built-in memory are active with no key. The page also shows the one line that connects Zero, Twenty, Cognee, Luma, Devpost, Companies House, or email.
 
 HubSpot and Sheets are not available yet.
 
@@ -169,7 +169,7 @@ The bundled history is a SAMPLE file. A dropped CSV replaces it. The app stores 
 
 Food is not inside the room price. The core adds a food pass-through. The sponsor email asks for that amount.
 
-`packages/integrations` is optional. When it is present, sponsor match can call `companySize` and `lumaEventHosts`. Approve can call `pushDeal`. Recall can call Cognee. The dashboard calls `getStatus()`. The app runs when that package is absent.
+`packages/integrations` is optional. When it is present, `find_sponsors` adds a company size to the top matches. Approve calls `pushDeal`. `recall_history` searches with the memory provider. With no key, that search uses the bundled notes. The Connections page calls `getStatus()`. The app runs when that package is absent.
 
 Figure 1 shows the parts of a sponsor engine.
 
@@ -197,9 +197,9 @@ The outbox has these states: `draft`, `awaiting_approval`, `needs_contact`, `app
 
 A sponsor email with no public contact uses status `needs_contact`. The recipient stays empty. Find a contact before you approve it.
 
-A person must press **Approve**. That action moves the row to `approved`.
+A person must press **Approve**. That action moves the row to `approved` and stores a CRM draft. The draft does not send email.
 
-In test mode, **Approve** writes a log. The row does not move to `sent`.
+In test mode, the row does not move to `sent`.
 
 The row moves to `sent` only when all of these are true:
 
