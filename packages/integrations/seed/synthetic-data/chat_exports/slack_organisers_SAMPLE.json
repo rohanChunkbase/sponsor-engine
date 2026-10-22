@@ -1,0 +1,26 @@
+{
+  "_notice": "SAMPLE / FICTIONAL Slack export",
+  "channel": "#organisers (SAMPLE)",
+  "messages": [
+    {
+      "ts": "2026-10-15T10:01:00Z",
+      "user": "Orla Vance (fictional)",
+      "text": "Querypine (fictional) said no this quarter, budget spent"
+    },
+    {
+      "ts": "2026-10-15T10:03:00Z",
+      "user": "Ada Fernwood (fictional)",
+      "text": "Stacklark (fictional) sponsored Docklands DevRel Circle last month, worth asking?"
+    },
+    {
+      "ts": "2026-10-15T10:05:00Z",
+      "user": "Ravi Kestrel (fictional)",
+      "text": "I know their DevRel lead from a talk, can intro"
+    },
+    {
+      "ts": "2026-10-15T10:09:00Z",
+      "user": "Orla Vance (fictional)",
+      "text": "venue: The Loom Workspace (fictional) can do 80, but only Tuesdays/Thursdays"
+    }
+  ]
+}

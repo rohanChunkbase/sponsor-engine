@@ -1,0 +1,57 @@
+{
+  "note": "Copy one mcpServers object into the client. Cursor reads ~/.cursor/mcp.json. Grok Bot uses the same mcpServers list in its MCP settings. Run Sponsor Engine, Zero, and Cognee side by side. Zero MCP signs in with OAuth at https://api.zero.inc/mcp. An empty env value counts as not set. Delete a key you do not use.",
+  "cursor": {
+    "configFile": "~/.cursor/mcp.json",
+    "mcpServers": {
+      "sponsor-engine": {
+        "command": "node",
+        "args": ["--experimental-strip-types", "packages/mcp/src/index.ts"],
+        "env": {
+          "ZERO_API_KEY": "",
+          "ZERO_WORKSPACE_ID": "",
+          "COGNEE_API_KEY": "",
+          "COGNEE_URL": "",
+          "COMPANIES_HOUSE_API_KEY": ""
+        }
+      },
+      "zero": {
+        "url": "https://api.zero.inc/mcp"
+      },
+      "cognee": {
+        "command": "uvx",
+        "args": ["cognee-mcp@0.5.6"],
+        "env": {
+          "COGNEE_BASE_URL": "",
+          "COGNEE_API_KEY": ""
+        }
+      }
+    }
+  },
+  "grokBot": {
+    "configFile": "Grok Bot MCP settings",
+    "mcpServers": {
+      "sponsor-engine": {
+        "command": "node",
+        "args": ["--experimental-strip-types", "packages/mcp/src/index.ts"],
+        "env": {
+          "ZERO_API_KEY": "",
+          "ZERO_WORKSPACE_ID": "",
+          "COGNEE_API_KEY": "",
+          "COGNEE_URL": "",
+          "COMPANIES_HOUSE_API_KEY": ""
+        }
+      },
+      "zero": {
+        "url": "https://api.zero.inc/mcp"
+      },
+      "cognee": {
+        "command": "uvx",
+        "args": ["cognee-mcp@0.5.6"],
+        "env": {
+          "COGNEE_BASE_URL": "",
+          "COGNEE_API_KEY": ""
+        }
+      }
+    }
+  }
+}
