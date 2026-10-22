@@ -29,6 +29,10 @@ npm test
 npm run demo
 ```
 
+`npm run dev` builds the pricing package when that build is missing.
+
+`npm test` builds the pricing package. It then runs the pricing tests and the core tests.
+
 ## Use it from Grok Bot or Cursor in 2 minutes
 
 Open the MCP settings in Grok Bot or Cursor.
@@ -86,7 +90,19 @@ Supabase is optional. It is not required. The running app uses SQLite. The Postg
 
 The inbox reads a message and makes a task. The task has an owner and a priority.
 
-The quote explains a community price and a company price.
+The quote page shows the room price, the range, and a short explanation.
+
+The room price comes from past bookings. `quote_booking` calls `quotePrice`.
+
+An 80-person community evening can be a free room. The page calls this a community slot.
+
+Food and drinks are a separate cost. The sponsor ask equals that food cost.
+
+The page shows the company room for the same booking beside the community room.
+
+The page shows an Accuracy card. The card calculates the average error on held-out bookings. The numbers are not typed in.
+
+Drop a venue CSV on the Quote page. The app saves the file and runs the check again. The sample file is fictional. Do not treat those prices as a real venue.
 
 The sponsor page ranks London sponsors. Each card has a reason and a source link.
 
@@ -100,9 +116,11 @@ The map shows events on free tiles. No key is required.
 
 ## Architecture
 
-The app has four parts.
+The app has five parts.
 
 The data layer stores messages, tasks, bookings, quotes, sponsors, and the outbox.
+
+The pricing package reads a booking history and returns a room price.
 
 The core reads a message, makes a quote, and matches sponsors.
 
@@ -110,7 +128,11 @@ The MCP server exposes those tools to Grok Bot and Cursor.
 
 The dashboard shows the same records to a person.
 
-`packages/pricing` is optional. When it is present, quotes call `quotePrice(request, history)`. The function returns `{ price, currency, explanation, comparables }`. A built-in quote is used when that package is absent.
+`packages/pricing` exports `quotePrice(request, history)`. The function returns a price, a currency, a range, an explanation, and comparable bookings. It also exports `loadBookingsFile` for a venue CSV.
+
+The bundled history is a SAMPLE file. A dropped CSV replaces it. The app stores that file at `data/venue-bookings.csv`.
+
+Food is not inside the room price. The core adds a food pass-through. The sponsor email asks for that amount.
 
 `packages/integrations` is optional. When it is present, sponsor match can call `companySize` and `lumaEventHosts`. Approve can call `pushDeal`. Recall can call Cognee. The dashboard calls `getStatus()`. The app runs when that package is absent.
 
