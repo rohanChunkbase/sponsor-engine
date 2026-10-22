@@ -31,7 +31,7 @@ npm run demo
 
 `npm run dev` builds the pricing package when that build is missing.
 
-`npm test` builds the pricing package. It then runs the pricing tests and the core tests.
+`npm test` builds the pricing package. It then runs `tsc --noEmit`. It then runs the pricing tests, the core tests, and the MCP tests.
 
 ## Use it from Grok Bot or Cursor in 2 minutes
 
