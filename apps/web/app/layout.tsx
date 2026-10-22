@@ -13,10 +13,9 @@ export const metadata: Metadata = {
   description: "Front desk and sponsor list for London communities and venues.",
   icons: {
     icon: [
-      { url: `/brand/${raftAssets.icon32}`, sizes: "32x32", type: "image/png" },
-      { url: `/brand/${raftAssets.icon16}`, sizes: "16x16", type: "image/png" },
+      { url: "/raft/favicon-32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: [{ url: `/brand/${raftAssets.icon180}`, sizes: "180x180" }],
+    apple: [{ url: "/raft/icon.png", sizes: "256x256" }],
   },
   manifest: `/brand/${raftAssets.manifest}`,
   openGraph: {

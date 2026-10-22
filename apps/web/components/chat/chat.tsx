@@ -199,7 +199,7 @@ export function Chat({ testMode }: { testMode: boolean }) {
       <div className="min-h-0 flex-1 overflow-y-auto">
         {empty ? (
           <div className="mx-auto flex h-full max-w-[720px] flex-col items-center justify-center px-6 pb-10 text-center">
-            <img src="/brand/raft-wave.webp" alt="Raft the otter waves." width={404} height={504} className="raft-rise h-28 w-auto drop-shadow-sm" />
+            <img src="/raft/wave.png" alt="Raft the otter waves." width={360} height={500} className="raft-rise h-32 w-auto drop-shadow-sm" />
             <h1 className="raft-rise mt-5 text-[26px] font-semibold tracking-[-0.02em] text-raft-ink">Hi, I am Raft.</h1>
             <p className="raft-rise mt-1.5 text-[16px] text-raft-muted">Paste a message from WhatsApp, email or Slack</p>
             <div className="raft-rise mt-7 flex flex-wrap justify-center gap-2">
@@ -270,7 +270,7 @@ function MessageView({ message, testMode }: { message: Message; testMode: boolea
   }
   return (
     <div className="raft-rise flex gap-3">
-      <img src="/brand/raft-mark.webp" alt="" width={32} height={32} className="mt-0.5 h-8 w-8 shrink-0 rounded-full bg-white ring-1 ring-raft-line" />
+      <img src="/raft/icon.png" alt="" width={32} height={32} className="mt-0.5 h-8 w-8 shrink-0 rounded-full bg-white ring-1 ring-raft-line" />
       <div className="flex min-w-0 flex-1 flex-col gap-3">{assistantBody(message, testMode)}</div>
     </div>
   );

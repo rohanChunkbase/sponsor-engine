@@ -11,7 +11,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className="raft-bg flex h-screen flex-col overflow-hidden text-raft-ink">
       <header className="flex h-14 shrink-0 items-center gap-3 border-b border-raft-line/70 bg-raft-cream/80 px-5 backdrop-blur">
         <Link href="/" className="flex items-center gap-2.5 font-ui text-[15px] font-semibold tracking-[-0.01em] text-raft-ink">
-          <img src={`/brand/${raftAssets.mark}`} alt="" width={28} height={28} className="h-7 w-7 rounded-full bg-white ring-1 ring-raft-line" />
+          <img src="/raft/icon.png" alt="" width={28} height={28} className="h-7 w-7 rounded-full bg-white ring-1 ring-raft-line" />
           Raft
           <span className="font-normal text-raft-muted">Sponsor Engine</span>
         </Link>

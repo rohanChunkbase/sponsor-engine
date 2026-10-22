@@ -21,7 +21,7 @@ export default async function OutboxPage() {
         Every message that would go out waits here. Approve, edit, or skip it. Test mode does not send.
       </PageIntro>
       <img
-        src={`/brand/${items.length === 0 ? raftAssets.wave : raftAssets.approve}`}
+        src={items.length === 0 ? "/raft/wave.png" : "/raft/icon.png"}
         alt={items.length === 0 ? "Raft the otter waves." : "Raft holds a clipboard."}
         width={404}
         height={510}
