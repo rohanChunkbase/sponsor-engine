@@ -34,11 +34,11 @@ test('the winning method beats a constant median on the held-out rows', () => {
   const knn = report.scores.find((score) => score.model === 'knn-rules');
   const gbdt = report.scores.find((score) => score.model === 'gbdt');
   assert.ok(winner && knn && gbdt);
-  assert.equal(report.winner, 'knn-rules');
-  assert.ok(Math.abs(knn.maeGbp - 76.91666666666667) < 1e-9);
-  assert.ok(Math.abs(knn.mapePercent - 15.923282804567842) < 1e-9);
-  assert.ok(Math.abs(gbdt.maeGbp - 96.75) < 1e-9);
-  assert.ok(Math.abs(gbdt.mapePercent - 12.992102355387905) < 1e-9);
+  assert.equal(report.winner, 'gbdt');
+  assert.ok(Math.abs(knn.maeGbp - 67.75) < 1e-9);
+  assert.ok(Math.abs(knn.mapePercent - 16.15400747136136) < 1e-9);
+  assert.ok(Math.abs(gbdt.maeGbp - 63.416666666666664) < 1e-9);
+  assert.ok(Math.abs(gbdt.mapePercent - 12.044935111468986) < 1e-9);
   assert.equal(knn.freeSlotsCorrect, 22);
   assert.equal(knn.freeSlotRows, 23);
   assert.equal(knn.paidPredictedFree, 0);
@@ -68,10 +68,15 @@ test('the three example quotes are ordered and explained', () => {
   assert.equal(startup.currency, 'GBP');
   assert.equal(company.currency, 'GBP');
   assert.equal(community.price, 0);
+  assert.equal(startup.price, 1645);
+  assert.equal(company.price, 1705);
   assert.ok(startup.price > community.price);
   assert.ok(company.price > startup.price);
-  assert.ok(startup.price >= 600 && startup.price <= 2800);
-  assert.ok(company.price >= 2500 && company.price <= 7000);
+  assert.equal(startup.range.low, 1430);
+  assert.equal(startup.range.high, 1800);
+  assert.equal(company.range.low, 1690);
+  assert.equal(company.range.high, 1920);
+  assert.ok(company.price >= 400 && company.price <= 3200);
 
   const quoted = [
     [community, communityExample.request],

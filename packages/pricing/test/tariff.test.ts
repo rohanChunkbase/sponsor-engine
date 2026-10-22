@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
+import { generateSampleBookings } from '../src/sample/generate.ts';
 import { priceFromTariff } from '../src/sample/tariff.ts';
+import { MARKET_EVENING_HIGH_GBP, MARKET_EVENING_LOW_GBP } from '../src/market.ts';
 
 const companyDay = {
   isEvening: false,
@@ -15,11 +17,43 @@ const companyDay = {
   cateringNeeds: true,
 };
 
-test('the written tariff gives a company the full price', () => {
+test('the written tariff gives a company the full price inside the London band', () => {
   const priced = priceFromTariff(companyDay);
   assert.equal(priced.freeCommunitySlot, false);
-  assert.equal(priced.priceBeforeNoiseGbp, 3960);
-  assert.equal(priced.pricePaidGbp, 3960);
+  assert.equal(priced.priceBeforeNoiseGbp, 1890);
+  assert.equal(priced.pricePaidGbp, 1890);
+  assert.ok(priced.pricePaidGbp >= MARKET_EVENING_LOW_GBP);
+  assert.ok(priced.pricePaidGbp <= MARKET_EVENING_HIGH_GBP);
+  const agency = priceFromTariff({ ...companyDay, bookerType: 'agency' });
+  assert.ok(agency.pricePaidGbp < priced.pricePaidGbp);
+});
+
+test('a company 4-hour evening for 80 people sits near the published median', () => {
+  const priced = priceFromTariff({
+    isEvening: true,
+    isWeekend: false,
+    hours: 4,
+    headcount: 80,
+    bookerType: 'company',
+    repeatBookerCount: 0,
+    broughtLeads: false,
+    avNeeds: true,
+    cateringNeeds: false,
+  });
+  assert.equal(priced.priceBeforeNoiseGbp, 1370);
+  assert.equal(priced.pricePaidGbp, 1370);
+  assert.ok(priced.pricePaidGbp >= 840 && priced.pricePaidGbp <= 2075);
+});
+
+test('every SAMPLE company price stays inside the published London band', () => {
+  const companies = generateSampleBookings().filter((row) => row.bookerType === 'company');
+  assert.equal(companies.length, 30);
+  for (const row of companies) {
+    assert.ok(
+      row.pricePaidGbp >= MARKET_EVENING_LOW_GBP && row.pricePaidGbp <= MARKET_EVENING_HIGH_GBP,
+      `${row.bookingId} is £${row.pricePaidGbp}`,
+    );
+  }
 });
 
 test('a short community evening with leads is a free slot', () => {
@@ -106,7 +140,7 @@ test('a startup launch sits between a community price and a company price', () =
 
 test('noise and a manual change stay deterministic', () => {
   const priced = priceFromTariff(companyDay, () => 0);
-  assert.equal(priced.pricePaidGbp, 3345);
+  assert.equal(priced.pricePaidGbp, 1595);
   const free = priceFromTariff(
     {
       isEvening: true,
