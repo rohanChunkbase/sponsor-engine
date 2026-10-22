@@ -10,6 +10,7 @@ const links = [
   ["/activity", "Activity"],
   ["/map", "Map"],
   ["/connections", "Connections"],
+  ["/mcp", "MCP"],
 ];
 
 export function Shell({ children }: { children: React.ReactNode }) {
