@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
     "/**": traced,
   },
   transpilePackages: ["@sponsor-engine/core", "@sponsor-engine/db", "@sponsor-engine/mcp"],
-  serverExternalPackages: ["better-sqlite3", "pg", "@sponsor-engine/pricing", "@modelcontextprotocol/sdk"],
+  serverExternalPackages: ["better-sqlite3", "postgres", "@sponsor-engine/pricing", "@modelcontextprotocol/sdk"],
   webpack: (config, { isServer }) => {
     config.resolve.extensionAlias = {
       ...config.resolve.extensionAlias,

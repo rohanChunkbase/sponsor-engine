@@ -1,6 +1,6 @@
 import { MessageChannel, Worker, receiveMessageOnPort } from "node:worker_threads";
 import path from "node:path";
-import "pg";
+import "postgres";
 import { repoRoot } from "./db.js";
 import type { Db } from "./db.js";
 import { scopeSql } from "./scope.js";
