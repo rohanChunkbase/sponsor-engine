@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -29,33 +30,58 @@ export function HistoryDrop() {
     router.refresh();
   }
 
+  async function reset() {
+    setPending(true);
+    setError(null);
+    setNote(null);
+    const response = await fetch("/api/pricing/history", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ reset: true }),
+    });
+    const data = (await response.json()) as { error?: string };
+    setPending(false);
+    if (!response.ok) {
+      setError(data.error || "Could not reset the history.");
+      return;
+    }
+    setNote("Sample history is active again.");
+    router.refresh();
+  }
+
   return (
-    <label
-      className="flex cursor-pointer flex-col gap-2 rounded-[12px] border border-dashed border-border px-4 py-6"
-      onDragOver={(event) => event.preventDefault()}
-      onDrop={(event) => {
-        event.preventDefault();
-        const file = event.dataTransfer.files[0];
-        if (file) void send(file);
-      }}
-    >
-      <span className="text-[18px] leading-7 font-medium">Drop a venue CSV</span>
-      <span className="text-muted-foreground">
-        Use the same columns as the sample file. A redacted venue export is enough. New quotes use this file.
-      </span>
-      <input
-        type="file"
-        accept=".csv,text/csv"
-        className="text-[14px]"
-        disabled={pending}
-        onChange={(event) => {
-          const file = event.target.files?.[0];
+    <div className="flex flex-col gap-3">
+      <label
+        className="flex cursor-pointer flex-col gap-2 rounded-[12px] border border-dashed border-border px-4 py-6"
+        onDragOver={(event) => event.preventDefault()}
+        onDrop={(event) => {
+          event.preventDefault();
+          const file = event.dataTransfer.files[0];
           if (file) void send(file);
         }}
-      />
+      >
+        <span className="text-[18px] leading-7 font-medium">Drop a venue CSV</span>
+        <span className="text-muted-foreground">
+          Use the same columns as the sample file. A redacted venue export is enough. New quotes use this file.
+        </span>
+        <input
+          type="file"
+          accept=".csv,text/csv"
+          className="text-[14px]"
+          disabled={pending}
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) void send(file);
+            event.target.value = "";
+          }}
+        />
+      </label>
+      <Button type="button" variant="secondary" disabled={pending} onClick={() => void reset()}>
+        Reset to sample history
+      </Button>
       {pending ? <span>Checking the file…</span> : null}
       {note ? <span>{note}</span> : null}
       {error ? <span className="text-open-text">{error}</span> : null}
-    </label>
+    </div>
   );
 }

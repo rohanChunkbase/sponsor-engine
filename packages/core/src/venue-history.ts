@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, statSync, unlinkSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { join } from "node:path";
 import { repoRoot } from "@sponsor-engine/db";
@@ -90,11 +90,20 @@ export function saveVenueCsv(csv: string): { count: number; report: EvaluationRe
   if (!text.trim()) throw new Error("The file is empty.");
   if (text.length > MAX_CSV_CHARS) throw new Error("The file is larger than 2 MB.");
   const bookings = loadBookingsCsv(text);
+  // Score the file before any write. A short or invalid history must leave the previous file in place.
+  const report = evaluatePricing(bookings);
   const path = venueCsvPath();
   mkdirSync(dirname(path), { recursive: true });
   const body = text.endsWith("\n") ? text : `${text}\n`;
   writeFileSync(path, body, "utf8");
-  const report = evaluatePricing(bookings);
   remember(path, bookings, report);
   return { count: bookings.length, report, source: historySource() };
+}
+
+/** Delete the venue file and use the bundled SAMPLE history again. */
+export function resetVenueHistory(): HistorySource {
+  const path = venueCsvPath();
+  if (existsSync(path)) unlinkSync(path);
+  cache = null;
+  return historySource();
 }

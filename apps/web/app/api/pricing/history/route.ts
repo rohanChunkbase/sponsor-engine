@@ -1,8 +1,12 @@
-import { saveVenueCsv } from "@sponsor-engine/core";
+import { resetVenueHistory, saveVenueCsv } from "@sponsor-engine/core";
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as { csv?: unknown };
+    const body = (await request.json()) as { csv?: unknown; reset?: unknown };
+    if (body.reset === true) {
+      const source = resetVenueHistory();
+      return Response.json({ reset: true, source: source.source, label: source.label });
+    }
     if (typeof body.csv !== "string") {
       return Response.json({ error: "Send the CSV text." }, { status: 400 });
     }

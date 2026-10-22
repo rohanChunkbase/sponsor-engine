@@ -3,7 +3,13 @@ export { isDryRun, isAllowlisted, allowlist, safetySnapshot } from "./safety.js"
 export { triageInbound } from "./triage.js";
 export { forecastTurnout, FREE_EVENT_NO_SHOW, FREE_EVENT_SHOW_UP } from "./forecast.js";
 export { quoteBooking, foodPassThrough, FOOD_PER_HEAD_GBP } from "./quote.js";
-export { evaluateActiveHistory, evaluateSampleHistory, saveVenueCsv, historySource } from "./venue-history.js";
+export {
+  evaluateActiveHistory,
+  evaluateSampleHistory,
+  historySource,
+  resetVenueHistory,
+  saveVenueCsv,
+} from "./venue-history.js";
 export { findSponsors } from "./sponsors.js";
 export { draftSponsorAsk, inferRecipient } from "./draft.js";
 export { sendWithApproval, approveOutbox, deliverOutbox, skipOutbox, editOutbox, listOutbox } from "./outbox.js";

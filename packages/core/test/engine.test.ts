@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { after, before, test } from "node:test";
@@ -11,6 +11,7 @@ import {
   draftSponsorAsk,
   evaluateActiveHistory,
   evaluateSampleHistory,
+  resetVenueHistory,
   saveVenueCsv,
   findSponsors,
   getConnections,
@@ -196,6 +197,36 @@ test("a venue CSV replaces the sample history and the check runs again", () => {
   assert.ok(Math.abs(activeKnn.maeGbp - bundledKnn.maeGbp) < 0.001);
   assert.ok(activeKnn.maeGbp < active.baselineMedian.maeGbp);
   assert.throws(() => saveVenueCsv("not,a,booking\n1,2,3\n"));
+});
+
+test("a short venue CSV is rejected before it replaces the history", () => {
+  const venue = process.env.SPONSOR_ENGINE_VENUE_CSV;
+  if (!venue) throw new Error("missing venue path");
+  const sample = readFileSync(path.join(repoRoot(), "packages/pricing/data/sample-bookings.csv"), "utf8");
+  const lines = sample.split(/\r?\n/).filter((line) => line.trim() && !line.startsWith("#"));
+  const short = [...lines.slice(0, 6), ""].join("\n");
+  const existed = existsSync(venue);
+  const before = existed ? readFileSync(venue) : null;
+  const beforeMtime = existed ? statSync(venue).mtimeMs : null;
+
+  assert.throws(() => saveVenueCsv(short), /at least 10 bookings/);
+
+  if (before === null) {
+    assert.equal(existsSync(venue), false);
+    assert.equal(evaluateActiveHistory().source, "sample");
+  } else {
+    assert.equal(readFileSync(venue).equals(before), true);
+    assert.equal(statSync(venue).mtimeMs, beforeMtime);
+  }
+  const active = evaluateActiveHistory();
+  assert.ok(active.historyCount >= 10);
+
+  const reset = resetVenueHistory();
+  assert.equal(reset.source, "sample");
+  assert.equal(existsSync(venue), false);
+  assert.equal(evaluateActiveHistory().source, "sample");
+
+  if (before) writeFileSync(venue, before);
 });
 
 function reload(id: string) {
