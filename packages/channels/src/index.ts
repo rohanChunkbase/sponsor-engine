@@ -9,4 +9,5 @@ export { parseTelegramUpdate, telegramSecretOk } from "./adapters/telegram.js";
 export { parseEmail } from "./adapters/email.js";
 export { parseSlackEvent, slackSignatureOk, slackUrlChallenge, startSlackBot } from "./adapters/slack.js";
 export { bearerAllowed } from "./bearer.js";
+export { chatCompletionsUrl, draftReply, readLlmSettings } from "./llm.js";
 export { createMcpHttpServer, startMcpHttp } from "./mcp-http.js";
