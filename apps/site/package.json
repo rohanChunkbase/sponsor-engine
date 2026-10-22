@@ -1,0 +1,38 @@
+{
+  "name": "@sponsor-engine/site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public landing page and docs for Sponsor Engine.",
+  "scripts": {
+    "extract-tools": "node scripts/extract-tools.mjs",
+    "prebuild": "node scripts/extract-tools.mjs && node ../../packages/brand/scripts/copy-public.mjs .",
+    "predev": "node ../../packages/brand/scripts/copy-public.mjs .",
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "clsx": "^2.1.1",
+    "mermaid": "^11.12.2",
+    "@sponsor-engine/brand": "0.1.0",
+    "@sponsor-engine/recap": "0.1.0",
+    "next": "^15.5.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^5.2.0",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@next/mdx": "^15.5.6",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
+  }
+}

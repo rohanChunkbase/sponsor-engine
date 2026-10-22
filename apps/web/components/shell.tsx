@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { OfflineBanner } from "@/components/offline-banner";
 import { Badge } from "@/components/ui/badge";
+import { raftAssets } from "@sponsor-engine/brand";
 import { isDemoMode, isDryRun } from "@sponsor-engine/core";
 
 const links = [
@@ -20,7 +21,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen">
       <header className="bg-discovery text-hero-copy">
         <div className="mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-8 gap-y-3 px-8 py-4">
-          <Link href="/" className="font-sans text-[22px] leading-8 tracking-[-0.025em]">
+          <Link href="/" className="flex items-center gap-2 font-sans text-[22px] leading-8 tracking-[-0.025em] text-hero-copy">
+            <img src={`/brand/${raftAssets.mark}`} alt="" width={36} height={36} className="h-9 w-9 rounded-full bg-raft-cream" />
             Sponsor Engine
           </Link>
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 font-ui text-[16px] leading-6">

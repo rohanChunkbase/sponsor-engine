@@ -56,6 +56,19 @@ Measured colours. These values are not tokens.
 | Unavailable button fill | `#E8E9EC` |
 | Unavailable button text | `#8B8E94` |
 
+## Raft brand
+
+These four colours come from the approved Raft drawings in `packages/brand`. They sit beside the website tokens. Chocolate is the otter. Cream is the card behind the wordmark. Lavender and soft orange are the accent colours in the drawings.
+
+| Token | Hex | Job |
+| --- | --- | --- |
+| `--color-raft-chocolate` | `#6B4A33` | Otter, wordmark letters, blink. |
+| `--color-raft-cream` | `#FAF6EE` | Wordmark plate and the community band. |
+| `--color-raft-lavender` | `#B9A3E3` | Wordmark border and the community band border. |
+| `--color-raft-orange` | `#F59E4B` | Cheek and clipboard accent in the drawings. |
+
+The drawings live in `packages/brand/assets`. The site and the dashboard copy that folder to `/brand` before they start.
+
 ## Fonts and sizes
 
 Use one family for each role. Do not swap families for the same role.

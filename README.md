@@ -6,6 +6,8 @@ Open-source front desk and sponsor engine for communities. Chat request in; qual
 
 The mascot is Raft the otter.
 
+![Raft the otter at the front desk](docs/images/raft-hero.png)
+
 The live demo link is a placeholder: <https://demo.sponsor-engine.example>
 
 ## Start in 60 seconds
@@ -210,10 +212,10 @@ No test deploys the site.
 
 | What | Default | Optional | Env var | Status |
 | --- | --- | --- | --- | --- |
-| Mintlify | this page uses Mintlify frontmatter | none | none | stub |
-| Next.js MDX site | none in this checkout | `apps/site` on the site branch | none | no test |
+| Mintlify | `docs/docs.json` and the pages in `docs/` | none | none | the site renders these pages |
+| Next.js MDX site | `apps/site` | none | none | unit-tested |
 
-There is no `mint.json` in this repository. Do not treat Mintlify as a running site.
+The public site is `apps/site`. It renders the Mintlify pages in `docs/`. A Vercel deploy of `apps/site` needs **Include source files outside of the Root Directory** turned on. The site reads `docs/` and `packages/brand` outside that app folder.
 
 ### Cards
 
@@ -325,7 +327,9 @@ You can run that command again. It adds missing catalog rows. It does not delete
 
 ## Hosted demo
 
-Set `DEMO_MODE` to `true`. On Vercel, set the root directory to `apps/web`.
+Set `DEMO_MODE` to `true`. On Vercel, set the root directory to `apps/web` for the dashboard.
+
+For the public site, set the root directory to `apps/site`. Turn on **Include source files outside of the Root Directory**. The site imports `docs/` and `packages/brand` from the repo root. Without that setting the build cannot see those files.
 
 Set the install command to `npm install --prefix ../..`.
 

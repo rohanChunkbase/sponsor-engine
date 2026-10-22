@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node ../../packages/brand/scripts/copy-public.mjs .",
+    "prebuild": "node ../../packages/brand/scripts/copy-public.mjs .",
     "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start --port 3000"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
+    "@sponsor-engine/brand": "0.1.0",
     "@sponsor-engine/channels": "0.1.0",
     "@sponsor-engine/core": "0.1.0",
     "@sponsor-engine/mcp": "0.1.0",

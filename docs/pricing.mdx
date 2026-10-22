@@ -1,0 +1,143 @@
+---
+title: "Pricing"
+description: "How the room quote is calculated, and the held-out error on the SAMPLE history."
+---
+
+`quote_booking` calls `quotePrice` in `packages/pricing`.
+The currency is GBP.
+GBP means pounds sterling.
+The package reads the past bookings of one venue.
+A community pays less than a company.
+A community can pay nothing.
+
+<Warning>WARNING: Do not use the SAMPLE prices for a real venue. The file data/sample-bookings.csv is not real. The venue name Riverworks Hall is not real.</Warning>
+
+## What you get
+
+The quote returns these fields.
+
+- `price`: the room quote in GBP
+- `currency`: the text `GBP`
+- `range`: `low` and `high`, in GBP
+- `explanation`: plain text for a person
+- `comparables`: the past bookings that support the quote
+
+The explanation tells you the community price and the company price.
+The explanation names the past bookings that support the price.
+Food is not inside the room price.
+
+## Food is a separate ask
+
+The food rate is £5.50 for each person the forecast expects.
+`draft_sponsor_ask` asks for that food cost.
+The sponsor email does not add a room fee.
+
+The forecast uses the community history when that community has at least three events with a show-up rate.
+When that community has fewer than three events, the forecast uses other bookings of the same kind when three or more exist.
+When fewer than three bookings of that kind exist, a free community event uses a 28% no-show.
+Show-up is then 72%.
+A company with no history uses an 88% show-up until three company bookings exist.
+
+An 80-person community evening on the benchmark path expects 58 people.
+The food ask is then £319.
+Your history can change this number.
+
+## Two methods
+
+The package fits two methods on the past bookings.
+The package scores both methods on held-out rows.
+The package uses the method with the lower error.
+
+kNN means k nearest neighbors.
+Here k is 8.
+The nearest-booking method finds the 8 nearest past bookings with the same booker type.
+The method takes a weighted median of those prices.
+A nearer booking has a higher weight.
+When fewer than 3 bookings of that type exist, the method uses the nearest bookings of any type.
+
+The free-slot rule can set the price to £0.
+All of these must be true.
+
+- The booker is a community.
+- The booker brings leads.
+- At least half of those nearest bookings were free slots.
+
+The method rounds the price to the nearest £5.
+
+The second method is a gradient boosted model.
+The model adds many small decision trees.
+The trees learn the logarithm of (1 + price).
+The quote converts the tree result back to GBP.
+The quote rounds that price to the nearest £5.
+On the SAMPLE fit, the model uses 52 trees.
+Each new tree uses a step size of 0.08.
+
+## Held-out accuracy
+
+MAE means mean absolute error.
+MAE is the mean of the absolute price errors, in GBP.
+MAPE means mean absolute percentage error.
+MAPE uses only rows with a price above £0.
+A free slot has no percentage.
+
+The split sorts the bookings by date, then by booking id.
+The fit uses the first 80 percent of the rows.
+The score uses the last 20 percent of the rows.
+The SAMPLE score uses 240 rows for the fit and 60 rows for the score.
+The quote for a new request fits the winner on every row in the history.
+The MAE does not use that full fit.
+The MAE uses the held-out split only.
+
+The winner is the method with the lower MAE.
+When the MAE values are equal, the winner is the method with the lower MAPE.
+When those values are also equal, the winner is the nearest-booking method.
+A constant median is a baseline.
+The median cannot win.
+
+`npm run evaluate` in `packages/pricing` prints the SAMPLE scores.
+
+| Method | MAE | MAPE on 37 paid rows | Free slots at £0 |
+| --- | --- | --- | --- |
+| Nearest bookings (winner) | £76.92 | 15.9 percent | 22 of 23 |
+| Gradient boosted trees | £96.75 | 13.0 percent | 22 of 23 |
+| Median baseline | £721.83 | 70.6 percent | 0 of 23 |
+
+The nearest-booking method wins on MAE.
+The gradient boosted model has the lower MAPE.
+The quote uses the nearest-booking method.
+
+The dashboard Accuracy card calculates this error on the active history.
+The numbers are not typed in.
+Drop a venue CSV on the Quote page to run the check again.
+
+## SAMPLE examples
+
+These three requests are not in the history.
+The fit for these quotes uses all 300 SAMPLE rows.
+
+| Request | Price | Range |
+| --- | --- | --- |
+| Community 80-person evening hack | £0 | £0 to £0 |
+| Startup launch | £1,545 | £1,430 to £1,800 |
+| Corporate offsite | £3,745 | £3,545 to £3,935 |
+
+The community request is an evening on 12 November 2026 for 80 people and 4 hours.
+The booker has 6 past bookings and brings leads.
+The community discount on that request is a free slot.
+
+## Your venue file
+
+The history must contain at least 10 bookings.
+One file is for one venue.
+The loader accepts the columns in `packages/pricing/README.md`.
+The app stores a dropped CSV at `data/venue-bookings.csv`.
+That file replaces the SAMPLE history for the next quote.
+
+## Limits
+
+The model can only repeat patterns that are in the history.
+Do not send a booker type that is not in the column list.
+The column list is `community`, `startup`, `company`, and `agency`.
+MAPE does not include a price of £0.
+The explanation rounds MAE to the nearest pound.
+The evaluation script prints MAE with two decimal places.

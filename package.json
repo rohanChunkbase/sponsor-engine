@@ -19,8 +19,10 @@
     "dev": "tsx scripts/dev.ts",
     "mcp": "tsx packages/mcp/src/stdio.ts",
     "mcp:http": "tsx packages/mcp/src/http.ts",
-    "test": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && tsc -p packages/channels --noEmit && npm test -w @sponsor-engine/pricing && npm test -w @sponsor-engine/integrations && node --import tsx --test packages/db/test/*.test.ts packages/core/test/*.test.ts packages/mcp/test/*.test.ts && node --import tsx --test packages/channels/test/*.test.ts",
-    "typecheck": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && tsc -p packages/channels --noEmit"
+    "test": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && tsc -p packages/channels --noEmit && npm test -w @sponsor-engine/pricing && npm test -w @sponsor-engine/integrations && npm test -w @sponsor-engine/recap && node --import tsx --test packages/db/test/*.test.ts packages/core/test/*.test.ts packages/mcp/test/*.test.ts apps/site/test/*.test.ts && node --import tsx --test packages/channels/test/*.test.ts",
+    "typecheck": "npm run build -w @sponsor-engine/pricing && tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && tsc -p packages/channels --noEmit",
+    "site": "npm run dev -w @sponsor-engine/site",
+    "site:build": "npm run build -w @sponsor-engine/site"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

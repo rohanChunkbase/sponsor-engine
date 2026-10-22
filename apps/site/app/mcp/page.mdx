@@ -1,0 +1,36 @@
+import { CopyBlock } from "@/components/copy-block";
+import { mcpCommand, mcpConfig } from "@/lib/snippets";
+
+export const metadata = {
+  title: "Try it live",
+};
+
+# Try it live
+
+Sponsor Engine is an MCP server.
+This page shows the config.
+The otter on the home page is a scripted replay.
+It does not call a model.
+
+Test mode is the default.
+The code is open source under the MIT licence.
+
+## Start the server
+
+1. Open a terminal in the project folder.
+2. Run the command below.
+
+<CopyBlock label="MCP server" code={mcpCommand} />
+
+## Point your agent at it
+
+1. Copy the JSON below.
+2. Paste it into the agent you already use.
+3. Set the working directory to the project folder.
+4. Keep `DRY_RUN` set to `true`.
+
+<CopyBlock label="MCP config" code={mcpConfig} />
+
+`DRY_RUN` set to `true` means the server does not send a message.
+
+The steps for Grok Bot, Cursor, Claude, ChatGPT, and Codex are on the [Connect](/docs/connect) page.

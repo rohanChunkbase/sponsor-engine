@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/**": traced,
   },
-  transpilePackages: ["@sponsor-engine/channels", "@sponsor-engine/core", "@sponsor-engine/db", "@sponsor-engine/mcp"],
+  transpilePackages: ["@sponsor-engine/brand", "@sponsor-engine/channels", "@sponsor-engine/core", "@sponsor-engine/db", "@sponsor-engine/mcp"],
   serverExternalPackages: ["better-sqlite3", "postgres", "@sponsor-engine/pricing", "@modelcontextprotocol/sdk", "discord.js", "@slack/bolt"],
   webpack: (config, { isServer }) => {
     config.resolve.extensionAlias = {

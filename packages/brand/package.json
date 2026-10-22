@@ -1,0 +1,11 @@
+{
+  "name": "@sponsor-engine/brand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Approved Raft drawings and colours for Sponsor Engine.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}
