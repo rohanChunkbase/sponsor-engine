@@ -7,6 +7,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@sponsor-engine/core": "0.1.0"
+    "@sponsor-engine/core": "0.1.0",
+    "discord.js": "^14.27.0"
   }
 }
