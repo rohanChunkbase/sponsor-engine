@@ -205,6 +205,18 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
           : "No key. The public limit is 60 requests per hour. Set GITHUB_TOKEN to raise the limit.",
     },
     {
+      id: "hacker-news",
+      name: "Hacker News",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. Story search needs no key."
+        : "No key. Algolia story search checks whether the handle has posted.",
+    },
+    {
       id: "devpost-projects",
       name: "Devpost projects",
       slot: "data",

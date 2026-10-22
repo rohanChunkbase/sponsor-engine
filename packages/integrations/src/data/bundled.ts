@@ -213,5 +213,8 @@ export function createBundledData(options: ResolvedOptions): DataSource {
     async githubProfile(handle) {
       return builtinResult("bundled-data", emptyGithubProfile(handle), "The bundle has no GitHub profile.");
     },
+    async hackerNewsStories() {
+      return builtinResult("bundled-data", [], "The bundle has no Hacker News stories.");
+    },
   };
 }

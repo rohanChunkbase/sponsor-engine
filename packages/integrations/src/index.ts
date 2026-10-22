@@ -19,6 +19,7 @@ export type { FindSponsorsData, SimilarEvent, SponsorMatch } from "./data/sponso
 export type { OrganiserLead, OrganiserLeadsData } from "./data/organisers.ts";
 export type { DevpostProject } from "./data/devpost-projects.ts";
 export type { GithubProfile } from "./data/github.ts";
+export type { HackerNewsStory } from "./data/hackernews.ts";
 export type { ProviderRegistry } from "./registry.ts";
 export type { RegistryOptions, ResolvedOptions } from "./options.ts";
 export type {
@@ -105,4 +106,8 @@ export async function devpostProjects(query: string, options?: RegistryOptions) 
 
 export async function githubProfile(handle: string, options?: RegistryOptions) {
   return createRegistry(options).data.githubProfile(handle);
+}
+
+export async function hackerNewsStories(handle: string, options?: RegistryOptions) {
+  return createRegistry(options).data.hackerNewsStories(handle);
 }

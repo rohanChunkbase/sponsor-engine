@@ -1,6 +1,7 @@
 import type { LondonIndexData } from "./london-index.ts";
 import type { DevpostProject } from "./devpost-projects.ts";
 import type { GithubProfile } from "./github.ts";
+import type { HackerNewsStory } from "./hackernews.ts";
 import type { OrganiserLeadsData } from "./organisers.ts";
 import type { FindSponsorsData } from "./sponsors.ts";
 import type {
@@ -35,4 +36,6 @@ export interface DataSource {
   devpostProjects(query: string): Promise<ProviderResult<DevpostProject[]>>;
   /** Public GitHub profile: account age, repos, and followers. */
   githubProfile(handle: string): Promise<ProviderResult<GithubProfile>>;
+  /** Recent Hacker News stories by this author. */
+  hackerNewsStories(handle: string): Promise<ProviderResult<HackerNewsStory[]>>;
 }

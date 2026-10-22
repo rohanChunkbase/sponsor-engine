@@ -5,6 +5,7 @@ import { companySize as fetchCompanySize } from "./companies-house.ts";
 import { devpostProjects as fetchDevpostProjects } from "./devpost-projects.ts";
 import { devpostLondonHackathons as fetchDevpost } from "./devpost.ts";
 import { githubProfile as fetchGithubProfile } from "./github.ts";
+import { hackerNewsStories as fetchHackerNews } from "./hackernews.ts";
 import { buildLondonEventsIndex } from "./london-index.ts";
 import { buildOrganiserLeads } from "./organisers.ts";
 import { findSponsorsInSeed } from "./sponsors.ts";
@@ -47,6 +48,9 @@ export function createLiveData(options: ResolvedOptions): DataSource {
     },
     githubProfile(handle) {
       return fetchGithubProfile(handle, options);
+    },
+    hackerNewsStories(handle) {
+      return fetchHackerNews(handle, options);
     },
   };
 }
