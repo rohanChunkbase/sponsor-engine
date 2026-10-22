@@ -21,6 +21,8 @@ export function cogneeMissing(env: Record<string, string | undefined>): string[]
   return missing;
 }
 
+const ADD_SEARCH_TIMEOUT_MS = 30_000;
+
 function datasetName(organiserId: string): string {
   return `sponsor-engine-${canonicalOrganiser(organiserId).replace(/[^a-zA-Z0-9_-]/g, "_")}`;
 }
@@ -81,22 +83,79 @@ function textValue(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim() : null;
 }
 
+class CogneeHttpError extends Error {
+  readonly status: number;
+
+  constructor(status: number, text: string, key: string) {
+    const detail = redact(readDetail(text), key);
+    super(detail ? `Cognee HTTP ${status}: ${detail}` : `Cognee HTTP ${status}`);
+    this.name = "CogneeHttpError";
+    this.status = status;
+  }
+}
+
+function isMissingDataset(error: unknown): boolean {
+  return error instanceof CogneeHttpError && (error.status === 404 || /DatasetNotFoundError/i.test(error.message));
+}
+
+function readDetail(text: string): string {
+  try {
+    return detailText(JSON.parse(text) as unknown);
+  } catch {
+    return text.trim().slice(0, 240);
+  }
+}
+
+function detailText(body: unknown): string {
+  if (!body || typeof body !== "object") return "";
+  const detail = (body as { detail?: unknown }).detail ?? (body as { error?: unknown }).error;
+  if (typeof detail === "string") return detail.trim();
+  if (Array.isArray(detail)) {
+    return detail
+      .map((item) => {
+        if (typeof item === "string") return item.trim();
+        if (item && typeof item === "object" && typeof (item as { msg?: unknown }).msg === "string") {
+          return (item as { msg: string }).msg.trim();
+        }
+        return "";
+      })
+      .filter(Boolean)
+      .join("; ");
+  }
+  if (typeof detail === "object" && detail) {
+    const row = detail as Record<string, unknown>;
+    const parts = [row.message, row.error, row.msg].filter((part): part is string => typeof part === "string" && part.trim() !== "");
+    return parts.join(": ");
+  }
+  return "";
+}
+
+function redact(text: string, key: string): string {
+  if (!key || !text.includes(key)) return text;
+  return text.split(key).join("[redacted]");
+}
+
 export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvider): MemoryProvider {
   const base = (cogneeUrl(options.env) ?? "").replace(/\/$/, "");
 
-  async function post(path: string, body: string | FormData, json: boolean): Promise<unknown> {
+  async function post(
+    path: string,
+    body: string | FormData,
+    json: boolean,
+    timeoutMs = ADD_SEARCH_TIMEOUT_MS,
+  ): Promise<unknown> {
     const response = await requestText({
       url: `${base}${path}`,
       method: "POST",
       headers: headers(options.env, json),
       body,
-      timeoutMs: Math.max(options.timeoutMs, 8000),
+      timeoutMs,
       fetchImpl: options.fetchImpl,
       lane: "cognee",
       minIntervalMs: politeInterval(options.fetchImpl, 250),
     });
     if (response.status < 200 || response.status >= 300) {
-      throw new Error(`Cognee HTTP ${response.status}`);
+      throw new CogneeHttpError(response.status, response.text, envValue(options.env, "COGNEE_API_KEY") ?? "");
     }
     try {
       return JSON.parse(response.text) as unknown;
@@ -188,6 +247,9 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
         return liveResult("cognee", hits);
       } catch (error) {
         const saved = await local.recall(organiserId, query);
+        if (isMissingDataset(error)) {
+          return { ...saved, warning: "No Cognee memory yet. Built-in memory answered." };
+        }
         return {
           ...saved,
           warning: `Cognee did not answer (${errorText(error)}). Built-in memory answered.`,

@@ -94,6 +94,25 @@ test("Cognee CHUNKS results read the text field on each item", async () => {
   assert.equal(result.data[0]?.source, "sponsor-engine-C01");
 });
 
+test("a missing Cognee dataset is quiet and a response detail is kept", async () => {
+  const missing = await recall("C01", "food", baseOptions({
+    env: { COGNEE_API_KEY: "cog-key", COGNEE_URL: "http://127.0.0.1:8000" },
+    fetchImpl: async () => new Response(JSON.stringify({ detail: "DatasetNotFoundError" }), { status: 404 }),
+  }));
+  assert.equal(missing.mode, "builtin");
+  assert.match(missing.warning ?? "", /No Cognee memory yet/);
+  assert.doesNotMatch(missing.warning ?? "", /did not answer/);
+  assert.ok(missing.data.length > 0);
+
+  const failed = await recall("C01", "food", baseOptions({
+    env: { COGNEE_API_KEY: "secret-key", COGNEE_URL: "http://127.0.0.1:8000" },
+    fetchImpl: async () => new Response(JSON.stringify({ detail: "pipeline failed for secret-key" }), { status: 500 }),
+  }));
+  assert.match(failed.warning ?? "", /pipeline failed/);
+  assert.match(failed.warning ?? "", /\[redacted\]/);
+  assert.doesNotMatch(failed.warning ?? "", /secret-key/);
+});
+
 test("a Cognee failure falls back to built-in search", async () => {
   const result = await recall("C01", "which sponsors backed my food before", baseOptions({
     env: { COGNEE_API_KEY: "cog-key", COGNEE_URL: "http://127.0.0.1:8000" },
