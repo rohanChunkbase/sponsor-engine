@@ -3,7 +3,8 @@ import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { test } from "node:test";
-import { openDb, repoRoot, seed } from "../src/index.ts";
+import os from "node:os";
+import { dbDriver, defaultDbPath, openDb, repoRoot, seed } from "../src/index.ts";
 import { postgresOptions } from "../src/pg-options.mjs";
 import { splitSql } from "../src/sql.ts";
 
@@ -69,6 +70,25 @@ test("splitSql keeps quotes and dollar quotes together", () => {
   assert.equal(statements.length, 2);
   assert.match(statements[0], /SELECT ';'/);
   assert.match(statements[1], /PERFORM 1;/);
+});
+
+test("demo mode uses sqlite in the temp directory even when DATABASE_URL is set", () => {
+  const previous = {
+    DEMO_MODE: process.env.DEMO_MODE,
+    DATABASE_URL: process.env.DATABASE_URL,
+    SPONSOR_ENGINE_DB: process.env.SPONSOR_ENGINE_DB,
+  };
+  process.env.DEMO_MODE = "true";
+  process.env.DATABASE_URL = "postgresql://postgres.example:pw@aws-0-eu-west-2.pooler.supabase.com:6543/postgres";
+  delete process.env.SPONSOR_ENGINE_DB;
+  assert.equal(dbDriver(), "sqlite");
+  assert.equal(defaultDbPath(), path.join(os.tmpdir(), "sponsor-engine.db"));
+  if (previous.DEMO_MODE === undefined) delete process.env.DEMO_MODE;
+  else process.env.DEMO_MODE = previous.DEMO_MODE;
+  if (previous.DATABASE_URL === undefined) delete process.env.DATABASE_URL;
+  else process.env.DATABASE_URL = previous.DATABASE_URL;
+  if (previous.SPONSOR_ENGINE_DB === undefined) delete process.env.SPONSOR_ENGINE_DB;
+  else process.env.SPONSOR_ENGINE_DB = previous.SPONSOR_ENGINE_DB;
 });
 
 test("seed can run twice and keeps messages", () => {

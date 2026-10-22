@@ -1,4 +1,4 @@
-export { getDb, openDb, repoRoot, defaultDbPath, resetSingleton, databaseUrl, usesPostgres } from "./db.js";
+export { getDb, openDb, repoRoot, defaultDbPath, dbDriver, resetSingleton, databaseUrl, usesPostgres } from "./db.js";
 export type { Db } from "./db.js";
 export { toPostgres } from "./sql.js";
 export { currentWorkspace, enterWorkspace, runWithWorkspace, scopeSql } from "./scope.js";

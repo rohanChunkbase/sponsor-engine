@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Database from "better-sqlite3";
@@ -47,8 +48,20 @@ export function repoRoot(): string {
     ?? path.resolve(process.cwd(), "../..");
 }
 
+function demoMode(): boolean {
+  const value = (process.env.DEMO_MODE ?? "").trim().toLowerCase();
+  return value === "true" || value === "1" || value === "yes";
+}
+
+/** Demo mode stays on SQLite. The Vercel filesystem is read-only outside /tmp. */
+export function dbDriver(): "postgres" | "sqlite" {
+  if (demoMode()) return "sqlite";
+  return usesPostgres() ? "postgres" : "sqlite";
+}
+
 export function defaultDbPath(): string {
   if (process.env.SPONSOR_ENGINE_DB) return process.env.SPONSOR_ENGINE_DB;
+  if (demoMode()) return path.join(os.tmpdir(), "sponsor-engine.db");
   return path.join(repoRoot(), "data", "sponsor-engine.db");
 }
 
@@ -71,7 +84,7 @@ export function usesPostgres(): boolean {
 }
 
 export function getDb(): Db {
-  if (!singleton) singleton = usesPostgres() ? openPostgres(databaseUrl()) : openDb();
+  if (!singleton) singleton = dbDriver() === "postgres" ? openPostgres(databaseUrl()) : openDb();
   return singleton;
 }
 
