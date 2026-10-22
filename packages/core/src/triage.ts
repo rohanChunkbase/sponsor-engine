@@ -1,4 +1,5 @@
 import type { Db } from "@sponsor-engine/db";
+import * as chrono from "chrono-node";
 import { sendWithApproval } from "./outbox.js";
 import { recordFailure, recordRun } from "./runs.js";
 import type { RequesterKind } from "./types.js";
@@ -17,15 +18,19 @@ export type TriageInput = {
   message: string;
   channel?: string;
   sender_name?: string;
+  /** Pin "today" in tests. Live calls use the clock. */
+  now?: Date;
 };
 
 export function triageInbound(db: Db, input: TriageInput) {
   const message = (input.message ?? "").trim();
   const channel = input.channel?.trim() || "web";
+  const now = input.now ?? new Date();
   const sender = parseSender(message, input.sender_name);
   const organisation = parseOrganisation(message);
-  const eventDate = parseDate(message);
-  const headcount = parseHeadcount(message);
+  const eventDate = parseDate(message, now);
+  const heads = parseHeadcountDetail(message);
+  const headcount = heads?.value ?? null;
   const needs = parseNeeds(message);
   const kind = parseKind(message);
   const venue = parseVenue(message);
@@ -77,7 +82,16 @@ export function triageInbound(db: Db, input: TriageInput) {
   const owner = kind === "company" ? "Commercial lead" : "Venue lead";
   const priority = priorityFor(kind, headcount, eventDate);
   const title = taskTitle({ organisation, headcount, kind, venue });
-  const reply = replyFor({ sender, organisation, kind, eventDate, headcount, needs });
+  const reply = replyFor({
+    sender,
+    organisation,
+    kind,
+    eventDate,
+    headcount,
+    headcountLow: heads?.low ?? null,
+    headcountHigh: heads?.high ?? null,
+    needs,
+  });
 
   db.run(
     `INSERT INTO requests
@@ -147,15 +161,25 @@ function replyFor(input: {
   kind: RequesterKind;
   eventDate: string | null;
   headcount: number | null;
+  headcountLow: number | null;
+  headcountHigh: number | null;
   needs: string[];
 }): string {
   const name = input.sender ? input.sender.split(" ")[0] : "there";
   const kindLabel = input.kind === "unknown" ? "booking" : `${input.kind} booking`;
   const who = input.organisation ? ` for ${input.organisation}` : "";
   const when = input.eventDate ? ` on ${formatDate(input.eventDate)}` : "";
-  const size = input.headcount ? ` for ${input.headcount} people` : "";
+  const size = headcountPhrase(input.headcount, input.headcountLow, input.headcountHigh);
   const needs = input.needs.length ? ` You asked for ${input.needs.join(", ")}.` : "";
   return `Thanks ${name}. I have this as a ${kindLabel}${who}${when}${size}.${needs} A person here will confirm the price before anyone replies.`;
+}
+
+function headcountPhrase(value: number | null, low: number | null, high: number | null): string {
+  if (!value) return "";
+  if (low != null && high != null && low !== high) {
+    return ` for ${value} people (you said ${low} to ${high})`;
+  }
+  return ` for ${value} people`;
 }
 
 export function parseKind(text: string): RequesterKind {
@@ -166,22 +190,54 @@ export function parseKind(text: string): RequesterKind {
   return "unknown";
 }
 
+const HEADCOUNT_UNIT = "people|persons|person|pax|ppl|guests|attendees|heads|staff|capacity";
+
+export type HeadcountDetail = { value: number; low: number; high: number };
+
 export function parseHeadcount(text: string): number | null {
-  const patterns = [
-    /\b(\d{1,4})\s*(?:\+|plus)?\s*(?:people|persons|person|pax|guests|attendees|heads|capacity)\b/i,
-    /\b(?:about|around|approx(?:imately)?|~)\s*(\d{1,4})\b/i,
-    /\bcap(?:acity)?\s*(?:of|at)?\s*(\d{1,4})\b/i,
-  ];
-  for (const pattern of patterns) {
-    const match = text.match(pattern);
-    if (!match) continue;
-    const value = Number(match[1]);
-    if (value >= 5 && value <= 5000) return value;
+  return parseHeadcountDetail(text)?.value ?? null;
+}
+
+export function parseHeadcountDetail(text: string): HeadcountDetail | null {
+  const range = text.match(
+    new RegExp(`\\b(\\d{1,4})\\s*[-–—]\\s*(\\d{1,4})\\s*(?:\\+|plus)?\\s*(?:${HEADCOUNT_UNIT})\\b`, "i"),
+  );
+  if (range) {
+    const low = Number(range[1]);
+    const high = Number(range[2]);
+    if (isHeadcount(low) && isHeadcount(high) && low <= high) {
+      return { value: Math.round((low + high) / 2), low, high };
+    }
+  }
+  const exact = text.match(new RegExp(`\\b(\\d{1,4})\\s*-?\\s*(?:\\+|plus)?\\s*(?:${HEADCOUNT_UNIT})\\b`, "i"));
+  if (exact) {
+    const value = Number(exact[1]);
+    if (isHeadcount(value)) return { value, low: value, high: value };
+  }
+  const ofUs = text.match(/\b(\d{1,4})\s+of\s+us\b/i);
+  if (ofUs) {
+    const value = Number(ofUs[1]);
+    if (isHeadcount(value)) return { value, low: value, high: value };
+  }
+  const about = text.match(/\b(?:about|around|approx(?:imately)?|~)\s*(\d{1,4})\b(?!\s*:\d)/i);
+  if (about) {
+    const value = Number(about[1]);
+    if (isHeadcount(value)) return { value, low: value, high: value };
+  }
+  const cap = text.match(/\bcap(?:acity)?\s*(?:of|at)?\s*(\d{1,4})\b/i);
+  if (cap) {
+    const value = Number(cap[1]);
+    if (isHeadcount(value)) return { value, low: value, high: value };
   }
   return null;
 }
 
-export function parseDate(text: string): string | null {
+function isHeadcount(value: number): boolean {
+  if (value >= 1900 && value <= 2100) return false;
+  return value >= 5 && value <= 5000;
+}
+
+export function parseDate(text: string, now: Date = new Date()): string | null {
   const iso = text.match(/\b(20\d{2})-(\d{2})-(\d{2})\b/);
   if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
   const dayFirst = text.match(
@@ -189,29 +245,43 @@ export function parseDate(text: string): string | null {
   );
   if (dayFirst) {
     const month = MONTHS[dayFirst[2].toLowerCase()];
-    if (month) return stamp(Number(dayFirst[1]), month, dayFirst[3] ? Number(dayFirst[3]) : undefined);
+    if (month) return stamp(Number(dayFirst[1]), month, dayFirst[3] ? Number(dayFirst[3]) : undefined, now);
   }
   const monthFirst = text.match(
     /\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?(?:\s+(20\d{2}))?/i,
   );
   if (monthFirst) {
     const month = MONTHS[monthFirst[1].toLowerCase()];
-    if (month) return stamp(Number(monthFirst[2]), month, monthFirst[3] ? Number(monthFirst[3]) : undefined);
+    if (month) return stamp(Number(monthFirst[2]), month, monthFirst[3] ? Number(monthFirst[3]) : undefined, now);
+  }
+  return parseRelativeDate(text, now);
+}
+
+function parseRelativeDate(text: string, now: Date): string | null {
+  const results = chrono.parse(text, now, { forwardDate: true });
+  for (const result of results) {
+    const start = result.start;
+    if (!start.isCertain("day") && !start.isCertain("weekday")) continue;
+    const date = start.date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    if (!year || month < 1 || day < 1) continue;
+    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   }
   return null;
 }
 
-function stamp(day: number, month: number, year?: number): string | null {
+function stamp(day: number, month: number, year: number | undefined, now: Date): string | null {
   if (day < 1 || day > 31) return null;
-  const resolved = year ?? inferYear(month, day);
+  const resolved = year ?? inferYear(month, day, now);
   return `${resolved}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
-function inferYear(month: number, day: number): number {
-  const today = new Date();
-  const year = today.getFullYear();
+function inferYear(month: number, day: number, now: Date): number {
+  const year = now.getFullYear();
   const candidate = Date.UTC(year, month - 1, day);
-  const todayUtc = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+  const todayUtc = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
   if (candidate < todayUtc - 30 * 86_400_000) return year + 1;
   return year;
 }

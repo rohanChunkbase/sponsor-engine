@@ -21,6 +21,7 @@ import {
   sendWithApproval,
   triageInbound,
 } from "../src/index.ts";
+import { parseDate, parseHeadcount } from "../src/triage.ts";
 
 const root = mkdtempSync(path.join(tmpdir(), "sponsor-engine-"));
 const db: Db = openDb(path.join(root, "test.db"));
@@ -55,6 +56,44 @@ test("demo message becomes a community task with an owner", () => {
   assert.equal(result.task?.owner, "Venue lead");
   assert.equal(result.task?.priority, "p1");
   assert.equal(result.outbox?.status, "awaiting_approval");
+});
+
+test("a 35-staff offsite and a ranged relative date both qualify", async () => {
+  const now = new Date(2026, 9, 22, 12, 0, 0);
+  const offsite = triageInbound(db, {
+    message: "Please book a company offsite for 35-staff on 12 Dec at Expedite.",
+    channel: "web",
+    now,
+  });
+  assert.equal(offsite.ok, true);
+  if (!offsite.ok) return;
+  assert.equal(offsite.qualified.headcount, 35);
+  assert.equal(offsite.qualified.requester_kind, "company");
+  assert.equal(offsite.qualified.event_date, "2026-12-12");
+  const requestId = String(offsite.request?.id);
+  const quote = await quoteBooking(db, { request_id: requestId });
+  assert.ok(quote.price > 0);
+  const draft = await draftSponsorAsk(db, { request_id: requestId });
+  assert.equal(draft.outbox.status, "awaiting_approval");
+
+  const ranged = triageInbound(db, {
+    message: "Can we book a meetup next thurs for 40-50 ppl?",
+    channel: "web",
+    now,
+  });
+  assert.equal(ranged.ok, true);
+  if (!ranged.ok) return;
+  assert.equal(ranged.qualified.headcount, 45);
+  assert.equal(ranged.qualified.event_date, "2026-10-29");
+  assert.match(ranged.suggested_reply, /you said 40 to 50/);
+
+  assert.equal(parseDate("tomorrow", now), "2026-10-23");
+  assert.equal(parseDate("in two weeks", now), "2026-11-05");
+  assert.equal(parseDate("Thursday 26 November", now), "2026-11-26");
+  assert.equal(parseHeadcount("around 18:00"), null);
+  assert.equal(parseHeadcount("about 2026 attendees"), null);
+  assert.equal(parseHeadcount("25 of us"), 25);
+  assert.equal(parseHeadcount("about 80 people"), 80);
 });
 
 test("a short message is kept and logged as a failure", () => {

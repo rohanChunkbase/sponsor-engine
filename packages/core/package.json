@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@sponsor-engine/db": "0.1.0",
-    "@sponsor-engine/pricing": "0.1.0"
+    "@sponsor-engine/pricing": "0.1.0",
+    "chrono-node": "^2.10.3"
   }
 }
