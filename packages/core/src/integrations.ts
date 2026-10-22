@@ -42,15 +42,40 @@ export async function lumaHostsIfAvailable(query: { community?: string | null; a
   }
 }
 
-export async function pushDealIfAvailable(deal: Record<string, unknown>) {
-  const fn = findFunction(await loadOptionalPackage("integrations"), ["pushDeal", "zeroPushDeal"]);
-  if (!fn) return { used: "built-in" as const };
+export type DealPush = {
+  used: "built-in" | "external";
+  email_sent: false;
+  result?: unknown;
+  error?: string;
+};
+
+/** The CRM stores a draft. It does not send email. No key keeps the built-in file. */
+export async function pushDealIfAvailable(input: {
+  sponsor: string;
+  event: string;
+  askAmount: number;
+  stage: string;
+}): Promise<DealPush> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["pushDeal"]);
+  if (!fn) return { used: "built-in", email_sent: false };
   try {
-    const result = await fn(deal);
-    return { used: "external" as const, result };
+    const result = await fn(input.sponsor, input.event, input.askAmount, input.stage);
+    const data = result && typeof result === "object" ? (result as { data?: { emailSent?: boolean }; provider?: string; mode?: string }).data : undefined;
+    if (data?.emailSent === true) {
+      return {
+        used: "built-in",
+        email_sent: false,
+        error: "The CRM reported an email send. Sponsor Engine kept the draft and did not send.",
+      };
+    }
+    const provider = result && typeof result === "object" ? (result as { provider?: string; mode?: string }).provider : "";
+    const mode = result && typeof result === "object" ? (result as { mode?: string }).mode : "";
+    const builtin = provider === "local-crm" || mode === "builtin" || provider === "";
+    return { used: builtin ? "built-in" : "external", email_sent: false, result };
   } catch (error) {
     return {
-      used: "built-in" as const,
+      used: "built-in",
+      email_sent: false,
       error: error instanceof Error ? error.message : "The CRM call failed. The built-in list still has the deal.",
     };
   }

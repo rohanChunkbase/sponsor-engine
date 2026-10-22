@@ -2,6 +2,7 @@ node_modules
 .next
 dist
 .env
+packages/integrations/.data
 .env.local
 *.log
 data/sponsor-engine.db

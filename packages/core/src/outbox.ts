@@ -100,27 +100,30 @@ export async function approveOutbox(db: Db, id: string, actor = "dashboard") {
     `INSERT INTO approvals (id, outbox_id, actor, decision, note, created_at) VALUES (?, ?, ?, 'approve', ?, ?)`,
     [makeId("apr"), id, actor, isDryRun() ? "Test mode. Nothing was sent." : "Approved.", nowIso()],
   );
+  const request = current.request_id
+    ? db.get<{ organisation: string | null; event_date: string | null }>("SELECT organisation, event_date FROM requests WHERE id = ?", [current.request_id])
+    : undefined;
+  const event = [request?.organisation, request?.event_date].filter(Boolean).join(" · ") || current.subject || "Booking";
   const deal = await pushDealIfAvailable({
-    dry_run: isDryRun(),
-    outbox_id: id,
-    request_id: current.request_id,
-    sponsor_name: current.sponsor_name,
-    recipient: current.recipient,
-    subject: current.subject,
-    body: current.body,
-    ask_gbp: current.ask_gbp,
+    sponsor: current.sponsor_name?.trim() || "Sponsor",
+    event,
+    askAmount: current.ask_gbp ?? 0,
+    stage: "approved",
   });
+  const crmNote = deal.used === "external"
+    ? "The deal was copied to the CRM. Email was not sent."
+    : "The deal is in the built-in CRM. Email was not sent.";
   if (isDryRun()) {
     recordRun(db, {
       tool: "approve",
       inputSummary: id,
-      outputSummary: "Approved. Test mode is on, so nothing was sent.",
+      outputSummary: `Approved. ${crmNote} Test mode is on, so nothing was sent.`,
       requestId: current.request_id,
     });
     return {
       item: mustOutbox(db, id),
       sent: false as const,
-      reason: "Approved. Test mode is on, so nothing was sent.",
+      reason: `Approved. ${crmNote} Test mode is on, so nothing was sent.`,
       deal,
     };
   }

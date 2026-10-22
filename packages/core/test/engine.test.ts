@@ -36,12 +36,14 @@ const previous = {
   ALLOWLIST: process.env.ALLOWLIST,
   SPONSOR_ENGINE_VENUE_CSV: process.env.SPONSOR_ENGINE_VENUE_CSV,
   SPONSOR_ENGINE_OFFLINE: process.env.SPONSOR_ENGINE_OFFLINE,
+  SPONSOR_ENGINE_DATA_DIR: process.env.SPONSOR_ENGINE_DATA_DIR,
   DEMO_MODE: process.env.DEMO_MODE,
 };
 
 before(() => {
   process.env.SPONSOR_ENGINE_VENUE_CSV = path.join(root, "venue-bookings.csv");
   process.env.SPONSOR_ENGINE_OFFLINE = "1";
+  process.env.SPONSOR_ENGINE_DATA_DIR = path.join(root, "integrations-data");
   seed(db);
 });
 
@@ -50,6 +52,7 @@ after(() => {
   restore("ALLOWLIST", previous.ALLOWLIST);
   restore("SPONSOR_ENGINE_VENUE_CSV", previous.SPONSOR_ENGINE_VENUE_CSV);
   restore("SPONSOR_ENGINE_OFFLINE", previous.SPONSOR_ENGINE_OFFLINE);
+  restore("SPONSOR_ENGINE_DATA_DIR", previous.SPONSOR_ENGINE_DATA_DIR);
   restore("DEMO_MODE", previous.DEMO_MODE);
   db.close();
 });
@@ -273,6 +276,30 @@ test("nothing reaches sent without approval", async () => {
   const sent = await approveOutbox(db, allowed.item.id, "test");
   assert.equal(sent.sent, true);
   assert.equal(sent.item.status, "sent");
+});
+
+test("approve stores a CRM draft and does not send email", async () => {
+  process.env.DRY_RUN = "true";
+  delete process.env.ZERO_API_KEY;
+  const waiting = sendWithApproval(db, {
+    recipient: "desk@example.com",
+    subject: "Food for Thursday",
+    body: "Please hold this note.",
+    sponsorName: "Tessl",
+    askGbp: 264,
+  });
+  const approved = await approveOutbox(db, waiting.item.id, "test");
+  assert.equal(approved.sent, false);
+  assert.equal(approved.item.status, "approved");
+  assert.equal(approved.deal.used, "built-in");
+  assert.equal(approved.deal.email_sent, false);
+  const saved = approved.deal.result as { provider?: string; data?: { sponsor?: string; emailSent?: boolean; draft?: boolean; askAmount?: number } };
+  assert.equal(saved.provider, "local-crm");
+  assert.equal(saved.data?.sponsor, "Tessl");
+  assert.equal(saved.data?.emailSent, false);
+  assert.equal(saved.data?.draft, true);
+  assert.equal(saved.data?.askAmount, 264);
+  assert.match(approved.reason, /Email was not sent/);
 });
 
 test("approval from another site is refused", () => {
