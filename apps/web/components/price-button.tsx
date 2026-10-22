@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-export function PriceButton({ requestId }: { requestId: string }) {
+export function PriceButton({ requestId, label = "Make the quote" }: { requestId: string; label?: string }) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +27,7 @@ export function PriceButton({ requestId }: { requestId: string }) {
 
   return (
     <div className="flex flex-col gap-3">
-      <Button disabled={pending} onClick={price}>{pending ? "Pricing…" : "Make the quote"}</Button>
+      <Button disabled={pending} onClick={price} variant={label === "Make the quote" ? "default" : "secondary"}>{pending ? "Pricing…" : label}</Button>
       {error ? <p className="text-open-text">{error}</p> : null}
     </div>
   );
