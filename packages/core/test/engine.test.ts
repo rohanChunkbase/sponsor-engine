@@ -10,6 +10,7 @@ import {
   recallHistory,
   approveOutbox,
   assertDashboardOrigin,
+  askRaft,
   deliverOutbox,
   DEMO_MESSAGE,
   draftSponsorAsk,
@@ -18,8 +19,11 @@ import {
   evaluateActiveHistory,
   evaluateSampleHistory,
   isDryRun,
+  needsYou,
+  planAsk,
   resetVenueHistory,
   resetWriteLimits,
+  runAskTool,
   saveVenueCsv,
   findSponsors,
   sponsorMatchAccuracy,
@@ -29,6 +33,7 @@ import {
   runDemo,
   sendWithApproval,
   triageInbound,
+  undoAsk,
 } from "../src/index.ts";
 import { parseDate, parseHeadcount } from "../src/triage.ts";
 
@@ -605,6 +610,23 @@ test("a venue file stored for one browser stays there", () => {
   runWithWorkspace("browser-b", () => {
     assert.equal(evaluateActiveHistory(db).source, "sample");
   });
+});
+
+test("Ask Raft and MCP share the same tools", async () => {
+  const plan = planAsk(DEMO_MESSAGE);
+  assert.deepEqual(
+    plan.steps.map((step) => step.tool),
+    ["triage_inbound", "quote_booking", "find_sponsors", "draft_sponsor_ask"],
+  );
+  const asked = await askRaft(db, { message: DEMO_MESSAGE, channel: "test" });
+  assert.ok(asked.request_id);
+  assert.equal((asked.triage as { ok: boolean }).ok, true);
+  const queue = needsYou(db);
+  assert.ok(queue.items.some((item) => item.action === "Approve"));
+  const undone = undoAsk(db, asked.undo.outbox_ids);
+  assert.ok(undone.skipped.length >= 1);
+  const listed = await runAskTool(db, "list_failures", { limit: 3 });
+  assert.ok(Array.isArray(listed));
 });
 
 function reload(id: string) {

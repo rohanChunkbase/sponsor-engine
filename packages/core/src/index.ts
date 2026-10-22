@@ -29,7 +29,10 @@ export { sendWithApproval, approveOutbox, deliverOutbox, skipOutbox, editOutbox,
 export { listFailures } from "./failures.js";
 export { recallHistory } from "./recall.js";
 export { getConnections } from "./connections.js";
-export { inbox, counts, latestQuote, listRuns, mapPoints } from "./read.js";
+export { inbox, counts, latestQuote, listRuns, mapPoints, needsYou } from "./read.js";
+export type { NeedsYouItem } from "./read.js";
+export { ASK_TOOLS, planAsk, runAskTool, askRaft, undoAsk } from "./ask.js";
+export type { AskToolName, AskStep } from "./ask.js";
 export { getReadyDb } from "./ready.js";
 export { runDemo, DEMO_MESSAGE } from "./demo.js";
 export { communityLumaAggregates, lumaPitchSentence } from "./luma.js";

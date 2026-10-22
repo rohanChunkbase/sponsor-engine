@@ -160,10 +160,10 @@ export function QuoteCard({ quote }: { quote: Quote }) {
           </div>
           <div className="relative mt-2 h-2 rounded-full bg-raft-line/60">
             <div
-              className="absolute inset-y-0 rounded-full bg-raft-lavender/70"
+              className="absolute inset-y-0 rounded-full bg-raft-chocolate/35"
               style={{ left: pos(lines.market_low_gbp), width: `calc(${pos(lines.market_high_gbp)} - ${pos(lines.market_low_gbp)})` }}
             />
-            <div className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-raft-orange shadow" style={{ left: pos(quote.price) }} title={`This quote: ${money(quote.price)}`} />
+            <div className="absolute top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-raft-chocolate shadow" style={{ left: pos(quote.price) }} title={`This quote: ${money(quote.price)}`} />
           </div>
           <div className="mt-1.5 flex justify-between text-[11px] text-raft-muted">
             <span>{money(low)}</span>

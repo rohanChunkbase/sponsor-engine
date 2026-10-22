@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { AskRaft } from "@/components/ask-raft";
 import { MainFrame } from "@/components/main-frame";
 import { OfflineBanner } from "@/components/offline-banner";
 import { Sidebar } from "@/components/sidebar";
-import { raftAssets } from "@sponsor-engine/brand";
 import { isDemoMode, isDryRun } from "@sponsor-engine/core";
 
 export function Shell({ children }: { children: React.ReactNode }) {
@@ -25,9 +25,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <OfflineBanner />
       <div className="flex min-h-0 flex-1">
         <Sidebar />
-        <main className="min-w-0 flex-1 overflow-y-auto">
-          <MainFrame>{children}</MainFrame>
-        </main>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <main className="min-h-0 flex-1 overflow-y-auto">
+            <MainFrame>{children}</MainFrame>
+          </main>
+          <AskRaft testMode={testMode} />
+        </div>
       </div>
     </div>
   );

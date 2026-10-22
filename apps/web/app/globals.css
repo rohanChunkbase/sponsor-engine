@@ -51,10 +51,7 @@ body {
 }
 
 .raft-bg {
-  background:
-    radial-gradient(1200px 600px at 85% -10%, rgba(185, 163, 227, 0.22), transparent 60%),
-    radial-gradient(900px 500px at -10% 110%, rgba(245, 158, 75, 0.10), transparent 60%),
-    #faf6ee;
+  background: #faf6ee;
   font-family: var(--font-ui);
 }
 

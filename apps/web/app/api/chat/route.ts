@@ -1,4 +1,4 @@
-import { draftSponsorAsk, findSponsors, quoteBooking, triageInbound } from "@sponsor-engine/core";
+import { askRaft } from "@sponsor-engine/core";
 import { limited, readyDb } from "@/lib/request";
 
 export async function POST(request: Request) {
@@ -8,24 +8,9 @@ export async function POST(request: Request) {
   const message = body.message?.trim();
   if (!message) return Response.json({ error: "Paste a message first." }, { status: 400 });
   try {
-    const db = await readyDb();
-    const triage = await triageInbound(db, { message, channel: "dashboard" });
-    if (!triage.ok) return Response.json({ triage });
-    const requestId = String(triage.request?.id);
-    const quote = triage.qualified?.headcount
-      ? await quoteBooking(db, { request_id: requestId }).catch((error: unknown) => ({ error: errorText(error) }))
-      : null;
-    const sponsors = await findSponsors(db, { request_id: requestId, limit: 3 });
-    const sponsorId = sponsors.matches[0]?.sponsor_id;
-    const draft = sponsorId && triage.qualified?.headcount
-      ? await draftSponsorAsk(db, { request_id: requestId, sponsor_id: sponsorId, useTestInbox: true }).catch((error: unknown) => ({ error: errorText(error) }))
-      : null;
-    return Response.json({ request_id: requestId, triage, quote, sponsors, draft });
+    const result = await askRaft(await readyDb(), { message, channel: "dashboard" });
+    return Response.json(result);
   } catch (error) {
-    return Response.json({ error: errorText(error) }, { status: 400 });
+    return Response.json({ error: error instanceof Error ? error.message : "Raft could not finish this message." }, { status: 400 });
   }
-}
-
-function errorText(error: unknown): string {
-  return error instanceof Error ? error.message : "Raft could not finish this message.";
 }

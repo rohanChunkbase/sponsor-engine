@@ -7,7 +7,7 @@ export function inbox(db: Db) {
     `SELECT r.*, t.id AS task_id, t.title AS task_title, t.owner, t.priority, t.status AS task_status
      FROM requests r
      LEFT JOIN tasks t ON t.request_id = r.id
-     ORDER BY r.created_at DESC`,
+    ORDER BY r.created_at DESC`,
   );
   const outbox = db.all<Record<string, unknown>>("SELECT * FROM outbox ORDER BY created_at DESC");
   return {
@@ -18,7 +18,91 @@ export function inbox(db: Db) {
     })),
     failures: listFailures(db, 12),
     counts: counts(db),
+    queue: needsYou(db),
   };
+}
+
+export type NeedsYouItem = {
+  id: string;
+  action: "Approve" | "Answer" | "Fix";
+  title: string;
+  reason: string;
+  outbox_id?: string;
+  request_id?: string;
+};
+
+export function needsYou(db: Db): { items: NeedsYouItem[]; handling: number } {
+  const items: NeedsYouItem[] = [];
+  const outbox = db.all<Record<string, unknown>>("SELECT * FROM outbox ORDER BY created_at DESC");
+  const requests = db.all<Record<string, unknown>>("SELECT * FROM requests ORDER BY created_at DESC");
+  const seenRequests = new Set<string>();
+
+  for (const item of outbox) {
+    const status = String(item.status ?? "");
+    const requestId = item.request_id ? String(item.request_id) : undefined;
+    if (status === "awaiting_approval" || status === "draft") {
+      items.push({
+        id: `approve-${item.id}`,
+        action: "Approve",
+        title: String(item.subject ?? "Draft waiting"),
+        reason: item.recipient ? `To ${item.recipient}` : "Waiting for your approval",
+        outbox_id: String(item.id),
+        request_id: requestId,
+      });
+      if (requestId) seenRequests.add(requestId);
+    } else if (status === "needs_contact") {
+      items.push({
+        id: `answer-${item.id}`,
+        action: "Answer",
+        title: String(item.subject ?? "Missing contact"),
+        reason: "This draft needs a recipient before it can wait for approval.",
+        outbox_id: String(item.id),
+        request_id: requestId,
+      });
+      if (requestId) seenRequests.add(requestId);
+    } else if (status === "blocked" || status === "failed") {
+      items.push({
+        id: `fix-${item.id}`,
+        action: "Fix",
+        title: String(item.subject ?? "Blocked draft"),
+        reason: String(item.blocked_reason ?? "Blocked."),
+        outbox_id: String(item.id),
+        request_id: requestId,
+      });
+      if (requestId) seenRequests.add(requestId);
+    }
+  }
+
+  for (const failure of listFailures(db, 12) as Array<{ id: string; message: string }>) {
+    items.push({
+      id: `fail-${failure.id}`,
+      action: "Fix",
+      title: "Could not read a message",
+      reason: failure.message,
+    });
+  }
+
+  for (const row of requests) {
+    const id = String(row.id);
+    if (seenRequests.has(id)) continue;
+    const missing: string[] = [];
+    if (!row.organisation && !row.sender_name) missing.push("who is asking");
+    if (!row.headcount) missing.push("headcount");
+    if (!row.event_date) missing.push("date");
+    if (missing.length) {
+      items.push({
+        id: `req-${id}`,
+        action: "Answer",
+        title: String(row.organisation || row.sender_name || "Request missing info"),
+        reason: `Missing ${missing.join(", ")}.`,
+        request_id: id,
+      });
+      seenRequests.add(id);
+    }
+  }
+
+  const handling = requests.filter((row) => !seenRequests.has(String(row.id))).length;
+  return { items, handling };
 }
 
 export function counts(db: Db) {

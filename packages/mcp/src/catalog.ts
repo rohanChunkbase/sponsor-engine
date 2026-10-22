@@ -1,17 +1,6 @@
 import { z, type ZodRawShape } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
-import {
-  DEMO_MESSAGE,
-  draftSponsorAsk,
-  findSponsors,
-  forecastTurnout,
-  getReadyDb,
-  listFailures,
-  quoteBooking,
-  recallHistory,
-  sendWithApproval,
-  triageInbound,
-} from "@sponsor-engine/core";
+import { DEMO_MESSAGE, getReadyDb, runAskTool } from "@sponsor-engine/core";
 import { runWithWorkspace } from "@sponsor-engine/db";
 
 function text(data: unknown) {
@@ -51,7 +40,7 @@ const tools: ToolDef[] = [
       sender_name: z.string().optional(),
     },
     example: { message: DEMO_MESSAGE, channel: "whatsapp" },
-    run: async (args, workspaceId) => text(await scoped(workspaceId, () => triageInbound(getReadyDb(), args as { message: string; channel?: string; sender_name?: string }))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "triage_inbound", args))),
   },
   {
     name: "quote_booking",
@@ -66,7 +55,7 @@ const tools: ToolDef[] = [
       needs: z.array(z.string()).optional(),
     },
     example: { requester_kind: "community", headcount: 120, date: "2026-11-28", community_name: "Unicorn Mafia", needs: ["food", "room"] },
-    run: async (args, workspaceId) => text(await scoped(workspaceId, () => quoteBooking(getReadyDb(), args as Parameters<typeof quoteBooking>[1]))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "quote_booking", args))),
   },
   {
     name: "find_sponsors",
@@ -82,7 +71,7 @@ const tools: ToolDef[] = [
       include_sample: z.boolean().optional(),
     },
     example: { community: "Unicorn Mafia", headcount: 120, needs: ["food", "room"], limit: 3 },
-    run: async (args, workspaceId) => text(await scoped(workspaceId, () => findSponsors(getReadyDb(), args as Parameters<typeof findSponsors>[1]))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "find_sponsors", args))),
   },
   {
     name: "forecast_turnout",
@@ -95,7 +84,7 @@ const tools: ToolDef[] = [
       request_id: z.string().optional(),
     },
     example: { headcount: 120, requester_kind: "community", community_name: "Unicorn Mafia" },
-    run: async (args, workspaceId) => text(scoped(workspaceId, () => forecastTurnout(getReadyDb(), args as Parameters<typeof forecastTurnout>[1]))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "forecast_turnout", args))),
   },
   {
     name: "draft_sponsor_ask",
@@ -109,7 +98,7 @@ const tools: ToolDef[] = [
       community: z.string().optional(),
     },
     example: { sponsor_name: "Pydantic", headcount: 120, community: "Unicorn Mafia" },
-    run: async (args, workspaceId) => text(await scoped(workspaceId, () => draftSponsorAsk(getReadyDb(), args as Parameters<typeof draftSponsorAsk>[1]))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "draft_sponsor_ask", args))),
   },
   {
     name: "send_with_approval",
@@ -131,16 +120,7 @@ const tools: ToolDef[] = [
       body: "We would like the room for a community evening. This note waits for a person.",
       kind: "chat_reply",
     },
-    run: async (args, workspaceId) => text(scoped(workspaceId, () => sendWithApproval(getReadyDb(), {
-      recipient: String(args.recipient ?? ""),
-      subject: String(args.subject ?? ""),
-      body: String(args.body ?? ""),
-      kind: args.kind ? String(args.kind) : undefined,
-      requestId: args.request_id ? String(args.request_id) : undefined,
-      sponsorId: args.sponsor_id ? String(args.sponsor_id) : undefined,
-      sponsorName: args.sponsor_name ? String(args.sponsor_name) : undefined,
-      askGbp: typeof args.ask_gbp === "number" ? args.ask_gbp : undefined,
-    }))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "send_with_approval", args))),
   },
   {
     name: "list_failures",
@@ -150,7 +130,7 @@ const tools: ToolDef[] = [
       limit: z.number().optional(),
     },
     example: { limit: 5 },
-    run: async (args, workspaceId) => text(scoped(workspaceId, () => listFailures(getReadyDb(), typeof args.limit === "number" ? args.limit : 20))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "list_failures", args))),
   },
   {
     name: "recall_history",
@@ -160,7 +140,7 @@ const tools: ToolDef[] = [
       query: z.string(),
     },
     example: { query: "Unicorn Mafia" },
-    run: async (args, workspaceId) => text(await scoped(workspaceId, () => recallHistory(getReadyDb(), String(args.query ?? "")))),
+    run: async (args, workspaceId) => text(await scoped(workspaceId, () => runAskTool(getReadyDb(), "recall_history", args))),
   },
 ];
 

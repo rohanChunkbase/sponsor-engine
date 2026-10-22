@@ -11,6 +11,7 @@ export async function GET() {
       requests: data.requests,
       failures: data.failures,
       outbox: listOutbox(db),
+      queue: data.queue,
       test_mode: isDryRun(),
     });
   } catch (error) {
