@@ -3,6 +3,7 @@ import { PageIntro } from "@/components/shell";
 import { RunDemo } from "@/components/run-demo";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { AccuracyPanel } from "@/components/accuracy-panel";
 import { PriceButton } from "@/components/price-button";
 import { kindLabel, money } from "@/lib/labels";
 import { getReadyDb, latestQuote } from "@sponsor-engine/core";
@@ -19,6 +20,7 @@ export default async function QuotePage({ searchParams }: { searchParams: Promis
           Open a message from the inbox, or run the demo. The room price comes from past bookings. Food is a separate cost.
         </PageIntro>
         <RunDemo primary />
+        <AccuracyPanel />
       </>
     );
   }
@@ -44,6 +46,7 @@ export default async function QuotePage({ searchParams }: { searchParams: Promis
             <PriceButton requestId={requestId} />
           </CardFooter>
         </Card>
+        <AccuracyPanel />
       ) : (
         <QuoteView requestId={requestId} quote={quote} />
       )}
@@ -113,6 +116,7 @@ function QuoteView({ requestId, quote }: { requestId: string; quote: QuoteRow })
           </div>
         )}
       </div>
+      <AccuracyPanel />
       <Link className="text-primary" href={`/sponsors?request=${requestId}`}>Find sponsors for this booking</Link>
     </>
   );

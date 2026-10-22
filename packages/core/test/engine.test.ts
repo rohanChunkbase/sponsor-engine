@@ -1,15 +1,17 @@
 import assert from "node:assert/strict";
-import { mkdtempSync } from "node:fs";
+import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { after, before, test } from "node:test";
-import { openDb, seed, type Db } from "@sponsor-engine/db";
+import { openDb, repoRoot, seed, type Db } from "@sponsor-engine/db";
 import {
   approveOutbox,
   deliverOutbox,
   DEMO_MESSAGE,
   draftSponsorAsk,
+  evaluateActiveHistory,
   evaluateSampleHistory,
+  saveVenueCsv,
   findSponsors,
   getConnections,
   listFailures,
@@ -179,6 +181,21 @@ test("demo flow quotes, matches three sponsors, and waits for approval", async (
   assert.ok(result.draft.ask_gbp > 0);
   const again = await draftSponsorAsk(db, { request_id: result.request_id, sponsor_id: result.sponsors.matches[1].sponsor_id });
   assert.equal(again.outbox.status, "awaiting_approval");
+});
+
+test("a venue CSV replaces the sample history and the check runs again", () => {
+  const sample = readFileSync(path.join(repoRoot(), "packages/pricing/data/sample-bookings.csv"), "utf8");
+  const bundled = evaluateSampleHistory();
+  const saved = saveVenueCsv(sample);
+  assert.equal(saved.count, bundled.historyCount);
+  assert.equal(saved.source.source, "venue");
+  const active = evaluateActiveHistory();
+  const activeKnn = active.scores.find((row) => row.model === "knn-rules");
+  const bundledKnn = bundled.scores.find((row) => row.model === "knn-rules");
+  assert.ok(activeKnn && bundledKnn);
+  assert.ok(Math.abs(activeKnn.maeGbp - bundledKnn.maeGbp) < 0.001);
+  assert.ok(activeKnn.maeGbp < active.baselineMedian.maeGbp);
+  assert.throws(() => saveVenueCsv("not,a,booking\n1,2,3\n"));
 });
 
 function reload(id: string) {
