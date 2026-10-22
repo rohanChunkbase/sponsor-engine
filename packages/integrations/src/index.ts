@@ -119,3 +119,5 @@ export async function verifyRequester(handle: string, options?: RegistryOptions)
 
 export { isLikelySpam } from "./spam/classify.ts";
 export type { SpamVerdict } from "./spam/bayes.ts";
+export { triageInbound, triage_inbound } from "./triage.ts";
+export type { InboundRequest, InboundTask, TriageData } from "./triage.ts";
