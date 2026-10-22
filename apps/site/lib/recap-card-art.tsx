@@ -2,7 +2,7 @@ import type { CardSpec } from "@sponsor-engine/recap";
 import React from "react";
 
 /** Glow card drawn with the CSS subset satori supports. */
-export function RecapCardArt({ spec }: { spec: CardSpec }) {
+export function RecapCardArt({ spec, markSrc }: { spec: CardSpec; markSrc?: string }) {
   const portrait = spec.format === "portrait";
   const title = portrait ? 76 : 58;
   const line = portrait ? 40 : 32;
@@ -107,7 +107,11 @@ export function RecapCardArt({ spec }: { spec: CardSpec }) {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: portrait ? 28 : 22, color: "rgba(248,245,255,0.86)" }}>{spec.footer}</div>
           <div style={{ display: "flex", alignItems: "center", marginTop: 18 }}>
-            <OtterMark />
+            {markSrc ? (
+              <img src={markSrc} alt="" width={42} height={42} style={{ width: 42, height: 42, borderRadius: 21 }} />
+            ) : (
+              <OtterMark />
+            )}
             <div style={{ display: "flex", marginLeft: 12, fontSize: 20 }}>made with Sponsor Engine</div>
           </div>
         </div>

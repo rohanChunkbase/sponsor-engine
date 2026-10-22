@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  transpilePackages: ["@sponsor-engine/recap"],
+  transpilePackages: ["@sponsor-engine/recap", "@sponsor-engine/brand"],
   webpack: (config) => {
     config.resolve.extensionAlias = {
       ...config.resolve.extensionAlias,

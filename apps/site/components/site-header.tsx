@@ -1,4 +1,5 @@
 import { githubUrl } from "@/lib/snippets";
+import { raftAssets } from "@sponsor-engine/brand";
 
 export function SiteHeader({ tone = "paper" }: { tone?: "paper" | "sky" }) {
   const onSky = tone === "sky";
@@ -7,7 +8,8 @@ export function SiteHeader({ tone = "paper" }: { tone?: "paper" | "sky" }) {
       <div className="wrap">
         <header className="site-nav">
           <a className="wordmark" href="/">
-            Sponsor Engine
+            <img src={`/brand/${raftAssets.wordmark}`} alt="" width={782} height={278} />
+            <span className="sr-only">Raft. Sponsor Engine</span>
           </a>
           <nav aria-label="Site">
             <a href="/docs">Docs</a>

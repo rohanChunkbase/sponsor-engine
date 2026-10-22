@@ -1,7 +1,7 @@
 import { AskRaft } from "@/components/ask-raft";
 import { Diagram } from "@/components/diagram";
 import { CopyBlock } from "@/components/copy-block";
-import { Mascot } from "@/components/mascot";
+import { RaftPose } from "@/components/raft-pose";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
@@ -25,17 +25,12 @@ export default function HomePage() {
           <div className="wrap rise">
             <p className="eyebrow">London communities and venues</p>
             <div className="hero-raft">
-              <Mascot
-                directions="/mascots/otter-directions.webp"
-                reactions="/mascots/otter-reactions.webp"
-                label="Raft"
-                size={168}
-              />
+              <RaftPose pose="wave" size={168} bob />
               <div>
                 <p className="raft-line">
                   Otters hold hands in a raft so no one drifts away. Sponsor Engine does that for your community.
                 </p>
-                <p className="raft-hint">Meet Raft. Move the pointer. Boop Raft.</p>
+                <p className="raft-hint">Meet Raft</p>
               </div>
             </div>
             <h1 className="hero-title">Your community&rsquo;s front desk and sponsor desk, inside the agent you already use</h1>
@@ -63,6 +58,19 @@ export default function HomePage() {
       </div>
 
       <main id="content" className="landing">
+        <section className="section" id="community">
+          <div className="wrap">
+            <div className="community-band">
+              <RaftPose pose="raft" size={280} />
+              <div>
+                <p className="eyebrow">Community</p>
+                <h2>No one drifts away</h2>
+                <p className="lede">Two otters hold on in the water. Sponsor Engine keeps a community and its venue on one desk.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="section" id="compare">
           <div className="wrap">
             <p className="eyebrow">The same 80-person hack</p>
@@ -209,6 +217,7 @@ export default function HomePage() {
             <h2>Safe by default</h2>
             <div className="safe-grid">
               <div>
+                <RaftPose pose="approve" size={148} />
                 <p className="badge badge-open" style={{ marginBottom: 16 }}>
                   <i />
                   Test mode

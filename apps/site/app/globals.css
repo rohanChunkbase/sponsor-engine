@@ -20,6 +20,10 @@
   --color-reviewed-wash: #eaf4ef;
   --color-open-wash: #fff2e3;
   --color-projection-steel: #8793a3;
+  --color-raft-chocolate: #6b4a33;
+  --color-raft-cream: #faf6ee;
+  --color-raft-lavender: #b9a3e3;
+  --color-raft-orange: #f59e4b;
   --color-primary: #1f5eff;
   --color-primary-foreground: #ffffff;
   --font-sans: var(--font-sans-family), "Inter Tight", sans-serif;
@@ -135,13 +139,19 @@ body {
 }
 
 .wordmark {
-  font-family: var(--font-sans);
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 12px 3px 8px;
+  background: var(--color-raft-cream);
+  border: 1px solid var(--color-raft-lavender);
+  border-radius: 999px;
   text-decoration: none;
+}
+
+.wordmark img {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
 .site-nav nav {
@@ -884,6 +894,74 @@ main :not(pre) > code {
   margin-top: 8px;
 }
 
+.raft-still,
+.raft-bob {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.raft-still img,
+.raft-bob img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.raft-bob {
+  animation: raft-bob 3.2s ease-in-out infinite;
+}
+
+.raft-lid {
+  position: absolute;
+  width: 9%;
+  height: 4.5%;
+  margin-left: -4.5%;
+  margin-top: -2%;
+  border-radius: 999px;
+  background: var(--color-raft-chocolate);
+  transform: scaleY(0);
+  transform-origin: center;
+  animation: raft-blink 4.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.community-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 36px;
+  padding: 28px;
+  background: var(--color-raft-cream);
+  border: 2px solid var(--color-raft-lavender);
+  border-radius: 28px;
+}
+
+.community-band h2 {
+  margin: 8px 0 12px;
+}
+
+@keyframes raft-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes raft-blink {
+  0%,
+  88%,
+  100% {
+    transform: scaleY(0);
+  }
+  92%,
+  96% {
+    transform: scaleY(1);
+  }
+}
+
 .raft-line {
   max-width: 22em;
   margin: 0;
@@ -1138,7 +1216,14 @@ main :not(pre) > code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .recap-stretch {
+  .recap-stretch,
+  .raft-bob,
+  .raft-lid {
     transform: none !important;
+    animation: none;
+  }
+
+  .raft-lid {
+    opacity: 0;
   }
 }
