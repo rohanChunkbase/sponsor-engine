@@ -61,6 +61,10 @@ npm run mcp:http
 
 The HTTP server listens on `http://127.0.0.1:8787/mcp`.
 
+## Connect
+
+You can keep your own chat app and your own agent. The setup guides are in `docs/connect/`.
+
 ## Environment variables
 
 Every variable is optional. You can start with no `.env` file.
