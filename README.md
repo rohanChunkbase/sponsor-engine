@@ -17,6 +17,20 @@ Live app: <https://sponsor-engine-app.vercel.app>
 
 MCP URL: `https://sponsor-engine-app.vercel.app/api/mcp`
 
+## Coming soon
+
+These are not built yet.
+
+- Follow-up answers merged into the original request. Today you resend the full message with the date and needs.
+- A venue finder for requests that name no venue.
+- Advisor mode, which uses your own memory and CRM instead of Raft's storage.
+- A persistent hosted database. The live demo resets between server instances.
+- Real sending of approved emails. Today it runs in test mode only, and nothing is sent.
+- Food partner matching from a curated food-partner list. Today it uses general sponsor data.
+- A token required on the hosted MCP. Demo mode is open.
+- One-click connect for beginners for each integration.
+- A learning loop that feeds event check-in totals into the next quote.
+
 ![A chat request is qualified, the room is priced, sponsors are matched, and a draft is written. A person approves before anything is sent.](docs/images/anatomy.png)
 
 The mascot is Raft the otter.
@@ -43,7 +57,7 @@ Test mode is on. Nothing is sent.
 
 ## Connect your agent
 
-You keep your agent. Sponsor Engine does not replace it.
+You keep your agent. Sponsor Engine does not replace it. Using your own CRM and memory in place of Raft's storage (advisor mode) is not built yet (coming soon).
 
 ![WhatsApp, Discord, Telegram, Slack, and email, plus Grok, Cursor, Claude, ChatGPT, and Codex, all call one service. You bring your own CRM, memory, and model, or you use the built-in tools.](docs/images/any-channel-any-agent.png)
 
@@ -269,6 +283,8 @@ A quote reads past bookings. A sponsor match reads past events. `recall_history`
 
 ![Past events feed the next room quote and the next sponsor match. A person approves the draft. The outcome goes back into the history.](docs/images/learning-loop.png)
 
+Feeding the outcome and check-in totals back into the next quote is not automatic yet (coming soon).
+
 A person still approves the draft. The send stays off until the safety gates pass.
 
 The measured scores are in the next section.
@@ -323,7 +339,7 @@ The snapshot is `packages/integrations/src/eval/sponsor-match-report.json`. `spo
 
 ## Deploy
 
-The dashboard is a Next.js app in `apps/web`. The database can be SQLite or Supabase Postgres.
+The dashboard is a Next.js app in `apps/web`. The database can be SQLite or Supabase Postgres. The hosted demo uses SQLite in `/tmp`, so it resets between server instances. A persistent hosted database is not set up yet (coming soon).
 
 Leave `DATABASE_URL` empty to use SQLite at `data/sponsor-engine.db`.
 
@@ -360,7 +376,7 @@ Set `DATABASE_URL` to the Supavisor transaction pooler URL for project `rcoxklww
 | `MCP_TOKEN` | Empty on the public demo |
 | `ALLOWLIST` | Empty |
 
-Leave `MCP_TOKEN` empty on the public demo. Open `/mcp` on the site. The page lists every tool. Each tool has a schema, an example, and a Run button. The remote MCP URL is `/api/mcp`. The route is stateless streamable HTTP. It uses the same handler as the local server. A person approves on the dashboard.
+Leave `MCP_TOKEN` empty on the public demo. Requiring a token on the hosted MCP is not on yet (coming soon). Open `/mcp` on the site. The page lists every tool. Each tool has a schema, an example, and a Run button. The remote MCP URL is `/api/mcp`. The route is stateless streamable HTTP. It uses the same handler as the local server. A person approves on the dashboard.
 
 Copy `.env.example` to `.env` only when you want to change a local value. Every value in that file is optional.
 
@@ -455,7 +471,7 @@ These are not in tonight's build:
 
 ## Roadmap
 
-- Add a sender only after approval, with `DRY_RUN` set to `false` and the address on `ALLOWLIST`.
+- Add a sender only after approval, with `DRY_RUN` set to `false` and the address on `ALLOWLIST` (coming soon).
 - Leave HubSpot, Notion, Google Sheets, and Mem0 as stubs until a community asks for them.
 
 ## Licence
