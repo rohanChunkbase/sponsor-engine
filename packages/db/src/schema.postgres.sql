@@ -1,6 +1,6 @@
--- Optional Supabase / Postgres schema.
--- Apply this file yourself: psql "$DATABASE_URL" -f packages/db/src/schema.postgres.sql
--- The running server uses SQLite unless you adapt the driver. See the README.
+-- Postgres schema for Supabase and any other Postgres host.
+-- The app applies this file when DATABASE_URL is set.
+-- You can also run: psql "$DATABASE_URL" -f packages/db/src/schema.postgres.sql
 
 CREATE TABLE IF NOT EXISTS communities (
   id TEXT PRIMARY KEY,
@@ -184,3 +184,11 @@ CREATE TABLE IF NOT EXISTS failures (
   raw_input TEXT,
   created_at TEXT NOT NULL
 );
+
+CREATE INDEX IF NOT EXISTS idx_claims_company ON sponsor_claims(company);
+CREATE INDEX IF NOT EXISTS idx_claims_sponsor ON sponsor_claims(sponsor_id);
+CREATE INDEX IF NOT EXISTS idx_events_community ON events(community_id);
+CREATE INDEX IF NOT EXISTS idx_bookings_kind ON bookings(requester_kind);
+CREATE INDEX IF NOT EXISTS idx_tasks_request ON tasks(request_id);
+CREATE INDEX IF NOT EXISTS idx_quotes_request ON quotes(request_id);
+CREATE INDEX IF NOT EXISTS idx_outbox_status ON outbox(status);

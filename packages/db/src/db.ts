@@ -2,10 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import Database from "better-sqlite3";
+import { openPostgres } from "./postgres.js";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 
 export type Db = {
+  kind: "sqlite" | "postgres";
   exec(sql: string): void;
   all<T>(sql: string, params?: unknown[]): T[];
   get<T>(sql: string, params?: unknown[]): T | undefined;
@@ -50,8 +52,16 @@ export function openDb(file = defaultDbPath()): Db {
   return wrap(sqlite);
 }
 
+export function databaseUrl(): string {
+  return process.env.DATABASE_URL?.trim() ?? "";
+}
+
+export function usesPostgres(): boolean {
+  return /^postgres(ql)?:\/\//i.test(databaseUrl());
+}
+
 export function getDb(): Db {
-  if (!singleton) singleton = openDb();
+  if (!singleton) singleton = usesPostgres() ? openPostgres(databaseUrl()) : openDb();
   return singleton;
 }
 
@@ -62,6 +72,7 @@ export function resetSingleton(): void {
 
 function wrap(sqlite: Database.Database): Db {
   return {
+    kind: "sqlite",
     exec(sql) {
       sqlite.exec(sql);
     },
