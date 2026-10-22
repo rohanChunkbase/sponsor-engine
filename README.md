@@ -131,7 +131,7 @@ The remote MCP URL is `/api/mcp`. The route is stateless streamable HTTP. It exp
 
 ## What you can do in the dashboard
 
-The inbox reads a message and makes a task. The task has an owner and a priority.
+The inbox reads a message and makes a task. The task has an owner and a priority. **Paste a WhatsApp chat** reads a `.txt` export. Nothing is sent.
 
 The quote page shows the room price, the range, and a short explanation.
 

@@ -1,6 +1,9 @@
 import { parseSlackEvent, saveInbound, slackSignatureOk, slackUrlChallenge } from "@sponsor-engine/channels/inbound";
+import { dbForRequest, limited } from "../../../../lib/api-write";
 
 export async function POST(request: Request) {
+  const blocked = limited(request);
+  if (blocked) return blocked;
   const raw = await request.text();
   const allowed = slackSignatureOk({
     rawBody: raw,
@@ -17,5 +20,5 @@ export async function POST(request: Request) {
   }
   const challenge = slackUrlChallenge(body);
   if (challenge) return Response.json({ challenge });
-  return Response.json(await saveInbound(parseSlackEvent(body)));
+  return Response.json(await saveInbound(parseSlackEvent(body), dbForRequest(request)));
 }

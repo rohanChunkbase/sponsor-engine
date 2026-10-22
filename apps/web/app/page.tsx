@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Composer } from "@/components/composer";
+import { WhatsAppPaste } from "@/components/whatsapp-paste";
 import { Decisions } from "@/components/decisions";
 import { PageIntro } from "@/components/shell";
 import { RunDemo } from "@/components/run-demo";
@@ -42,6 +43,16 @@ export default async function InboxPage() {
         </CardHeader>
         <CardContent>
           <Composer />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Paste a WhatsApp chat</CardTitle>
+          <CardDescription>Export the chat from WhatsApp and paste the .txt file here. Each message is read. Nothing is sent.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <WhatsAppPaste />
         </CardContent>
       </Card>
 

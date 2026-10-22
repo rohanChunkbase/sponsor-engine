@@ -1,6 +1,9 @@
 import { parseEmail, saveInbound } from "@sponsor-engine/channels/inbound";
+import { dbForRequest, limited } from "../../../../lib/api-write";
 
 export async function POST(request: Request) {
+  const blocked = limited(request);
+  if (blocked) return blocked;
   const type = request.headers.get("content-type") ?? "";
   let raw = "";
   try {
@@ -15,5 +18,5 @@ export async function POST(request: Request) {
   }
   const messages = parseEmail(raw);
   if (!messages.length) return Response.json({ error: "The email has no text." }, { status: 400 });
-  return Response.json(await saveInbound(messages));
+  return Response.json(await saveInbound(messages, dbForRequest(request)));
 }

@@ -38,7 +38,7 @@ Leave `WHATSAPP_TOKEN` empty and the process still runs. The URL check then fail
 
 ## WhatsApp chat export
 
-Use a `.txt` export when you have no key. Export the chat from WhatsApp. Send the file as `text/plain` to `POST /api/inbound/whatsapp`.
+Use a `.txt` export when you have no key. Export the chat from WhatsApp. Paste it into **Paste a WhatsApp chat** on the inbox, or send the file as `text/plain` to `POST /api/inbound/whatsapp`.
 
 One file can hold many lines and many senders. Each line becomes one inbound message.
 
