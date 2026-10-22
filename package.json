@@ -15,8 +15,8 @@
     "dev": "tsx scripts/dev.ts",
     "mcp": "tsx packages/mcp/src/stdio.ts",
     "mcp:http": "tsx packages/mcp/src/http.ts",
-    "test": "node --import tsx --test packages/core/test/*.test.ts",
-    "typecheck": "tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit"
+    "test": "node --import tsx --test packages/core/test/*.test.ts packages/channels/test/*.test.ts",
+    "typecheck": "tsc -p packages/db --noEmit && tsc -p packages/core --noEmit && tsc -p packages/mcp --noEmit && tsc -p packages/channels --noEmit"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
