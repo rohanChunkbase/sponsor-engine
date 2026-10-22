@@ -6,9 +6,21 @@ export { EXAMPLE_REQUESTS } from './examples.js';
 export type { ExampleRequest } from './examples.js';
 export { FEATURE_NAMES } from './features.js';
 export { loadBookingsCsv, loadBookingsFile } from './load.js';
+export {
+  comparableEveningRooms,
+  isMarketOutlier,
+  loadLondonMarket,
+  MARKET_EVENING_HIGH_GBP,
+  MARKET_EVENING_LOW_GBP,
+  MARKET_EVENING_MEDIAN_GBP,
+  marketCheck,
+  marketSentence,
+  parseCapacity,
+} from './market.js';
+export type { MarketRoom } from './market.js';
 export { meanAbsoluteError, meanAbsolutePercentageError } from './metrics.js';
 export { formatGbp, roundTo5 } from './money.js';
-export { SAMPLE_CSV_PATH } from './paths.js';
+export { LONDON_MARKET_CSV_PATH, SAMPLE_CSV_PATH } from './paths.js';
 export { quotePrice } from './quote.js';
 export type { QuoteOptions } from './quote.js';
 export {
@@ -35,6 +47,8 @@ export type {
   CanonicalColumn,
   Comparable,
   DataLabel,
+  MarketCheckResult,
+  MarketVenueMatch,
   ModelName,
   PriceRange,
   Quote,
