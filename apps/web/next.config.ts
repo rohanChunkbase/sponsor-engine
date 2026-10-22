@@ -16,12 +16,19 @@ const traced = [
   "../../packages/integrations/seed/**/*",
   "../../data/real-data/**/*",
   "../../data/synthetic-data/**/*",
+  "../../data/**/*.csv",
+  "../../data/**/*.json",
+  "../../packages/*/data/**/*",
+  "../../packages/*/seed/**/*",
+  "../../packages/**/*.csv",
+  "../../packages/*/package.json",
 ];
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: repoRoot,
   outputFileTracingIncludes: {
     "/**": traced,
+    "/api/**/*": traced,
   },
   transpilePackages: ["@sponsor-engine/brand", "@sponsor-engine/channels", "@sponsor-engine/core", "@sponsor-engine/db", "@sponsor-engine/mcp"],
   serverExternalPackages: ["better-sqlite3", "postgres", "@sponsor-engine/pricing", "@modelcontextprotocol/sdk", "discord.js", "@slack/bolt"],
