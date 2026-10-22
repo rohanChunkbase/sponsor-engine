@@ -94,6 +94,7 @@ test("Cognee becomes the active memory provider when the key is set", () => {
   assert.equal(row(keyed, "cognee").connected, true);
   assert.deepEqual(row(keyed, "cognee").missing, []);
   assert.equal(row(keyed, "cognee").active, true);
+  assert.match(row(keyed, "cognee").detail, /Live-tested/);
   assert.equal(row(keyed, "local-memory").active, false);
 
   const registry = createRegistry(

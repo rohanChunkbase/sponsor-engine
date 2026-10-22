@@ -23,6 +23,7 @@ test("a missing key selects the built-in providers and lists the env vars", () =
   assert.deepEqual(zero?.missing, ["ZERO_API_KEY", "ZERO_WORKSPACE_ID"]);
   assert.equal(memory?.active, true);
   assert.deepEqual(cognee?.missing, ["COGNEE_API_KEY"]);
+  assert.match(cognee?.detail ?? "", /Live-tested/);
   assert.equal(luma?.connected, true);
   assert.deepEqual(luma?.missing, []);
   assert.equal(luma?.active, true);

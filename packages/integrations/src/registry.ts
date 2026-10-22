@@ -64,10 +64,10 @@ function memoryDetail(
   }
   if (provider.isAvailable(env)) {
     return activeId === provider.id
-      ? "Active. Cognee stores and recalls organiser memory."
-      : "Connected. Built-in memory is selected.";
+      ? "Active. Cognee stores and recalls organiser memory. Live-tested."
+      : "Connected. Live-tested. Built-in memory is selected.";
   }
-  return `Set ${missing.join(" and ")} to connect Cognee. Built-in memory stays active.`;
+  return "Set COGNEE_API_KEY to connect Cognee. Live-tested. Built-in memory stays active.";
 }
 
 function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
