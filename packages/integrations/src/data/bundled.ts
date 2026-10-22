@@ -11,6 +11,7 @@ import {
 import type { CompanySize, DevpostHackathon, LumaEventHosts, LumaHost, LumaSponsor } from "../types.ts";
 import { bundledLondonEvents, indexFromEvents } from "./london.ts";
 import { emptyGithubProfile } from "./github.ts";
+import { emptyRequester } from "./verify.ts";
 import { bundledOrganiserLeads } from "./organisers.ts";
 import { findSponsorsInSeed } from "./sponsors.ts";
 import { companySizeNote, emptyCompany } from "./parse.ts";
@@ -215,6 +216,9 @@ export function createBundledData(options: ResolvedOptions): DataSource {
     },
     async hackerNewsStories() {
       return builtinResult("bundled-data", [], "The bundle has no Hacker News stories.");
+    },
+    async verifyRequester(handle) {
+      return builtinResult("bundled-data", emptyRequester(handle), "Live calls are off. The builder check was skipped.");
     },
   };
 }

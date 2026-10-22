@@ -2,6 +2,7 @@ import type { LondonIndexData } from "./london-index.ts";
 import type { DevpostProject } from "./devpost-projects.ts";
 import type { GithubProfile } from "./github.ts";
 import type { HackerNewsStory } from "./hackernews.ts";
+import type { RequesterSignal } from "./verify.ts";
 import type { OrganiserLeadsData } from "./organisers.ts";
 import type { FindSponsorsData } from "./sponsors.ts";
 import type {
@@ -38,4 +39,6 @@ export interface DataSource {
   githubProfile(handle: string): Promise<ProviderResult<GithubProfile>>;
   /** Recent Hacker News stories by this author. */
   hackerNewsStories(handle: string): Promise<ProviderResult<HackerNewsStory[]>>;
+  /** Real-builder signal from GitHub, Devpost, and Hacker News. */
+  verifyRequester(handle: string): Promise<ProviderResult<RequesterSignal>>;
 }

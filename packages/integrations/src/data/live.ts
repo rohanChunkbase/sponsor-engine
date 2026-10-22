@@ -6,6 +6,7 @@ import { devpostProjects as fetchDevpostProjects } from "./devpost-projects.ts";
 import { devpostLondonHackathons as fetchDevpost } from "./devpost.ts";
 import { githubProfile as fetchGithubProfile } from "./github.ts";
 import { hackerNewsStories as fetchHackerNews } from "./hackernews.ts";
+import { verifyRequester as fetchVerify } from "./verify.ts";
 import { buildLondonEventsIndex } from "./london-index.ts";
 import { buildOrganiserLeads } from "./organisers.ts";
 import { findSponsorsInSeed } from "./sponsors.ts";
@@ -51,6 +52,9 @@ export function createLiveData(options: ResolvedOptions): DataSource {
     },
     hackerNewsStories(handle) {
       return fetchHackerNews(handle, options);
+    },
+    verifyRequester(handle) {
+      return fetchVerify(handle, options);
     },
   };
 }
