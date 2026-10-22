@@ -1,228 +1,388 @@
 # Sponsor Engine
 
-Sponsor Engine is an open-source front desk and sponsor list for London communities and venues.
+Open-source front desk and sponsor engine for communities. Chat request in; qualified, priced, sponsor-matched, draft out. A human approves every send.
 
-You use the web dashboard. You can also call the same tools from Grok Bot or Cursor.
+The mascot is Raft the otter.
 
-The tools read a booking message, make a quote, match sponsors, and write an email. A person approves the email. The default mode does not send it.
+![Raft the otter at the front desk](docs/images/raft-hero.png)
 
-Bring your own tools, or just use ours. The built-in tools need no keys.
+The image path is a placeholder. The file is not in this repository yet.
 
-## Quick start
+The live demo link is a placeholder: <https://demo.sponsor-engine.example>
+
+## Start in 60 seconds
 
 You need Node.js 20 or later.
 
-Run this command from the project folder:
-
 ```bash
-npm install && npm run dev
+npm install
+npm run dev
 ```
 
 Open `http://localhost:3000`.
 
-The first start loads the bundled data. The inbox is empty until a message arrives. Press **Run demo** on the inbox.
+Press **Run demo** on the inbox.
 
-Two more commands are useful:
-
-```bash
-npm test
-npm run demo
-```
+Test mode is on. Nothing is sent.
 
 `npm run dev` builds the pricing package when that build is missing.
 
-`npm test` builds the pricing package. It then runs `tsc --noEmit`. It then runs the pricing tests, the integrations tests, the core tests, and the MCP tests.
+## Connect your agent
 
-## Use it from Grok Bot or Cursor in 2 minutes
+You keep your agent. Sponsor Engine does not replace it.
 
-Open the MCP settings in Grok Bot or Cursor.
+The same tools run in the dashboard and over MCP. MCP means Model Context Protocol.
 
-Add this server. Set the working directory to this project folder.
+| Agent | Guide |
+| --- | --- |
+| Grok Bot | [docs/connect/grok.md](docs/connect/grok.md) |
+| Cursor | [docs/connect/cursor.md](docs/connect/cursor.md) |
+| Claude | [docs/connect/claude.md](docs/connect/claude.md) |
+| ChatGPT | [docs/connect/chatgpt.md](docs/connect/chatgpt.md) |
+| Codex | [docs/connect/codex.md](docs/connect/codex.md) |
 
-```json
-{
-  "mcpServers": {
-    "sponsor-engine": {
-      "command": "npm",
-      "args": ["run", "mcp"],
-      "env": { "DRY_RUN": "true" }
-    }
-  }
-}
+The index is [docs/connect](docs/connect/README.md). Channel setup is in [docs/connect/channels.md](docs/connect/channels.md).
+
+Local stdio:
+
+```bash
+npm run mcp
 ```
 
-MCP means Model Context Protocol. The server name is `sponsor-engine`.
-
-The tools are `triage_inbound`, `quote_booking`, `find_sponsors`, `forecast_turnout`, `draft_sponsor_ask`, `send_with_approval`, `list_failures`, and `recall_history`.
-
-Approve is not a tool. A person approves on the dashboard.
-
-`send_with_approval` does not send a message. It writes a row that waits for a person.
-
-You can also run the HTTP server:
+Local HTTP listens on `http://127.0.0.1:8787/mcp`:
 
 ```bash
 npm run mcp:http
 ```
 
-The HTTP server listens on `http://127.0.0.1:8787/mcp`.
+Set `DRY_RUN` to `true` in the client environment. Approve is not a tool. A person approves on the dashboard.
 
-## Environment variables
+## Bring your own or use ours
 
-Every variable is optional. You can start with no `.env` file.
+A missing key does not stop the process. The built-in tool stays active.
 
-Copy `.env.example` to `.env` only when you want to change a value.
+| Area | Built-in default | Optional provider | Env var |
+| --- | --- | --- | --- |
+| CRM | Local file `crm_export.json` | Zero | `ZERO_API_KEY`, `ZERO_WORKSPACE_ID` |
+| Memory | Keyword search over organiser notes | Cognee | `COGNEE_API_KEY`, `COGNEE_URL` |
+| Model | Rule-based triage | OpenAI-compatible chat | `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY` |
+| Channels | Dashboard, plus a JSON webhook | WhatsApp, Discord, Telegram, Slack, email | `WHATSAPP_TOKEN`, `DISCORD_BOT_TOKEN`, `TELEGRAM_BOT_TOKEN`, `SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET` |
+| Data sources | Bundled files in `seed/` | Luma, Meetup, Eventbrite, BuilderBase, MLH, Devpost, GitHub, Hacker News, Companies House | `GITHUB_TOKEN`, `COMPANIES_HOUSE_API_KEY` |
 
-| Name | Default | Purpose |
+CRM means the sponsor list. An env var is a named value in the process environment.
+
+The model key can be empty. A failed model call keeps the rule-based draft.
+
+`GITHUB_TOKEN` is optional. The unit tests use a fake GitHub response. A live call in this check returned HTTP 403. That row is not live-tested.
+
+Twenty, HubSpot, Notion, Google Sheets, and Mem0 are stubs. A stub stores through the built-in tool. It does not call the network.
+
+The provider list and the status rows are in [packages/integrations/README.md](packages/integrations/README.md).
+
+## Tech stack and integrations
+
+Each table is one layer. Each row names the piece, the built-in default, the optional provider, the env var, and the status.
+
+Status words:
+
+- `live-tested` means a smoke script in this check got a real response from the public service.
+- `mock-tested` means a unit test passed a fake HTTP response or a fixture file.
+- `unit-tested` means the tests ran the local code. The test called no external service.
+- `stub` means the code does not call the network.
+- `no test` means the code is in a branch and no test runs it.
+
+The full page is [docs/stack.md](docs/stack.md).
+
+### App
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Next.js dashboard | `apps/web` | none | none | no test |
+| Tailwind CSS | `apps/web/app/globals.css` | none | none | no test |
+| shadcn/ui | `apps/web/components/ui` | none | none | no test |
+| Watermelon UI | none in this checkout | shimmer button on the site branch | none | no test |
+
+The site branch copies one Watermelon shimmer button. No test renders it.
+
+### MCP
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| stdio server | `npm run mcp` | none | `DRY_RUN` | unit-tested |
+| streamable HTTP | `npm run mcp:http` and `/api/mcp` | bearer check | `PORT`, `MCP_TOKEN` | unit-tested |
+
+The HTTP test calls the handler in process. It does not open a public port. Approve is not a tool.
+
+### Database
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| SQLite | `data/sponsor-engine.db` | file path | `SPONSOR_ENGINE_DB` | unit-tested |
+| Supabase Postgres | not used | Postgres driver | `DATABASE_URL` | unit-tested |
+
+The Postgres test rewrites SQL placeholders. No test opens a Postgres connection. Do not read that row as live-tested.
+
+### Memory
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Keyword search | bundled organiser notes | none | none | unit-tested |
+| Cognee | off | Cognee `add`, `cognify`, and `search` | `COGNEE_API_KEY`, `COGNEE_URL` | mock-tested |
+| Mem0 | off | none | `MEM0_API_KEY` | stub |
+
+The memory smoke used the built-in search. Cognee had no key, so the smoke did not call Cognee.
+
+### CRM
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Local file | `crm_export.json` | none | none | unit-tested |
+| Zero | off | companies, contacts, deals, draft notes | `ZERO_API_KEY`, `ZERO_WORKSPACE_ID` | mock-tested |
+| Twenty | off | none | `TWENTY_API_URL`, `TWENTY_API_KEY` | stub |
+| HubSpot | off | none | `HUBSPOT_ACCESS_TOKEN` | stub |
+| Notion | off | none | `NOTION_API_KEY`, `NOTION_SPONSORS_DATABASE_ID` | stub |
+| Google Sheets | off | none | `GOOGLE_SHEETS_SPREADSHEET_ID`, `GOOGLE_SHEETS_API_KEY` | stub |
+
+The CRM smoke wrote the built-in file. `emailSent` stayed false. Zero had no key, so the smoke did not call Zero.
+
+### Models
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Rule-based triage | on | none | none | unit-tested |
+| OpenAI-compatible chat | off | OpenAI, OpenRouter, or Ollama | `LLM_BASE_URL`, `LLM_MODEL`, `LLM_API_KEY` | mock-tested |
+
+The model code is on the channels branch. A missing base URL or model name keeps the rule-based draft. A failed call keeps that draft. The key can be empty. No test called Ollama or OpenAI on the network.
+
+### Pricing model
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Gradient boosted trees | scored on the SAMPLE file | none | none | unit-tested |
+| Nearest bookings | same SAMPLE file | none | none | unit-tested |
+
+The tests fit both models on fictional rows. The label is SAMPLE. This is not a live venue.
+
+### Channels
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| JSON webhook | `POST /api/inbound` | none | none | mock-tested |
+| WhatsApp export | a `.txt` file, no key | none | none | mock-tested |
+| WhatsApp Cloud API | off until a token is set | inbound only | `WHATSAPP_TOKEN` | mock-tested |
+| Discord | JSON route with no token | discord.js bot | `DISCORD_BOT_TOKEN` | mock-tested |
+| Telegram | webhook parse with no token | bot webhook | `TELEGRAM_BOT_TOKEN` | mock-tested |
+| Slack | challenge route with no token | Bolt bot | `SLACK_BOT_TOKEN`, `SLACK_SIGNING_SECRET` | mock-tested |
+| Email | `.eml` file or pasted text | none | none | mock-tested |
+
+The channel tests use fixture files. A missing token does not throw. No test sent a message to WhatsApp, Discord, Telegram, or Slack.
+
+### Data sources
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Bundled seed | `seed/` when a live call fails | none | `SPONSOR_ENGINE_OFFLINE` | unit-tested |
+| Luma event | public event page | none | none | live-tested |
+| Luma discover | London discover feed | none | none | live-tested |
+| Luma calendar (ICS) | first discover calendar | none | none | live-tested |
+| Meetup | London tech events | none | none | live-tested |
+| Eventbrite | listing page | none | none | live-tested |
+| BuilderBase | public discovery rows | none | none | live-tested |
+| MLH | public season events | none | none | live-tested |
+| Devpost hackathons | London search | none | none | live-tested |
+| Devpost projects | public project search | none | none | live-tested |
+| GitHub | public profile | higher rate limit | `GITHUB_TOKEN` | mock-tested |
+| Hacker News | public stories | none | none | live-tested |
+| Companies House | public company page | official API | `COMPANIES_HOUSE_API_KEY` | live-tested |
+| SMS spam model | local naive Bayes file | none | none | unit-tested |
+
+The live rows come from `packages/integrations/scripts/smoke-datakit.ts` and `smoke-live.ts` in this check. GitHub returned HTTP 403 on that run, so GitHub stays mock-tested. The Companies House smoke used the public page, not the official API. The official API path is mock-tested.
+
+### Hosting
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Vercel | `apps/web/vercel.json` | Supabase via `DATABASE_URL` | `DEMO_MODE`, `NEXT_PUBLIC_APP_URL`, `DRY_RUN`, `MCP_TOKEN` | no test |
+
+No test deploys the site.
+
+### Docs
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| Mintlify | this page uses Mintlify frontmatter | none | none | stub |
+| Next.js MDX site | none in this checkout | `apps/site` on the site branch | none | no test |
+
+There is no `mint.json` in this repository. Do not treat Mintlify as a running site.
+
+### Cards
+
+| What | Default | Optional | Env var | Status |
+| --- | --- | --- | --- | --- |
+| `@vercel/og` | none | none | none | stub |
+
+No file imports `@vercel/og`.
+
+## Safe by default
+
+`DRY_RUN` defaults to `true`. Test mode does not send.
+
+`DEMO_MODE=true` forces test mode on a public site.
+
+`ALLOWLIST` is the list of addresses that can be marked sent. It is empty by default.
+
+A draft waits at `awaiting_approval`. A person presses **Approve** on the dashboard.
+
+The row is marked `sent` only when the person approved it, `DRY_RUN` is `false`, and the address is on `ALLOWLIST`.
+
+A sponsor with no public contact uses status `needs_contact`. The recipient stays empty. The tool does not invent an email address.
+
+The write limit is 40 requests from one IP in one minute.
+
+A spam message goes to the spam lane. The lane does not create a task. The check is a local model. The model was trained on public SMS rows. It does not call the network.
+
+The app does not store a guest list. A request stores the message the sender typed. Do not commit personal data.
+
+This repository has no mailer. Read [SECURITY.md](SECURITY.md).
+
+## Accuracy
+
+Two checks are separate. One scores the SAMPLE room prices. One scores sponsor matches. SAMPLE means the rows are fictional. Do not use a SAMPLE price for a real venue.
+
+### Room price
+
+The check is in `packages/pricing`. The command is `npm run evaluate`.
+
+The split sorts bookings by date. The fit uses the first 80 percent of the rows. The score uses the last 20 percent. The SAMPLE score uses 240 rows to fit and 60 rows to score.
+
+MAE means mean absolute error. MAE is the mean of the absolute price errors, in GBP. GBP means pounds sterling.
+
+MAPE means mean absolute percentage error. MAPE uses the 37 paid rows. MAPE skips a price of £0.
+
+The winner is the method with the lower MAE. A constant median is a baseline. The median cannot win.
+
+`npm run evaluate` on the SAMPLE file in this checkout prints these scores. The nearest-booking method wins.
+
+| Method | MAE | MAPE on 37 paid rows | Free slots at £0 | Paid rows at £0 |
+| --- | --- | --- | --- | --- |
+| Nearest bookings (winner) | £76.92 | 15.9 percent | 22 of 23 | 0 |
+| Gradient boosted trees | £96.75 | 13.0 percent | 22 of 23 | 0 |
+| Median baseline | £721.83 | 70.6 percent | 0 of 23 | 0 |
+
+Example quotes from that same file, for requests that are not in the history:
+
+| Request | Price | Range |
 | --- | --- | --- |
-| `DRY_RUN` | `true` | Test mode. `true` does not send. |
-| `ALLOWLIST` | empty | Addresses that can be marked sent when `DRY_RUN` is `false`. |
-| `DATABASE_URL` | empty | Postgres URL. Leave empty to use SQLite. |
-| `DEMO_MODE` | empty | `true` keeps a public site in test mode. |
-| `NEXT_PUBLIC_APP_URL` | empty | Public site address. The MCP page uses it. |
-| `MCP_TOKEN` | empty | Bearer token for `/api/mcp`. Leave empty on the public demo. |
-| `SPONSOR_ENGINE_DB` | `data/sponsor-engine.db` | Path of the SQLite file. |
-| `PORT` | `8787` | Port for the local MCP HTTP server. |
-| `ZERO_API_KEY` | empty | Optional. Use Zero instead of the built-in list. |
-| `TWENTY_API_URL` | empty | Optional. Use Twenty instead of the built-in list. |
-| `TWENTY_API_KEY` | empty | Optional. Use with `TWENTY_API_URL`. |
-| `COGNEE_API_KEY` | empty | Optional. Use Cognee for memory. |
-| `COMPANIES_HOUSE_API_KEY` | empty | Optional. Look up a UK company size. |
+| Community 80-person evening | £0 | £0 to £0 |
+| Startup launch | £1,545 | £1,430 to £1,800 |
+| Company day for 45 people | £3,745 | £3,545 to £3,935 |
 
-Supabase is optional. It is not required. Leave `DATABASE_URL` empty to use SQLite.
+The pricing branch also places each quote on published London rooms of a similar size. That comparable set has 20 evening prices. The low price is £400. The high price is £3,200. The median is £1,350. VAT is not adjusted. Pubs that publish only a minimum spend are not in the set. Somerset House River Terrace and Tobacco Dock Little Gallery are not in the set. The result names three rooms and gives each source URL.
 
-Set `DATABASE_URL` to a Postgres URL to use Supabase. The driver reads `packages/db/src/schema.postgres.sql`.
+On that calibrated SAMPLE file, company rates sit inside the published band. The gradient boosted model wins. Its MAE is £63.42. Its MAPE is 12.0 percent. The nearest-booking MAE is £67.75. Its MAPE is 16.2 percent. The median baseline MAE is £539.08. Those scores are not the scores of the file in this checkout. Read [packages/pricing/README.md](packages/pricing/README.md) for the file that is here.
 
-Run this command once after you set `DATABASE_URL`:
+### Sponsor match
+
+The check uses 30 labelled London events. Each label has the company, the role, and a source URL. The queried event's own sponsors are held out.
+
+precision@3 is 0.289. That is the mean share of the top 3 names that match a label.
+
+recall@5 is 0.395. That is the mean share of labelled sponsors that appear in the top 5.
+
+The snapshot is `packages/integrations/src/eval/sponsor-match-report.json`. `sponsorMatchEval()` recomputes the scores.
+
+`data/real-data/` holds public events and sponsor claims. Each claim has a source URL. `data/synthetic-data/` is SAMPLE.
+
+## Deploy
+
+The dashboard is a Next.js app in `apps/web`. The database can be SQLite or Supabase Postgres.
+
+Leave `DATABASE_URL` empty to use SQLite at `data/sponsor-engine.db`.
+
+Set `DATABASE_URL` to the Supabase Postgres URL to use Postgres. Use the direct URL on port 5432 for the seed command.
 
 ```bash
 npm run seed:postgres
 ```
 
-Use the direct database URL on port 5432 for that command.
-
-## Hosted demo
-
-Set the Vercel root directory to `apps/web`.
+On Vercel, set the root directory to `apps/web`.
 
 Set the install command to `npm install --prefix ../..`.
 
 Set the build command to `npm run build --prefix ../.. -w @sponsor-engine/pricing && npm run build --prefix ../.. -w @sponsor-engine/integrations && next build`.
 
-Set `DATABASE_URL` to the Supabase Postgres URL.
+Set these env vars on the host. Do not commit the values.
 
-Set `DEMO_MODE` to `true`.
+| Env var | Hosted value |
+| --- | --- |
+| `DATABASE_URL` | Supabase Postgres URL |
+| `DEMO_MODE` | `true` |
+| `NEXT_PUBLIC_APP_URL` | Public site address, set before the build |
+| `DRY_RUN` | `true` |
+| `MCP_TOKEN` | Empty on the public demo |
+| `ALLOWLIST` | Empty |
 
-Set `NEXT_PUBLIC_APP_URL` to the public site address before the build.
+Open `/mcp` on the site. The page lists every tool. The remote MCP URL is `/api/mcp`.
 
-Leave `MCP_TOKEN` empty on the public demo.
-
-Open `/mcp` on the site. The page lists every tool. Each tool has a schema, an example, and a Run button. The page also has copy buttons for Grok Bot, Cursor, Claude, and ChatGPT.
-
-The remote MCP URL is `/api/mcp`. The route is stateless streamable HTTP. It exposes the same tools as the local server. A person approves on the dashboard.
-
-## What you can do in the dashboard
-
-The inbox reads a message and makes a task. The task has an owner and a priority.
-
-The quote page shows the room price, the range, and a short explanation.
-
-The room price comes from past bookings. `quote_booking` calls `quotePrice`.
-
-An 80-person community evening can be a free room. The page calls this a community slot.
-
-Food and drinks are a separate cost. The sponsor ask equals that food cost.
-
-The page shows the company room for the same booking beside the community room.
-
-The page shows an Accuracy card. The card calculates the average error on held-out bookings. The numbers are not typed in.
-
-Drop a venue CSV on the Quote page. The app saves the file and runs the check again. The sample file is fictional. Do not treat those prices as a real venue.
-
-The sponsor page ranks London sponsors. Each card shows a company size, a reason, and a source link. With no key, the size comes from the public Companies House page. When that page is off, the bundled note is used.
-
-**To send** holds every message that needs a person. Each one has **Approve**, **Edit**, and **Skip**. Approve stores the deal in the CRM. The built-in CRM is used when no key is set. Approve does not send email.
-
-**Connections** reads `getStatus()`. The built-in CRM and the built-in memory are active with no key. The page also shows the one line that connects Zero, Twenty, Cognee, Luma, Devpost, Companies House, or email.
-
-HubSpot and Sheets are not available yet.
-
-The map shows events on free tiles. No key is required.
+Copy `.env.example` to `.env` only when you want to change a local value. Every value in that file is optional.
 
 ## Architecture
 
-The app has five parts.
+The dashboard, the MCP server, and the channel adapters call the same core functions. The transports stay thin.
 
-The data layer stores messages, tasks, bookings, quotes, sponsors, and the outbox.
+```mermaid
+flowchart TD
+  person[Person or agent]
+  dash[Dashboard]
+  mcp[MCP stdio and HTTP]
+  channels[Channel adapters]
+  core[Core service]
+  price[Pricing]
+  providers[Integrations]
+  db[(SQLite or Postgres)]
+  outbox[Outbox]
+  human[Human approval]
 
-The pricing package reads a booking history and returns a room price.
+  person --> dash
+  person --> mcp
+  person --> channels
+  dash --> core
+  mcp --> core
+  channels --> core
+  core --> price
+  core --> providers
+  core --> db
+  core --> outbox
+  outbox --> human
+```
 
-The core reads a message, makes a quote, and matches sponsors.
+`packages/core` qualifies a request, prices a room, matches sponsors, and writes the outbox.
 
-The MCP server exposes those tools to Grok Bot and Cursor.
+The sponsor page shows a company size on each match. With no key, the size comes from the public Companies House page. When that page fails, the page uses the bundled note.
 
-The dashboard shows the same records to a person.
+Approve stores a CRM draft. The built-in CRM is used when no key is set. Approve does not send email.
 
-`packages/pricing` exports `quotePrice(request, history)`. The function returns a price, a currency, a range, an explanation, and comparable bookings. It also exports `loadBookingsFile` for a venue CSV.
+Connections reads `getStatus()`. The built-in CRM and the built-in memory are active with no key.
 
-The bundled history is a SAMPLE file. A dropped CSV replaces it. The app stores that file at `data/venue-bookings.csv`.
+`recall_history` searches with the memory provider. With no key, that search uses the bundled notes.
 
-Food is not inside the room price. The core adds a food pass-through. The sponsor email asks for that amount.
+`packages/pricing` exports `quotePrice`. The currency is GBP.
 
-`packages/integrations` is optional. When it is present, `find_sponsors` adds a company size to the top matches. Approve calls `pushDeal`. `recall_history` searches with the memory provider. With no key, that search uses the bundled notes. The Connections page calls `getStatus()`. The app runs when that package is absent.
+`packages/integrations` selects the CRM, the memory, and the data sources.
 
-Figure 1 shows the parts of a sponsor engine.
+`packages/db` stores the rows. One workspace is one visitor's rows. Shared reference tables stay global.
 
-![Anatomy of a sponsor engine](diagrams/01-anatomy-of-a-sponsor-engine.png)
+`packages/mcp` exposes the tools. It does not approve.
 
-Figure 2 shows the desk without AI, with a generic assistant, and with this tool.
+Visual rules are in [docs/DESIGN.md](docs/DESIGN.md).
 
-![Without AI, generic AI, and Grok Bot](diagrams/02-without-ai-vs-generic-ai-vs-grok-bot.png)
+## Roadmap
 
-Figure 3 shows how past events feed the next quote.
-
-![It learns from your events](diagrams/03-it-learns-from-your-events.png)
-
-Figure 4 shows the safety path.
-
-![Safe by default](diagrams/04-safe-by-default.png)
-
-## Safety model
-
-Test mode is the default. `DRY_RUN` is `true`.
-
-The outbox has these states: `draft`, `awaiting_approval`, `needs_contact`, `approved`, `sent`, and `blocked`.
-
-`send_with_approval` does not send. It writes a row with status `awaiting_approval`.
-
-A sponsor email with no public contact uses status `needs_contact`. The recipient stays empty. Find a contact before you approve it.
-
-A person must press **Approve**. That action moves the row to `approved` and stores a CRM draft. The draft does not send email.
-
-In test mode, the row does not move to `sent`.
-
-The row moves to `sent` only when all of these are true:
-
-- The status is `approved`.
-- `DRY_RUN` is `false`.
-- The recipient is in `ALLOWLIST`.
-
-This repository has no email sender. This repository has no WhatsApp sender.
-
-A test checks that a row cannot reach `sent` before approval.
-
-The dashboard shows a **TEST MODE** badge on every page while test mode is on.
-
-`DEMO_MODE=true` forces test mode. The demo cannot mark a row as sent.
-
-## Data
-
-`data/real-data/` holds public London events and sponsors. Each claim has a quote and a source URL.
-
-`data/synthetic-data/` is fictional. Those rows are marked `SAMPLE`. Do not present them as real companies.
-
-The visual rules are in `docs/DESIGN.md`.
+- Connect WhatsApp, Discord, Telegram, Slack, and email. Each reply stays a draft.
+- Show the London market sentence on every quote.
+- Add a sender only after approval, with `DRY_RUN` set to `false` and the address on `ALLOWLIST`.
+- Leave HubSpot, Notion, Google Sheets, and Mem0 as stubs until a community asks for them.
 
 ## Licence
 
-MIT. See `LICENSE`.
+MIT. Copyright 2026 Rohan Kumawat. Read [LICENSE](LICENSE).
