@@ -91,10 +91,10 @@ function QuoteView({ requestId, quote }: { requestId: string; quote: QuoteRow })
             <div className="rounded-[12px] bg-surface px-4 py-3">
               <p className="font-mono text-[12px] tracking-[0.08em] text-muted-foreground uppercase">London market check</p>
               <p className="text-[20px] leading-7 font-medium">
-                {money(lines.market_low_gbp)} to {money(lines.market_high_gbp)} for about 4 evening hours
+                {money(lines.market_low_gbp ?? 0)} to {money(lines.market_high_gbp ?? 0)} for about 4 evening hours
               </p>
               <p className="text-muted-foreground">
-                Evening median {money(lines.market_median_gbp)}. Published band {money(lines.market_band_low_gbp)} to {money(lines.market_band_high_gbp)}. This quote is a {lines.hours}-hour day, so the market figures are shorter than the booking.
+                Evening median {money(lines.market_median_gbp)}. Published band {money(lines.market_band_low_gbp ?? 0)} to {money(lines.market_band_high_gbp ?? 0)}. This quote is a {lines.hours}-hour day, so the market figures are shorter than the booking.
               </p>
             </div>
           ) : null}
