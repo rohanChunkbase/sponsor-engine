@@ -57,6 +57,12 @@ export type SponsorMatch = {
     event_name: string;
     community: string;
   }>;
+  company_size?: {
+    note: string;
+    matched_name: string | null;
+    via: string;
+    source_url: string | null;
+  } | null;
 };
 
 export type OutboxRow = {

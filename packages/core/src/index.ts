@@ -13,6 +13,8 @@ export {
 } from "./venue-history.js";
 export { findSponsors } from "./sponsors.js";
 export { draftSponsorAsk, inferRecipient } from "./draft.js";
+export { companySizeIfAvailable } from "./integrations.js";
+export type { CompanySizeNote } from "./integrations.js";
 export { sendWithApproval, approveOutbox, deliverOutbox, skipOutbox, editOutbox, listOutbox } from "./outbox.js";
 export { listFailures } from "./failures.js";
 export { recallHistory } from "./recall.js";

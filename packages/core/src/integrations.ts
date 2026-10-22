@@ -1,13 +1,35 @@
 import { findFunction, loadOptionalPackage } from "./optional-module.js";
 
-export async function companySizeIfAvailable(company: string) {
-  const fn = findFunction(await loadOptionalPackage("integrations"), ["companySize", "getCompanySize"]);
+export type CompanySizeNote = {
+  note: string;
+  matched_name: string | null;
+  via: string;
+  source_url: string | null;
+};
+
+/** Companies House when a key or the public page is available. The bundle answers with no key. */
+export async function companySizeIfAvailable(company: string): Promise<CompanySizeNote | null> {
+  const fn = findFunction(await loadOptionalPackage("integrations"), ["companySize"]);
   if (!fn) return null;
   try {
-    return await fn(company);
+    return readCompanySize(await fn(company));
   } catch {
     return null;
   }
+}
+
+function readCompanySize(value: unknown): CompanySizeNote | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  const data = record.data && typeof record.data === "object" ? record.data as Record<string, unknown> : record;
+  const note = typeof data.sizeNote === "string" ? data.sizeNote.trim() : "";
+  if (!note) return null;
+  return {
+    note,
+    matched_name: typeof data.matchedName === "string" ? data.matchedName : null,
+    via: typeof data.via === "string" ? data.via : "",
+    source_url: typeof data.sourceUrl === "string" ? data.sourceUrl : null,
+  };
 }
 
 export async function lumaHostsIfAvailable(query: { community?: string | null; area?: string | null; headcount?: number | null }) {

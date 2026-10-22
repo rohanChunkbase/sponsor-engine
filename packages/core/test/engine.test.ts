@@ -214,7 +214,26 @@ test("sponsor matches are real London companies with sources", async () => {
     assert.notEqual(match.is_sample, "SAMPLE");
     assert.ok(match.reasons.length > 0);
     assert.ok(match.sources.some((source) => source.url.startsWith("http")));
+    assert.equal(typeof match.company_size?.note, "string");
+    assert.ok((match.company_size?.note.length ?? 0) > 0);
   }
+});
+
+test("a known sponsor card keeps the bundled company size when no key is set", async () => {
+  const found = await findSponsors(db, {
+    community: "AI Engineer London",
+    headcount: 80,
+    needs: ["food"],
+    focus: "AI",
+    limit: 8,
+    include_sample: true,
+    log: false,
+  });
+  const tessl = found.matches.find((match) => match.company.toLowerCase() === "tessl")
+    ?? (await findSponsors(db, { community: "Tessl", headcount: 40, needs: ["food"], limit: 5, include_sample: true, log: false })).matches.find((match) => /tessl/i.test(match.company));
+  assert.ok(tessl, "Tessl should be in the ranked list");
+  assert.match(tessl.company_size?.note ?? "", /London events/);
+  assert.equal(tessl.company_size?.via, "bundled-data");
 });
 
 test("nothing reaches sent without approval", async () => {

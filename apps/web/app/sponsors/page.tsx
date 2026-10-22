@@ -47,6 +47,7 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
             <CardDescription className="text-hero-copy">{top.category}</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-3 text-[18px] leading-[29px]">
+            {top.company_size?.note ? <p>{top.company_size.note}</p> : null}
             {top.reasons.map((reason) => <p key={reason}>{reason}</p>)}
             {top.sources.map((source) => (
               <a key={source.url} className="text-hero-copy underline" href={source.url} target="_blank" rel="noreferrer">
@@ -64,6 +65,7 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
               <CardDescription>{match.category}</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-3 text-[16px] leading-6">
+              {match.company_size?.note ? <p>{match.company_size.note}</p> : null}
               {match.reasons.map((reason) => <p key={reason}>{reason}</p>)}
               {match.sources.map((source) => (
                 <a key={source.url} className="text-primary" href={source.url} target="_blank" rel="noreferrer">
