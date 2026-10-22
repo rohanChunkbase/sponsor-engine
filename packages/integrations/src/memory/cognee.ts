@@ -42,42 +42,43 @@ function headers(env: Record<string, string | undefined>, json: boolean): Record
 }
 
 function hitsFromSearch(organiserId: string, body: unknown): RecallHit[] {
-  const rows = Array.isArray(body)
-    ? body
-    : body && typeof body === "object" && Array.isArray((body as { results?: unknown }).results)
-      ? (body as { results: unknown[] }).results
-      : body && typeof body === "object"
-        ? [body]
-        : [];
+  const rows = Array.isArray(body) ? body : body && typeof body === "object" ? [body] : [];
   const hits: RecallHit[] = [];
-  rows.forEach((row, index) => {
+  for (const row of rows) {
     if (typeof row === "string") {
-      hits.push({
-        organiserId,
-        title: `Cognee ${index + 1}`,
-        text: row.slice(0, 700),
-        score: rows.length - index,
-        source: "cognee",
-        kind: "memory",
-      });
-      return;
+      pushHit(hits, organiserId, row, "cognee");
+      continue;
     }
-    if (!row || typeof row !== "object") return;
-    const record = row as { text?: unknown; search_result?: unknown; answer?: unknown; content?: unknown };
-    const text = [record.text, record.search_result, record.answer, record.content].find(
-      (value) => typeof value === "string" && value.trim() !== "",
-    );
-    if (typeof text !== "string") return;
-    hits.push({
-      organiserId,
-      title: `Cognee ${index + 1}`,
-      text: text.slice(0, 700),
-      score: rows.length - index,
-      source: "cognee",
-      kind: "memory",
-    });
-  });
+    if (!row || typeof row !== "object") continue;
+    const record = row as Record<string, unknown>;
+    const source = textValue(record.dataset_name) ?? "cognee";
+    const items = Array.isArray(record.search_result) ? record.search_result : [record.search_result ?? record];
+    for (const item of items) pushHit(hits, organiserId, itemText(item), source);
+  }
   return hits;
+}
+
+function pushHit(hits: RecallHit[], organiserId: string, text: string | null, source: string): void {
+  if (!text) return;
+  hits.push({
+    organiserId,
+    title: `Cognee ${hits.length + 1}`,
+    text: text.slice(0, 700),
+    score: Math.max(1, 20 - hits.length),
+    source,
+    kind: "memory",
+  });
+}
+
+function itemText(item: unknown): string | null {
+  if (typeof item === "string") return textValue(item);
+  if (!item || typeof item !== "object") return null;
+  const record = item as Record<string, unknown>;
+  return textValue(record.text) ?? textValue(record.answer) ?? textValue(record.content);
+}
+
+function textValue(value: unknown): string | null {
+  return typeof value === "string" && value.trim() ? value.trim() : null;
 }
 
 export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvider): MemoryProvider {

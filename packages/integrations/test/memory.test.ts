@@ -34,7 +34,17 @@ test("Cognee search uses the documented add, cognify, and search calls", async (
     if (init?.body instanceof FormData) entry.dataset = String(init.body.get("datasetName"));
     calls.push(entry);
     if (url.endsWith("/api/v1/search")) {
-      return new Response(JSON.stringify(["Falafel Foundry backed the food."]), { status: 200 });
+      return new Response(
+        JSON.stringify([
+          {
+            dataset_id: "ds-1",
+            dataset_name: "sponsor-engine-C01",
+            dataset_tenant_id: "tenant-1",
+            search_result: ["Falafel Foundry backed the food."],
+          },
+        ]),
+        { status: 200 },
+      );
     }
     return new Response(JSON.stringify({ status: "ok" }), { status: 200 });
   };
@@ -50,11 +60,38 @@ test("Cognee search uses the documented add, cognify, and search calls", async (
   const found = await recall("C01", "food", options);
   assert.equal(found.mode, "live");
   assert.match(found.data[0]?.text ?? "", /Falafel/);
+  assert.equal(found.data[0]?.source, "sponsor-engine-C01");
   const search = calls.find((call) => call.url.endsWith("/api/v1/search"));
   const body = search?.json as { datasets?: string[]; search_type?: string };
   assert.deepEqual(body.datasets, ["sponsor-engine-C01"]);
   assert.equal(body.search_type, "GRAPH_COMPLETION");
   assert.equal(search?.auth, "Bearer cog-key");
+});
+
+test("Cognee CHUNKS results read the text field on each item", async () => {
+  const fetchImpl: typeof fetch = async (input) => {
+    if (String(input).endsWith("/api/v1/search")) {
+      return new Response(
+        JSON.stringify([
+          {
+            dataset_id: "ds-1",
+            dataset_name: "sponsor-engine-C01",
+            dataset_tenant_id: "tenant-1",
+            search_result: [{ text: "Bao Down supplied the dumplings." }],
+          },
+        ]),
+        { status: 200 },
+      );
+    }
+    return new Response("missing", { status: 404 });
+  };
+  const result = await recall("C01", "dumplings", baseOptions({
+    env: { COGNEE_API_KEY: "cog-key", COGNEE_URL: "http://127.0.0.1:8000" },
+    fetchImpl,
+  }));
+  assert.equal(result.mode, "live");
+  assert.equal(result.data[0]?.text, "Bao Down supplied the dumplings.");
+  assert.equal(result.data[0]?.source, "sponsor-engine-C01");
 });
 
 test("a Cognee failure falls back to built-in search", async () => {
