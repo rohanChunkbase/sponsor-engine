@@ -28,6 +28,14 @@ function printQuote(title: string, quote: Quote): void {
   process.stdout.write(`Price: ${formatGbp(quote.price)}\n`);
   process.stdout.write(`Currency: ${quote.currency}\n`);
   process.stdout.write(`Range: ${formatGbp(quote.range.low)} to ${formatGbp(quote.range.high)}\n`);
+  process.stdout.write(
+    `Market: percentile ${quote.market.percentile} of ${quote.market.comparedCount} similar London rooms. Nearest published band ${formatGbp(quote.market.low)} to ${formatGbp(quote.market.high)}.\n`,
+  );
+  for (const room of quote.market.nearest) {
+    process.stdout.write(
+      `  ${room.name}  ${formatGbp(room.price)}  capacity ${room.capacity}  ${room.url}\n`,
+    );
+  }
   process.stdout.write(`Explanation:\n${quote.explanation}\n`);
   process.stdout.write('Comparables:\n');
   for (const row of quote.comparables) {

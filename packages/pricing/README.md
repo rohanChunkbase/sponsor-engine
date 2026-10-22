@@ -20,6 +20,7 @@ The function returns these fields:
 - `currency`: the text `GBP`
 - `range`: `low` and `high`, in GBP
 - `explanation`: plain text for a person
+- `market`: this quote next to published London rooms of a similar size
 - `comparables`: the past bookings that support the quote
 
 The explanation is plain language.
@@ -30,6 +31,7 @@ The explanation tells you these facts:
 - The reason for this price
 - The past bookings that support the price
 - The community discount, or the fact that there is no community discount
+- One sentence that places the quote next to published London rooms
 
 The request has these fields:
 
@@ -271,6 +273,46 @@ The median price for a community that paid is £170.
 The median startup price is £1,260.
 The median agency price is £1,625.
 The median company price is £3,580.
+
+## London market check
+
+The file `data/london_venue_market.csv` lists public London venue hire prices.
+Each row has a source URL.
+The column `gbp_per_4h_evening_norm` is the price of one evening of about 4 hours.
+VAT is not adjusted.
+A pub row that gives only a minimum spend has no price in that column.
+`marketCheck` does not use those rows.
+`marketCheck` does not use Somerset House River Terrace or Tobacco Dock Little Gallery.
+Those two rooms are much larger and much more expensive than the other rooms.
+The other 20 evening prices run from £400 to £3,200.
+Sort those 20 prices.
+The two middle prices are £1,300 and £1,400.
+The median is £1,350.
+
+Call `marketCheck(quote, capacity)`.
+`quote` is a price in GBP.
+`capacity` is the number of people.
+The function keeps rooms with a capacity near that number.
+The result has these fields:
+
+- `percentile`: the share of those rooms with a published price at or below the quote
+- `comparedCount`: the number of rooms in that comparison
+- `low` and `high`: the lowest and highest prices among the three nearest rooms
+- `nearest`: three rooms, each with `name`, `price`, `url`, and `capacity`
+
+A percentile of 0 means the quote is below every similar room.
+A percentile of 100 means the quote is at or above every similar room.
+
+`quotePrice` puts this result in `market`.
+The explanation contains one sentence of this shape:
+
+`A company evening for 80 here is £1,545; similar London rooms publish £960 to £1,100 (Runway East Aldgate, Second Home Spitalfields).`
+
+The names and the prices in that example are an illustration.
+The real sentence uses the three nearest rooms for the request.
+When the request is not an evening of 3 to 5 hours, the sentence adds `for about 4 evening hours`.
+The market column is a 4-hour evening hire.
+A longer booking is a different product.
 
 ## How the quote is calculated
 

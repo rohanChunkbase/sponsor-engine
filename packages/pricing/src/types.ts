@@ -108,6 +108,8 @@ export interface Quote {
   currency: 'GBP';
   range: PriceRange;
   explanation: string;
+  /** This quote placed against published London rooms of a similar capacity. */
+  market: MarketCheckResult;
   comparables: Comparable[];
 }
 

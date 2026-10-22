@@ -73,9 +73,24 @@ test('the three example quotes are ordered and explained', () => {
   assert.ok(startup.price >= 600 && startup.price <= 2800);
   assert.ok(company.price >= 2500 && company.price <= 7000);
 
-  for (const quote of [community, startup, company]) {
+  const quoted = [
+    [community, communityExample.request],
+    [startup, startupExample.request],
+    [company, companyExample.request],
+  ] as const;
+  for (const [quote, request] of quoted) {
     assert.ok(quote.range.low <= quote.price && quote.price <= quote.range.high);
     assert.ok(quote.comparables.length >= 3 && quote.comparables.length <= 8);
+    assert.equal(quote.market.quote, quote.price);
+    assert.equal(quote.market.capacity, request.headcount);
+    assert.equal(quote.market.nearest.length, 3);
+    assert.ok(quote.market.percentile >= 0 && quote.market.percentile <= 100);
+    assert.ok(quote.market.low <= quote.market.high);
+    for (const room of quote.market.nearest) {
+      assert.ok(room.url.startsWith('https://'));
+      assert.ok(room.price > 0);
+    }
+    assert.match(quote.explanation, /similar London rooms publish/);
     assert.match(quote.explanation, /community/i);
     assert.match(quote.explanation, /company/i);
     assert.match(quote.explanation, /discount|free slot/i);
@@ -87,7 +102,16 @@ test('the three example quotes are ordered and explained', () => {
       assert.ok(comparable.distance >= 0);
     }
   }
+  assert.equal(community.market.percentile, 0);
+  assert.equal(community.market.capacity, 80);
+  assert.equal(startup.market.capacity, 100);
+  assert.equal(company.market.capacity, 45);
+  assert.ok(company.market.percentile > community.market.percentile);
+  assert.match(community.explanation, /A community evening for 80 here is £0/);
   assert.match(community.explanation, /free slot/i);
+  assert.match(startup.explanation, /A startup evening for 100 here is/);
+  assert.match(company.explanation, /A company day for 45 here is/);
+  assert.match(company.explanation, /for about 4 evening hours/);
   assert.match(company.explanation, /full price/i);
   assert.ok(community.comparables.every((row) => row.bookerType === 'community'));
   assert.ok(company.comparables.every((row) => row.bookerType === 'company'));
@@ -137,4 +161,6 @@ test('a short history still returns a GBP quote', () => {
   assert.equal(quote.currency, 'GBP');
   assert.ok(quote.price >= 0);
   assert.ok(quote.comparables.length >= 1);
+  assert.equal(quote.market.capacity, 40);
+  assert.equal(quote.market.nearest.length, 3);
 });
