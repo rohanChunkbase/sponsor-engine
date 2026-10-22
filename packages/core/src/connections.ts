@@ -128,17 +128,25 @@ export async function getConnections(): Promise<{ cards: ConnectionCard[]; sourc
   const cards = CATALOG.map((card) => {
     const remote = byId.get(card.id);
     if (!remote) return applyLocal(card);
-    if (card.state === "coming-soon" && remote.state !== "connected") {
-      return { ...card, plain: remote.detail ?? card.plain, step: remote.step ?? card.step };
-    }
-    return {
-      ...card,
-      state: remote.state,
-      step: remote.step ?? card.step,
-      plain: remote.detail ?? card.plain,
-    };
+    return applyRemote(card, remote);
   });
   return { cards, source: "integrations" };
+}
+
+function applyRemote(card: ConnectionCard, remote: Remote): ConnectionCard {
+  const plain = remote.detail || card.plain;
+  const step = remote.missing.length > 0 ? `Set ${remote.missing.join(" and ")}.` : card.step;
+  if (!remote.implemented || card.state === "coming-soon") {
+    return { ...card, state: "coming-soon", plain, step };
+  }
+  if (card.id === "crm-builtin" || card.id === "memory-builtin" || card.id === "bundled" || card.id === "outbox") {
+    return { ...applyLocal(card), state: "built-in", plain, step: card.step };
+  }
+  if (remote.missing.length > 0 && !remote.connected) {
+    return { ...card, state: "missing", plain, step };
+  }
+  if (remote.connected) return { ...card, state: "connected", plain, step };
+  return { ...card, plain, step };
 }
 
 function applyLocal(card: ConnectionCard): ConnectionCard {
@@ -148,7 +156,13 @@ function applyLocal(card: ConnectionCard): ConnectionCard {
   return { ...card };
 }
 
-type Remote = { state: ConnectionState; step?: string | null; detail?: string | null };
+type Remote = {
+  detail: string | null;
+  implemented: boolean;
+  missing: string[];
+  connected: boolean;
+  active: boolean;
+};
 
 function indexStatus(reported: unknown): Map<string, Remote> {
   const map = new Map<string, Remote>();
@@ -158,10 +172,13 @@ function indexStatus(reported: unknown): Map<string, Remote> {
     const record = item as Record<string, unknown>;
     const id = String(record.id ?? record.name ?? "").trim();
     if (!id) continue;
+    const missing = Array.isArray(record.missing) ? record.missing.filter((name): name is string => typeof name === "string") : [];
     map.set(normalId(id), {
-      state: toState(record),
-      step: typeof record.step === "string" ? record.step : null,
       detail: typeof record.detail === "string" ? record.detail : typeof record.plain === "string" ? record.plain : null,
+      implemented: record.implemented !== false,
+      missing,
+      connected: record.connected === true,
+      active: record.active === true,
     });
   }
   return map;
@@ -179,28 +196,19 @@ function asList(reported: unknown): unknown[] {
   });
 }
 
-function toState(record: Record<string, unknown>): ConnectionState {
-  const raw = String(record.state ?? record.status ?? "").toLowerCase();
-  if (raw === "connected" || raw === "ready") return "connected";
-  if (raw === "missing" || raw === "disconnected" || raw === "error") return "missing";
-  if (raw === "coming-soon" || raw === "soon") return "coming-soon";
-  if (raw === "built-in" || raw === "builtin") return "built-in";
-  if (record.connected === true) return "connected";
-  if (record.connected === false) return "missing";
-  return "built-in";
-}
-
 function normalId(id: string): string {
   const value = id.toLowerCase().replace(/[_\s]+/g, "-");
   const aliases: Record<string, string> = {
     zero: "zero",
     "zero-crm": "zero",
+    "local-crm": "crm-builtin",
     twenty: "twenty",
     hubspot: "hubspot",
     sheets: "sheets",
     "google-sheets": "sheets",
     cognee: "cognee",
     memory: "cognee",
+    "local-memory": "memory-builtin",
     luma: "luma",
     devpost: "devpost",
     "companies-house": "companies-house",
@@ -210,6 +218,7 @@ function normalId(id: string): string {
     builtin: "crm-builtin",
     "built-in": "crm-builtin",
     bundled: "bundled",
+    "bundled-data": "bundled",
   };
   return aliases[value] ?? value;
 }

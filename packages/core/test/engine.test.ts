@@ -340,7 +340,12 @@ test("integrations report status and missing keys stay optional", async () => {
   assert.match(`${house?.plain ?? ""} ${house?.step ?? ""}`, /COMPANIES_HOUSE_API_KEY/);
   assert.equal(luma?.state, "connected");
   assert.equal(status.cards.find((card) => card.id === "hubspot")?.state, "coming-soon");
-  assert.equal(status.cards.find((card) => card.id === "crm-builtin")?.state, "built-in");
+  const builtin = status.cards.find((card) => card.id === "crm-builtin");
+  assert.equal(builtin?.state, "built-in");
+  assert.match(builtin?.plain ?? "", /Email is not sent/i);
+  const memory = status.cards.find((card) => card.id === "memory-builtin");
+  assert.equal(memory?.state, "built-in");
+  assert.match(memory?.plain ?? "", /Keyword search/);
 });
 
 test("demo flow quotes, matches three sponsors, and waits for approval", async () => {
