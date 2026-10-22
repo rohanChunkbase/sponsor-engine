@@ -167,6 +167,18 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
         : "No key. Public discovery lists hackathon organisers, size, and theme tags.",
     },
     {
+      id: "mlh",
+      name: "MLH",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. The season page needs no key."
+        : "No key. The season page lists upcoming and past hackathon organisers.",
+    },
+    {
       id: "devpost",
       name: "Devpost",
       slot: "data",

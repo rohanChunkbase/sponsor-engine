@@ -48,7 +48,8 @@ test("parseBuilderBase keeps the organiser, size, and theme tags", () => {
 
 test("organiserLeads uses BuilderBase when discovery responds", async () => {
   const fetchImpl: typeof fetch = async (input) => {
-    assert.match(String(input), /builderbase\.com\/super-events\/public\/discovery/);
+    const url = String(input);
+    if (!url.includes("builderbase.com")) return new Response("down", { status: 503 });
     return new Response(JSON.stringify(PAYLOAD), { status: 200 });
   };
   const result = await organiserLeads(baseOptions({ fetchImpl }));

@@ -2,6 +2,7 @@ import type { ResolvedOptions } from "../options.ts";
 import { builtinResult, liveResult } from "../result.ts";
 import type { ProviderResult } from "../types.ts";
 import { fetchBuilderBase } from "./builderbase.ts";
+import { fetchMlhLeads } from "./mlh.ts";
 import { bundledLondonEvents, type LondonEvent } from "./london.ts";
 
 export interface OrganiserLead {
@@ -62,6 +63,7 @@ export async function buildOrganiserLeads(options: ResolvedOptions): Promise<Pro
   const sources: OrganiserSource[] = [];
   const leads: OrganiserLead[] = [];
   await take("builderbase", "BuilderBase", () => fetchBuilderBase(options), sources, leads);
+  await take("mlh", "MLH", () => fetchMlhLeads(options), sources, leads);
   if (leads.length === 0) {
     const warning = sources.map((source) => source.warning).filter(Boolean).join(" ") || "No organiser rows.";
     return builtinResult("bundled-data", {
