@@ -24,6 +24,10 @@ export interface EventRow {
   source_url?: string;
   food_sponsor_id?: string;
   food_cost_gbp?: number;
+  lat?: number | null;
+  lon?: number | null;
+  venue?: string | null;
+  approx_size?: number | null;
 }
 
 export interface ClaimRow {

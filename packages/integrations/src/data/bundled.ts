@@ -9,6 +9,7 @@ import {
   type EventRow,
 } from "../seed/load.ts";
 import type { CompanySize, DevpostHackathon, LumaEventHosts, LumaHost, LumaSponsor } from "../types.ts";
+import { bundledLondonEvents, indexFromEvents } from "./london.ts";
 import { companySizeNote, emptyCompany } from "./parse.ts";
 import type { DataSource } from "./types.ts";
 
@@ -183,6 +184,13 @@ export function createBundledData(options: ResolvedOptions): DataSource {
         via: "bundled-data",
       };
       return builtinResult("bundled-data", data);
+    },
+    async londonEventsIndex() {
+      const events = bundledLondonEvents(options.seedDir);
+      return builtinResult("bundled-data", {
+        ...indexFromEvents(events),
+        sources: [{ id: "bundled-data", mode: "builtin" as const, events }],
+      });
     },
   };
 }

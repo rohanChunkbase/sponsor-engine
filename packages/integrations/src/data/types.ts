@@ -1,3 +1,4 @@
+import type { LondonIndexData } from "./london-index.ts";
 import type {
   CompanySize,
   DevpostHackathon,
@@ -20,4 +21,6 @@ export interface DataSource {
   lumaEventHosts(eventUrlOrId: string): Promise<ProviderResult<LumaEventHosts>>;
   devpostLondonHackathons(): Promise<ProviderResult<DevpostHackathon[]>>;
   companySize(name: string): Promise<ProviderResult<CompanySize>>;
+  /** London events with venues and calendars for the map and sponsor match. */
+  londonEventsIndex(): Promise<ProviderResult<LondonIndexData>>;
 }

@@ -80,3 +80,7 @@ export async function devpostLondonHackathons(options?: RegistryOptions) {
 export async function companySize(name: string, options?: RegistryOptions) {
   return createRegistry(options).data.companySize(name);
 }
+
+export async function londonEventsIndex(options?: RegistryOptions) {
+  return createRegistry(options).data.londonEventsIndex();
+}

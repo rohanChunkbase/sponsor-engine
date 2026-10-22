@@ -3,6 +3,7 @@ import type { ResolvedOptions } from "../options.ts";
 import { createBundledData } from "./bundled.ts";
 import { companySize as fetchCompanySize } from "./companies-house.ts";
 import { devpostLondonHackathons as fetchDevpost } from "./devpost.ts";
+import { buildLondonEventsIndex } from "./london-index.ts";
 import { lumaEventHosts as fetchLumaEventHosts } from "./luma.ts";
 import type { DataSource } from "./types.ts";
 
@@ -24,6 +25,9 @@ export function createLiveData(options: ResolvedOptions): DataSource {
     },
     companySize(name) {
       return fetchCompanySize(name, options, bundled);
+    },
+    londonEventsIndex() {
+      return buildLondonEventsIndex(options);
     },
   };
 }

@@ -107,6 +107,30 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
       detail: lumaDetail,
     },
     {
+      id: "luma-discover",
+      name: "Luma discover",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. The London discover feed needs no key."
+        : "No key. The London discover feed supplies venues, guest counts, and calendars.",
+    },
+    {
+      id: "luma-ics",
+      name: "Luma calendar",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: !offline,
+      implemented: true,
+      detail: offline
+        ? "Ready. Live calls are off. The calendar feed needs no key."
+        : "No key. One calendar feed is read from the discover page. The feed asks for a 12 hour cache.",
+    },
+    {
       id: "devpost",
       name: "Devpost",
       slot: "data",
