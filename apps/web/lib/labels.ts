@@ -23,7 +23,11 @@ export function waitingLabel(status: string, reason?: string | null): string {
   if (status === "awaiting_approval" || status === "draft") return "Waiting for you";
   if (status === "approved") return "Approved";
   if (status === "sent") return "Sent";
-  if (status === "blocked") return reason?.toLowerCase().includes("skip") ? "Skipped" : "Not sent";
+  if (status === "blocked") {
+    if (reason?.toLowerCase().includes("skip")) return "Skipped";
+    if (reason?.toLowerCase().includes("already asked")) return "Blocked";
+    return "Not sent";
+  }
   if (status === "failed") return "Needs a person";
   if (status === "triaged" || status === "open") return "Open";
   return status;

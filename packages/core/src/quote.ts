@@ -1,5 +1,12 @@
 import type { Db } from "@sponsor-engine/db";
-import { quotePrice, type QuoteRequest } from "@sponsor-engine/pricing";
+import {
+  MARKET_EVENING_HIGH_GBP,
+  MARKET_EVENING_LOW_GBP,
+  MARKET_EVENING_MEDIAN_GBP,
+  quotePrice,
+  type MarketCheckResult,
+  type QuoteRequest,
+} from "@sponsor-engine/pricing";
 import { forecastTurnout, resolveCommunity } from "./forecast.js";
 import { recordRun } from "./runs.js";
 import type { RequesterKind } from "./types.js";
@@ -22,6 +29,17 @@ export type QuoteLines = {
   community_range: PriceBand;
   company_room_gbp: number;
   company_range: PriceBand;
+  /** Hours parsed from the message. The room figure covers this whole span. */
+  hours: number;
+  /** Room plus food. The room figure is not a price per hour. */
+  day_total_gbp: number;
+  /** Nearest published London rooms, about 4 evening hours. */
+  market_low_gbp: number;
+  market_high_gbp: number;
+  /** Median of the published London ~4h evening set, after outliers. */
+  market_median_gbp: number;
+  market_band_low_gbp: number;
+  market_band_high_gbp: number;
 };
 
 export type RoomComparable = {
@@ -91,8 +109,9 @@ export async function quoteBooking(
     log: false,
   });
   const food = foodPassThrough(forecast.expected_heads);
+  const roomGbp = Math.round(room.price);
   const lines: QuoteLines = {
-    room_gbp: Math.round(room.price),
+    room_gbp: roomGbp,
     food_gbp: food,
     expected_heads: forecast.expected_heads,
     show_up_rate: forecast.show_up_rate,
@@ -103,12 +122,19 @@ export async function quoteBooking(
     community_range: community.range,
     company_room_gbp: Math.round(company.price),
     company_range: company.range,
+    hours: shaped.hours,
+    day_total_gbp: roomGbp + food,
+    market_low_gbp: room.market.low,
+    market_high_gbp: room.market.high,
+    market_median_gbp: MARKET_EVENING_MEDIAN_GBP,
+    market_band_low_gbp: MARKET_EVENING_LOW_GBP,
+    market_band_high_gbp: MARKET_EVENING_HIGH_GBP,
   };
   const comparables = room.comparables.map(toComparable);
   const sampleNote = historySource().source === "sample"
     ? "The room price uses SAMPLE venue history. Those bookings are fictional. They are not this venue's prices."
     : "";
-  const explanation = [room.explanation, deskParagraph(bookerType, lines, forecast.summary, !confirmed), sampleNote].filter(Boolean).join("\n\n");
+  const explanation = [room.explanation, deskParagraph(bookerType, lines, forecast.summary, !confirmed, room.market), sampleNote].filter(Boolean).join("\n\n");
   const id = makeId("quo");
   db.run(
     `INSERT INTO quotes
@@ -238,10 +264,18 @@ function toComparable(row: {
   };
 }
 
-function deskParagraph(kind: "community" | "company", lines: QuoteLines, forecastSummary: string, unconfirmed: boolean): string {
+function deskParagraph(
+  kind: "community" | "company",
+  lines: QuoteLines,
+  forecastSummary: string,
+  unconfirmed: boolean,
+  market: MarketCheckResult,
+): string {
   const room = kind === "community" && lines.room_gbp === 0
     ? `The room is ${gbp(0)}. This is a free community slot. Similar community evenings were free, and communities bring leads.`
-    : `The room is ${gbp(lines.room_gbp)}. The room range is ${gbp(lines.range.low)} to ${gbp(lines.range.high)}.`;
+    : `The room is ${gbp(lines.room_gbp)} for the whole ${lines.hours}-hour booking. That figure is not a price per hour. The room range is ${gbp(lines.range.low)} to ${gbp(lines.range.high)}.`;
+  const day = `The full day is ${gbp(lines.day_total_gbp)}. That is the room plus food.`;
+  const marketLine = `Published London rooms of a similar size run ${gbp(market.low)} to ${gbp(market.high)} for about 4 evening hours. The evening median across the published set is ${gbp(lines.market_median_gbp)}, and the band is ${gbp(lines.market_band_low_gbp)} to ${gbp(lines.market_band_high_gbp)}.`;
   const food = `Food and drinks are passed through at ${gbpExact(FOOD_PER_HEAD_GBP)} for each person we expect. ${forecastSummary} The food cost is ${gbp(lines.food_gbp)}. The sponsor ask covers that food cost. The ask is ${gbp(lines.sponsor_ask_gbp)}.`;
   const contrast = kind === "community"
     ? `A company pays ${gbp(lines.company_room_gbp)} for the same room. The company range is ${gbp(lines.company_range.low)} to ${gbp(lines.company_range.high)}.`
@@ -249,5 +283,5 @@ function deskParagraph(kind: "community" | "company", lines: QuoteLines, forecas
   const note = unconfirmed
     ? " The booker type is not confirmed. This quote uses the company rate. A free community slot was not applied."
     : "";
-  return `${room} ${food} ${contrast}${note}`;
+  return `${room} ${day} ${marketLine} ${food} ${contrast}${note}`;
 }

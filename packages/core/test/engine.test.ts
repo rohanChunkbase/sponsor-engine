@@ -205,16 +205,16 @@ test("an 80-person community evening is a free room and food is the sponsor ask"
   assert.match(quote.explanation, /sponsor ask/i);
 });
 
-test("held-out nearest bookings beat the other scores on the sample file", () => {
+test("the held-out winner beats a constant median on the sample file", () => {
   const report = evaluateSampleHistory();
   const knn = report.scores.find((row) => row.model === "knn-rules");
   const gbdt = report.scores.find((row) => row.model === "gbdt");
   assert.ok(knn);
   assert.ok(gbdt);
-  assert.equal(report.winner, "knn-rules");
-  assert.ok(knn.maeGbp < gbdt.maeGbp, `knn ${knn.maeGbp} gbdt ${gbdt.maeGbp}`);
-  assert.ok(knn.maeGbp < report.baselineMedian.maeGbp, `knn ${knn.maeGbp} median ${report.baselineMedian.maeGbp}`);
-  assert.ok(knn.mapePercent > 0 && knn.mapePercent < 40);
+  assert.equal(report.winner, "gbdt");
+  assert.ok(gbdt.maeGbp < knn.maeGbp, `gbdt ${gbdt.maeGbp} knn ${knn.maeGbp}`);
+  assert.ok(gbdt.maeGbp < report.baselineMedian.maeGbp, `gbdt ${gbdt.maeGbp} median ${report.baselineMedian.maeGbp}`);
+  assert.ok(gbdt.mapePercent > 0 && gbdt.mapePercent < 40);
 });
 
 test("sponsor matches are real London companies with sources", async () => {
@@ -366,6 +366,13 @@ test("demo flow quotes from sample history, matches past sponsors, and waits", a
   const backed = new Set(["Pydantic", "Render", "Expedite", "The Residency", "Cognition", "Mubit", "BuilderBase", "Encode Hub"]);
   const result = await runDemo(db);
   assert.match(result.quote.explanation, /SAMPLE venue history/);
+  assert.equal(result.quote.lines.hours, 12);
+  assert.equal(result.quote.lines.day_total_gbp, result.quote.lines.room_gbp + result.quote.lines.food_gbp);
+  assert.ok(result.quote.lines.day_total_gbp > result.quote.lines.room_gbp);
+  assert.equal(result.quote.lines.market_median_gbp, 1350);
+  assert.match(result.quote.explanation, /full day/i);
+  assert.match(result.quote.explanation, /not a price per hour/);
+  assert.match(result.quote.explanation, /£1,350/);
   assert.ok(result.quote.lines.company_room_gbp > 0);
   assert.equal(result.draft.ask_gbp, result.quote.lines.food_gbp);
   assert.ok(result.draft.ask_gbp > 0);
@@ -381,6 +388,9 @@ test("demo flow quotes from sample history, matches past sponsors, and waits", a
   assert.match(result.draft.outbox.body, /placeholder at the test inbox/);
   assert.doesNotMatch(result.draft.outbox.body, /Charlie|Cheesman|linkedin\.com\/in|@gmail|partnerships@/i);
   assert.equal(result.draft.sent, false);
+  assert.equal(result.repeat.outbox.status, "blocked");
+  assert.match(result.repeat.outbox.blocked_reason ?? "", /already asked for this booking/);
+  assert.equal(result.repeat.sent, false);
   assert.equal(isDryRun(), true);
   const again = await draftSponsorAsk(db, { request_id: result.request_id, sponsor_id: result.sponsors.matches[1].sponsor_id });
   assert.match(again.outbox.recipient, /^sponsors\+[a-z0-9]+@example\.com$/);

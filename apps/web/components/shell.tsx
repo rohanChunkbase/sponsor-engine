@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { OfflineBanner } from "@/components/offline-banner";
 import { Badge } from "@/components/ui/badge";
 import { isDemoMode, isDryRun } from "@sponsor-engine/core";
 
@@ -36,6 +37,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </header>
+      <OfflineBanner />
       <main className="mx-auto flex max-w-[1120px] flex-col gap-8 px-8 py-12">{children}</main>
     </div>
   );

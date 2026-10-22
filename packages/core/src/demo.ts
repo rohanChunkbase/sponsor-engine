@@ -21,9 +21,15 @@ export async function runDemo(db: Db) {
   });
   const quote = await quoteBooking(db, { request_id: requestId });
   const sponsors = await findSponsors(db, { request_id: requestId, limit: 3 });
+  const sponsorId = sponsors.matches[0]?.sponsor_id;
   const draft = await draftSponsorAsk(db, {
     request_id: requestId,
-    sponsor_id: sponsors.matches[0]?.sponsor_id,
+    sponsor_id: sponsorId,
+    useTestInbox: true,
+  });
+  const repeat = await draftSponsorAsk(db, {
+    request_id: requestId,
+    sponsor_id: sponsorId,
     useTestInbox: true,
   });
   return {
@@ -33,6 +39,7 @@ export async function runDemo(db: Db) {
     quote,
     sponsors,
     draft,
+    repeat,
     outbox_id: draft.outbox.id,
     chat_outbox_id: triage.outbox?.id ?? null,
   };

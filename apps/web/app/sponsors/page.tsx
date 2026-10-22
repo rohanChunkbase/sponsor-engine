@@ -3,6 +3,7 @@ import { Decisions } from "@/components/decisions";
 import { DraftButton } from "@/components/draft-button";
 import { PageIntro } from "@/components/shell";
 import { RunDemo } from "@/components/run-demo";
+import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { kindOfMessage, money, waitingLabel } from "@/lib/labels";
@@ -93,6 +94,7 @@ export default async function SponsorsPage({ searchParams }: { searchParams: Pro
                 <span>{kindOfMessage(email.kind)}</span>
                 {email.ask_gbp ? <span>{money(email.ask_gbp)}</span> : null}
               </div>
+              {email.status === "blocked" && email.blocked_reason ? <Alert>{email.blocked_reason}</Alert> : null}
               <h3 className="text-[18px] leading-6 font-medium">{email.subject}</h3>
               <p className="whitespace-pre-wrap text-[16px] leading-6">{email.body}</p>
               {email.status === "awaiting_approval" || email.status === "draft" || email.status === "needs_contact" ? <Decisions id={email.id} body={email.body} status={email.status} /> : <p className="text-muted-foreground">{waitingLabel(email.status, email.blocked_reason)}. Nothing else happens until you say so.</p>}

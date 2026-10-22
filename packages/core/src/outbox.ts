@@ -70,6 +70,7 @@ export function sendWithApproval(
 ) {
   const kind = input.kind ?? "sponsor_email";
   const missingContact = kind === "sponsor_email" && !input.recipient.trim();
+  const earlier = earlierSponsorAsk(db, { ...input, kind });
   const item = createOutbox(db, {
     kind,
     recipient: input.recipient.trim(),
@@ -81,6 +82,17 @@ export function sendWithApproval(
     askGbp: input.askGbp,
     status: missingContact ? "needs_contact" : input.status,
   });
+  if (earlier) {
+    const reason = REPEAT_ASK;
+    move(db, item, "blocked", reason);
+    recordRun(db, {
+      tool: "send_with_approval",
+      inputSummary: `${item.kind} to ${item.recipient}`,
+      outputSummary: reason,
+      requestId: item.request_id,
+    });
+    return { item: mustOutbox(db, item.id), sent: false as const, reason };
+  }
   recordRun(db, {
     tool: "send_with_approval",
     inputSummary: `${item.kind} to ${item.recipient}`,
@@ -88,6 +100,28 @@ export function sendWithApproval(
     requestId: item.request_id,
   });
   return { item, sent: false as const, reason: "Waiting for a person. Nothing was sent." };
+}
+
+const REPEAT_ASK = "Blocked. This sponsor was already asked for this booking.";
+
+function earlierSponsorAsk(
+  db: Db,
+  input: {
+    kind: string;
+    requestId?: string | null;
+    sponsorId?: string | null;
+    sponsorName?: string | null;
+  },
+): OutboxRow | undefined {
+  if (input.kind !== "sponsor_email" || !input.requestId) return undefined;
+  const sponsorId = input.sponsorId?.trim() || "";
+  const sponsorName = input.sponsorName?.trim().toLowerCase() || "";
+  if (!sponsorId && !sponsorName) return undefined;
+  const rows = db.all<OutboxRow>("SELECT * FROM outbox WHERE request_id = ? AND kind = 'sponsor_email'", [input.requestId]);
+  return rows.find((row) => {
+    if (sponsorId && row.sponsor_id === sponsorId) return true;
+    return Boolean(sponsorName) && row.sponsor_name?.trim().toLowerCase() === sponsorName;
+  });
 }
 
 export async function approveOutbox(db: Db, id: string, actor = "dashboard") {

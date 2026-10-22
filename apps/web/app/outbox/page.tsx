@@ -50,6 +50,7 @@ export default async function OutboxPage() {
                 <p className="text-[16px] leading-6 text-muted-foreground">{item.recipient ? `To ${item.recipient}` : "Find a contact"}{item.sponsor_name ? ` · ${item.sponsor_name}` : ""}</p>
               </CardHeader>
               <CardContent className="flex flex-col gap-4">
+                {item.status === "blocked" && item.blocked_reason ? <Alert>{item.blocked_reason}</Alert> : null}
                 <p className="whitespace-pre-wrap text-[16px] leading-6">{item.body}</p>
                 {waiting ? <Decisions id={item.id} body={item.body} status={item.status} /> : <p className="text-muted-foreground">{item.blocked_reason || waitingLabel(item.status)}. Nothing was sent from this screen.</p>}
               </CardContent>

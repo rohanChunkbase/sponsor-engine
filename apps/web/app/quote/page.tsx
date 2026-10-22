@@ -72,12 +72,32 @@ function QuoteView({ requestId, quote }: { requestId: string; quote: QuoteRow })
             {history.source === "sample" ? <Badge tone="open">SAMPLE</Badge> : null}
             {lines && lines.room_gbp === 0 ? <Badge tone="review">Community slot</Badge> : null}
           </div>
-          <p className="font-sans text-[58px] leading-[64px] font-medium tracking-[-0.025em]">{money(quote.price)}</p>
+          <p className="font-mono text-[12px] tracking-[0.08em] text-muted-foreground uppercase">
+            {lines?.day_total_gbp != null ? "Full day" : "Room"}
+          </p>
+          <p className="font-sans text-[58px] leading-[64px] font-medium tracking-[-0.025em]">
+            {money(lines?.day_total_gbp ?? quote.price)}
+          </p>
           <CardDescription>
-            {range ? `Room range ${money(range.low)} to ${money(range.high)}. Food is not in this figure.` : "Room price. Food is not in this figure."}
+            {lines?.day_total_gbp != null
+              ? `Room ${money(lines.room_gbp)} for the whole ${lines.hours}-hour booking, plus food ${money(lines.food_gbp)}. The room figure is not a price per hour.`
+              : range
+                ? `Room range ${money(range.low)} to ${money(range.high)}. Food is not in this figure.`
+                : "Room price. Food is not in this figure."}
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
+          {lines?.market_median_gbp != null ? (
+            <div className="rounded-[12px] bg-surface px-4 py-3">
+              <p className="font-mono text-[12px] tracking-[0.08em] text-muted-foreground uppercase">London market check</p>
+              <p className="text-[20px] leading-7 font-medium">
+                {money(lines.market_low_gbp)} to {money(lines.market_high_gbp)} for about 4 evening hours
+              </p>
+              <p className="text-muted-foreground">
+                Evening median {money(lines.market_median_gbp)}. Published band {money(lines.market_band_low_gbp)} to {money(lines.market_band_high_gbp)}. This quote is a {lines.hours}-hour day, so the market figures are shorter than the booking.
+              </p>
+            </div>
+          ) : null}
           {quote.explanation.split("\n\n").map((paragraph) => (
             <p key={paragraph.slice(0, 48)} className="text-[18px] leading-[29px]">{paragraph}</p>
           ))}
@@ -242,6 +262,13 @@ type QuoteLines = {
   community_range: { low: number; high: number };
   company_room_gbp: number;
   company_range: { low: number; high: number };
+  hours?: number;
+  day_total_gbp?: number;
+  market_low_gbp?: number;
+  market_high_gbp?: number;
+  market_median_gbp?: number;
+  market_band_low_gbp?: number;
+  market_band_high_gbp?: number;
 };
 
 type QuoteRow = {
