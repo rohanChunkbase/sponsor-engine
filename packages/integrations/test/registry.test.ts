@@ -89,11 +89,13 @@ test("getStatus lists every provider and keeps one built-in CRM and one built-in
   }
 });
 
-test("Cognee becomes the active memory provider when the key and the URL are set", () => {
-  const partial = getStatus(baseOptions({ env: { COGNEE_API_KEY: "cog-key" } }));
-  assert.equal(row(partial, "cognee").connected, false);
-  assert.deepEqual(row(partial, "cognee").missing, ["COGNEE_URL"]);
-  assert.equal(row(partial, "local-memory").active, true);
+test("Cognee becomes the active memory provider when the key is set", () => {
+  const keyed = getStatus(baseOptions({ env: { COGNEE_API_KEY: "cog-key" } }));
+  assert.equal(row(keyed, "cognee").connected, true);
+  assert.deepEqual(row(keyed, "cognee").missing, []);
+  assert.equal(row(keyed, "cognee").active, true);
+  assert.match(row(keyed, "cognee").detail, /Live-tested/);
+  assert.equal(row(keyed, "local-memory").active, false);
 
   const registry = createRegistry(
     baseOptions({

@@ -58,8 +58,8 @@ WARNING: Do not send email from these adapters. Create a record or a draft note 
 | `ZERO_API_KEY` | Zero | Yes for Zero | Bearer token. `ZERO_API_TOKEN` is the same key. |
 | `ZERO_WORKSPACE_ID` | Zero | Yes for Zero | Workspace id on each record. |
 | `ZERO_API_BASE` | Zero | No | Default `https://api.zero.inc`. |
-| `COGNEE_API_KEY` | Cognee | Yes for Cognee | API key. |
-| `COGNEE_URL` | Cognee | Yes for Cognee | Server URL. `COGNEE_BASE_URL` is the same URL. |
+| `COGNEE_API_KEY` | Cognee | Yes for Cognee | API key. This is the only required Cognee env var. |
+| `COGNEE_URL` | Cognee | No | Server URL. `COGNEE_BASE_URL` is the same URL. A missing URL uses Cognee Cloud. |
 | `COGNEE_TENANT_ID` | Cognee | No | Sends the header `X-Tenant-Id` when set. |
 | `COMPANIES_HOUSE_API_KEY` | Companies House | No | Official API. The public page works with no key. |
 | `GITHUB_TOKEN` | GitHub | No | Bearer token. The public profile works with no key. |
@@ -82,6 +82,10 @@ Zero MCP at `https://api.zero.inc/mcp` uses OAuth.
 The REST adapter uses `ZERO_API_KEY` as the bearer token.
 Cognee Cloud uses the header `X-Api-Key`.
 A self-hosted Cognee URL uses a bearer token.
+Cognee Cloud is live-tested.
+Set `COGNEE_API_KEY` to connect Cognee Cloud.
+Leave `COGNEE_URL` empty for Cognee Cloud.
+Set `COGNEE_URL` when you run your own Cognee server.
 
 ## How to wire it in
 
@@ -226,12 +230,15 @@ npm run smoke:crm --prefix packages/integrations
 npm run smoke:memory --prefix packages/integrations
 npm run smoke:live --prefix packages/integrations
 npm run smoke:datakit --prefix packages/integrations
+npm run smoke:cognee --prefix packages/integrations
 npm run eval:sponsors --prefix packages/integrations
 ```
 
 `smoke:crm` and `smoke:memory` use the built-in providers.
 `smoke:live` calls Luma, Devpost, and the Companies House page.
 `smoke:datakit` calls the London event sources, organiser leads, and the builder check.
+`smoke:cognee` runs only when `COGNEE_API_KEY` is set.
+That script writes only to the dataset `sponsor-engine-test`.
 `eval:sponsors` prints precision@3 and recall@5.
 The same numbers are in `src/eval/sponsor-match-report.json`.
 Each live call has a short timeout.
@@ -267,10 +274,17 @@ Auth is `Authorization: Bearer <ZERO_API_KEY>`.
 
 | Call | Body |
 | --- | --- |
+| `GET /api/v1/tenants/current/service-url` | No body. Header `X-Api-Key`. Used when `COGNEE_URL` is empty. |
 | `POST /api/v1/add` | Form field `datasetName` and form field `raw_data` |
 | `POST /api/v1/cognify` | `{ "datasets": ["sponsor-engine-<organiserId>"] }` |
+| `GET /api/v1/datasets/status?dataset=<id>` | No body. Poll until `DATASET_PROCESSING_COMPLETED`. |
 | `POST /api/v1/search` | `{ "query", "datasets", "search_type": "GRAPH_COMPLETION" }` |
 
 The dataset name is `sponsor-engine-` plus the organiser id.
+`add` and `search` wait 30 seconds.
+The status call and the service URL call use a short timeout.
 Built-in memory keeps a copy of each `remember` call.
 `recall` uses that copy when Cognee returns no rows.
+A missing dataset returns `No Cognee memory yet.`
+Cognify starts a run. The adapter polls the dataset status.
+The Connections row says `Live-tested` for Cognee.
