@@ -1,6 +1,21 @@
-# Sponsor Engine
+# Raft — Sponsor Engine
 
-Open-source front desk and sponsor engine for communities. Chat request in; qualified, priced, sponsor-matched, draft out. A human approves every send.
+Raft is an open-source helper for people who run communities. Paste a booking request from WhatsApp, email or Slack, and Raft checks it is not spam, gives a fair price for the room and food, finds sponsors and food partners that fit, and writes the emails for you to approve. Nothing is sent without you. It works inside the AI you already use (Grok Bot, Cursor, Claude) through MCP, and runs with no API keys.
+
+## Try it
+
+```bash
+git clone https://github.com/rohanChunkbase/sponsor-engine.git
+cd sponsor-engine
+npm install
+npm run dev:web
+```
+
+Open <http://localhost:3000> and click **Run the Unicorn Mafia demo**.
+
+Live app: <https://sponsor-engine-app.vercel.app>
+
+MCP URL: `https://sponsor-engine-app.vercel.app/api/mcp`
 
 ![A chat request is qualified, the room is priced, sponsors are matched, and a draft is written. A person approves before anything is sent.](docs/images/anatomy.png)
 
@@ -8,7 +23,6 @@ The mascot is Raft the otter.
 
 ![Raft the otter at the front desk](docs/images/raft-hero.png)
 
-The live demo link is a placeholder: <https://demo.sponsor-engine.example>
 
 ## Start in 60 seconds
 
