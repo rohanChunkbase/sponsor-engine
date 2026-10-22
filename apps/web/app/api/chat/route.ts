@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   if (!message) return Response.json({ error: "Paste a message first." }, { status: 400 });
   try {
     const db = await readyDb();
-    const triage = triageInbound(db, { message, channel: "dashboard" });
+    const triage = await triageInbound(db, { message, channel: "dashboard" });
     if (!triage.ok) return Response.json({ triage });
     const requestId = String(triage.request?.id);
     const quote = triage.qualified?.headcount
