@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "description": "Open-source front desk and sponsor CRM for London communities and venues.",
   "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "type": "module",
   "workspaces": [
     "packages/*",

@@ -10,7 +10,7 @@ Bring your own tools, or just use ours. The built-in tools need no keys.
 
 ## Quick start
 
-You need Node.js 22.
+You need Node.js 20 or later.
 
 Run this command from the project folder:
 
