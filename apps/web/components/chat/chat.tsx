@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { money } from "@/lib/labels";
+import { findByRequest, getConversation, saveConversation } from "@/lib/conversations";
 import { CardShell, DraftCard, QuoteCard, SponsorCard, SummaryCard, btn, type OutboxItem, type Qualified, type Quote, type Sponsor } from "./cards";
 
 type RunResult = {
@@ -34,11 +35,15 @@ const CAPABILITIES =
 
 let counter = 0;
 const nextId = () => `m${++counter}`;
+const newConversationId = () => `c${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
 
 export function Chat({ testMode }: { testMode: boolean }) {
   const router = useRouter();
   const params = useSearchParams();
   const requestId = params.get("request");
+  const conversationId = params.get("c");
+  const convId = useRef<string>(newConversationId());
+  const originalMessage = useRef<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -53,6 +58,8 @@ export function Chat({ testMode }: { testMode: boolean }) {
     const reset = () => {
       setMessages([]);
       lastSponsors.current = null;
+      convId.current = newConversationId();
+      originalMessage.current = null;
     };
     window.addEventListener("raft:new-chat", reset);
     return () => window.removeEventListener("raft:new-chat", reset);
@@ -63,7 +70,21 @@ export function Chat({ testMode }: { testMode: boolean }) {
   }, []);
 
   useEffect(() => {
+    if (conversationId) {
+      const stored = getConversation(conversationId);
+      if (stored) {
+        convId.current = stored.id;
+        setMessages(stored.messages as Message[]);
+        return;
+      }
+    }
     if (!requestId) return;
+    const stored = findByRequest(requestId);
+    if (stored) {
+      convId.current = stored.id;
+      setMessages(stored.messages as Message[]);
+      return;
+    }
     const id = nextId();
     setMessages([{ id, role: "assistant", kind: "loading" }]);
     fetch("/api/requests", { cache: "no-store" })
@@ -71,36 +92,35 @@ export function Chat({ testMode }: { testMode: boolean }) {
       .then((data: { requests: Array<Record<string, unknown>> }) => {
         const row = data.requests.find((item) => item.id === requestId);
         if (!row) {
-          setMessages([{ id, role: "assistant", kind: "text", text: "I could not find that request. It may have been cleared." }]);
+          setMessages([{ id, role: "assistant", kind: "text", text: "That request is not on this server any more. Paste the message again and I will read it." }]);
           return;
         }
-        const q: Qualified = {
-          sender_name: (row.sender_name as string) ?? null,
-          organisation: (row.organisation as string) ?? null,
-          requester_kind: (row.requester_kind as string) ?? null,
-          event_date: (row.event_date as string) ?? null,
-          headcount: (row.headcount as number) ?? null,
-          needs: (row.needs as string[]) ?? [],
-          venue_hint: (row.venue_hint as string) ?? null,
-        };
-        const outbox = (row.outbox as OutboxItem[]) ?? [];
-        setMessages([
-          { id: nextId(), role: "user", text: String(row.raw_message ?? "") },
-          {
-            id,
-            role: "assistant",
-            kind: "run",
-            steps: STEP_LABELS.map((label) => ({ label, state: "done" as const })),
-            result: {
-              request_id: requestId,
-              triage: { ok: true, qualified: q, outbox: outbox.find((item) => item.kind === "chat_reply") ?? null },
-              draft: { outbox: outbox.find((item) => item.kind === "sponsor_email") },
-            },
-          },
-        ]);
+        convId.current = newConversationId();
+        setMessages([{ id: nextId(), role: "user", text: String(row.raw_message ?? "") }]);
+        void run(String(row.raw_message ?? ""), "/api/chat");
       })
       .catch(() => setMessages([{ id, role: "assistant", kind: "text", text: "I could not load that request. Check your connection and try again." }]));
-  }, [requestId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [requestId, conversationId]);
+
+  useEffect(() => {
+    const finished = messages.filter((message) => message.role === "assistant" && message.kind === "run" && message.result && message.result.triage.ok);
+    if (finished.length === 0) return;
+    if (messages.some((message) => message.role === "assistant" && (message.kind === "loading" || (message.kind === "run" && !message.result && !message.error)))) return;
+    const first = finished[0] as Extract<Message, { kind: "run" }>;
+    const q = first.result?.triage.qualified;
+    const firstUser = messages.find((message) => message.role === "user") as Extract<Message, { role: "user" }> | undefined;
+    const existing = getConversation(convId.current);
+    saveConversation({
+      id: convId.current,
+      title: q?.organisation || firstUser?.text.slice(0, 40) || "Conversation",
+      subtitle: [q?.headcount ? `${q.headcount} people` : null, q?.event_date].filter(Boolean).join(" · ") || "No details",
+      request_id: first.result?.request_id,
+      original_message: existing?.original_message ?? originalMessage.current ?? firstUser?.text,
+      created_at: existing?.created_at ?? Date.now(),
+      messages: messages.map((message) => (message.role === "assistant" && message.kind === "run" ? { ...message, retry: undefined } : message)),
+    });
+  }, [messages]);
 
   async function run(text: string, endpoint: "/api/demo" | "/api/chat") {
     const id = nextId();
@@ -169,7 +189,8 @@ export function Chat({ testMode }: { testMode: boolean }) {
   async function send(raw: string) {
     const text = raw.trim();
     if (!text || busy) return;
-    if (requestId) router.replace("/");
+    if (requestId || conversationId) router.replace("/");
+    if (!originalMessage.current && text !== SUGGESTIONS[1] && text !== SUGGESTIONS[2]) originalMessage.current = text;
     setInput("");
     setBusy(true);
     setMessages((list) => [...list, { id: nextId(), role: "user", text }]);

@@ -4,6 +4,7 @@ import { ChevronRight, FileText, Map, MessageSquarePlus, Plug, Activity, Calcula
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useState } from "react";
+import { loadConversations, type StoredConversation } from "@/lib/conversations";
 import { cn } from "@/lib/utils";
 
 export type SidebarRequest = {
@@ -29,8 +30,8 @@ export function Sidebar() {
 function SidebarInner() {
   const pathname = usePathname();
   const params = useSearchParams();
-  const active = params.get("request");
-  const [requests, setRequests] = useState<SidebarRequest[] | null>(null);
+  const active = params.get("c");
+  const [requests, setRequests] = useState<StoredConversation[] | null>(null);
   const [failures, setFailures] = useState<Failure[]>([]);
   const [drafts, setDrafts] = useState(0);
   const [open, setOpen] = useState(false);
@@ -38,22 +39,29 @@ function SidebarInner() {
   const load = useCallback(async () => {
     try {
       const response = await fetch("/api/requests", { cache: "no-store" });
-      const data = (await response.json()) as { requests: SidebarRequest[]; failures: Failure[]; outbox: Array<{ status: string }> };
-      setRequests(data.requests ?? []);
+      const data = (await response.json()) as { failures: Failure[]; outbox: Array<{ status: string }> };
       setFailures(data.failures ?? []);
       setDrafts((data.outbox ?? []).filter((item) => item.status === "awaiting_approval" || item.status === "needs_contact").length);
     } catch {
-      setRequests((current) => current ?? []);
+      return;
     }
   }, []);
 
   useEffect(() => {
+    const local = () => setRequests(loadConversations());
+    local();
     void load();
     window.addEventListener("raft:refresh", load);
-    return () => window.removeEventListener("raft:refresh", load);
+    window.addEventListener("raft:conversations", local);
+    window.addEventListener("storage", local);
+    return () => {
+      window.removeEventListener("raft:refresh", load);
+      window.removeEventListener("raft:conversations", local);
+      window.removeEventListener("storage", local);
+    };
   }, [load]);
 
-  const readable = (requests ?? []).filter((row) => row.headcount || row.event_date || row.organisation);
+  const readable = requests ?? [];
 
   return (
     <aside className="hidden w-[264px] shrink-0 flex-col border-r border-raft-line/70 bg-white/40 md:flex">
@@ -82,16 +90,14 @@ function SidebarInner() {
             {readable.map((row) => (
               <li key={row.id}>
                 <Link
-                  href={`/?request=${row.id}`}
+                  href={`/?c=${row.id}`}
                   className={cn(
                     "block rounded-lg px-2 py-1.5 transition hover:bg-white",
                     active === row.id && pathname === "/" && "bg-white shadow-sm ring-1 ring-raft-line",
                   )}
                 >
-                  <span className="block truncate text-[13.5px] font-medium text-raft-ink">{row.organisation || "Unknown sender"}</span>
-                  <span className="block truncate text-[12px] text-raft-muted">
-                    {[row.headcount ? `${row.headcount} people` : null, row.event_date].filter(Boolean).join(" · ") || "No details"}
-                  </span>
+                  <span className="block truncate text-[13.5px] font-medium text-raft-ink">{row.title}</span>
+                  <span className="block truncate text-[12px] text-raft-muted">{row.subtitle}</span>
                 </Link>
               </li>
             ))}
