@@ -5,6 +5,7 @@ import {
   MARKET_EVENING_MEDIAN_GBP,
   quotePrice,
   type MarketCheckResult,
+  type MarketVenueMatch,
   type QuoteRequest,
 } from "@sponsor-engine/pricing";
 import { forecastTurnout, resolveCommunity } from "./forecast.js";
@@ -40,6 +41,18 @@ export type QuoteLines = {
   market_median_gbp: number;
   market_band_low_gbp: number;
   market_band_high_gbp: number;
+  /** Published rooms next to the community room, including a £0 community slot. */
+  community_market: PublicMarket;
+};
+
+export type PublicMarket = {
+  quote: number;
+  capacity: number;
+  compared_count: number;
+  percentile: number;
+  low: number;
+  high: number;
+  nearest: MarketVenueMatch[];
 };
 
 export type RoomComparable = {
@@ -102,6 +115,7 @@ export async function quoteBooking(
         explanation: existing.explanation,
         comparables: parseJson<RoomComparable[]>(existing.comparables_json, []),
         lines: lines ?? undefined,
+        market: lines?.community_market,
         source: "pricing-module" as const,
         requester_kind: existing.requester_kind ?? "unknown",
         duplicate: true as const,
@@ -157,12 +171,13 @@ export async function quoteBooking(
     market_median_gbp: MARKET_EVENING_MEDIAN_GBP,
     market_band_low_gbp: MARKET_EVENING_LOW_GBP,
     market_band_high_gbp: MARKET_EVENING_HIGH_GBP,
+    community_market: publicMarket(community.market),
   };
   const comparables = room.comparables.map(toComparable);
   const sampleNote = historySource().source === "sample"
     ? "The room price uses SAMPLE venue history. Those bookings are fictional. They are not this venue's prices."
     : "";
-  const explanation = [room.explanation, deskParagraph(bookerType, lines, forecast.summary, !confirmed, room.market), sampleNote].filter(Boolean).join("\n\n");
+  const explanation = [room.explanation, deskParagraph(bookerType, lines, forecast.summary, !confirmed, room.market, community.market), sampleNote].filter(Boolean).join("\n\n");
   const id = makeId("quo");
   db.run(
     `INSERT INTO quotes
@@ -196,6 +211,7 @@ export async function quoteBooking(
     explanation,
     comparables,
     lines,
+    market: lines.community_market,
     source: "pricing-module" as const,
     requester_kind: confirmed ? bookerType : "unknown",
   };
@@ -293,18 +309,39 @@ function toComparable(row: {
   };
 }
 
+function publicMarket(check: MarketCheckResult): PublicMarket {
+  return {
+    quote: check.quote,
+    capacity: check.capacity,
+    compared_count: check.comparedCount,
+    percentile: check.percentile,
+    low: check.low,
+    high: check.high,
+    nearest: check.nearest.map((room) => ({
+      name: room.name,
+      price: room.price,
+      url: room.url,
+      capacity: room.capacity,
+    })),
+  };
+}
+
 function deskParagraph(
   kind: "community" | "company",
   lines: QuoteLines,
   forecastSummary: string,
   unconfirmed: boolean,
   market: MarketCheckResult,
+  communityMarket: MarketCheckResult,
 ): string {
   const room = kind === "community" && lines.room_gbp === 0
     ? `The room is ${gbp(0)}. This is a free community slot. Similar community evenings were free, and communities bring leads.`
     : `The room is ${gbp(lines.room_gbp)} for the whole ${lines.hours}-hour booking. That figure is not a price per hour. The room range is ${gbp(lines.range.low)} to ${gbp(lines.range.high)}.`;
   const day = `The full day is ${gbp(lines.day_total_gbp)}. That is the room plus food.`;
-  const marketLine = `Published London rooms of a similar size run ${gbp(market.low)} to ${gbp(market.high)} for about 4 evening hours. The evening median across the published set is ${gbp(lines.market_median_gbp)}, and the band is ${gbp(lines.market_band_low_gbp)} to ${gbp(lines.market_band_high_gbp)}.`;
+  const nearest = communityMarket.nearest
+    .map((room) => `${room.name} at ${gbp(room.price)} (${room.url})`)
+    .join("; ");
+  const marketLine = `Published London rooms of a similar size run ${gbp(market.low)} to ${gbp(market.high)} for about 4 evening hours. The evening median across the published set is ${gbp(lines.market_median_gbp)}, and the band is ${gbp(lines.market_band_low_gbp)} to ${gbp(lines.market_band_high_gbp)}. The community room of ${gbp(lines.community_room_gbp)} is percentile ${communityMarket.percentile} of ${communityMarket.comparedCount} similar published rooms. The three nearest are ${nearest}.`;
   const food = `Food and drinks are passed through at ${gbpExact(FOOD_PER_HEAD_GBP)} for each person we expect. ${forecastSummary} The food cost is ${gbp(lines.food_gbp)}. The sponsor ask covers that food cost. The ask is ${gbp(lines.sponsor_ask_gbp)}.`;
   const contrast = kind === "community"
     ? `A company pays ${gbp(lines.company_room_gbp)} for the same room. The company range is ${gbp(lines.company_range.low)} to ${gbp(lines.company_range.high)}.`

@@ -173,6 +173,24 @@ function Breakdown({ lines }: { lines: QuoteLines }) {
   );
 }
 
+function MarketBeside({ quote, market }: { quote: number; market: PublicMarket }) {
+  return (
+    <div className="mt-3 flex flex-col gap-2 text-[16px] leading-6">
+      <p>
+        {quote === 0 ? "This £0 community room" : "This community room"} is percentile {market.percentile} of {market.compared_count} similar published London rooms, for about 4 evening hours.
+      </p>
+      <ul className="flex flex-col gap-1">
+        {market.nearest.map((room) => (
+          <li key={room.url}>
+            <a className="text-primary" href={room.url} target="_blank" rel="noreferrer">{room.name}</a>
+            {" "}{money(room.price)} · {room.capacity} people
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Rates({ lines }: { lines: QuoteLines }) {
   return (
     <Card>
@@ -185,6 +203,7 @@ function Rates({ lines }: { lines: QuoteLines }) {
           <p className="font-mono text-[12px] tracking-[0.08em] text-muted-foreground uppercase">Community room</p>
           <p className="font-sans text-[40px] leading-[48px] font-medium tracking-[-0.025em]">{money(lines.community_room_gbp)}</p>
           <p className="text-muted-foreground">{money(lines.community_range.low)} to {money(lines.community_range.high)}</p>
+          {lines.community_market ? <MarketBeside quote={lines.community_room_gbp} market={lines.community_market} /> : null}
         </div>
         <div>
           <p className="font-mono text-[12px] tracking-[0.08em] text-muted-foreground uppercase">Company room</p>
@@ -269,6 +288,17 @@ type QuoteLines = {
   market_median_gbp?: number;
   market_band_low_gbp?: number;
   market_band_high_gbp?: number;
+  community_market?: PublicMarket;
+};
+
+type PublicMarket = {
+  quote: number;
+  capacity: number;
+  compared_count: number;
+  percentile: number;
+  low: number;
+  high: number;
+  nearest: Array<{ name: string; price: number; url: string; capacity: number }>;
 };
 
 type QuoteRow = {

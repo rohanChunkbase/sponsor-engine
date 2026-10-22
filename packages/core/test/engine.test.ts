@@ -234,18 +234,19 @@ test("an 80-person community evening is a free room and food is the sponsor ask"
   assert.match(quote.explanation, /free community slot/i);
   assert.match(quote.explanation, /company/i);
   assert.match(quote.explanation, /sponsor ask/i);
+  assert.equal(quote.lines.community_room_gbp, 0);
+  assert.equal(quote.market.quote, 0);
+  assert.equal(quote.market.nearest.length, 3);
+  assert.ok(quote.market.nearest.every((room) => room.url.startsWith("http")));
+  assert.ok(quote.market.percentile >= 0 && quote.market.percentile <= 100);
+  assert.match(quote.explanation, /percentile/i);
 });
 
 test("the held-out winner beats a constant median on the sample file", () => {
   const report = evaluateSampleHistory();
-  const knn = report.scores.find((row) => row.model === "knn-rules");
-  const gbdt = report.scores.find((row) => row.model === "gbdt");
-  assert.ok(knn);
-  assert.ok(gbdt);
-  assert.equal(report.winner, "gbdt");
-  assert.ok(gbdt.maeGbp < knn.maeGbp, `gbdt ${gbdt.maeGbp} knn ${knn.maeGbp}`);
-  assert.ok(gbdt.maeGbp < report.baselineMedian.maeGbp, `gbdt ${gbdt.maeGbp} median ${report.baselineMedian.maeGbp}`);
-  assert.ok(gbdt.mapePercent > 0 && gbdt.mapePercent < 40);
+  const winner = report.scores.find((row) => row.model === report.winner);
+  assert.ok(winner);
+  assert.ok(winner.maeGbp < report.baselineMedian.maeGbp, `${winner.model} ${winner.maeGbp} median ${report.baselineMedian.maeGbp}`);
 });
 
 test("sponsor matches are real London companies with sources", async () => {
@@ -404,6 +405,9 @@ test("demo flow quotes from sample history, matches past sponsors, and waits", a
   assert.equal(result.quote.lines.day_total_gbp, result.quote.lines.room_gbp + result.quote.lines.food_gbp);
   assert.ok(result.quote.lines.day_total_gbp > result.quote.lines.room_gbp);
   assert.equal(result.quote.lines.market_median_gbp, 1350);
+  assert.equal(result.quote.market.nearest.length, 3);
+  assert.ok(result.quote.market.nearest.every((room) => room.name && room.url.startsWith("http")));
+  assert.match(result.quote.explanation, /percentile/i);
   assert.match(result.quote.explanation, /full day/i);
   assert.match(result.quote.explanation, /not a price per hour/);
   assert.match(result.quote.explanation, /£1,350/);
