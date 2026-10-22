@@ -33,6 +33,18 @@ test("Cognee search uses the documented add, cognify, and search calls", async (
     if (typeof init?.body === "string") entry.json = JSON.parse(init.body);
     if (init?.body instanceof FormData) entry.dataset = String(init.body.get("datasetName"));
     calls.push(entry);
+    if (url.endsWith("/api/v1/add")) {
+      return new Response(
+        JSON.stringify({ dataset_id: "11111111-1111-1111-1111-111111111111", dataset_name: "sponsor-engine-C01" }),
+        { status: 200 },
+      );
+    }
+    if (url.includes("/api/v1/datasets/status")) {
+      return new Response(
+        JSON.stringify({ "11111111-1111-1111-1111-111111111111": "DATASET_PROCESSING_COMPLETED" }),
+        { status: 200 },
+      );
+    }
     if (url.endsWith("/api/v1/search")) {
       return new Response(
         JSON.stringify([
@@ -54,9 +66,11 @@ test("Cognee search uses the documented add, cognify, and search calls", async (
   });
   const stored = await remember("C01", ["Past food sponsors for Thames."], options);
   assert.equal(stored.mode, "live");
+  assert.equal(stored.warning, undefined);
   assert.equal(stored.data.dataset, "sponsor-engine-C01");
   assert.ok(calls.some((call) => call.url.endsWith("/api/v1/add") && call.dataset === "sponsor-engine-C01"));
   assert.ok(calls.some((call) => call.url.endsWith("/api/v1/cognify")));
+  assert.ok(calls.some((call) => call.url.includes("/api/v1/datasets/status?dataset=11111111-1111-1111-1111-111111111111")));
   const found = await recall("C01", "food", options);
   assert.equal(found.mode, "live");
   assert.match(found.data[0]?.text ?? "", /Falafel/);
@@ -92,6 +106,25 @@ test("Cognee CHUNKS results read the text field on each item", async () => {
   assert.equal(result.mode, "live");
   assert.equal(result.data[0]?.text, "Bao Down supplied the dumplings.");
   assert.equal(result.data[0]?.source, "sponsor-engine-C01");
+});
+
+test("Cognee returns a processing warning when cognify does not finish", async () => {
+  const fetchImpl: typeof fetch = async (input) => {
+    const url = String(input);
+    if (url.endsWith("/api/v1/add")) {
+      return new Response(JSON.stringify({ dataset_id: "ds-slow" }), { status: 200 });
+    }
+    if (url.includes("/api/v1/datasets/status")) {
+      return new Response(JSON.stringify({ "ds-slow": "DATASET_PROCESSING_STARTED" }), { status: 200 });
+    }
+    return new Response(JSON.stringify({ status: "started" }), { status: 200 });
+  };
+  const stored = await remember("C01", ["A note that is still indexing."], baseOptions({
+    env: { COGNEE_API_KEY: "cog-key", COGNEE_URL: "http://127.0.0.1:8000" },
+    fetchImpl,
+  }));
+  assert.equal(stored.mode, "live");
+  assert.match(stored.warning ?? "", /processing/);
 });
 
 test("a missing Cognee dataset is quiet and a response detail is kept", async () => {

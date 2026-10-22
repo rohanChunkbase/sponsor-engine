@@ -22,6 +22,9 @@ export function cogneeMissing(env: Record<string, string | undefined>): string[]
 }
 
 const ADD_SEARCH_TIMEOUT_MS = 30_000;
+const STATUS_TIMEOUT_MS = 4_000;
+const STATUS_ATTEMPTS = 8;
+const STATUS_WAIT_MS = 2_000;
 
 function datasetName(organiserId: string): string {
   return `sponsor-engine-${canonicalOrganiser(organiserId).replace(/[^a-zA-Z0-9_-]/g, "_")}`;
@@ -81,6 +84,45 @@ function itemText(item: unknown): string | null {
 
 function textValue(value: unknown): string | null {
   return typeof value === "string" && value.trim() ? value.trim() : null;
+}
+
+function readDatasetId(body: unknown): string | null {
+  const rows = Array.isArray(body) ? body : [body];
+  for (const row of rows) {
+    if (!row || typeof row !== "object") continue;
+    const record = row as Record<string, unknown>;
+    const id = textValue(record.dataset_id);
+    if (id) return id;
+    if (record.data && typeof record.data === "object") {
+      const nested = textValue((record.data as Record<string, unknown>).dataset_id);
+      if (nested) return nested;
+    }
+  }
+  return null;
+}
+
+function readDatasetStatus(text: string, datasetId: string): string | null {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text) as unknown;
+  } catch {
+    return null;
+  }
+  if (!parsed || typeof parsed !== "object") return null;
+  const row = parsed as Record<string, unknown>;
+  const direct = row[datasetId];
+  if (typeof direct === "string") return direct;
+  if (direct && typeof direct === "object") {
+    const nested = direct as Record<string, unknown>;
+    if (typeof nested.cognify_pipeline === "string") return nested.cognify_pipeline;
+    const found = Object.values(nested).find((value) => typeof value === "string");
+    if (typeof found === "string") return found;
+  }
+  if (typeof row.status === "string") return row.status;
+  for (const value of Object.values(row)) {
+    if (typeof value === "string" && value.startsWith("DATASET_PROCESSING_")) return value;
+  }
+  return null;
 }
 
 class CogneeHttpError extends Error {
@@ -164,6 +206,31 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
     }
   }
 
+  async function waitForCognify(datasetId: string): Promise<"completed" | "errored" | "processing"> {
+    const key = envValue(options.env, "COGNEE_API_KEY") ?? "";
+    for (let attempt = 0; attempt < STATUS_ATTEMPTS; attempt += 1) {
+      if (attempt > 0 && options.fetchImpl === globalThis.fetch) {
+        await new Promise((resolve) => setTimeout(resolve, STATUS_WAIT_MS));
+      }
+      const response = await requestText({
+        url: `${base}/api/v1/datasets/status?dataset=${encodeURIComponent(datasetId)}`,
+        method: "GET",
+        headers: headers(options.env, false),
+        timeoutMs: STATUS_TIMEOUT_MS,
+        fetchImpl: options.fetchImpl,
+        lane: "cognee-status",
+        minIntervalMs: 0,
+      });
+      if (response.status < 200 || response.status >= 300) {
+        throw new CogneeHttpError(response.status, response.text, key);
+      }
+      const status = readDatasetStatus(response.text, datasetId);
+      if (status === "DATASET_PROCESSING_COMPLETED") return "completed";
+      if (status === "DATASET_PROCESSING_ERRORED") return "errored";
+    }
+    return "processing";
+  }
+
   return {
     id: "cognee",
     label: "Cognee",
@@ -192,23 +259,39 @@ export function createCogneeMemory(options: ResolvedOptions, local: MemoryProvid
         for (const doc of normalised) {
           form.append("raw_data", `${doc.title}\n${doc.text}`);
         }
-        await post("/api/v1/add", form, false);
-        try {
-          await post("/api/v1/cognify", JSON.stringify({ datasets: [dataset] }), true);
-        } catch (error) {
-          return liveResult(
-            "cognee",
-            { organiserId: canonicalOrganiser(organiserId), stored: normalised.length, dataset },
-            {
-              warning: `Cognee stored the documents. Cognify did not finish (${errorText(error)}). Built-in memory also has a copy.`,
-            },
-          );
-        }
-        return liveResult("cognee", {
+        const added = await post("/api/v1/add", form, false);
+        const datasetId = readDatasetId(added);
+        const receipt = {
           organiserId: canonicalOrganiser(organiserId),
           stored: normalised.length,
           dataset,
-        });
+        };
+        try {
+          await post("/api/v1/cognify", JSON.stringify({ datasets: [dataset] }), true);
+        } catch (error) {
+          return liveResult("cognee", receipt, {
+            warning: `Cognee stored the documents. Cognify did not start (${errorText(error)}). Built-in memory also has a copy.`,
+          });
+        }
+        if (!datasetId) {
+          return liveResult("cognee", receipt, {
+            warning:
+              "Cognee stored the documents. Cognify started. The dataset id was missing, so processing was not checked. Built-in memory also has a copy.",
+          });
+        }
+        try {
+          const state = await waitForCognify(datasetId);
+          if (state === "completed") return liveResult("cognee", receipt);
+          const warning =
+            state === "errored"
+              ? "Cognee stored the documents. Cognify reported an error. Built-in memory also has a copy."
+              : "Cognee stored the documents. Cognify is still processing. Built-in memory also has a copy.";
+          return liveResult("cognee", receipt, { warning });
+        } catch (error) {
+          return liveResult("cognee", receipt, {
+            warning: `Cognee stored the documents. The status check did not finish (${errorText(error)}). Built-in memory also has a copy.`,
+          });
+        }
       } catch (error) {
         return {
           ...localReceipt,
