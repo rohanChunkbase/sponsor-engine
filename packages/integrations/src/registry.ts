@@ -229,6 +229,16 @@ function dataStatuses(options: ResolvedOptions): ConnectionStatus[] {
         : "No key. The public project search returns members, tags, and winners.",
     },
     {
+      id: "sms-spam",
+      name: "SMS spam model",
+      slot: "data",
+      connected: true,
+      missing: [],
+      active: true,
+      implemented: true,
+      detail: "No key. A local naive Bayes model was trained on public SMS spam rows. The check does not call the network.",
+    },
+    {
       id: "companies-house",
       name: "Companies House",
       slot: "data",

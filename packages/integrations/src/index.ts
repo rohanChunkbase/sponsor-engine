@@ -116,3 +116,6 @@ export async function hackerNewsStories(handle: string, options?: RegistryOption
 export async function verifyRequester(handle: string, options?: RegistryOptions) {
   return createRegistry(options).data.verifyRequester(handle);
 }
+
+export { isLikelySpam } from "./spam/classify.ts";
+export type { SpamVerdict } from "./spam/bayes.ts";

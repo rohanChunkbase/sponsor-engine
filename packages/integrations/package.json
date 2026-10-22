@@ -16,7 +16,7 @@
     }
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && mkdir -p dist/spam && cp src/spam/model.json dist/spam/model.json",
     "test": "node --experimental-strip-types --test --test-reporter spec test/**/*.test.ts",
     "smoke": "node --experimental-strip-types scripts/smoke-all.ts",
     "smoke:crm": "node --experimental-strip-types scripts/smoke-crm.ts",
