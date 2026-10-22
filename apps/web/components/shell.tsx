@@ -1,46 +1,34 @@
 import Link from "next/link";
+import { MainFrame } from "@/components/main-frame";
 import { OfflineBanner } from "@/components/offline-banner";
-import { Badge } from "@/components/ui/badge";
+import { Sidebar } from "@/components/sidebar";
 import { raftAssets } from "@sponsor-engine/brand";
 import { isDemoMode, isDryRun } from "@sponsor-engine/core";
 
-const links = [
-  ["/", "Inbox"],
-  ["/quote", "Quote"],
-  ["/sponsors", "Sponsors"],
-  ["/outbox", "To send"],
-  ["/activity", "Activity"],
-  ["/map", "Map"],
-  ["/connections", "Connections"],
-  ["/mcp", "MCP"],
-];
-
 export function Shell({ children }: { children: React.ReactNode }) {
-  const testMode = isDryRun();
+  const testMode = isDemoMode() || isDryRun();
   return (
-    <div className="min-h-screen">
-      <header className="bg-discovery text-hero-copy">
-        <div className="mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-8 gap-y-3 px-8 py-4">
-          <Link href="/" className="flex items-center gap-2 font-sans text-[22px] leading-8 tracking-[-0.025em] text-hero-copy">
-            <img src={`/brand/${raftAssets.mark}`} alt="" width={36} height={36} className="h-9 w-9 rounded-full bg-raft-cream" />
-            Sponsor Engine
-          </Link>
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 font-ui text-[16px] leading-6">
-            {links.map(([href, label]) => (
-              <Link key={href} href={href} className="text-hero-copy">
-                {label}
-              </Link>
-            ))}
-          </nav>
-          <div className="ml-auto">
-            <Badge tone="test" dot>
-              {isDemoMode() || testMode ? "TEST MODE" : "Live"}
-            </Badge>
-          </div>
+    <div className="raft-bg flex h-screen flex-col overflow-hidden text-raft-ink">
+      <header className="flex h-14 shrink-0 items-center gap-3 border-b border-raft-line/70 bg-raft-cream/80 px-5 backdrop-blur">
+        <Link href="/" className="flex items-center gap-2.5 font-ui text-[15px] font-semibold tracking-[-0.01em] text-raft-ink">
+          <img src={`/brand/${raftAssets.mark}`} alt="" width={28} height={28} className="h-7 w-7 rounded-full bg-white ring-1 ring-raft-line" />
+          Raft
+          <span className="font-normal text-raft-muted">Sponsor Engine</span>
+        </Link>
+        <div className="ml-auto">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-raft-orange/40 bg-raft-orange/10 px-2.5 py-1 font-mono text-[11px] font-medium tracking-[0.06em] text-[#9a5512]">
+            <span className="h-1.5 w-1.5 rounded-full bg-raft-orange" />
+            {testMode ? "TEST MODE" : "LIVE"}
+          </span>
         </div>
       </header>
       <OfflineBanner />
-      <main className="mx-auto flex max-w-[1120px] flex-col gap-8 px-8 py-12">{children}</main>
+      <div className="flex min-h-0 flex-1">
+        <Sidebar />
+        <main className="min-w-0 flex-1 overflow-y-auto">
+          <MainFrame>{children}</MainFrame>
+        </main>
+      </div>
     </div>
   );
 }
