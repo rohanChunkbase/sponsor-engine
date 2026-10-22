@@ -4,6 +4,8 @@ import { createBundledData } from "./bundled.ts";
 import { companySize as fetchCompanySize } from "./companies-house.ts";
 import { devpostLondonHackathons as fetchDevpost } from "./devpost.ts";
 import { buildLondonEventsIndex } from "./london-index.ts";
+import { findSponsorsInSeed } from "./sponsors.ts";
+import { builtinResult } from "../result.ts";
 import { lumaEventHosts as fetchLumaEventHosts } from "./luma.ts";
 import type { DataSource } from "./types.ts";
 
@@ -28,6 +30,11 @@ export function createLiveData(options: ResolvedOptions): DataSource {
     },
     londonEventsIndex() {
       return buildLondonEventsIndex(options);
+    },
+    findSponsors(query) {
+      const data = findSponsorsInSeed(options.seedDir, query);
+      const warning = data.sponsors.length === 0 ? "No similar events have sponsor claims." : undefined;
+      return Promise.resolve(builtinResult("sponsor-claims", data, warning));
     },
   };
 }

@@ -15,6 +15,7 @@ export { CRM_STUB_DOCS } from "./crm/stubs.ts";
 export type { CrmProvider } from "./crm/types.ts";
 export type { MemoryProvider } from "./memory/types.ts";
 export type { DataSource } from "./data/types.ts";
+export type { FindSponsorsData, SimilarEvent, SponsorMatch } from "./data/sponsors.ts";
 export type { ProviderRegistry } from "./registry.ts";
 export type { RegistryOptions, ResolvedOptions } from "./options.ts";
 export type {
@@ -84,3 +85,9 @@ export async function companySize(name: string, options?: RegistryOptions) {
 export async function londonEventsIndex(options?: RegistryOptions) {
   return createRegistry(options).data.londonEventsIndex();
 }
+
+export async function findSponsors(query: string, options?: RegistryOptions) {
+  return createRegistry(options).data.findSponsors(query);
+}
+
+export const find_sponsors = findSponsors;

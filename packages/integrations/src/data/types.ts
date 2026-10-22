@@ -1,4 +1,5 @@
 import type { LondonIndexData } from "./london-index.ts";
+import type { FindSponsorsData } from "./sponsors.ts";
 import type {
   CompanySize,
   DevpostHackathon,
@@ -23,4 +24,6 @@ export interface DataSource {
   companySize(name: string): Promise<ProviderResult<CompanySize>>;
   /** London events with venues and calendars for the map and sponsor match. */
   londonEventsIndex(): Promise<ProviderResult<LondonIndexData>>;
+  /** Sponsors that backed events similar to the query. The query event is left out. */
+  findSponsors(query: string): Promise<ProviderResult<FindSponsorsData>>;
 }
