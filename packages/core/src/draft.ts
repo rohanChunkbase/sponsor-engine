@@ -1,12 +1,11 @@
 import type { Db } from "@sponsor-engine/db";
 import { forecastTurnout } from "./forecast.js";
 import { sendWithApproval } from "./outbox.js";
+import { FOOD_PER_HEAD_GBP, foodPassThrough, type QuoteLines } from "./quote.js";
 import { recordRun } from "./runs.js";
 import { findSponsors } from "./sponsors.js";
 import type { SponsorMatch } from "./types.js";
-import { gbp, parseJson, percent } from "./util.js";
-
-const FOOD_PER_HEAD = 5.5;
+import { gbp, gbpExact, parseJson, percent } from "./util.js";
 
 export async function draftSponsorAsk(
   db: Db,
@@ -41,7 +40,9 @@ export async function draftSponsorAsk(
     request_id: input.request_id,
     log: false,
   });
-  const ask = Math.round(forecast.expected_heads * FOOD_PER_HEAD);
+  const stored = quoteLines(db, input.request_id);
+  const ask = stored?.sponsor_ask_gbp ?? foodPassThrough(forecast.expected_heads);
+  const room = stored?.room_gbp ?? null;
   const found = await findSponsors(db, {
     request_id: input.request_id,
     community,
@@ -65,7 +66,12 @@ export async function draftSponsorAsk(
     sponsor.reasons[0] || `${sponsor.company} has backed London events.`,
     source?.url ? `Source: ${source.url}` : "",
     "",
-    `We are asking for ${gbp(ask)} for food. That is £5.50 for each person we expect in the room. Past community evenings spent about £5.50 to £6 per person on food.`,
+    room === 0
+      ? `The room is a free community slot. The room price is ${gbp(0)}.`
+      : room === null
+        ? "The room price is separate from this ask."
+        : `The room price is ${gbp(room)}. This ask does not include the room.`,
+    `We are asking for ${gbp(ask)} for food and drinks. That is ${gbpExact(FOOD_PER_HEAD_GBP)} for each of the ${stored?.expected_heads ?? forecast.expected_heads} people we expect. The ask matches the food cost. It does not add a room fee.`,
     "",
     `This note is waiting for a person at ${venue}. Sponsor Engine will not send it until they press Approve. The address ${recipient} is taken from the public website. It is not a checked inbox.`,
     "",
@@ -91,13 +97,29 @@ export async function draftSponsorAsk(
   });
   return {
     ask_gbp: ask,
-    per_head_gbp: FOOD_PER_HEAD,
+    per_head_gbp: FOOD_PER_HEAD_GBP,
     expected_heads: forecast.expected_heads,
     show_up_rate: forecast.show_up_rate,
     sponsor,
     outbox: sent.item,
     sent: false as const,
   };
+}
+
+function quoteLines(db: Db, requestId?: string | null): QuoteLines | null {
+  if (!requestId) return null;
+  const row = db.get<{ lines_json: string | null }>(
+    "SELECT lines_json FROM quotes WHERE request_id = ? ORDER BY created_at DESC LIMIT 1",
+    [requestId],
+  );
+  if (!row?.lines_json) return null;
+  try {
+    const lines = JSON.parse(row.lines_json) as Partial<QuoteLines>;
+    if (typeof lines.sponsor_ask_gbp !== "number" || typeof lines.food_gbp !== "number") return null;
+    return lines as QuoteLines;
+  } catch {
+    return null;
+  }
 }
 
 function pickSponsor(matches: SponsorMatch[], id?: string | null, name?: string | null): SponsorMatch | undefined {

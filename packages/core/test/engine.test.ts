@@ -171,7 +171,8 @@ test("demo flow quotes, matches three sponsors, and waits for approval", async (
   assert.equal(result.quote.price, 0);
   assert.equal(result.quote.lines.room_gbp, 0);
   assert.ok(result.quote.lines.company_room_gbp > 0);
-  assert.ok(result.quote.lines.food_gbp > 0);
+  assert.equal(result.draft.ask_gbp, result.quote.lines.food_gbp);
+  assert.match(result.draft.outbox.body, /free community slot/i);
   assert.equal(result.sponsors.matches.length, 3);
   assert.equal(result.draft.outbox.status, "awaiting_approval");
   assert.equal(result.draft.sent, false);
