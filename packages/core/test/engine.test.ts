@@ -13,6 +13,7 @@ import {
   deliverOutbox,
   DEMO_MESSAGE,
   draftSponsorAsk,
+  acceptContact,
   inferRecipient,
   evaluateActiveHistory,
   evaluateSampleHistory,
@@ -257,6 +258,7 @@ test("nothing reaches sent without approval", async () => {
   process.env.DRY_RUN = "false";
   process.env.ALLOWLIST = "allowed@example.com";
   const waiting = sendWithApproval(db, {
+    kind: "chat_reply",
     recipient: "allowed@example.com",
     subject: "Test",
     body: "Hello",
@@ -272,6 +274,7 @@ test("nothing reaches sent without approval", async () => {
   assert.equal(approved.item.status, "approved");
 
   const blocked = sendWithApproval(db, {
+    kind: "chat_reply",
     recipient: "stranger@example.com",
     subject: "No",
     body: "No",
@@ -283,6 +286,7 @@ test("nothing reaches sent without approval", async () => {
   assert.equal(refused.item.status, "blocked");
 
   const allowed = sendWithApproval(db, {
+    kind: "chat_reply",
     recipient: "allowed@example.com",
     subject: "Yes",
     body: "Yes",
@@ -389,7 +393,8 @@ test("demo flow quotes from sample history, matches past sponsors, and waits", a
   assert.doesNotMatch(result.draft.outbox.body, /Charlie|Cheesman|linkedin\.com\/in|@gmail|partnerships@/i);
   assert.equal(result.draft.sent, false);
   assert.equal(result.repeat.outbox.status, "blocked");
-  assert.match(result.repeat.outbox.blocked_reason ?? "", /already asked for this booking/);
+  assert.match(result.repeat.outbox.blocked_reason ?? "", /Already asked by this community/);
+  assert.match(result.draft.outbox.body, /Reply no if you would rather we did not write again/);
   assert.equal(result.repeat.sent, false);
   assert.equal(isDryRun(), true);
   const again = await draftSponsorAsk(db, { request_id: result.request_id, sponsor_id: result.sponsors.matches[1].sponsor_id });
@@ -410,8 +415,10 @@ test("a sponsor draft never invents an email address", async () => {
   );
   assert.equal(
     inferRecipient(null, [], { hosts: [{ name: "Ada", linkedin: "https://www.linkedin.com/in/ada" }] }),
-    "https://www.linkedin.com/in/ada",
+    "",
   );
+  assert.equal(acceptContact("ada@acme.test"), "ada@acme.test");
+  assert.equal(inferRecipient("https://acme.test", [{ url: "https://acme.test", quote: "Hello from the team." }]), "");
   const draft = await draftSponsorAsk(db, {
     headcount: 80,
     community: "Thames Agent Builders (SAMPLE)",
@@ -475,6 +482,7 @@ test("demo mode cannot mark a message sent", async () => {
   process.env.ALLOWLIST = "allowed@example.com";
   assert.equal(isDryRun(), true);
   const waiting = sendWithApproval(db, {
+    kind: "chat_reply",
     recipient: "allowed@example.com",
     subject: "Demo",
     body: "Hello",

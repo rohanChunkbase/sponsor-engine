@@ -1,4 +1,5 @@
 import type { Db } from "@sponsor-engine/db";
+import { blockOpenAsks, explainSponsorAsk, sponsorDomain, sponsorIsSuppressed, suppressSponsor, withOptOut } from "./ask-policy.js";
 import { pushDealIfAvailable } from "./integrations.js";
 import { recordRun } from "./runs.js";
 import { isAllowlisted, isDemoMode, isDryRun } from "./safety.js";
@@ -26,6 +27,7 @@ export function createOutbox(
     sponsorName?: string | null;
     askGbp?: number | null;
     status?: "awaiting_approval" | "needs_contact";
+    clientRequestId?: string | null;
   },
 ): OutboxRow {
   const id = makeId("out");
@@ -33,8 +35,8 @@ export function createOutbox(
   const status = input.status === "needs_contact" ? "needs_contact" : "awaiting_approval";
   db.run(
     `INSERT INTO outbox
-      (id, kind, recipient, subject, body, status, request_id, sponsor_id, sponsor_name, ask_gbp, blocked_reason, created_at, updated_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?)`,
+      (id, kind, recipient, subject, body, status, request_id, sponsor_id, sponsor_name, ask_gbp, blocked_reason, created_at, updated_at, client_request_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?)`,
     [
       id,
       input.kind,
@@ -48,6 +50,7 @@ export function createOutbox(
       input.askGbp ?? null,
       at,
       at,
+      input.clientRequestId?.trim() || null,
     ],
   );
   return mustOutbox(db, id);
@@ -66,24 +69,40 @@ export function sendWithApproval(
     sponsorName?: string | null;
     askGbp?: number | null;
     status?: "awaiting_approval" | "needs_contact";
+    clientRequestId?: string | null;
+    community?: string | null;
+    now?: Date;
   },
 ) {
   const kind = input.kind ?? "sponsor_email";
-  const missingContact = kind === "sponsor_email" && !input.recipient.trim();
-  const earlier = earlierSponsorAsk(db, { ...input, kind });
+  const replay = replayOutbox(db, input.clientRequestId);
+  if (replay) return replay;
+  const sponsorAsk = kind === "sponsor_email";
+  const body = sponsorAsk ? withOptOut(input.body) : input.body;
+  const missingContact = sponsorAsk && !input.recipient.trim();
+  const reason = sponsorAsk
+    ? explainSponsorAsk(db, {
+      sponsorId: input.sponsorId,
+      sponsorName: input.sponsorName,
+      recipient: input.recipient,
+      requestId: input.requestId,
+      community: input.community,
+      now: input.now,
+    })
+    : null;
   const item = createOutbox(db, {
     kind,
     recipient: input.recipient.trim(),
     subject: input.subject,
-    body: input.body,
+    body,
     requestId: input.requestId,
     sponsorId: input.sponsorId,
     sponsorName: input.sponsorName,
     askGbp: input.askGbp,
     status: missingContact ? "needs_contact" : input.status,
+    clientRequestId: input.clientRequestId,
   });
-  if (earlier) {
-    const reason = REPEAT_ASK;
+  if (reason) {
     move(db, item, "blocked", reason);
     recordRun(db, {
       tool: "send_with_approval",
@@ -102,30 +121,49 @@ export function sendWithApproval(
   return { item, sent: false as const, reason: "Waiting for a person. Nothing was sent." };
 }
 
-const REPEAT_ASK = "Blocked. This sponsor was already asked for this booking.";
+function replayOutbox(db: Db, clientRequestId?: string | null) {
+  const id = clientRequestId?.trim();
+  if (!id) return null;
+  const item = db.get<OutboxRow>("SELECT * FROM outbox WHERE client_request_id = ?", [id]);
+  if (!item) return null;
+  return {
+    item,
+    sent: false as const,
+    reason: item.blocked_reason || "Waiting for a person. Nothing was sent.",
+  };
+}
 
-function earlierSponsorAsk(
+/** Forever. Closes open asks to this sponsor. A profile cannot undo this. */
+export function doNotContact(
   db: Db,
-  input: {
-    kind: string;
-    requestId?: string | null;
-    sponsorId?: string | null;
-    sponsorName?: string | null;
-  },
-): OutboxRow | undefined {
-  if (input.kind !== "sponsor_email" || !input.requestId) return undefined;
-  const sponsorId = input.sponsorId?.trim() || "";
-  const sponsorName = input.sponsorName?.trim().toLowerCase() || "";
-  if (!sponsorId && !sponsorName) return undefined;
-  const rows = db.all<OutboxRow>("SELECT * FROM outbox WHERE request_id = ? AND kind = 'sponsor_email'", [input.requestId]);
-  return rows.find((row) => {
-    if (sponsorId && row.sponsor_id === sponsorId) return true;
-    return Boolean(sponsorName) && row.sponsor_name?.trim().toLowerCase() === sponsorName;
+  input: { sponsorId?: string | null; sponsorName?: string | null; domain?: string | null; recipient?: string | null; reason?: string },
+) {
+  const domain = input.domain?.trim() || sponsorDomain(input.recipient ?? "");
+  const reason = "Do not contact. This sponsor opted out.";
+  const saved = suppressSponsor(db, {
+    sponsorId: input.sponsorId,
+    sponsorName: input.sponsorName,
+    domain,
+    reason: input.reason?.trim() || reason,
   });
+  blockOpenAsks(db, { sponsorId: input.sponsorId, sponsorName: input.sponsorName, domain }, reason);
+  return { id: saved.id, reason };
 }
 
 export async function approveOutbox(db: Db, id: string, actor = "dashboard") {
   const current = mustOutbox(db, id);
+  if (current.status === "blocked") {
+    throw new Error(current.blocked_reason || "This ask is blocked.");
+  }
+  if (current.kind === "sponsor_email" && sponsorIsSuppressed(db, {
+    sponsorId: current.sponsor_id,
+    sponsorName: current.sponsor_name,
+    domain: sponsorDomain(current.recipient),
+  })) {
+    const reason = "Do not contact. This sponsor opted out.";
+    if (current.status !== "sent") move(db, current, "blocked", reason);
+    return { item: mustOutbox(db, id), sent: false as const, reason, deal: null };
+  }
   if (current.status === "needs_contact" || !current.recipient.trim()) {
     throw new Error("Find a contact before this can be approved.");
   }

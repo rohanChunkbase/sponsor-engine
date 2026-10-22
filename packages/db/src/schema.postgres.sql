@@ -206,6 +206,16 @@ CREATE TABLE IF NOT EXISTS venue_files (
   updated_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS sponsor_suppression (
+  id TEXT PRIMARY KEY,
+  sponsor_id TEXT,
+  sponsor_name TEXT,
+  domain TEXT,
+  reason TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
+);
+
 ALTER TABLE requests ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
 ALTER TABLE tasks ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
 ALTER TABLE quotes ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
@@ -213,6 +223,9 @@ ALTER TABLE outbox ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT '
 ALTER TABLE approvals ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
 ALTER TABLE agent_runs ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
 ALTER TABLE failures ADD COLUMN IF NOT EXISTS workspace_id TEXT NOT NULL DEFAULT 'local';
+ALTER TABLE quotes ADD COLUMN IF NOT EXISTS client_request_id TEXT;
+ALTER TABLE outbox ADD COLUMN IF NOT EXISTS client_request_id TEXT;
+ALTER TABLE requests ADD COLUMN IF NOT EXISTS client_request_id TEXT;
 
 CREATE INDEX IF NOT EXISTS idx_claims_company ON sponsor_claims(company);
 CREATE INDEX IF NOT EXISTS idx_claims_sponsor ON sponsor_claims(sponsor_id);
@@ -223,6 +236,9 @@ CREATE INDEX IF NOT EXISTS idx_quotes_request ON quotes(request_id);
 CREATE INDEX IF NOT EXISTS idx_outbox_status ON outbox(status);
 CREATE INDEX IF NOT EXISTS idx_requests_workspace ON requests(workspace_id);
 CREATE INDEX IF NOT EXISTS idx_outbox_workspace ON outbox(workspace_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_quotes_client_request ON quotes(client_request_id) WHERE client_request_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_outbox_client_request ON outbox(client_request_id) WHERE client_request_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_suppression_domain ON sponsor_suppression(domain);
 
 ALTER TABLE communities ENABLE ROW LEVEL SECURITY;
 ALTER TABLE events ENABLE ROW LEVEL SECURITY;
@@ -237,6 +253,7 @@ ALTER TABLE approvals ENABLE ROW LEVEL SECURITY;
 ALTER TABLE agent_runs ENABLE ROW LEVEL SECURITY;
 ALTER TABLE failures ENABLE ROW LEVEL SECURITY;
 ALTER TABLE venue_files ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sponsor_suppression ENABLE ROW LEVEL SECURITY;
 
 REVOKE ALL ON TABLE communities FROM PUBLIC;
 REVOKE ALL ON TABLE events FROM PUBLIC;
@@ -251,6 +268,7 @@ REVOKE ALL ON TABLE approvals FROM PUBLIC;
 REVOKE ALL ON TABLE agent_runs FROM PUBLIC;
 REVOKE ALL ON TABLE failures FROM PUBLIC;
 REVOKE ALL ON TABLE venue_files FROM PUBLIC;
+REVOKE ALL ON TABLE sponsor_suppression FROM PUBLIC;
 
 -- anon and authenticated exist on Supabase. Skip the revoke where they do not.
 DO $sponsor_engine_rls$
@@ -270,7 +288,8 @@ BEGIN
     'approvals',
     'agent_runs',
     'failures',
-    'venue_files'
+    'venue_files',
+    'sponsor_suppression'
   ]
   LOOP
     IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN

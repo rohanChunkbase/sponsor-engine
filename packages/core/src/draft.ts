@@ -17,6 +17,8 @@ export async function draftSponsorAsk(
     headcount?: number | null;
     community?: string | null;
     useTestInbox?: boolean;
+    contact?: string | null;
+    clientRequestId?: string | null;
   },
 ) {
   const request = input.request_id
@@ -59,7 +61,7 @@ export async function draftSponsorAsk(
   const testInbox = input.useTestInbox || /unicorn mafia/i.test(community);
   const recipient = testInbox
     ? placeholderAtTestInbox(sponsor.company)
-    : inferRecipient(sponsor.website, sponsor.sources, found.live_hosts);
+    : acceptContact(input.contact) || inferRecipient(sponsor.website, sponsor.sources, found.live_hosts);
   const when = request?.event_date ? formatDate(request.event_date) : "the date they asked for";
   const venue = request?.venue_hint?.includes("Expedite") ? "Expedite" : "the venue";
   const subject = `Food for ${community} on ${when} — ${gbp(ask)}`;
@@ -97,6 +99,7 @@ export async function draftSponsorAsk(
     sponsorId: sponsor.sponsor_id,
     sponsorName: sponsor.company,
     askGbp: ask,
+    clientRequestId: input.clientRequestId,
   });
   recordRun(db, {
     tool: "draft_sponsor_ask",
@@ -147,24 +150,31 @@ type ContactSource = { url?: string | null; quote?: string | null };
  * A contact only when a source already published one.
  * A company website is not an address. This function never builds partnerships@domain.
  */
+const PARTNER = /partner|sponsor/i;
+
+/** A typed address or page. Anything else is ignored. */
+export function acceptContact(value?: string | null): string {
+  const trimmed = value?.trim() ?? "";
+  if (!trimmed) return "";
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(trimmed)) return trimmed;
+  return "";
+}
+
 export function inferRecipient(
   website?: string | null,
   sources?: ContactSource[],
   hosts?: unknown,
 ): string {
   void website;
-  const fromPages = (sources ?? []).map((source) => `${source.quote ?? ""}\n${source.url ?? ""}`).join("\n");
-  const email = firstEmail(`${fromPages}\n${hostValues(hosts, "email").join("\n")}`);
-  if (email) return email;
-  const profile = [
-    ...hostValues(hosts, "linkedin"),
-    ...hostValues(hosts, "x"),
-    ...hostValues(hosts, "twitter"),
-    ...(sources ?? []).map((source) => source.url ?? ""),
-  ].map((value) => contactLink(value)).find((value): value is string => Boolean(value));
-  if (profile) return profile;
-  const site = hostValues(hosts, "website").map((value) => hostSite(value)).find((value): value is string => Boolean(value));
-  return site ?? "";
+  void hosts;
+  for (const source of sources ?? []) {
+    const blob = `${source.quote ?? ""}\n${source.url ?? ""}`;
+    if (!PARTNER.test(blob)) continue;
+    const email = firstEmail(blob);
+    if (email) return email;
+  }
+  return "";
 }
 
 function firstEmail(text: string): string | null {
@@ -173,47 +183,6 @@ function firstEmail(text: string): string | null {
     const domain = email.split("@")[1]?.toLowerCase() ?? "";
     return domain !== "example.com" && domain !== "example.org" && !domain.endsWith(".example");
   }) ?? null;
-}
-
-function contactLink(value: string): string | null {
-  const trimmed = value.trim();
-  if (!/^https?:\/\//i.test(trimmed)) return null;
-  let url: URL;
-  try {
-    url = new URL(trimmed);
-  } catch {
-    return null;
-  }
-  const host = url.hostname.replace(/^www\./, "").toLowerCase();
-  const path = url.pathname.replace(/\/$/, "");
-  if (host === "linkedin.com" && /^\/(in|company)\//i.test(path)) return trimmed;
-  if ((host === "x.com" || host === "twitter.com") && /^\/[A-Za-z0-9_]{1,30}$/.test(path)) return trimmed;
-  return null;
-}
-
-function hostSite(value: string): string | null {
-  const trimmed = value.trim();
-  if (!/^https?:\/\//i.test(trimmed)) return null;
-  try {
-    const url = new URL(trimmed);
-    if (!url.hostname.includes(".")) return null;
-    return trimmed;
-  } catch {
-    return null;
-  }
-}
-
-function hostValues(hosts: unknown, key: string, depth = 0): string[] {
-  if (!hosts || typeof hosts !== "object" || depth > 6) return [];
-  if (Array.isArray(hosts)) return hosts.flatMap((item) => hostValues(item, key, depth + 1));
-  const row = hosts as Record<string, unknown>;
-  const found: string[] = [];
-  const raw = row[key];
-  if (typeof raw === "string" && raw.trim()) found.push(raw.trim());
-  for (const child of Object.values(row)) {
-    if (child && typeof child === "object") found.push(...hostValues(child, key, depth + 1));
-  }
-  return found;
 }
 
 function formatDate(iso: string): string {

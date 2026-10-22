@@ -139,7 +139,8 @@ CREATE TABLE IF NOT EXISTS quotes (
   lines_json TEXT,
   source TEXT NOT NULL,
   created_at TEXT NOT NULL,
-  workspace_id TEXT NOT NULL DEFAULT 'local'
+  workspace_id TEXT NOT NULL DEFAULT 'local',
+  client_request_id TEXT
 );
 
 CREATE TABLE IF NOT EXISTS outbox (
@@ -156,7 +157,8 @@ CREATE TABLE IF NOT EXISTS outbox (
   blocked_reason TEXT,
   created_at TEXT NOT NULL,
   updated_at TEXT NOT NULL,
-  workspace_id TEXT NOT NULL DEFAULT 'local'
+  workspace_id TEXT NOT NULL DEFAULT 'local',
+  client_request_id TEXT
 );
 
 CREATE TABLE IF NOT EXISTS approvals (
@@ -203,4 +205,17 @@ CREATE INDEX IF NOT EXISTS idx_events_community ON events(community_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_kind ON bookings(requester_kind);
 CREATE INDEX IF NOT EXISTS idx_tasks_request ON tasks(request_id);
 CREATE INDEX IF NOT EXISTS idx_quotes_request ON quotes(request_id);
+CREATE TABLE IF NOT EXISTS sponsor_suppression (
+  id TEXT PRIMARY KEY,
+  sponsor_id TEXT,
+  sponsor_name TEXT,
+  domain TEXT,
+  reason TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  workspace_id TEXT NOT NULL DEFAULT 'local'
+);
+
 CREATE INDEX IF NOT EXISTS idx_outbox_status ON outbox(status);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_quotes_client_request ON quotes(client_request_id) WHERE client_request_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS idx_outbox_client_request ON outbox(client_request_id) WHERE client_request_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_suppression_domain ON sponsor_suppression(domain);

@@ -12,10 +12,19 @@ export {
   saveVenueCsv,
 } from "./venue-history.js";
 export { findSponsors } from "./sponsors.js";
-export { draftSponsorAsk, inferRecipient } from "./draft.js";
+export { draftSponsorAsk, inferRecipient, acceptContact } from "./draft.js";
+export {
+  OPT_OUT_LINE,
+  blockReason,
+  cooldownDays,
+  isOptOut,
+  sponsorDomain,
+  DAILY_ASK_CAP,
+  MIN_COOLDOWN_DAYS,
+} from "./ask-policy.js";
 export { companySizeIfAvailable } from "./integrations.js";
 export type { CompanySizeNote } from "./integrations.js";
-export { sendWithApproval, approveOutbox, deliverOutbox, skipOutbox, editOutbox, listOutbox } from "./outbox.js";
+export { sendWithApproval, approveOutbox, deliverOutbox, skipOutbox, editOutbox, listOutbox, doNotContact } from "./outbox.js";
 export { listFailures } from "./failures.js";
 export { recallHistory } from "./recall.js";
 export { getConnections } from "./connections.js";

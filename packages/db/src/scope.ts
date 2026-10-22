@@ -2,7 +2,7 @@ import { AsyncLocalStorage } from "node:async_hooks";
 
 const storage = new AsyncLocalStorage<string>();
 
-const SCOPED = new Set(["requests", "tasks", "quotes", "outbox", "approvals", "agent_runs", "failures"]);
+const SCOPED = new Set(["requests", "tasks", "quotes", "outbox", "approvals", "agent_runs", "failures", "sponsor_suppression"]);
 
 const KEYWORDS = new Set([
   "where", "set", "order", "group", "limit", "left", "right", "inner", "outer", "cross", "full",

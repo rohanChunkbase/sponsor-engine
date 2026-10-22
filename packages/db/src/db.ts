@@ -80,7 +80,7 @@ export function resetSingleton(): void {
   singleton = null;
 }
 
-const SCOPED_TABLES = ["requests", "tasks", "quotes", "outbox", "approvals", "agent_runs", "failures"];
+const SCOPED_TABLES = ["requests", "tasks", "quotes", "outbox", "approvals", "agent_runs", "failures", "sponsor_suppression"];
 
 function readSchema(): string {
   const beside = path.join(here, "schema.sql");
@@ -102,6 +102,16 @@ function ensureWorkspaceColumns(sqlite: Database.Database): void {
   )`);
   sqlite.exec("CREATE INDEX IF NOT EXISTS idx_requests_workspace ON requests(workspace_id)");
   sqlite.exec("CREATE INDEX IF NOT EXISTS idx_outbox_workspace ON outbox(workspace_id)");
+  ensureColumn(sqlite, "quotes", "client_request_id", "ALTER TABLE quotes ADD COLUMN client_request_id TEXT");
+  ensureColumn(sqlite, "outbox", "client_request_id", "ALTER TABLE outbox ADD COLUMN client_request_id TEXT");
+  ensureColumn(sqlite, "requests", "client_request_id", "ALTER TABLE requests ADD COLUMN client_request_id TEXT");
+  sqlite.exec("CREATE UNIQUE INDEX IF NOT EXISTS idx_quotes_client_request ON quotes(client_request_id) WHERE client_request_id IS NOT NULL");
+  sqlite.exec("CREATE UNIQUE INDEX IF NOT EXISTS idx_outbox_client_request ON outbox(client_request_id) WHERE client_request_id IS NOT NULL");
+}
+
+function ensureColumn(sqlite: Database.Database, table: string, column: string, ddl: string): void {
+  const cols = sqlite.prepare(`PRAGMA table_info(${table})`).all() as Array<{ name: string }>;
+  if (!cols.some((col) => col.name === column)) sqlite.exec(ddl);
 }
 
 function wrap(sqlite: Database.Database): Db {

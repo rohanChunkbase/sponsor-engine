@@ -21,6 +21,7 @@ const TABLES = [
   "agent_runs",
   "failures",
   "venue_files",
+  "sponsor_suppression",
 ];
 
 test("postgres.js uses the transaction pooler settings", () => {

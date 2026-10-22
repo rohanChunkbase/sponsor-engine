@@ -1,6 +1,7 @@
 import type { Db } from "@sponsor-engine/db";
 import * as chrono from "chrono-node";
-import { sendWithApproval } from "./outbox.js";
+import { isOptOut, sponsorDomain } from "./ask-policy.js";
+import { doNotContact, sendWithApproval } from "./outbox.js";
 import { recordFailure, recordRun } from "./runs.js";
 import type { RequesterKind } from "./types.js";
 import { makeId, nowIso } from "./util.js";
@@ -20,12 +21,33 @@ export type TriageInput = {
   sender_name?: string;
   /** Pin "today" in tests. Live calls use the clock. */
   now?: Date;
+  client_request_id?: string;
 };
 
 export function triageInbound(db: Db, input: TriageInput) {
   const message = (input.message ?? "").trim();
   const channel = input.channel?.trim() || "web";
   const now = input.now ?? new Date();
+  if (isOptOut(message)) {
+    const senderName = input.sender_name?.trim() || null;
+    doNotContact(db, {
+      sponsorName: senderName,
+      domain: sponsorDomain(message),
+      reason: "The sender said not to contact them.",
+    });
+    const failureId = recordFailure(db, {
+      tool: "triage_inbound",
+      message: "Do not contact. This sponsor opted out.",
+      rawInput: message,
+    });
+    return {
+      ok: false as const,
+      failure: { id: failureId, message: "Do not contact. This sponsor opted out." },
+      request: null,
+      task: null,
+      suggested_reply: "This sponsor is on the do-not-contact list. Nothing will be sent.",
+    };
+  }
   const sender = parseSender(message, input.sender_name);
   const organisation = parseOrganisation(message);
   const eventDate = parseDate(message, now);

@@ -67,6 +67,7 @@ export async function quoteBooking(
     date?: string | null;
     community_name?: string | null;
     needs?: string[] | null;
+    client_request_id?: string | null;
   },
 ) {
   const request = input.request_id
@@ -80,6 +81,33 @@ export async function quoteBooking(
         raw_message: string | null;
       }>("SELECT * FROM requests WHERE id = ?", [input.request_id])
     : undefined;
+  const replayId = input.client_request_id?.trim();
+  if (replayId) {
+    const existing = db.get<{
+      id: string;
+      price: number;
+      currency: string;
+      explanation: string;
+      comparables_json: string | null;
+      requester_kind: string | null;
+      lines_json: string | null;
+    }>("SELECT * FROM quotes WHERE client_request_id = ?", [replayId]);
+    if (existing) {
+      const lines = parseJson<QuoteLines | null>(existing.lines_json, null);
+      return {
+        id: existing.id,
+        price: existing.price,
+        currency: existing.currency,
+        range: lines?.range ?? { low: existing.price, high: existing.price },
+        explanation: existing.explanation,
+        comparables: parseJson<RoomComparable[]>(existing.comparables_json, []),
+        lines: lines ?? undefined,
+        source: "pricing-module" as const,
+        requester_kind: existing.requester_kind ?? "unknown",
+        duplicate: true as const,
+      };
+    }
+  }
   const rawKind = String(input.requester_kind ?? request?.requester_kind ?? "unknown");
   const confirmed = rawKind === "community" || rawKind === "company";
   const bookerType = rawKind === "community" ? "community" : "company";
@@ -138,8 +166,8 @@ export async function quoteBooking(
   const id = makeId("quo");
   db.run(
     `INSERT INTO quotes
-      (id, request_id, price, currency, explanation, comparables_json, requester_kind, lines_json, source, created_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      (id, request_id, price, currency, explanation, comparables_json, requester_kind, lines_json, source, created_at, client_request_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       id,
       input.request_id ?? null,
@@ -151,6 +179,7 @@ export async function quoteBooking(
       JSON.stringify(lines),
       "pricing-module",
       nowIso(),
+      replayId || null,
     ],
   );
   recordRun(db, {
