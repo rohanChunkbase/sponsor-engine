@@ -1,5 +1,5 @@
 export { loadEnv } from "./env.js";
-export { isDryRun, isAllowlisted, allowlist, safetySnapshot } from "./safety.js";
+export { assertDashboardOrigin, isAllowlisted, isDryRun, allowlist, safetySnapshot } from "./safety.js";
 export { triageInbound } from "./triage.js";
 export { forecastTurnout, FREE_EVENT_NO_SHOW, FREE_EVENT_SHOW_UP } from "./forecast.js";
 export { quoteBooking, foodPassThrough, FOOD_PER_HEAD_GBP } from "./quote.js";

@@ -1,7 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import {
-  approveOutbox,
   draftSponsorAsk,
   findSponsors,
   forecastTurnout,
@@ -126,19 +125,6 @@ export function buildServer() {
       sponsorName: args.sponsor_name,
       askGbp: args.ask_gbp,
     })),
-  );
-
-  server.registerTool(
-    "approve",
-    {
-      title: "Approve a waiting message",
-      description: "Move an outbox item to approved. In test mode this only logs and does not send. Calls pushDeal when packages/integrations is present.",
-      inputSchema: {
-        outbox_id: z.string(),
-        actor: z.string().optional(),
-      },
-    },
-    async (args) => text(await approveOutbox(getReadyDb(), args.outbox_id, args.actor ?? "mcp")),
   );
 
   server.registerTool(

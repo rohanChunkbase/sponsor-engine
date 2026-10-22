@@ -53,7 +53,9 @@ Add this server. Set the working directory to this project folder.
 
 MCP means Model Context Protocol. The server name is `sponsor-engine`.
 
-The tools are `triage_inbound`, `quote_booking`, `find_sponsors`, `forecast_turnout`, `draft_sponsor_ask`, `send_with_approval`, `approve`, `list_failures`, and `recall_history`.
+The tools are `triage_inbound`, `quote_booking`, `find_sponsors`, `forecast_turnout`, `draft_sponsor_ask`, `send_with_approval`, `list_failures`, and `recall_history`.
+
+Approve is not a tool. A person approves on the dashboard.
 
 `send_with_approval` does not send a message. It writes a row that waits for a person.
 

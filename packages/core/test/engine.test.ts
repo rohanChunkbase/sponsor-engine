@@ -6,6 +6,7 @@ import { after, before, test } from "node:test";
 import { openDb, repoRoot, seed, type Db } from "@sponsor-engine/db";
 import {
   approveOutbox,
+  assertDashboardOrigin,
   deliverOutbox,
   DEMO_MESSAGE,
   draftSponsorAsk,
@@ -244,6 +245,19 @@ test("nothing reaches sent without approval", async () => {
   const sent = await approveOutbox(db, allowed.item.id, "test");
   assert.equal(sent.sent, true);
   assert.equal(sent.item.status, "sent");
+});
+
+test("approval from another site is refused", () => {
+  const same = new Request("http://localhost:3000/api/outbox/out_1/approve", {
+    method: "POST",
+    headers: { origin: "http://localhost:3000", "sec-fetch-site": "same-origin", host: "localhost:3000" },
+  });
+  assert.doesNotThrow(() => assertDashboardOrigin(same));
+  const cross = new Request("http://localhost:3000/api/outbox/out_1/approve", {
+    method: "POST",
+    headers: { origin: "https://evil.example", "sec-fetch-site": "cross-site", host: "localhost:3000" },
+  });
+  assert.throws(() => assertDashboardOrigin(cross), /this site/);
 });
 
 test("connections stay on the built-in tools when no integrations package is present", async () => {

@@ -16,6 +16,27 @@ export function isAllowlisted(recipient: string): boolean {
   return allowlist().includes(email);
 }
 
+/** Reject a browser approval that did not start on this site. */
+export function assertDashboardOrigin(request: Request): void {
+  const site = request.headers.get("sec-fetch-site");
+  if (site === "cross-site") {
+    throw new Error("Approval has to come from this site.");
+  }
+  const origin = request.headers.get("origin");
+  if (!origin) return;
+  let originHost = "";
+  try {
+    originHost = new URL(origin).host;
+  } catch {
+    throw new Error("Approval has to come from this site.");
+  }
+  const forwarded = request.headers.get("x-forwarded-host") || request.headers.get("host") || new URL(request.url).host;
+  const host = forwarded.split(",")[0]?.trim() ?? "";
+  if (originHost !== host) {
+    throw new Error("Approval has to come from this site.");
+  }
+}
+
 export function safetySnapshot() {
   return {
     dry_run: isDryRun(),

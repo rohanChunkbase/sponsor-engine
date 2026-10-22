@@ -1,9 +1,10 @@
-import { approveOutbox, getReadyDb } from "@sponsor-engine/core";
+import { approveOutbox, assertDashboardOrigin, getReadyDb } from "@sponsor-engine/core";
 
-export async function POST(_request: Request, context: { params: Promise<{ id: string }> }) {
+export async function POST(request: Request, context: { params: Promise<{ id: string }> }) {
   const { id } = await context.params;
   try {
-    const body = (await _request.json().catch(() => ({}))) as { actor?: string };
+    assertDashboardOrigin(request);
+    const body = (await request.json().catch(() => ({}))) as { actor?: string };
     return Response.json(await approveOutbox(getReadyDb(), id, body.actor || "dashboard"));
   } catch (error) {
     return Response.json({ error: error instanceof Error ? error.message : "Could not approve." }, { status: 400 });
