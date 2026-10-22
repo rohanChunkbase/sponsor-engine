@@ -4,6 +4,6 @@ Project: https://github.com/nilbuild/page-mascot
 Licence: MIT
 Copyright (c) Kamran Ahmed
 
-These files are the published colour otter.
-A pixel-style otter sheet is not published on that page.
-The fox is the only character with a pixel sheet.
+These files are the stock colour otter from that library.
+A custom otter was drawn for this site and did not pass the sprite-sheet alignment check, so these stock sheets stay in place until a checked drawing replaces them.
+A pixel otter sheet is not published. The fox is the only character with a pixel sheet.
